@@ -6,6 +6,8 @@
 <title>Online Tuition for class 9,10,11 and 12 | Comp. Sc. | IP | IT | AI | Comp App - cswithdeepaksir</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('C2c8BgJ0SjEN41bK_');</script>
 <style>
   :root {
     --primary: #1a3a6b;
@@ -2434,27 +2436,25 @@ learn_python(s)
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
     btn.disabled = true;
 
-    // ─── WhatsApp pe bhejo ───
-    const msg =
-`🎓 *New Demo Class Registration*
+    // ─── EmailJS se bhejo ───
+    try {
+      await emailjs.send('cswithdeepaksir', 'template_z0vg1cj', {
+        studentName: name,
+        studentClass: cls,
+        gender: gender,
+        mobile: mobile,
+        email: email,
+        subject: subject,
+        schoolName: school,
+        board: board,
+        address: address || 'N/A'
+      });
+      document.getElementById('formSection').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } catch(err) {
+      alert('Something went wrong. Please try again.\nError: ' + JSON.stringify(err));
+    }
 
-👤 *Name:* ${name}
-🏫 *Class:* ${cls}
-⚧ *Gender:* ${gender}
-📞 *Mobile:* ${mobile}
-📧 *Email:* ${email}
-📚 *Subject:* ${subject}
-🏫 *School:* ${school}
-📋 *Board:* ${board}
-🏠 *Address:* ${address || 'N/A'}`;
-
-    const waNumber = '919839254939'; // Country code + number (no + sign)
-    const waURL = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(msg);
-
-    window.open(waURL, '_blank');
-
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
     btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Registration';
     btn.disabled = false;
   }

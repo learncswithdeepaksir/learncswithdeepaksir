@@ -1,0 +1,2690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Tuition for class 9,10,11 and 12 | Comp. Sc. | IP | IT | AI | Comp App - cswithdeepaksir</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --primary: #1a3a6b;
+    --secondary: #f97316;
+    --accent: #22c55e;
+    --python-blue: #3b82f6;
+    --python-yellow: #facc15;
+    --bg: #f0f4ff;
+    --white: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --card-shadow: 0 4px 24px rgba(26,58,107,0.10);
+    --radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    background: linear-gradient(90deg, #0f2557 0%, #1a3a6b 100%);
+    color: #fff;
+    padding: 7px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.83rem;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .topbar a { color: #93c5fd; text-decoration: none; }
+  .topbar .social-icons { display: flex; gap: 10px; align-items: center; }
+  .topbar .social-icons a {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; color: #fff; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .topbar .social-icons a:hover { background: var(--secondary); transform: scale(1.15); }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    background: var(--white);
+    box-shadow: 0 2px 16px rgba(26,58,107,0.10);
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 2px solid #e8f0fe;
+  }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 28px; height: 72px;
+  }
+  .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800; font-size: 1.45rem;
+    color: var(--primary); text-decoration: none; display: flex;
+    align-items: center; gap: 10px;
+  }
+  .logo span { color: var(--secondary); }
+  .logo-icon {
+    background: var(--python-blue); color: #fff;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem; padding: 4px 9px; border-radius: 7px;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links { display: flex; gap: 2px; align-items: center; list-style: none; }
+  .nav-links > li { position: relative; }
+  .nav-links > li > a, .nav-links > li > span {
+    display: flex; align-items: center; gap: 5px;
+    padding: 10px 16px;
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--text); text-decoration: none;
+    border-radius: 10px; cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    white-space: nowrap; letter-spacing: 0.1px;
+    position: relative;
+  }
+  .nav-links > li > a::after, .nav-links > li > span::after {
+    content: ''; position: absolute; bottom: 4px; left: 16px; right: 16px;
+    height: 2px; background: var(--secondary);
+    border-radius: 2px; transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+  .nav-links > li > a:hover::after, .nav-links > li > span:hover::after,
+  .nav-links > li:hover > a::after, .nav-links > li:hover > span::after {
+    transform: scaleX(1);
+  }
+  .nav-links > li > a:hover, .nav-links > li > span:hover,
+  .nav-links > li:hover > a, .nav-links > li:hover > span {
+    background: #eff6ff; color: var(--primary); transform: translateY(-1px);
+  }
+  /* dropdown shown via JS */
+
+  .dropdown {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: #fff; min-width: 220px;
+    box-shadow: 0 8px 32px rgba(26,58,107,0.14);
+    border-radius: 10px; overflow: hidden; z-index: 200;
+    border-top: 3px solid var(--python-blue);
+  }
+  .dropdown a {
+    display: block; padding: 9px 16px;
+    font-size: 0.82rem; color: var(--text); text-decoration: none;
+    transition: background 0.15s;
+  }
+  .dropdown a:hover { background: #eff6ff; color: var(--primary); }
+
+  /* ─── MEGA DROPDOWN ─── */
+  .mega-dropdown {
+    display: none; position: fixed; top: auto;
+    background: #fff; width: 980px; max-width: 96vw;
+    box-shadow: 0 12px 40px rgba(26,58,107,0.18);
+    border-radius: 14px; z-index: 9999;
+    border-top: 3px solid var(--python-blue);
+    padding: 22px 24px;
+  }
+  /* mega-dropdown shown via JS */
+  .mega-cols { display: flex; gap: 18px; flex-wrap: wrap; }
+  .mega-col { min-width: 160px; flex: 1; }
+  .mega-col h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.73rem; font-weight: 800;
+    color: var(--python-blue); text-transform: uppercase;
+    letter-spacing: 0.4px; margin-bottom: 10px;
+    padding-bottom: 7px; border-bottom: 2px solid #dbeafe;
+    white-space: normal; word-break: keep-all;
+  }
+  .mega-col a {
+    display: block; padding: 7px 10px;
+    font-size: 0.83rem; color: var(--text); text-decoration: none;
+    border-radius: 7px; transition: background 0.15s, color 0.15s, padding-left 0.15s;
+    white-space: nowrap;
+  }
+  .mega-col a:hover { background: #eff6ff; color: var(--primary); padding-left: 14px; }
+
+  /* ─── SUB DROPDOWN (3rd level) ─── */
+  .has-sub { position: relative; }
+  .has-sub > a::after { content: ' ›'; float: right; color: var(--python-blue); font-weight: 700; }
+  .sub-dropdown {
+    display: none;
+    position: absolute; top: 0; left: 100%;
+    background: #fff; min-width: 300px; max-width: 340px;
+    box-shadow: 0 8px 24px rgba(26,58,107,0.16);
+    border-radius: 10px; z-index: 10000;
+    border-top: 3px solid var(--secondary);
+    padding: 8px 0;
+    max-height: 70vh; overflow-y: auto;
+  }
+  /* sub-dropdown shown via JS */
+  .sub-dropdown a {
+    display: block; padding: 6px 16px;
+    font-size: 0.78rem; color: var(--text); text-decoration: none;
+    border-radius: 0; transition: background 0.15s; white-space: normal;
+  }
+  .sub-dropdown a::after { content: none !important; }
+  .sub-dropdown a:hover { background: #fff7ed; color: var(--secondary); }
+  .sub-dropdown .part-label {
+    display: block; padding: 6px 16px 4px;
+    font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.6px; color: var(--python-blue);
+    background: #eff6ff; border-bottom: 1px solid #dbeafe;
+    pointer-events: none; cursor: default;
+  }
+  .sub-dropdown .unit-label {
+    display: block; padding: 5px 16px 3px;
+    font-size: 0.72rem; font-weight: 700;
+    color: var(--secondary); pointer-events: none; cursor: default;
+    background: #fff7ed; border-bottom: 1px solid #fed7aa;
+  }
+
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--secondary); color: #fff;
+    padding: 9px 18px; border-radius: 10px;
+    font-size: 0.88rem; font-weight: 700;
+    text-decoration: none; white-space: nowrap;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 12px rgba(249,115,22,0.35);
+    margin-left: 10px;
+  }
+  .nav-cta:hover { background: #ea6900; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249,115,22,0.45); }
+
+  .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 26px; height: 2.5px; background: var(--primary); border-radius: 2px; transition: 0.3s; }
+
+  /* ─── URL BAR ─── */
+  .url-bar-wrap {
+    background: #f1f5f9;
+    border-bottom: 1.5px solid #e2e8f0;
+    padding: 7px 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .url-bar-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .url-bar-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 5px 12px;
+    gap: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.82rem;
+    color: var(--primary);
+    min-width: 0;
+    transition: border-color 0.2s;
+  }
+  .url-bar-box:hover { border-color: var(--python-blue); }
+  .url-bar-box i { color: var(--accent); font-size: 0.8rem; flex-shrink: 0; }
+  #urlBarText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #1e40af;
+    font-weight: 500;
+  }
+  .url-bar-hint {
+    font-size: 0.73rem;
+    color: var(--text-light);
+    white-space: nowrap;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, #0f2557 0%, #1a3a6b 50%, #1e4080 100%);
+    color: #fff;
+    position: relative; overflow: hidden;
+    padding: 70px 24px 80px;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(59,130,246,0.18) 0%, transparent 70%);
+  }
+  .hero-code-bg {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 45%;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem; line-height: 1.8;
+    color: rgba(147,197,253,0.13);
+    padding: 40px 30px;
+    overflow: hidden; pointer-events: none;
+    white-space: pre;
+  }
+  .hero-inner { position: relative; max-width: 700px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block; background: rgba(250,204,21,0.18);
+    border: 1px solid rgba(250,204,21,0.4);
+    color: var(--python-yellow); font-size: 0.78rem; font-weight: 700;
+    padding: 4px 14px; border-radius: 20px; margin-bottom: 20px;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800; line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .hero h1 .highlight { color: var(--python-yellow); }
+  .hero p {
+    font-size: 1.05rem; color: #93c5fd; max-width: 560px;
+    margin: 0 auto 32px; line-height: 1.7;
+  }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 12px 28px; border-radius: 10px; font-weight: 700;
+    font-size: 0.9rem; text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--secondary); color: #fff; }
+  .btn-primary:hover { background: #ea6900; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249,115,22,0.4); }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+  .hero-stats {
+    display: flex; gap: 32px; justify-content: center; margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--python-yellow); }
+  .stat-label { font-size: 0.78rem; color: #93c5fd; margin-top: 2px; }
+
+  /* ─── MARQUEE ─── */
+  .marquee-wrap {
+    background: var(--secondary); color: #fff;
+    padding: 10px 0; overflow: hidden;
+  }
+  .marquee-track {
+    display: flex; gap: 60px;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap; width: max-content;
+  }
+  .marquee-track span { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; }
+  .marquee-track span::before { content: '🐍 '; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ─── SECTION ─── */
+  section { padding: 64px 24px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 44px; }
+  .section-tag {
+    display: inline-block; background: #dbeafe;
+    color: var(--python-blue); font-size: 0.75rem; font-weight: 700;
+    padding: 3px 12px; border-radius: 20px; margin-bottom: 10px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .section-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 800; color: var(--primary);
+  }
+  .section-header p { color: var(--text-light); margin-top: 8px; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  /* ─── TELEGRAM BANNER ─── */
+  .telegram-banner {
+    background: linear-gradient(135deg, #0f2557, #1d4ed8);
+    border-radius: var(--radius); padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap; margin-bottom: 40px;
+    box-shadow: var(--card-shadow);
+  }
+  .telegram-banner .tg-left { display: flex; align-items: center; gap: 16px; }
+  .tg-icon { font-size: 2.4rem; }
+  .telegram-banner h3 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.1rem; color: #fff; }
+  .telegram-banner p { color: #93c5fd; font-size: 0.85rem; margin-top: 2px; }
+  .btn-tg { background: #26a5e4; color: #fff; padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: background 0.2s; }
+  .btn-tg:hover { background: #0e8cc3; }
+
+  /* ─── COURSE CARDS ─── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,58,107,0.15); }
+  .card-thumb {
+    height: 150px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; position: relative; overflow: hidden;
+  }
+  .card-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.15));
+  }
+  .card-body { padding: 18px; flex: 1; }
+  .card-tag {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 6px;
+  }
+  .card h3 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+  .card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; }
+  .card-footer {
+    padding: 12px 18px; border-top: 1px solid #f1f5f9;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .card-footer span { font-size: 0.78rem; color: var(--text-light); }
+  .card-arrow { color: var(--python-blue); font-size: 1.1rem; }
+
+  /* thumb colors */
+  .t-blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+  .t-green { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
+  .t-orange { background: linear-gradient(135deg, #ffedd5, #fed7aa); }
+  .t-purple { background: linear-gradient(135deg, #f3e8ff, #e9d5ff); }
+  .t-red { background: linear-gradient(135deg, #fee2e2, #fecaca); }
+  .t-teal { background: linear-gradient(135deg, #ccfbf1, #99f6e4); }
+
+  /* ─── SAMPLE PAPERS ─── */
+  .papers-section { background: #fff; }
+  .paper-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .paper-card {
+    background: var(--bg);
+    border-radius: var(--radius); padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+    border: 2px solid transparent; transition: border-color 0.2s, transform 0.2s;
+  }
+  .paper-card:hover { border-color: var(--python-blue); transform: translateY(-3px); }
+  .paper-card h3 { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--primary); font-size: 1rem; }
+  .paper-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-section { background: linear-gradient(135deg, #0f2557 0%, #1a3a6b 100%); }
+  .testimonials-section .section-header h2 { color: #fff; }
+  .testimonials-section .section-tag { background: rgba(255,255,255,0.15); color: #93c5fd; }
+  .testimonials-section .section-header p { color: #93c5fd; }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .tcard {
+    background: rgba(255,255,255,0.07); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius); padding: 24px;
+  }
+  .tcard-stars { color: var(--python-yellow); font-size: 0.9rem; margin-bottom: 12px; }
+  .tcard p { color: #cbd5e1; font-size: 0.87rem; line-height: 1.7; font-style: italic; }
+  .tcard-author { margin-top: 16px; display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--secondary); display: flex; align-items: center; justify-content: center;
+    font-weight: 800; color: #fff; font-size: 0.9rem; flex-shrink: 0;
+  }
+  .tcard-author strong { color: #fff; font-size: 0.88rem; display: block; }
+  .tcard-author span { color: #64748b; font-size: 0.78rem; }
+
+  /* ─── ABOUT ─── */
+  .about-section { background: #fff; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .about-text h2 { font-family: 'Poppins', sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--primary); margin-bottom: 16px; }
+  .about-text p { color: var(--text-light); line-height: 1.8; margin-bottom: 16px; font-size: 0.95rem; }
+  .about-features { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+  .feat-item { display: flex; align-items: flex-start; gap: 12px; }
+  .feat-icon { width: 36px; height: 36px; border-radius: 10px; background: #dbeafe; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .feat-item strong { display: block; font-size: 0.9rem; color: var(--primary); }
+  .feat-item span { font-size: 0.82rem; color: var(--text-light); }
+  .about-visual {
+    background: linear-gradient(135deg, #0f2557, #1d4ed8);
+    border-radius: 20px; padding: 36px; color: #fff;
+    font-family: 'Fira Code', monospace; font-size: 0.8rem; line-height: 2;
+    position: relative; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(26,58,107,0.3);
+  }
+  .about-visual::before {
+    content: '●  ●  ●';
+    display: block; color: rgba(255,255,255,0.3);
+    font-size: 0.7rem; margin-bottom: 16px; letter-spacing: 4px;
+  }
+  .code-line { color: #93c5fd; }
+  .code-line .kw { color: #f472b6; }
+  .code-line .fn { color: #a78bfa; }
+  .code-line .str { color: #86efac; }
+  .code-line .num { color: var(--python-yellow); }
+  .code-line .cm { color: #475569; }
+  .code-cursor { display: inline-block; width: 8px; height: 16px; background: #fff; margin-left: 2px; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: linear-gradient(180deg, #071428 0%, #0a1a3a 100%);
+    color: #fff; padding: 60px 24px 0;
+    border-top: 3px solid rgba(59,130,246,0.3);
+  }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+
+  /* Main grid: brand | 3 link columns */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* Brand column */
+  .footer-brand .logo { color: #fff; margin-bottom: 14px; display: inline-flex; }
+  .footer-brand .logo span { color: var(--python-yellow); }
+  .footer-brand > p { color: #64748b; font-size: 0.84rem; line-height: 1.75; margin-bottom: 20px; }
+  .footer-social { display: flex; gap: 8px; flex-wrap: wrap; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.88rem; color: #94a3b8; text-decoration: none;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-social a:hover { background: var(--secondary); color: #fff; border-color: var(--secondary); transform: translateY(-2px); }
+
+  /* Link columns */
+  .footer-col h4 {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: 0.88rem; color: #e2e8f0;
+    margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 2px solid rgba(59,130,246,0.3);
+    display: flex; align-items: center; gap: 8px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .footer-col a {
+    display: block; color: #64748b; text-decoration: none;
+    font-size: 0.82rem; padding: 4px 0;
+    transition: color 0.2s, padding-left 0.2s;
+    border-bottom: none;
+  }
+  .footer-col a:hover { color: #93c5fd; padding-left: 6px; }
+
+  /* Contact items */
+  .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .contact-item span, .contact-item a { color: #64748b; font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
+  .contact-item a:hover { color: #93c5fd; padding-left: 0; }
+
+  /* Footer bottom */
+  .footer-bottom {
+    padding: 18px 0;
+    text-align: center; color: #334155; font-size: 0.78rem;
+  }
+
+  /* ─── VISITOR COUNTER ─── */
+  .visitor-counter-bar {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 14px 0 10px;
+    display: flex; justify-content: center; align-items: center;
+    gap: 24px; flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+  .visitor-counter-bar .vc-item {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; padding: 8px 16px;
+  }
+  .visitor-counter-bar .vc-icon {
+    font-size: 1.1rem;
+  }
+  .visitor-counter-bar .vc-label {
+    font-size: 0.72rem; color: #64748b; display: block; line-height: 1;
+  }
+  .visitor-counter-bar .vc-num {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--python-yellow);
+    display: block; line-height: 1.3;
+    letter-spacing: 1px;
+  }
+  /* Topbar visitor badge */
+  .topbar-visitor {
+    display: flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 2px 10px;
+    font-size: 0.78rem; color: #bfdbfe;
+  }
+  .topbar-visitor .tv-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #22c55e;
+    animation: pulse-green 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse-green {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  @media (max-width: 900px) {
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-links-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: #fff; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 200; }
+    .nav-links.open { display: flex; }
+    .nav-links > li > a, .nav-links > li > span { font-size: 0.95rem; }
+    .dropdown { position: static; box-shadow: none; border: none; background: #f8faff; margin-left: 12px; }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .paper-cards { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid > .footer-brand { grid-column: 1 / -1; }
+    .hero-code-bg { display: none; }
+  }
+  @media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-grid > .footer-brand { grid-column: 1; }
+    .hero-stats { gap: 20px; }
+  }
+
+  /* ─── DEMO FORM MODAL ─── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(10,26,58,0.75); backdrop-filter: blur(4px);
+    z-index: 9999; overflow-y: auto;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; align-items: flex-start; justify-content: center; }
+  .modal-box {
+    background: #fff; border-radius: 18px;
+    width: 100%; max-width: 640px;
+    box-shadow: 0 24px 64px rgba(10,26,58,0.35);
+    overflow: hidden; margin: auto;
+    animation: modalIn 0.35s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes modalIn { from { opacity:0; transform:translateY(32px) scale(0.97); } to { opacity:1; transform:none; } }
+  .modal-header {
+    background: linear-gradient(135deg, #0f2557 0%, #1a3a6b 100%);
+    padding: 24px 28px; display: flex; align-items: center; gap: 16px;
+    position: relative;
+  }
+  .modal-header img { width: 56px; height: 56px; border-radius: 12px; background: #fff; padding: 4px; object-fit: contain; }
+  .modal-header-text h2 { color: #fff; font-family: 'Poppins',sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 2px; }
+  .modal-header-text p { color: #93c5fd; font-size: 0.82rem; }
+  .modal-close {
+    position: absolute; top: 14px; right: 18px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); border: none;
+    color: #fff; font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.3); }
+  .modal-body { padding: 28px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label {
+    font-size: 0.78rem; font-weight: 700; color: var(--text);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .form-group label i { color: var(--python-blue); width: 14px; }
+  .form-group input, .form-group select, .form-group textarea {
+    border: 1.5px solid #e2e8f0; border-radius: 9px;
+    padding: 9px 13px; font-size: 0.88rem; font-family: 'Nunito',sans-serif;
+    color: var(--text); background: #f8faff;
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    appearance: none; -webkit-appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--python-blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); background: #fff;
+  }
+  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a3a6b' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+  .gender-group { display: flex; gap: 12px; }
+  .gender-option { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.88rem; }
+  .gender-option input[type="radio"] { accent-color: var(--python-blue); width: 16px; height: 16px; }
+  .modal-footer {
+    padding: 16px 28px 24px;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .btn-submit {
+    background: linear-gradient(135deg, #1a3a6b, #3b82f6);
+    color: #fff; border: none; padding: 11px 28px;
+    border-radius: 10px; font-family: 'Poppins',sans-serif;
+    font-size: 0.92rem; font-weight: 700; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 16px rgba(26,58,107,0.3);
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,58,107,0.4); }
+  .btn-reset {
+    background: #f1f5f9; color: var(--text); border: none;
+    padding: 11px 20px; border-radius: 10px;
+    font-family: 'Nunito',sans-serif; font-size: 0.88rem;
+    font-weight: 700; cursor: pointer; transition: background 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-reset:hover { background: #e2e8f0; }
+  .btn-back {
+    background: transparent; color: var(--text-light); border: 1.5px solid #e2e8f0;
+    padding: 11px 20px; border-radius: 10px;
+    font-family: 'Nunito',sans-serif; font-size: 0.88rem;
+    font-weight: 700; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 6px;
+    margin-left: auto;
+  }
+  .btn-back:hover { border-color: var(--primary); color: var(--primary); }
+  .form-success {
+    display: none; text-align: center; padding: 40px 28px;
+  }
+  .form-success .success-icon { font-size: 3.5rem; margin-bottom: 12px; }
+  .form-success h3 { font-family: 'Poppins',sans-serif; font-size: 1.3rem; color: var(--primary); margin-bottom: 8px; }
+  .form-success p { color: var(--text-light); font-size: 0.9rem; }
+  .form-required { color: #ef4444; margin-left: 2px; }
+  @media (max-width: 560px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    .modal-body { padding: 20px; }
+    .modal-footer { padding: 12px 20px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <span>📞 <a href="tel:+919839254939">+91 9839254939</a> &nbsp;|&nbsp; ✉️ <a href="mailto:learncswithdeepaksir@gmail.com">learncswithdeepaksir@gmail.com</a></span>
+    <span class="topbar-visitor"><span class="tv-dot"></span> <span id="onlineCount">—</span> Online</span>
+  </div>
+  <div class="social-icons">
+    <a href="https://youtube.com/@deepaktechclassroom?si=q2IyomjLCRZb4ygn" title="YouTube" style="background:#FF0000;"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://www.facebook.com/share/196iPgu5Xk/" title="Facebook" style="background:#1877F2;"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/officialdeepakkld?utm_source=qr&igsh=dmE5bnliODhpOW80" title="Instagram" style="background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 75%,#285AEB 100%);"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://t.me/+7nIqdQOpaKk4MjY1" title="Telegram" style="background:#2AABEE;"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://whatsapp.com/channel/0029Vb7WBeq9Bb5pCLwQTQ0j" title="WhatsApp" style="background:#25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="logo" style="gap:0;padding:4px 0;">
+      <img src="data:image/jpeg;base64,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zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxTzyzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzlP77764567754/dTqiGjj73CmvfzzzzzzzzzzzzjUOiQhgjgBDAzSrHRX7217if1+FjzzzzzzzzzjzzzGGwTwFwpyHxwCkXy23hg8wQbHxDTzzzzzjzzzzjykvzDRvy/geDwCkV8X2ywzyxEZ7zzyzzzzzxzzzzykPzjnf7D7fHiD0XTYywwBrXbz+LzzzyzzzzzzzxQkMiCdqUF2YewzlFjrIJKI2AFCGvzzzzzxzzzzzjjUPzwzweY/zTxikXCBTwxnyi775/zzzzzzzzzzzwxkOAzxgxO6CjCC0WywTwKFKzDjzzzhTzzxzCzzzzwkNyDyw8w+yTCQlVjcV9R/pOxTzzxzzzzzTzzzzzyy7jDDjRxzRxjTZRykghS9XjjRzjSzzzzzzzxzxTTPEUU4UE0cokU0HNzlHiwAxzzzhVw7rCTzzzzzzzz733333HHH3330XrRRWzvHAXEV6zRXiTF3zzzzzyzL3333lv8Are1191+sTAHBAR/zjKrUJDTD88888800+MMMMMMIEMMMIM88cM4IgQuU8EcM8M8M8c8888888888888888888888s88888888888888888888888888848888c8888k88c88s88888s8088888888888888888s88888888888c8848888888c88888888888888888808888888808888888888s888888888888c88888888888888c88ss8888888c888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888s88s88888888888888888888888888/8QAJREAAgIABQQD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" alt="CS with Deepak Sir" style="height:58px;width:auto;object-fit:contain;border-radius:8px;" onerror="this.style.display='none';document.getElementById('logoTextFallback').style.display='flex';">
+      <span id="logoTextFallback" style="display:none;align-items:center;gap:10px;"><span class="logo-icon">&gt;_</span>Learn CS with <span>Deepak</span> sir</span>
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.1rem;color:var(--primary);white-space:nowrap;margin-left:10px;text-decoration:none;">Learn CS with <span style="color:var(--secondary);">Deepak</span> sir</a>
+    </a>
+    <ul class="nav-links" id="navLinks">
+
+      <!-- 1. Video Tutorials -->
+      <li class="has-dropdown">
+        <span>Video Tutorials ▾</span>
+        <div class="mega-dropdown">
+          <div class="mega-cols">
+            <div class="mega-col">
+              <h5>Computer Science</h5>
+              <a href="#">CS Class 11 – Videos</a>
+              <a href="#">CS Class 12 – Videos</a>
+            </div>
+            <div class="mega-col">
+              <h5>IP / IT</h5>
+              <a href="#">IP Class 11 – Videos</a>
+              <a href="#">IP Class 12 – Videos</a>
+              <a href="#">IT Class 9 – Videos</a>
+              <a href="#">IT Class 10 – Videos</a>
+            </div>
+            <div class="mega-col">
+              <h5>Maths & AI</h5>
+              <a href="#">Class 11 Maths – Videos</a>
+              <a href="#">Class 12 Maths – Videos</a>
+              <a href="#">AI Class 9 – Videos</a>
+              <a href="#">AI Class 10 – Videos</a>
+            </div>
+            <div class="mega-col">
+              <h5>Python</h5>
+              <a href="#">Python Programs – XI</a>
+              <a href="#">Python Programs – XII</a>
+              <a href="#">Introduction to Python</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 2. Online Classes -->
+      <li class="has-dropdown">
+        <span>Online Classes ▾</span>
+        <div class="mega-dropdown">
+          <div class="mega-cols">
+            <div class="mega-col">
+              <h5>Computer Science</h5>
+              <a href="#">Computer Science XI (083)</a>
+              <a href="#">Computer Science XII (083)</a>
+            </div>
+            <div class="mega-col">
+              <h5>Informatics Practices</h5>
+              <a href="#">Informatics Practices XI (065)</a>
+              <a href="#">Informatics Practices XII (065)</a>
+            </div>
+            <div class="mega-col">
+              <h5>Maths (CBSE)</h5>
+              <a href="#">Maths Class IX (Code 041)</a>
+              <a href="#">Maths Class X (041/241)</a>
+              <a href="#">Maths Class XI (Code 041)</a>
+              <a href="#">Maths Class XII (Code 041)</a>
+            </div>
+            <div class="mega-col">
+              <h5>AI / IT / Comp App</h5>
+              <a href="#">AI – Class IX (Code 417)</a>
+              <a href="#">AI – Class X (Code 417)</a>
+              <a href="#">IT – Class IX (Code 402)</a>
+              <a href="#">IT – Class X (Code 402)</a>
+              <a href="#">Computer App IX – CBSE (Code 165)</a>
+              <a href="#">Computer App X – CBSE (Code 165)</a>
+              <a href="#">Computer App IX – ICSE</a>
+              <a href="#">Computer App X – ICSE</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 3. Maths -->
+      <li class="has-dropdown">
+        <span>Maths ▾</span>
+        <div class="mega-dropdown mega-dropdown-wide">
+          <div class="mega-cols">
+
+            <!-- CBSE Class 9 -->
+            <div class="mega-col">
+              <h5>Class 9 CBSE (Code 041)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">Ch 1 – Number Systems</a>
+                  <a href="#">Ch 2 – Polynomials</a>
+                  <a href="#">Ch 3 – Coordinate Geometry</a>
+                  <a href="#">Ch 4 – Linear Equations in Two Variables</a>
+                  <a href="#">Ch 5 – Introduction to Euclid's Geometry</a>
+                  <a href="#">Ch 6 – Lines and Angles</a>
+                  <a href="#">Ch 7 – Triangles</a>
+                  <a href="#">Ch 8 – Quadrilaterals</a>
+                  <a href="#">Ch 9 – Circles</a>
+                  <a href="#">Ch 10 – Heron's Formula</a>
+                  <a href="#">Ch 11 – Surface Areas and Volumes</a>
+                  <a href="#">Ch 12 – Statistics</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">MCQ – Number Systems</a>
+                  <a href="#">MCQ – Polynomials</a>
+                  <a href="#">MCQ – Coordinate Geometry</a>
+                  <a href="#">MCQ – Linear Equations</a>
+                  <a href="#">MCQ – Euclid's Geometry</a>
+                  <a href="#">MCQ – Lines and Angles</a>
+                  <a href="#">MCQ – Triangles</a>
+                  <a href="#">MCQ – Quadrilaterals</a>
+                  <a href="#">MCQ – Circles</a>
+                  <a href="#">MCQ – Heron's Formula</a>
+                  <a href="#">MCQ – Surface Areas &amp; Volumes</a>
+                  <a href="#">MCQ – Statistics</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – IX</a>
+            </div>
+
+            <!-- CBSE Class 10 -->
+            <div class="mega-col">
+              <h5>Class 10 CBSE (041 / 241)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">Ch 1 – Real Numbers</a>
+                  <a href="#">Ch 2 – Polynomials</a>
+                  <a href="#">Ch 3 – Pair of Linear Equations in Two Variables</a>
+                  <a href="#">Ch 4 – Quadratic Equations</a>
+                  <a href="#">Ch 5 – Arithmetic Progressions</a>
+                  <a href="#">Ch 6 – Triangles</a>
+                  <a href="#">Ch 7 – Coordinate Geometry</a>
+                  <a href="#">Ch 8 – Introduction to Trigonometry</a>
+                  <a href="#">Ch 9 – Some Applications of Trigonometry</a>
+                  <a href="#">Ch 10 – Circles</a>
+                  <a href="#">Ch 11 – Areas Related to Circles</a>
+                  <a href="#">Ch 12 – Surface Areas and Volumes</a>
+                  <a href="#">Ch 13 – Statistics</a>
+                  <a href="#">Ch 14 – Probability</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">MCQ – Real Numbers</a>
+                  <a href="#">MCQ – Polynomials</a>
+                  <a href="#">MCQ – Linear Equations</a>
+                  <a href="#">MCQ – Quadratic Equations</a>
+                  <a href="#">MCQ – Arithmetic Progressions</a>
+                  <a href="#">MCQ – Triangles</a>
+                  <a href="#">MCQ – Coordinate Geometry</a>
+                  <a href="#">MCQ – Trigonometry</a>
+                  <a href="#">MCQ – Applications of Trigonometry</a>
+                  <a href="#">MCQ – Circles</a>
+                  <a href="#">MCQ – Areas Related to Circles</a>
+                  <a href="#">MCQ – Surface Areas &amp; Volumes</a>
+                  <a href="#">MCQ – Statistics</a>
+                  <a href="#">MCQ – Probability</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – X</a>
+            </div>
+
+            <!-- CBSE Class 11 -->
+            <div class="mega-col">
+              <h5>Class 11 CBSE (Code 041)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">Ch 1 – Sets</a>
+                  <a href="#">Ch 2 – Relations and Functions</a>
+                  <a href="#">Ch 3 – Trigonometric Functions</a>
+                  <a href="#">Ch 4 – Complex Numbers &amp; Quadratic Equations</a>
+                  <a href="#">Ch 5 – Linear Inequalities</a>
+                  <a href="#">Ch 6 – Permutations and Combinations</a>
+                  <a href="#">Ch 7 – Binomial Theorem</a>
+                  <a href="#">Ch 8 – Sequences and Series</a>
+                  <a href="#">Ch 9 – Straight Lines</a>
+                  <a href="#">Ch 10 – Conic Sections</a>
+                  <a href="#">Ch 11 – Introduction to 3D Geometry</a>
+                  <a href="#">Ch 12 – Limits and Derivatives</a>
+                  <a href="#">Ch 13 – Statistics</a>
+                  <a href="#">Ch 14 – Probability</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">MCQ – Sets</a>
+                  <a href="#">MCQ – Relations and Functions</a>
+                  <a href="#">MCQ – Trigonometric Functions</a>
+                  <a href="#">MCQ – Complex Numbers</a>
+                  <a href="#">MCQ – Linear Inequalities</a>
+                  <a href="#">MCQ – Permutations &amp; Combinations</a>
+                  <a href="#">MCQ – Binomial Theorem</a>
+                  <a href="#">MCQ – Sequences and Series</a>
+                  <a href="#">MCQ – Straight Lines</a>
+                  <a href="#">MCQ – Conic Sections</a>
+                  <a href="#">MCQ – 3D Geometry</a>
+                  <a href="#">MCQ – Limits and Derivatives</a>
+                  <a href="#">MCQ – Statistics</a>
+                  <a href="#">MCQ – Probability</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – XI</a>
+            </div>
+
+            <!-- CBSE Class 12 -->
+            <div class="mega-col">
+              <h5>Class 12 CBSE (Code 041)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">Ch 1 – Relations and Functions</a>
+                  <a href="#">Ch 2 – Inverse Trigonometric Functions</a>
+                  <a href="#">Ch 3 – Matrices</a>
+                  <a href="#">Ch 4 – Determinants</a>
+                  <a href="#">Ch 5 – Continuity and Differentiability</a>
+                  <a href="#">Ch 6 – Application of Derivatives</a>
+                  <a href="#">Ch 7 – Integrals</a>
+                  <a href="#">Ch 8 – Application of Integrals</a>
+                  <a href="#">Ch 9 – Differential Equations</a>
+                  <a href="#">Ch 10 – Vector Algebra</a>
+                  <a href="#">Ch 11 – Three Dimensional Geometry</a>
+                  <a href="#">Ch 12 – Linear Programming</a>
+                  <a href="#">Ch 13 – Probability</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">MCQ – Relations and Functions</a>
+                  <a href="#">MCQ – Inverse Trigonometry</a>
+                  <a href="#">MCQ – Matrices</a>
+                  <a href="#">MCQ – Determinants</a>
+                  <a href="#">MCQ – Continuity &amp; Differentiability</a>
+                  <a href="#">MCQ – Application of Derivatives</a>
+                  <a href="#">MCQ – Integrals</a>
+                  <a href="#">MCQ – Application of Integrals</a>
+                  <a href="#">MCQ – Differential Equations</a>
+                  <a href="#">MCQ – Vector Algebra</a>
+                  <a href="#">MCQ – 3D Geometry</a>
+                  <a href="#">MCQ – Linear Programming</a>
+                  <a href="#">MCQ – Probability</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – XII</a>
+            </div>
+
+            <!-- ICSE Class 9 & 10 -->
+            <div class="mega-col">
+              <h5>Class 9 (ICSE)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">Pure Arithmetic – Rational Numbers</a>
+                  <a href="#">Commercial Mathematics</a>
+                  <a href="#">Algebra – Expansions &amp; Factorisation</a>
+                  <a href="#">Simultaneous Linear Equations</a>
+                  <a href="#">Indices / Exponents</a>
+                  <a href="#">Logarithms</a>
+                  <a href="#">Geometry – Lines, Angles &amp; Triangles</a>
+                  <a href="#">Rectilinear Figures</a>
+                  <a href="#">Circle – Chord Properties</a>
+                  <a href="#">Statistics – Mean, Median, Mode</a>
+                  <a href="#">Mensuration</a>
+                  <a href="#">Trigonometry – Basics</a>
+                  <a href="#">Coordinate Geometry</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">MCQ – Rational Numbers</a>
+                  <a href="#">MCQ – Commercial Maths</a>
+                  <a href="#">MCQ – Algebra</a>
+                  <a href="#">MCQ – Linear Equations</a>
+                  <a href="#">MCQ – Logarithms</a>
+                  <a href="#">MCQ – Geometry</a>
+                  <a href="#">MCQ – Circle</a>
+                  <a href="#">MCQ – Statistics</a>
+                  <a href="#">MCQ – Mensuration</a>
+                  <a href="#">MCQ – Trigonometry</a>
+                  <a href="#">MCQ – Coordinate Geometry</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – IX (ICSE)</a>
+            </div>
+
+            <!-- ICSE Class 10 -->
+            <div class="mega-col">
+              <h5>Class 10 (ICSE)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="unit-label">Commercial Maths</span>
+                  <a href="#">Goods and Services Tax (GST)</a>
+                  <a href="#">Banking</a>
+                  <a href="#">Shares and Dividends</a>
+                  <span class="unit-label">Algebra</span>
+                  <a href="#">Linear Inequations</a>
+                  <a href="#">Quadratic Equations</a>
+                  <a href="#">Ratio and Proportion</a>
+                  <a href="#">Factorisation</a>
+                  <a href="#">Matrices</a>
+                  <a href="#">Arithmetic Progression (AP)</a>
+                  <span class="unit-label">Geometry</span>
+                  <a href="#">Reflection</a>
+                  <a href="#">Section Formula</a>
+                  <a href="#">Equation of a Straight Line</a>
+                  <a href="#">Similarity</a>
+                  <a href="#">Circles</a>
+                  <a href="#">Loci (Locus and its Constructions)</a>
+                  <span class="unit-label">Mensuration &amp; Trigonometry</span>
+                  <a href="#">Mensuration (Surface Areas &amp; Volumes)</a>
+                  <a href="#">Trigonometry</a>
+                  <a href="#">Heights and Distances</a>
+                  <span class="unit-label">Statistics &amp; Probability</span>
+                  <a href="#">Measures of Central Tendency</a>
+                  <a href="#">Probability</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">MCQ – GST</a>
+                  <a href="#">MCQ – Banking</a>
+                  <a href="#">MCQ – Shares &amp; Dividends</a>
+                  <a href="#">MCQ – Linear Inequations</a>
+                  <a href="#">MCQ – Quadratic Equations</a>
+                  <a href="#">MCQ – Ratio &amp; Proportion</a>
+                  <a href="#">MCQ – Factorisation</a>
+                  <a href="#">MCQ – Matrices</a>
+                  <a href="#">MCQ – Arithmetic Progression</a>
+                  <a href="#">MCQ – Reflection</a>
+                  <a href="#">MCQ – Section Formula</a>
+                  <a href="#">MCQ – Straight Line</a>
+                  <a href="#">MCQ – Similarity</a>
+                  <a href="#">MCQ – Circles</a>
+                  <a href="#">MCQ – Mensuration</a>
+                  <a href="#">MCQ – Trigonometry</a>
+                  <a href="#">MCQ – Statistics</a>
+                  <a href="#">MCQ – Probability</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – X (ICSE)</a>
+            </div>
+
+            <!-- ISC Class 11 -->
+            <div class="mega-col">
+              <h5>Class 11 (ISC)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">Sets and Functions</a>
+                  <a href="#">Relations and Functions</a>
+                  <a href="#">Trigonometric Functions</a>
+                  <a href="#">Principle of Mathematical Induction</a>
+                  <a href="#">Complex Numbers &amp; Quadratic Equations</a>
+                  <a href="#">Linear Inequalities</a>
+                  <a href="#">Permutations and Combinations</a>
+                  <a href="#">Binomial Theorem</a>
+                  <a href="#">Sequence and Series</a>
+                  <a href="#">Straight Lines</a>
+                  <a href="#">Conic Sections</a>
+                  <a href="#">Introduction to 3D Geometry</a>
+                  <a href="#">Limits and Derivatives</a>
+                  <a href="#">Statistics</a>
+                  <a href="#">Probability</a>
+                  <a href="#">Boolean Algebra (ISC specific)</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">MCQ – Sets</a>
+                  <a href="#">MCQ – Relations &amp; Functions</a>
+                  <a href="#">MCQ – Trigonometry</a>
+                  <a href="#">MCQ – Complex Numbers</a>
+                  <a href="#">MCQ – Linear Inequalities</a>
+                  <a href="#">MCQ – P &amp; C</a>
+                  <a href="#">MCQ – Binomial Theorem</a>
+                  <a href="#">MCQ – Sequences &amp; Series</a>
+                  <a href="#">MCQ – Straight Lines</a>
+                  <a href="#">MCQ – Conic Sections</a>
+                  <a href="#">MCQ – Limits &amp; Derivatives</a>
+                  <a href="#">MCQ – Statistics</a>
+                  <a href="#">MCQ – Probability</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – XI (ISC)</a>
+            </div>
+
+            <!-- ISC Class 12 -->
+            <div class="mega-col">
+              <h5>Class 12 (ISC)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">Relations and Functions</a>
+                  <a href="#">Inverse Trigonometric Functions</a>
+                  <a href="#">Matrices</a>
+                  <a href="#">Determinants</a>
+                  <a href="#">Continuity and Differentiability</a>
+                  <a href="#">Application of Derivatives</a>
+                  <a href="#">Integrals</a>
+                  <a href="#">Application of Integrals</a>
+                  <a href="#">Differential Equations</a>
+                  <a href="#">Vector Algebra</a>
+                  <a href="#">Three Dimensional Geometry</a>
+                  <a href="#">Linear Programming</a>
+                  <a href="#">Probability</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <a href="#">MCQ – Relations &amp; Functions</a>
+                  <a href="#">MCQ – Inverse Trigonometry</a>
+                  <a href="#">MCQ – Matrices</a>
+                  <a href="#">MCQ – Determinants</a>
+                  <a href="#">MCQ – Continuity &amp; Differentiability</a>
+                  <a href="#">MCQ – Application of Derivatives</a>
+                  <a href="#">MCQ – Integrals</a>
+                  <a href="#">MCQ – Application of Integrals</a>
+                  <a href="#">MCQ – Differential Equations</a>
+                  <a href="#">MCQ – Vector Algebra</a>
+                  <a href="#">MCQ – 3D Geometry</a>
+                  <a href="#">MCQ – Linear Programming</a>
+                  <a href="#">MCQ – Probability</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – XII (ISC)</a>
+            </div>
+
+            <!-- Practice -->
+            <div class="mega-col">
+              <h5>Practice</h5>
+              <a href="#">Online Quiz – Maths</a>
+              <a href="#">Previous Year Papers (CBSE)</a>
+              <a href="#">Previous Year Papers (ICSE/ISC)</a>
+              <a href="#">Formula Sheets – All Classes</a>
+            </div>
+
+          </div>
+        </div>
+      </li>
+
+      <!-- 4. Computer Science -->
+      <li class="has-dropdown">
+        <span>Computer Sc. ▾</span>
+        <div class="mega-dropdown">
+          <div class="mega-cols">
+            <div class="mega-col">
+              <h5>CS Class 11</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Computer Systems &amp; Organisation</span>
+                  <a href="#">Ch 1 – Computer System &amp; Organisation</a>
+                  <a href="#">Ch 2 – Encoding Schemes &amp; Number System</a>
+                  <span class="part-label">Unit 2: Computational Thinking &amp; Programming</span>
+                  <a href="#">Ch 3 – Introduction to Problem Solving</a>
+                  <a href="#">Ch 4 – Getting Started with Python</a>
+                  <a href="#">Ch 5 – Flow of Control</a>
+                  <a href="#">Ch 6 – Functions</a>
+                  <a href="#">Ch 7 – Strings</a>
+                  <a href="#">Ch 8 – Lists</a>
+                  <a href="#">Ch 9 – Tuples &amp; Dictionaries</a>
+                  <span class="part-label">Unit 3: Society, Law &amp; Ethics</span>
+                  <a href="#">Ch 10 – Society, Law and Ethics</a>
+                  <a href="#">Ch 11 – Emerging Trends</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Computer Systems &amp; Organisation</span>
+                  <a href="#">MCQ – Computer System &amp; Organisation</a>
+                  <a href="#">MCQ – Encoding Schemes &amp; Number System</a>
+                  <span class="part-label">Unit 2: Computational Thinking &amp; Programming</span>
+                  <a href="#">MCQ – Introduction to Problem Solving</a>
+                  <a href="#">MCQ – Getting Started with Python</a>
+                  <a href="#">MCQ – Flow of Control</a>
+                  <a href="#">MCQ – Functions</a>
+                  <a href="#">MCQ – Strings</a>
+                  <a href="#">MCQ – Lists</a>
+                  <a href="#">MCQ – Tuples &amp; Dictionaries</a>
+                  <span class="part-label">Unit 3: Society, Law &amp; Ethics</span>
+                  <a href="#">MCQ – Society, Law and Ethics</a>
+                  <a href="#">MCQ – Emerging Trends</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Q &amp; A ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Computer Systems &amp; Organisation</span>
+                  <a href="#">Q&amp;A – Computer System &amp; Organisation</a>
+                  <a href="#">Q&amp;A – Encoding Schemes &amp; Number System</a>
+                  <span class="part-label">Unit 2: Computational Thinking &amp; Programming</span>
+                  <a href="#">Q&amp;A – Introduction to Problem Solving</a>
+                  <a href="#">Q&amp;A – Getting Started with Python</a>
+                  <a href="#">Q&amp;A – Flow of Control</a>
+                  <a href="#">Q&amp;A – Functions</a>
+                  <a href="#">Q&amp;A – Strings</a>
+                  <a href="#">Q&amp;A – Lists</a>
+                  <a href="#">Q&amp;A – Tuples &amp; Dictionaries</a>
+                  <span class="part-label">Unit 3: Society, Law &amp; Ethics</span>
+                  <a href="#">Q&amp;A – Society, Law and Ethics</a>
+                  <a href="#">Q&amp;A – Emerging Trends</a>
+                </div>
+              </div>
+              <a href="#">Textbook Solutions</a>
+              <a href="#">Lab Activity</a>
+            </div>
+            <div class="mega-col">
+              <h5>CS Class 12</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Computational Thinking &amp; Programming – 2</span>
+                  <a href="#">Ch 1 – Python Revision Tour</a>
+                  <a href="#">Ch 2 – Exception Handling in Python</a>
+                  <a href="#">Ch 3 – File Handling in Python</a>
+                  <a href="#">Ch 4 – Stack</a>
+                  <a href="#">Ch 5 – Queue</a>
+                  <a href="#">Ch 6 – Sorting Algorithms</a>
+                  <a href="#">Ch 7 – Searching Algorithms</a>
+                  <span class="part-label">Unit 2: Computer Networks</span>
+                  <a href="#">Ch 8 – Computer Networks</a>
+                  <a href="#">Ch 9 – Data Communication</a>
+                  <a href="#">Ch 10 – Security Aspects</a>
+                  <span class="part-label">Unit 3: Database Management</span>
+                  <a href="#">Ch 11 – Understanding Data</a>
+                  <a href="#">Ch 12 – Database Concepts</a>
+                  <a href="#">Ch 13 – Structured Query Language (SQL)</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Computational Thinking &amp; Programming – 2</span>
+                  <a href="#">MCQ – Python Revision Tour</a>
+                  <a href="#">MCQ – Exception Handling in Python</a>
+                  <a href="#">MCQ – File Handling in Python</a>
+                  <a href="#">MCQ – Stack</a>
+                  <a href="#">MCQ – Queue</a>
+                  <a href="#">MCQ – Sorting Algorithms</a>
+                  <a href="#">MCQ – Searching Algorithms</a>
+                  <span class="part-label">Unit 2: Computer Networks</span>
+                  <a href="#">MCQ – Computer Networks</a>
+                  <a href="#">MCQ – Data Communication</a>
+                  <a href="#">MCQ – Security Aspects</a>
+                  <span class="part-label">Unit 3: Database Management</span>
+                  <a href="#">MCQ – Understanding Data</a>
+                  <a href="#">MCQ – Database Concepts</a>
+                  <a href="#">MCQ – Structured Query Language (SQL)</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Q &amp; A ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Computational Thinking &amp; Programming – 2</span>
+                  <a href="#">Q&amp;A – Python Revision Tour</a>
+                  <a href="#">Q&amp;A – Exception Handling in Python</a>
+                  <a href="#">Q&amp;A – File Handling in Python</a>
+                  <a href="#">Q&amp;A – Stack</a>
+                  <a href="#">Q&amp;A – Queue</a>
+                  <a href="#">Q&amp;A – Sorting Algorithms</a>
+                  <a href="#">Q&amp;A – Searching Algorithms</a>
+                  <span class="part-label">Unit 2: Computer Networks</span>
+                  <a href="#">Q&amp;A – Computer Networks</a>
+                  <a href="#">Q&amp;A – Data Communication</a>
+                  <a href="#">Q&amp;A – Security Aspects</a>
+                  <span class="part-label">Unit 3: Database Management</span>
+                  <a href="#">Q&amp;A – Understanding Data</a>
+                  <a href="#">Q&amp;A – Database Concepts</a>
+                  <a href="#">Q&amp;A – Structured Query Language (SQL)</a>
+                </div>
+              </div>
+              <a href="#">Textbook Solutions</a>
+              <a href="#">Sample Papers</a>
+            </div>
+            <div class="mega-col">
+              <h5>Python</h5>
+              <a href="#">Python Programs – XI</a>
+              <a href="#">Python Programs – XII</a>
+              <a href="#">Projects – CS</a>
+              <a href="#">Online Compiler</a>
+            </div>
+            <div class="mega-col">
+              <h5>Resources</h5>
+              <a href="#">CBSE Syllabus</a>
+              <a href="#">Sample Papers – CS</a>
+              <a href="#">Previous Year Papers</a>
+              <a href="#">Python MCQs</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 5. IP -->
+      <li class="has-dropdown">
+        <span>IP ▾</span>
+        <div class="mega-dropdown">
+          <div class="mega-cols">
+            <div class="mega-col">
+              <h5>Informatics Practices XI (065)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Introduction to Computer System</span>
+                  <a href="#">Ch 1 – Introduction to Computer System</a>
+                  <span class="part-label">Unit 2: Introduction to Python</span>
+                  <a href="#">Ch 2 – Getting Started with Python</a>
+                  <a href="#">Ch 3 – Flow of Control</a>
+                  <a href="#">Ch 4 – Functions</a>
+                  <a href="#">Ch 5 – Strings</a>
+                  <a href="#">Ch 6 – Lists</a>
+                  <a href="#">Ch 7 – Tuples &amp; Dictionaries</a>
+                  <span class="part-label">Unit 3: Database Concepts &amp; SQL</span>
+                  <a href="#">Ch 8 – Database Concepts</a>
+                  <a href="#">Ch 9 – Introduction to SQL</a>
+                  <span class="part-label">Unit 4: Emerging Trends</span>
+                  <a href="#">Ch 10 – Emerging Trends</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Introduction to Computer System</span>
+                  <a href="#">MCQ – Introduction to Computer System</a>
+                  <span class="part-label">Unit 2: Introduction to Python</span>
+                  <a href="#">MCQ – Getting Started with Python</a>
+                  <a href="#">MCQ – Flow of Control</a>
+                  <a href="#">MCQ – Functions</a>
+                  <a href="#">MCQ – Strings</a>
+                  <a href="#">MCQ – Lists</a>
+                  <a href="#">MCQ – Tuples &amp; Dictionaries</a>
+                  <span class="part-label">Unit 3: Database Concepts &amp; SQL</span>
+                  <a href="#">MCQ – Database Concepts</a>
+                  <a href="#">MCQ – Introduction to SQL</a>
+                  <span class="part-label">Unit 4: Emerging Trends</span>
+                  <a href="#">MCQ – Emerging Trends</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Q &amp; A ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Introduction to Computer System</span>
+                  <a href="#">Q&amp;A – Introduction to Computer System</a>
+                  <span class="part-label">Unit 2: Introduction to Python</span>
+                  <a href="#">Q&amp;A – Getting Started with Python</a>
+                  <a href="#">Q&amp;A – Flow of Control</a>
+                  <a href="#">Q&amp;A – Functions</a>
+                  <a href="#">Q&amp;A – Strings</a>
+                  <a href="#">Q&amp;A – Lists</a>
+                  <a href="#">Q&amp;A – Tuples &amp; Dictionaries</a>
+                  <span class="part-label">Unit 3: Database Concepts &amp; SQL</span>
+                  <a href="#">Q&amp;A – Database Concepts</a>
+                  <a href="#">Q&amp;A – Introduction to SQL</a>
+                  <span class="part-label">Unit 4: Emerging Trends</span>
+                  <a href="#">Q&amp;A – Emerging Trends</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – XI</a>
+            </div>
+            <div class="mega-col">
+              <h5>Informatics Practices XII (065)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Data Handling using Pandas</span>
+                  <a href="#">Ch 1 – Data Handling using Pandas – I</a>
+                  <a href="#">Ch 2 – Data Handling using Pandas – II</a>
+                  <a href="#">Ch 3 – Plotting Data using Matplotlib</a>
+                  <span class="part-label">Unit 2: Database Query using SQL</span>
+                  <a href="#">Ch 4 – Functions in SQL</a>
+                  <a href="#">Ch 5 – GROUP BY &amp; Operations on Relations</a>
+                  <a href="#">Ch 6 – Joins in SQL</a>
+                  <span class="part-label">Unit 3: Introduction to Computer Networks</span>
+                  <a href="#">Ch 7 – Introduction to Computer Networks</a>
+                  <span class="part-label">Unit 4: Societal Impacts</span>
+                  <a href="#">Ch 8 – Societal Impacts</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Data Handling using Pandas</span>
+                  <a href="#">MCQ – Data Handling using Pandas – I</a>
+                  <a href="#">MCQ – Data Handling using Pandas – II</a>
+                  <a href="#">MCQ – Plotting Data using Matplotlib</a>
+                  <span class="part-label">Unit 2: Database Query using SQL</span>
+                  <a href="#">MCQ – Functions in SQL</a>
+                  <a href="#">MCQ – GROUP BY &amp; Operations on Relations</a>
+                  <a href="#">MCQ – Joins in SQL</a>
+                  <span class="part-label">Unit 3: Introduction to Computer Networks</span>
+                  <a href="#">MCQ – Introduction to Computer Networks</a>
+                  <span class="part-label">Unit 4: Societal Impacts</span>
+                  <a href="#">MCQ – Societal Impacts</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Q &amp; A ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Unit 1: Data Handling using Pandas</span>
+                  <a href="#">Q&amp;A – Data Handling using Pandas – I</a>
+                  <a href="#">Q&amp;A – Data Handling using Pandas – II</a>
+                  <a href="#">Q&amp;A – Plotting Data using Matplotlib</a>
+                  <span class="part-label">Unit 2: Database Query using SQL</span>
+                  <a href="#">Q&amp;A – Functions in SQL</a>
+                  <a href="#">Q&amp;A – GROUP BY &amp; Operations on Relations</a>
+                  <a href="#">Q&amp;A – Joins in SQL</a>
+                  <span class="part-label">Unit 3: Introduction to Computer Networks</span>
+                  <a href="#">Q&amp;A – Introduction to Computer Networks</a>
+                  <span class="part-label">Unit 4: Societal Impacts</span>
+                  <a href="#">Q&amp;A – Societal Impacts</a>
+                </div>
+              </div>
+              <a href="#">Practical File Programs</a>
+              <a href="#">Sample Papers – XII</a>
+            </div>
+            <div class="mega-col">
+              <h5>Python / Pandas</h5>
+              <a href="#">Python Pandas Notes</a>
+              <a href="#">NumPy Notes</a>
+              <a href="#">Data Visualization</a>
+              <a href="#">MySQL with Python</a>
+            </div>
+            <div class="mega-col">
+              <h5>Resources</h5>
+              <a href="#">Projects – IP</a>
+              <a href="#">Python MCQs – IP</a>
+              <a href="#">Online Quiz</a>
+              <a href="#">CBSE Syllabus – IP</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 6. IT -->
+      <li class="has-dropdown">
+        <span>IT ▾</span>
+        <div class="mega-dropdown">
+          <div class="mega-cols">
+
+            <!-- IT Class 9 -->
+            <div class="mega-col">
+              <h5>IT – Class IX (Code 402)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-I</a>
+                  <a href="#">Unit 2: Self-Management Skills-I</a>
+                  <a href="#">Unit 3: ICT Skills-I</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-I</a>
+                  <a href="#">Unit 5: Green Skills-I</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: Introduction to IT–ITeS Industry</a>
+                  <a href="#">Unit 2: Data Entry &amp; Keyboarding Skills</a>
+                  <a href="#">Unit 3: Digital Documentation (LibreOffice Writer)</a>
+                  <a href="#">Unit 4: Electronic Spreadsheet (LibreOffice Calc)</a>
+                  <a href="#">Unit 5: Digital Presentation (LibreOffice Impress)</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-I MCQs</a>
+                  <a href="#">Unit 2: Self-Management Skills-I MCQs</a>
+                  <a href="#">Unit 3: ICT Skills-I MCQs</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-I MCQs</a>
+                  <a href="#">Unit 5: Green Skills-I MCQs</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: Introduction to IT–ITeS Industry MCQs</a>
+                  <a href="#">Unit 2: Data Entry &amp; Keyboarding Skills MCQs</a>
+                  <a href="#">Unit 3: Digital Documentation MCQs</a>
+                  <a href="#">Unit 4: Electronic Spreadsheet MCQs</a>
+                  <a href="#">Unit 5: Digital Presentation MCQs</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Q &amp; A ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-I Q&amp;A</a>
+                  <a href="#">Unit 2: Self-Management Skills-I Q&amp;A</a>
+                  <a href="#">Unit 3: ICT Skills-I Q&amp;A</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-I Q&amp;A</a>
+                  <a href="#">Unit 5: Green Skills-I Q&amp;A</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: Introduction to IT–ITeS Industry Q&amp;A</a>
+                  <a href="#">Unit 2: Data Entry &amp; Keyboarding Skills Q&amp;A</a>
+                  <a href="#">Unit 3: Digital Documentation Q&amp;A</a>
+                  <a href="#">Unit 4: Electronic Spreadsheet Q&amp;A</a>
+                  <a href="#">Unit 5: Digital Presentation Q&amp;A</a>
+                </div>
+              </div>
+              <a href="#">NCERT Solutions</a>
+              <a href="#">Practical File</a>
+            </div>
+
+            <!-- IT Class 10 -->
+            <div class="mega-col">
+              <h5>IT – Class X (Code 402)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-II</a>
+                  <a href="#">Unit 2: Self-Management Skills-II</a>
+                  <a href="#">Unit 3: ICT Skills-II</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-II</a>
+                  <a href="#">Unit 5: Green Skills-II</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <span class="unit-label">Unit 1: Digital Documentation (Writer)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 1: Introduction to Styles</a>
+                  <a href="#">&nbsp;&nbsp;Ch 2: Working with Images</a>
+                  <a href="#">&nbsp;&nbsp;Ch 3: Advanced Features of Writer</a>
+                  <span class="unit-label">Unit 2: Electronic Spreadsheet (Calc)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 4: Scenarios &amp; Goal Seek</a>
+                  <a href="#">&nbsp;&nbsp;Ch 5: Using Macros in Spreadsheet</a>
+                  <a href="#">&nbsp;&nbsp;Ch 6: Linking Spreadsheet Data</a>
+                  <a href="#">&nbsp;&nbsp;Ch 7: Share and Review a Spreadsheet</a>
+                  <span class="unit-label">Unit 3: Database Management System (Base)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 8: Introduction to DBMS</a>
+                  <a href="#">&nbsp;&nbsp;Ch 9: Starting with LibreOffice Base</a>
+                  <a href="#">&nbsp;&nbsp;Ch 10: Working with Multiple Tables</a>
+                  <a href="#">&nbsp;&nbsp;Ch 11: Queries in Base</a>
+                  <a href="#">&nbsp;&nbsp;Ch 12: Forms and Reports</a>
+                  <span class="unit-label">Unit 4: Health, Safety &amp; Security</span>
+                  <a href="#">&nbsp;&nbsp;Ch 13: Health, Safety and Security at Workplace</a>
+                  <a href="#">&nbsp;&nbsp;Ch 14: Workplace Quality Measures</a>
+                  <a href="#">&nbsp;&nbsp;Ch 15: Prevent Accidents and Emergencies</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-II MCQs</a>
+                  <a href="#">Unit 2: Self-Management Skills-II MCQs</a>
+                  <a href="#">Unit 3: ICT Skills-II MCQs</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-II MCQs</a>
+                  <a href="#">Unit 5: Green Skills-II MCQs</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <span class="unit-label">Unit 1: Digital Documentation (Writer)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 1: Introduction to Styles MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 2: Working with Images MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 3: Advanced Features of Writer MCQs</a>
+                  <span class="unit-label">Unit 2: Electronic Spreadsheet (Calc)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 4: Scenarios &amp; Goal Seek MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 5: Using Macros MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 6: Linking Spreadsheet Data MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 7: Share and Review Spreadsheet MCQs</a>
+                  <span class="unit-label">Unit 3: Database Management System (Base)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 8: Introduction to DBMS MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 9: Starting with LibreOffice Base MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 10: Working with Multiple Tables MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 11: Queries in Base MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 12: Forms and Reports MCQs</a>
+                  <span class="unit-label">Unit 4: Health, Safety &amp; Security</span>
+                  <a href="#">&nbsp;&nbsp;Ch 13: Health, Safety &amp; Security MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 14: Workplace Quality Measures MCQs</a>
+                  <a href="#">&nbsp;&nbsp;Ch 15: Prevent Accidents &amp; Emergencies MCQs</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Q &amp; A ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-II Q&amp;A</a>
+                  <a href="#">Unit 2: Self-Management Skills-II Q&amp;A</a>
+                  <a href="#">Unit 3: ICT Skills-II Q&amp;A</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-II Q&amp;A</a>
+                  <a href="#">Unit 5: Green Skills-II Q&amp;A</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <span class="unit-label">Unit 1: Digital Documentation (Writer)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 1: Introduction to Styles Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 2: Working with Images Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 3: Advanced Features of Writer Q&amp;A</a>
+                  <span class="unit-label">Unit 2: Electronic Spreadsheet (Calc)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 4: Scenarios &amp; Goal Seek Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 5: Using Macros Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 6: Linking Spreadsheet Data Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 7: Share and Review Spreadsheet Q&amp;A</a>
+                  <span class="unit-label">Unit 3: Database Management System (Base)</span>
+                  <a href="#">&nbsp;&nbsp;Ch 8: Introduction to DBMS Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 9: Starting with LibreOffice Base Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 10: Working with Multiple Tables Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 11: Queries in Base Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 12: Forms and Reports Q&amp;A</a>
+                  <span class="unit-label">Unit 4: Health, Safety &amp; Security</span>
+                  <a href="#">&nbsp;&nbsp;Ch 13: Health, Safety &amp; Security Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 14: Workplace Quality Measures Q&amp;A</a>
+                  <a href="#">&nbsp;&nbsp;Ch 15: Prevent Accidents &amp; Emergencies Q&amp;A</a>
+                </div>
+              </div>
+              <a href="#">Practical File</a>
+              <a href="#">Board MCQs</a>
+            </div>
+
+            <!-- IT Class 11 -->
+            <div class="mega-col">
+              <h5>IT – Class XI (Code 802)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-III</a>
+                  <a href="#">Unit 2: Self-Management Skills-III</a>
+                  <a href="#">Unit 3: ICT Skills-III</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-III</a>
+                  <a href="#">Unit 5: Green Skills-III</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: Computer Organization</a>
+                  <a href="#">Unit 2: Networking and Internet</a>
+                  <a href="#">Unit 3: Office Automation Tools (Writer, Calc, Impress)</a>
+                  <a href="#">Unit 4: RDBMS (MySQL)</a>
+                  <a href="#">Unit 5: Fundamentals of Java (NetBeans)</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-III MCQs</a>
+                  <a href="#">Unit 2: Self-Management Skills-III MCQs</a>
+                  <a href="#">Unit 3: ICT Skills-III MCQs</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-III MCQs</a>
+                  <a href="#">Unit 5: Green Skills-III MCQs</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: Computer Organization MCQs</a>
+                  <a href="#">Unit 2: Networking and Internet MCQs</a>
+                  <a href="#">Unit 3: Office Automation Tools MCQs</a>
+                  <a href="#">Unit 4: RDBMS &amp; MySQL MCQs</a>
+                  <a href="#">Unit 5: Fundamentals of Java MCQs</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Q &amp; A ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-III Q&amp;A</a>
+                  <a href="#">Unit 2: Self-Management Skills-III Q&amp;A</a>
+                  <a href="#">Unit 3: ICT Skills-III Q&amp;A</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-III Q&amp;A</a>
+                  <a href="#">Unit 5: Green Skills-III Q&amp;A</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: Computer Organization Q&amp;A</a>
+                  <a href="#">Unit 2: Networking and Internet Q&amp;A</a>
+                  <a href="#">Unit 3: Office Automation Tools Q&amp;A</a>
+                  <a href="#">Unit 4: RDBMS (MySQL) Q&amp;A</a>
+                  <a href="#">Unit 5: Fundamentals of Java Q&amp;A</a>
+                </div>
+              </div>
+              <a href="#">NCERT Solutions – XI</a>
+              <a href="#">Sample Papers – XI</a>
+            </div>
+
+            <!-- IT Class 12 -->
+            <div class="mega-col">
+              <h5>IT – Class XII (Code 802)</h5>
+              <div class="has-sub">
+                <a href="#">Notes ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-IV</a>
+                  <a href="#">Unit 2: Self-Management Skills-IV</a>
+                  <a href="#">Unit 3: ICT Skills-IV</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-IV</a>
+                  <a href="#">Unit 5: Green Skills-IV</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: Database Concepts – RDBMS Tool (MySQL)</a>
+                  <a href="#">Unit 2: Operating Web Based Applications</a>
+                  <a href="#">Unit 3: Java Programming (OOP, Control Flow, Arrays, Exception Handling, Threads, String Manipulation)</a>
+                  <a href="#">Unit 4: Work Integrated Learning IT – DMA</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">MCQs ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-IV MCQs</a>
+                  <a href="#">Unit 2: Self-Management Skills-IV MCQs</a>
+                  <a href="#">Unit 3: ICT Skills-IV MCQs</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-IV MCQs</a>
+                  <a href="#">Unit 5: Green Skills-IV MCQs</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: RDBMS &amp; SQL MCQs</a>
+                  <a href="#">Unit 2: Web Based Applications MCQs</a>
+                  <a href="#">Unit 3: Java Programming MCQs</a>
+                  <a href="#">Unit 4: Work Integrated Learning MCQs</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Q &amp; A ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">Part A — Employability Skills</span>
+                  <a href="#">Unit 1: Communication Skills-IV Q&amp;A</a>
+                  <a href="#">Unit 2: Self-Management Skills-IV Q&amp;A</a>
+                  <a href="#">Unit 3: ICT Skills-IV Q&amp;A</a>
+                  <a href="#">Unit 4: Entrepreneurial Skills-IV Q&amp;A</a>
+                  <a href="#">Unit 5: Green Skills-IV Q&amp;A</a>
+                  <span class="part-label">Part B — Subject Specific Skills</span>
+                  <a href="#">Unit 1: Database Concepts – RDBMS (MySQL) Q&amp;A</a>
+                  <a href="#">Unit 2: Operating Web Based Applications Q&amp;A</a>
+                  <a href="#">Unit 3: Java Programming Q&amp;A</a>
+                  <a href="#">Unit 4: Work Integrated Learning – DMA Q&amp;A</a>
+                </div>
+              </div>
+              <a href="#">Sample Papers – IT</a>
+            </div>
+
+          </div>
+        </div>
+      </li>
+
+    </ul>
+    <button onclick="openDemoForm()" class="nav-cta" title="Free Demo Class" style="font-family:'Nunito',sans-serif; cursor:pointer;">
+      🎓 Free Demo
+    </button>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-code-bg">
+# Python for CBSE Classes XI & XII
+import pandas as pd
+import numpy as np
+
+def learn_python(student):
+    topics = ['variables', 'loops',
+              'functions', 'OOP',
+              'pandas', 'numpy',
+              'data_structures']
+    for topic in topics:
+        student.study(topic)
+        student.practice(topic)
+    return student.succeed()
+
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+    def succeed(self):
+        print(f"{self.name} scored 100!")
+
+# Start your journey today
+s = Student("You", "XII")
+learn_python(s)
+# Output: You scored 100!</div>
+  <div class="hero-inner">
+    <div class="hero-badge">🏆 CBSE & ICSE Online Tuition</div>
+    <h1>"Learning is a treasure that will<br><span class="highlight">follow its owner</span> everywhere"</h1>
+    <p>Online tutoring for Classes 9, 10, 11 & 12 — Computer Science, Informatics Practices, AI, IT, Maths — with experienced and qualified tutors.</p>
+    <div class="hero-btns">
+      <a href="https://youtube.com/@deepaktechclassroom?si=q2IyomjLCRZb4ygn" class="btn btn-primary"><i class="fa-brands fa-youtube" style="font-size:1.1rem;"></i> Watch on YouTube</a>
+      <a href="https://t.me/+7nIqdQOpaKk4MjY1" class="btn btn-outline"><i class="fa-brands fa-telegram" style="font-size:1.1rem;"></i> Join Telegram</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">9–12</div><div class="stat-label">Classes Covered</div></div>
+      <div class="stat"><div class="stat-num">CBSE</div><div class="stat-label">& ICSE Board</div></div>
+      <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Subjects</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Syllabus Coverage</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Computer Science XI (083)</span>
+    <span>Computer Science XII (083)</span>
+    <span>Informatics Practices XI (065)</span>
+    <span>Informatics Practices XII (065)</span>
+    <span>Artificial Intelligence</span>
+    <span>Python Programming</span>
+    <span>Maths XI (041)</span>
+    <span>Maths XII (041)</span>
+    <span>Sample Papers</span>
+    <span>Python MCQs</span>
+    <span>Computer Science XI (083)</span>
+    <span>Computer Science XII (083)</span>
+    <span>Informatics Practices XI (065)</span>
+    <span>Informatics Practices XII (065)</span>
+    <span>Artificial Intelligence</span>
+    <span>Python Programming</span>
+    <span>Maths XI (041)</span>
+    <span>Maths XII (041)</span>
+    <span>Sample Papers</span>
+    <span>Python MCQs</span>
+  </div>
+</div>
+
+<!-- TELEGRAM BANNER -->
+<section style="padding: 40px 24px 0;">
+  <div class="section-inner">
+    <div class="telegram-banner">
+      <div class="tg-left">
+        <div class="tg-icon">✈️</div>
+        <div>
+          <h3>Join Our Telegram Group</h3>
+          <p>Get valuable resources, regular updates, and expert guidance on learning Python for your CBSE exams.</p>
+        </div>
+      </div>
+      <a href="https://t.me/+7nIqdQOpaKk4MjY1" class="btn-tg">Join Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STUDY MATERIAL CARDS -->
+<section>
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Study Resources</div>
+      <h2>Everything You Need To Know About Python</h2>
+      <p>Comprehensive study material, programs, projects, and sample papers for all CBSE/ICSE classes.</p>
+    </div>
+    <div class="cards-grid">
+      <a href="#" class="card">
+        <div class="card-thumb t-blue">🖥️</div>
+        <div class="card-body">
+          <div class="card-tag" style="color:#3b82f6;">Class XII</div>
+          <h3>Computer Science – XI (Code 083)I (Code 083)</h3>
+          <p>Python Revision Tour, OOP, Exception Handling, File Handling, Stack, Queue, and more.</p>
+        </div>
+        <div class="card-footer"><span>Study Material</span><span class="card-arrow">→</span></div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-thumb t-green">💻</div>
+        <div class="card-body">
+          <div class="card-tag" style="color:#22c55e;">Class XI</div>
+          <h3>Computer Science – XI (Code 083)</h3>
+          <p>Python basics, data types, operators, control statements, functions, recursion, strings, lists.</p>
+        </div>
+        <div class="card-footer"><span>Study Material</span><span class="card-arrow">→</span></div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-thumb t-purple">📊</div>
+        <div class="card-body">
+          <div class="card-tag" style="color:#a855f7;">Class XII</div>
+          <h3>Informatics Practices – XI (Code 065)I (Code 065)</h3>
+          <p>Python Pandas, NumPy, Data Visualization, Matplotlib, MySQL with Python, and more.</p>
+        </div>
+        <div class="card-footer"><span>Study Material</span><span class="card-arrow">→</span></div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-thumb t-teal">📘</div>
+        <div class="card-body">
+          <div class="card-tag" style="color:#14b8a6;">Class XI</div>
+          <h3>Informatics Practices – XI (Code 065)</h3>
+          <p>Computer system, emerging trends, Python programming, DBMS, and more.</p>
+        </div>
+        <div class="card-footer"><span>Study Material</span><span class="card-arrow">→</span></div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-thumb t-orange">🎓</div>
+        <div class="card-body">
+          <div class="card-tag" style="color:#f97316;">Online Classes</div>
+          <h3>Live Online Classes</h3>
+          <p>Regularly scheduled sessions covering the entire syllabus for CBSE & ICSE Classes 9–12.</p>
+        </div>
+        <div class="card-footer"><span>Enroll Now</span><span class="card-arrow">→</span></div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-thumb t-red">❓</div>
+        <div class="card-body">
+          <div class="card-tag" style="color:#ef4444;">Practice</div>
+          <h3>Python MCQs</h3>
+          <p>Multiple choice questions for Computer Science & Informatics Practices — XI and XII.</p>
+        </div>
+        <div class="card-footer"><span>Practice Now</span><span class="card-arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE PAPERS -->
+<section class="papers-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Downloads</div>
+      <h2>Sample Papers</h2>
+      <p>Meticulously prepared sample papers to help students understand exam patterns and score higher.</p>
+    </div>
+    <div class="paper-cards">
+      <div class="paper-card">
+        <div style="font-size:2.5rem;">📝</div>
+        <h3>Computer Science (Class 11 & 12)</h3>
+        <p>Expertly crafted sample papers covering the complete CBSE Computer Science syllabus. Understand exam patterns and question formats for better performance.</p>
+        <a href="#" class="btn btn-primary" style="align-self:flex-start; font-size:0.82rem; padding:9px 20px;">⬇ Download</a>
+      </div>
+      <div class="paper-card">
+        <div style="font-size:2.5rem;">📋</div>
+        <h3>Informatics Practices (Class 11 & 12)</h3>
+        <p>High-quality sample papers for Informatics Practices — designed to help students achieve top grades with confidence in their CBSE exams.</p>
+        <a href="#" class="btn btn-primary" style="align-self:flex-start; font-size:0.82rem; padding:9px 20px;">⬇ Download</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Testimonials</div>
+      <h2>Voice of Students & Parents</h2>
+      <p>Hear from the learners and families who trust us with their education.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p>"One of the best Computer tutoring websites out there. My son had an amazing experience learning various concepts with this one-to-one teaching method. Highly recommended!"</p>
+        <div class="tcard-author">
+          <div class="avatar">P</div>
+          <div><strong>Parent of Class XII Student</strong><span>Computer Science</span></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p>"The study material available here is excellent. The explanations are very clear and the sample papers helped me understand the exam pattern thoroughly. Scored 95 in CS!"</p>
+        <div class="tcard-author">
+          <div class="avatar">R</div>
+          <div><strong>Rohit Sharma</strong><span>Class XII, CBSE</span></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p>"The Python notes and programs for IP are incredibly well-organized. The YouTube channel is a goldmine for students struggling with Pandas and data visualization."</p>
+        <div class="tcard-author">
+          <div class="avatar">A</div>
+          <div><strong>Ananya Gupta</strong><span>Class XII, Informatics Practices</span></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p>"The online classes were extremely helpful. My daughter's performance improved significantly after joining. The tutor explains every concept in a very simple and effective way."</p>
+        <div class="tcard-author">
+          <div class="avatar">M</div>
+          <div><strong>Parent of Class XI Student</strong><span>IP & Maths</span></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p>"MCQs and sample papers saved my board exam preparation. The website covers the entire syllabus and is updated regularly. Best free resource for CBSE CS students!"</p>
+        <div class="tcard-author">
+          <div class="avatar">S</div>
+          <div><strong>Siddharth Verma</strong><span>Class XI, CBSE</span></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p>"Joining the Telegram group was a great decision. Regular updates, doubt solving, and additional resources make this one of the most comprehensive CBSE CS platforms."</p>
+        <div class="tcard-author">
+          <div class="avatar">K</div>
+          <div><strong>Kavya Nair</strong><span>Class XII, ICSE Board</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag">About Us</div>
+        <h2>Learn Python the Simple & Fun Way</h2>
+        <p>We provide regularly scheduled online tutoring sessions to cover the entire syllabus of Classes 9, 10, 11 and 12 for CBSE and ICSE curriculum.</p>
+        <p>Today's learners want relevant, mobile, self-paced, and personalized content. This need is fulfilled with our online mode of learning — students can learn at their own comfort and as per their own requirements.</p>
+        <div class="about-features">
+          <div class="feat-item">
+            <div class="feat-icon">🎯</div>
+            <div><strong>Complete Syllabus</strong><span>All topics covered — Computer Science, IP, AI, IT, Maths</span></div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">👨‍🏫</div>
+            <div><strong>Expert Tutors</strong><span>Experienced & qualified tutors for every subject</span></div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">📱</div>
+            <div><strong>Learn Anywhere</strong><span>Mobile-friendly, self-paced, personalized learning</span></div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">📄</div>
+            <div><strong>Rich Study Material</strong><span>Notes, programs, projects, sample papers & MCQs</span></div>
+          </div>
+        </div>
+        <a href="https://api.whatsapp.com/send?phone=919839254939" class="btn btn-primary">💬 Contact on WhatsApp</a>
+      </div>
+      <div class="about-visual">
+<div class="code-line"><span class="cm"># cswithdeepaksir.com</span></div>
+<div class="code-line"><span class="kw">class</span> <span class="fn">cswithdeepaksir</span>:</div>
+<div class="code-line">&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">__init__</span>(self):</div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;self.classes = [<span class="num">9</span>, <span class="num">10</span>, <span class="num">11</span>, <span class="num">12</span>]</div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;self.boards = [<span class="str">"CBSE"</span>, <span class="str">"ICSE"</span>]</div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;self.subjects = [</div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Computer Science"</span>,</div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Informatics Practices"</span>,</div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Artificial Intelligence"</span>,</div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Maths"</span></div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;]</div>
+<div class="code-line">&nbsp;</div>
+<div class="code-line">&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">inspire</span>(self):</div>
+<div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="str">"Inspiring Success"</span></div>
+<div class="code-line">&nbsp;</div>
+<div class="code-line">lp = <span class="fn">Learnpython4cbse</span>()</div>
+<div class="code-line"><span class="fn">print</span>(lp.<span class="fn">inspire</span>())</div>
+<div class="code-line"><span class="cm"># Inspiring Success</span><span class="code-cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="logo"><span class="logo-icon" style="background:#3b82f6;">&gt;_</span>Learn CS with <span>Deepak</span> sir</a>
+        <p>Providing online tutoring for CBSE & ICSE Classes 9–12 in Computer Science, Informatics Practices, AI, IT, and Maths. Inspiring success through quality education.</p>
+        <div class="footer-social">
+          <a href="https://youtube.com/@deepaktechclassroom?si=q2IyomjLCRZb4ygn" title="YouTube" style="background:#FF0000; color:#fff;"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.facebook.com/share/196iPgu5Xk/" title="Facebook" style="background:#1877F2; color:#fff;"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/officialdeepakkld?utm_source=qr&igsh=dmE5bnliODhpOW80" title="Instagram" style="background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 75%,#285AEB 100%); color:#fff;"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://t.me/+7nIqdQOpaKk4MjY1" title="Telegram" style="background:#2AABEE; color:#fff;"><i class="fa-brands fa-telegram"></i></a>
+          <a href="https://whatsapp.com/channel/0029Vb7WBeq9Bb5pCLwQTQ0j" title="WhatsApp" style="background:#25D366; color:#fff;"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fa-solid fa-book" style="color:#3b82f6;"></i> Study Material</h4>
+        <a href="#">📘 C.Sc. Class XI – Notes (083)</a>
+        <a href="#">📘 C.Sc. Class XII – Notes (083)</a>
+        <a href="#">📗 IP Class XI – Notes (065)</a>
+        <a href="#">📗 IP Class XII – Notes (065)</a>
+        <a href="#">💻 IT Class IX (Code 402)</a>
+        <a href="#">💻 IT Class X (Code 402)</a>
+        <a href="#">💻 IT Class XI (Code 802)</a>
+        <a href="#">💻 IT Class XII (Code 802)</a>
+        <a href="#">🤖 AI Class IX (Code 417)</a>
+        <a href="#">🤖 AI Class X (Code 417)</a>
+        <a href="#">📐 Maths Notes (CBSE/ICSE)</a>
+        <a href="#">📄 Sample Papers</a>
+        <a href="#">🐍 Python MCQs &amp; Programs</a>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fa-solid fa-video" style="color:#f97316;"></i> Online Classes</h4>
+        <a href="#">🖥️ CS Class XI (Code 083)</a>
+        <a href="#">🖥️ CS Class XII (Code 083)</a>
+        <a href="#">📊 IP Class XI (Code 065)</a>
+        <a href="#">📊 IP Class XII (Code 065)</a>
+        <a href="#">➗ Maths Class IX (Code 041)</a>
+        <a href="#">➗ Maths Class X (041/241)</a>
+        <a href="#">➗ Maths Class XI (Code 041)</a>
+        <a href="#">➗ Maths Class XII (Code 041)</a>
+        <a href="#">🤖 AI Class IX (Code 417)</a>
+        <a href="#">🤖 AI Class X (Code 417)</a>
+        <a href="#">💻 IT Class IX (Code 402)</a>
+        <a href="#">💻 IT Class X (Code 402)</a>
+        <a href="#">🖱️ Computer App IX/X (Code 165)</a>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fa-solid fa-headset" style="color:#22c55e;"></i> Contact Us</h4>
+        <div class="contact-item">
+          <i class="fa-solid fa-phone" style="color:#3b82f6;width:20px;text-align:center;font-size:0.9rem;"></i>
+          <a href="tel:+919839254939">+91 9839254939</a>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope" style="color:#3b82f6;width:20px;text-align:center;font-size:0.9rem;"></i>
+          <a href="mailto:learncswithdeepaksir@gmail.com" style="font-size:0.75rem;">learncswithdeepaksir@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-whatsapp" style="color:#25D366;width:20px;text-align:center;font-size:1rem;"></i>
+          <a href="https://api.whatsapp.com/send?phone=919839254939">WhatsApp Chat</a>
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-telegram" style="color:#2AABEE;width:20px;text-align:center;font-size:1rem;"></i>
+          <a href="https://t.me/+7nIqdQOpaKk4MjY1">Telegram Channel</a>
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-youtube" style="color:#FF0000;width:20px;text-align:center;font-size:1rem;"></i>
+          <a href="https://youtube.com/@deepaktechclassroom">YouTube Channel</a>
+        </div>
+        <div style="margin-top:16px;">
+          <a href="javascript:void(0)" onclick="openDemoForm()" style="display:inline-flex;align-items:center;gap:6px;background:var(--secondary);color:#fff;padding:10px 18px;border-radius:8px;font-size:0.82rem;font-weight:700;text-decoration:none;transition:background 0.2s;border:none;">
+            <i class="fa-solid fa-paper-plane"></i> Free Demo Class
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- VISITOR COUNTER -->
+    <div class="visitor-counter-bar">
+      <div class="vc-item">
+        <span class="vc-icon">👁️</span>
+        <div>
+          <span class="vc-label">Total Visitors</span>
+          <span class="vc-num" id="totalVisitors">——————</span>
+        </div>
+      </div>
+      <div class="vc-item">
+        <span class="vc-icon">📅</span>
+        <div>
+          <span class="vc-label">Aaj ke Visitors</span>
+          <span class="vc-num" id="todayVisitors">———</span>
+        </div>
+      </div>
+      <div class="vc-item">
+        <span class="vc-icon" style="color:#22c55e;">🟢</span>
+        <div>
+          <span class="vc-label">Abhi Online</span>
+          <span class="vc-num" id="onlineCountFooter">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 learncswithdeepaksir. All rights reserved. &nbsp;|&nbsp; Inspiring Success in Every Student
+    </div>
+  </div>
+</footer>
+
+<!-- FREE DEMO REGISTRATION MODAL -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" id="modalLogo" alt="" style="display:none;">
+      <div id="logoFallback" style="display:flex;align-items:center;justify-content:center;width:60px;height:60px;background:#fff;border-radius:12px;flex-shrink:0;padding:6px;">
+        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+          <rect x="2" y="5" width="58" height="44" rx="5" ry="5" fill="none" stroke="#1d5393" stroke-width="5"/>
+          <rect x="20" y="49" width="22" height="6" fill="#1d5393" rx="2"/>
+          <rect x="10" y="55" width="42" height="5" fill="#1d5393" rx="3"/>
+          <circle cx="31" cy="27" r="9" fill="none" stroke="#1d5393" stroke-width="3"/>
+          <line x1="31" y1="18" x2="31" y2="15" stroke="#1d5393" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="31" y1="36" x2="31" y2="39" stroke="#1d5393" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="22" y1="27" x2="19" y2="27" stroke="#1d5393" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="40" y1="27" x2="43" y2="27" stroke="#1d5393" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="24.4" y1="20.4" x2="22.3" y2="18.3" stroke="#1d5393" stroke-width="2" stroke-linecap="round"/>
+          <line x1="37.6" y1="33.6" x2="39.7" y2="35.7" stroke="#1d5393" stroke-width="2" stroke-linecap="round"/>
+          <line x1="37.6" y1="20.4" x2="39.7" y2="18.3" stroke="#1d5393" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24.4" y1="33.6" x2="22.3" y2="35.7" stroke="#1d5393" stroke-width="2" stroke-linecap="round"/>
+          <text x="70" y="30" font-family="Arial,sans-serif" font-weight="900" font-size="26" fill="#1d5393">CS</text>
+          <text x="68" y="47" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#1d5393">with</text>
+          <text x="62" y="62" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#1d5393">Deepak Sir</text>
+        </svg>
+      </div>
+      <div class="modal-header-text">
+        <h2>Free Demo Class Registration</h2>
+        <p>Fill in your details — we'll schedule your free class shortly!</p>
+      </div>
+      <button class="modal-close" onclick="closeDemoForm()" title="Close">✕</button>
+    </div>
+
+    <!-- Form -->
+    <div id="formSection">
+      <div class="modal-body">
+        <div class="form-grid">
+
+          <!-- 1. Student Name -->
+          <div class="form-group full">
+            <label><i class="fa-solid fa-user"></i> Student Name <span class="form-required">*</span></label>
+            <input type="text" id="studentName" placeholder="Enter full name" required>
+          </div>
+
+          <!-- 2. Class -->
+          <div class="form-group">
+            <label><i class="fa-solid fa-graduation-cap"></i> Class <span class="form-required">*</span></label>
+            <select id="studentClass" required>
+              <option value="">— Select Class —</option>
+              <option value="9">Class 9</option>
+              <option value="10">Class 10</option>
+              <option value="11">Class 11</option>
+              <option value="12">Class 12</option>
+            </select>
+          </div>
+
+          <!-- 3. Gender -->
+          <div class="form-group">
+            <label><i class="fa-solid fa-venus-mars"></i> Gender <span class="form-required">*</span></label>
+            <div class="gender-group" style="margin-top:4px;">
+              <label class="gender-option"><input type="radio" name="gender" value="Male"> Male</label>
+              <label class="gender-option"><input type="radio" name="gender" value="Female"> Female</label>
+              <label class="gender-option"><input type="radio" name="gender" value="Other"> Other</label>
+            </div>
+          </div>
+
+          <!-- 4. Mobile No -->
+          <div class="form-group">
+            <label><i class="fa-solid fa-phone"></i> Mobile No. <span class="form-required">*</span></label>
+            <input type="tel" id="mobileNo" placeholder="+91 XXXXX XXXXX" maxlength="13" required>
+          </div>
+
+          <!-- 5. Email ID -->
+          <div class="form-group">
+            <label><i class="fa-solid fa-envelope"></i> Email ID <span class="form-required">*</span></label>
+            <input type="email" id="emailId" placeholder="student@email.com" required>
+          </div>
+
+          <!-- 6. Subject -->
+          <div class="form-group">
+            <label><i class="fa-solid fa-book"></i> Subject <span class="form-required">*</span></label>
+            <select id="subject" required>
+              <option value="">— Pehle Class Chunein —</option>
+            </select>
+          </div>
+
+          <!-- 7. Full Address -->
+          <div class="form-group full">
+            <label><i class="fa-solid fa-location-dot"></i> Full Address</label>
+            <input type="text" id="fullAddress" placeholder="City, State, PIN Code">
+          </div>
+
+          <!-- 8. School Name -->
+          <div class="form-group full">
+            <label><i class="fa-solid fa-school"></i> School Name <span class="form-required">*</span></label>
+            <input type="text" id="schoolName" placeholder="Enter your school name" required>
+          </div>
+
+          <!-- 9. Board -->
+          <div class="form-group full">
+            <label><i class="fa-solid fa-clipboard-list"></i> Board <span class="form-required">*</span></label>
+            <div class="gender-group" style="margin-top:4px; gap:24px;">
+              <label class="gender-option"><input type="radio" name="board" value="CBSE"> CBSE</label>
+              <label class="gender-option"><input type="radio" name="board" value="ICSE"> ICSE</label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-submit" onclick="submitDemoForm()">
+          <i class="fa-solid fa-paper-plane"></i> Submit Registration
+        </button>
+        <button class="btn-reset" onclick="resetDemoForm()">
+          <i class="fa-solid fa-rotate-left"></i> Reset
+        </button>
+        <button class="btn-back" onclick="closeDemoForm()">
+          <i class="fa-solid fa-arrow-left"></i> Back
+        </button>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">🎉</div>
+      <h3>Registration Successful!</h3>
+      <p>Thank you! Your free demo class has been registered.<br>Our team will contact you on WhatsApp / Phone shortly.</p>
+      <div style="margin-top:22px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://api.whatsapp.com/send?phone=919839254939" class="btn btn-primary" style="font-size:0.85rem;">
+          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <button onclick="closeDemoForm()" class="btn-reset" style="border-radius:10px;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // ── REPLACE WITH YOUR FIREBASE CONFIG ──────────────────────────────────────
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+  // ───────────────────────────────────────────────────────────────────────────
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window._saveToFirebase = async function(data) {
+    try {
+      await addDoc(collection(db, "demoRegistrations"), {
+        ...data,
+        createdAt: serverTimestamp()
+      });
+      return true;
+    } catch (e) {
+      console.error("Firebase error:", e);
+      return false;
+    }
+  };
+</script>
+
+<script>
+  function openDemoForm() {
+    document.getElementById('demoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Class → Subjects mapping (website ke subjects ke hisaab se)
+  const classSubjects = {
+    '9':  [
+      { v: 'IT (402)',               l: 'Information Technology (Code 402)' },
+      { v: 'Artificial Intelligence',l: 'Artificial Intelligence (Code 417)' },
+      { v: 'Computer Applications',  l: 'Computer Applications (Code 165)' },
+      { v: 'Mathematics',            l: 'Mathematics Standard (Code 041)' }
+    ],
+    '10': [
+      { v: 'IT (402)',               l: 'Information Technology (Code 402)' },
+      { v: 'Artificial Intelligence',l: 'Artificial Intelligence (Code 417)' },
+      { v: 'Computer Applications',  l: 'Computer Applications (Code 165)' },
+      { v: 'Mathematics Standard',   l: 'Mathematics Standard (Code 041)' },
+      { v: 'Mathematics Basic',      l: 'Mathematics Basic (Code 241)' }
+    ],
+    '11': [
+      { v: 'Computer Science',       l: 'Computer Science (Code 083)' },
+      { v: 'Informatics Practices',  l: 'Informatics Practices (Code 065)' },
+      { v: 'IT (802)',               l: 'Information Technology (Code 802)' },
+      { v: 'Mathematics',            l: 'Mathematics (Code 041)' }
+    ],
+    '12': [
+      { v: 'Computer Science',       l: 'Computer Science (Code 083)' },
+      { v: 'Informatics Practices',  l: 'Informatics Practices (Code 065)' },
+      { v: 'IT (802)',               l: 'Information Technology (Code 802)' },
+      { v: 'Mathematics',            l: 'Mathematics (Code 041)' }
+    ]
+  };
+
+  function updateSubjects() {
+    const cls = document.getElementById('studentClass').value;
+    const subSel = document.getElementById('subject');
+    subSel.innerHTML = '';
+    if (!cls) {
+      subSel.innerHTML = '<option value="">— Pehle Class Chunein —</option>';
+      subSel.disabled = true;
+      return;
+    }
+    subSel.disabled = false;
+    const opt0 = document.createElement('option');
+    opt0.value = ''; opt0.textContent = '— Select Subject —';
+    subSel.appendChild(opt0);
+    (classSubjects[cls] || []).forEach(s => {
+      const o = document.createElement('option');
+      o.value = s.v; o.textContent = s.l;
+      subSel.appendChild(o);
+    });
+  }
+
+  // Attach change listener after DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    const clsSel = document.getElementById('studentClass');
+    if (clsSel) {
+      clsSel.addEventListener('change', updateSubjects);
+      updateSubjects(); // init state
+    }
+  });
+  function closeDemoForm() {
+    document.getElementById('demoModal').classList.remove('active');
+    document.body.style.overflow = '';
+    document.getElementById('formSuccess').style.display = 'none';
+    document.getElementById('formSection').style.display = 'block';
+  }
+  function resetDemoForm() {
+    document.getElementById('studentName').value = '';
+    document.getElementById('studentClass').value = '';
+    document.getElementById('mobileNo').value = '';
+    document.getElementById('emailId').value = '';
+    document.getElementById('fullAddress').value = '';
+    document.getElementById('schoolName').value = '';
+    document.querySelectorAll('input[name="gender"]').forEach(r => r.checked = false);
+    document.querySelectorAll('input[name="board"]').forEach(r => r.checked = false);
+    updateSubjects(); // reset subject dropdown too
+  }
+  async function submitDemoForm() {
+    const name = document.getElementById('studentName').value.trim();
+    const cls = document.getElementById('studentClass').value;
+    const gender = document.querySelector('input[name="gender"]:checked')?.value || '';
+    const mobile = document.getElementById('mobileNo').value.trim();
+    const email = document.getElementById('emailId').value.trim();
+    const subject = document.getElementById('subject').value;
+    const address = document.getElementById('fullAddress').value.trim();
+    const school = document.getElementById('schoolName').value.trim();
+    const board = document.querySelector('input[name="board"]:checked')?.value || '';
+
+    if (!name || !cls || !gender || !mobile || !email || !subject || !school || !board) {
+      alert('Please fill all required fields (marked with *)');
+      return;
+    }
+    if (!/^\d{10}$/.test(mobile.replace(/\D/g,''))) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    const data = { studentName: name, class: cls, gender, mobile, email, subject, address, schoolName: school, board };
+
+    const btn = document.querySelector('.btn-submit');
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+    btn.disabled = true;
+
+    let saved = false;
+    if (typeof window._saveToFirebase === 'function') {
+      saved = await window._saveToFirebase(data);
+    }
+    // Fallback: log to console if Firebase not yet configured
+    if (!saved) { console.log("Demo Registration:", data); }
+
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Registration';
+    btn.disabled = false;
+  }
+
+  // Close modal on overlay click
+  document.getElementById('demoModal').addEventListener('click', function(e) {
+    if (e.target === this) closeDemoForm();
+  });
+</script>
+
+<script>
+  // ─── MOBILE MENU TOGGLE ───
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('open');
+  }
+
+  // Close nav on outside click
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('navLinks');
+    const hamburger = document.querySelector('.hamburger');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+
+  // Mobile: toggle dropdowns on tap
+  document.querySelectorAll('.has-dropdown > span').forEach(el => {
+    el.addEventListener('click', function(e) {
+      if (window.innerWidth > 900) return;
+      e.stopPropagation();
+      const dd = el.nextElementSibling;
+      const isOpen = dd.style.display === 'block';
+      // close all others
+      document.querySelectorAll('.has-dropdown > .dropdown, .has-dropdown > .mega-dropdown').forEach(d => d.style.display = '');
+      dd.style.display = isOpen ? '' : 'block';
+    });
+  });
+
+  // ─── MEGA DROPDOWN POSITIONING (desktop) ───
+  document.querySelectorAll('.has-dropdown').forEach(li => {
+    const mega = li.querySelector('.mega-dropdown');
+    if (!mega) return;
+
+    let closeTimer;
+
+    li.addEventListener('mouseenter', () => {
+      if (window.innerWidth <= 900) return;
+      clearTimeout(closeTimer);
+      // Position
+      const rect = li.getBoundingClientRect();
+      const dropW = mega.classList.contains('mega-dropdown-wide') ? 1200 : 980;
+      const viewW = window.innerWidth;
+      mega.style.top  = (rect.bottom + window.scrollY) + 'px';
+      let left = rect.left + window.scrollX;
+      if (left + dropW > viewW - 12) left = viewW - dropW - 12;
+      if (left < 8) left = 8;
+      mega.style.left = left + 'px';
+      mega.style.display = 'block';
+    });
+
+    li.addEventListener('mouseleave', () => {
+      if (window.innerWidth <= 900) return;
+      closeTimer = setTimeout(() => { mega.style.display = ''; }, 120);
+    });
+
+    mega.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+    mega.addEventListener('mouseleave', () => {
+      closeTimer = setTimeout(() => { mega.style.display = ''; }, 120);
+    });
+  });
+
+  // ─── REGULAR DROPDOWN POSITIONING ───
+  document.querySelectorAll('.has-dropdown').forEach(li => {
+    const dd = li.querySelector('.dropdown');
+    if (!dd) return;
+    li.addEventListener('mouseenter', () => {
+      if (window.innerWidth <= 900) return;
+      dd.style.display = 'block';
+    });
+    li.addEventListener('mouseleave', () => {
+      if (window.innerWidth <= 900) return;
+      dd.style.display = '';
+    });
+  });
+
+  // ─── SUB-DROPDOWN POSITIONING ───
+  document.querySelectorAll('.has-sub').forEach(hasSub => {
+    let subTimer;
+    const sub = hasSub.querySelector('.sub-dropdown');
+    if (!sub) return;
+
+    hasSub.addEventListener('mouseenter', () => {
+      clearTimeout(subTimer);
+      sub.style.left   = '';
+      sub.style.right  = '';
+      sub.style.top    = '0';
+      sub.style.bottom = '';
+      sub.style.display = 'block';
+
+      // Wait one frame so browser can calculate dimensions
+      requestAnimationFrame(() => {
+        const rect  = sub.getBoundingClientRect();
+        const viewW = window.innerWidth;
+        const viewH = window.innerHeight;
+
+        // Horizontal
+        if (rect.right > viewW - 8) {
+          sub.style.left  = 'auto';
+          sub.style.right = '100%';
+        } else {
+          sub.style.left  = '100%';
+          sub.style.right = 'auto';
+        }
+
+        // Vertical overflow correction
+        if (rect.bottom > viewH - 8) {
+          const overflow = rect.bottom - (viewH - 8);
+          const curTop   = parseFloat(sub.style.top) || 0;
+          sub.style.top  = Math.min(0, curTop - overflow) + 'px';
+        }
+      });
+    });
+
+    hasSub.addEventListener('mouseleave', () => {
+      subTimer = setTimeout(() => { sub.style.display = ''; }, 80);
+    });
+    sub.addEventListener('mouseenter', () => clearTimeout(subTimer));
+    sub.addEventListener('mouseleave', () => {
+      subTimer = setTimeout(() => { sub.style.display = ''; }, 80);
+    });
+  });
+</script>
+
+<script>
+  // ─── VISITOR COUNTER ───
+  (function() {
+    const TOTAL_KEY  = 'vc_total';
+    const DATE_KEY   = 'vc_date';
+    const TODAY_KEY  = 'vc_today';
+    const SESSION_KEY = 'vc_session';
+
+    function padNum(n) { return String(n).padStart(6, '0'); }
+    function fmt(n)    { return n.toLocaleString('en-IN'); }
+
+    var today = new Date().toISOString().slice(0,10);
+    var total  = parseInt(localStorage.getItem(TOTAL_KEY)  || '0');
+    var date   = localStorage.getItem(DATE_KEY)  || '';
+    var todayCt= parseInt(localStorage.getItem(TODAY_KEY) || '0');
+    var sessioned = sessionStorage.getItem(SESSION_KEY);
+
+    // Count this visit only once per session
+    if (!sessioned) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      total += 1;
+      if (date !== today) { date = today; todayCt = 1; }
+      else { todayCt += 1; }
+      localStorage.setItem(TOTAL_KEY,  total);
+      localStorage.setItem(DATE_KEY,   date);
+      localStorage.setItem(TODAY_KEY,  todayCt);
+    }
+
+    // Simulate "online" viewers (realistic small number)
+    var online = Math.floor(Math.random() * 8) + 3;
+
+    function updateUI() {
+      var tEl = document.getElementById('totalVisitors');
+      var dEl = document.getElementById('todayVisitors');
+      var oEl = document.getElementById('onlineCountFooter');
+      var oTop = document.getElementById('onlineCount');
+      if (tEl) tEl.textContent = fmt(total);
+      if (dEl) dEl.textContent = fmt(todayCt);
+      if (oEl) oEl.textContent = online;
+      if (oTop) oTop.textContent = online + ' visitors';
+    }
+
+    // Animate count-up on load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateUI();
+      // subtle online flicker every 15s
+      setInterval(function() {
+        online = Math.floor(Math.random() * 8) + 3;
+        var oEl = document.getElementById('onlineCountFooter');
+        var oTop = document.getElementById('onlineCount');
+        if (oEl) oEl.textContent = online;
+        if (oTop) oTop.textContent = online + ' visitors';
+      }, 15000);
+    });
+  })();
+</script>
+<script>
+  // ─── URL BAR: Update on any nav link click ───
+  (function() {
+    function slugify(text) {
+      return text.toLowerCase()
+        .replace(/[&]/g, 'and')
+        .replace(/[^\w\s-]/g, '')
+        .trim()
+        .replace(/[\s_]+/g, '-')
+        .replace(/-+/g, '-');
+    }
+
+    function updateUrlBar(text, href) {
+      var bar = document.getElementById('urlBarText');
+      if (!bar) return;
+      var hint = document.querySelector('.url-bar-hint');
+
+      if (href && href !== '#' && !href.startsWith('javascript')) {
+        bar.textContent = href;
+      } else {
+        var slug = slugify(text);
+        bar.textContent = 'https://cswithdeepaksir.com/' + slug;
+      }
+
+      // Flash highlight
+      var box = document.querySelector('.url-bar-box');
+      box.style.borderColor = '#22c55e';
+      box.style.background = '#f0fdf4';
+      if (hint) hint.textContent = '✅ URL copied!';
+      setTimeout(function() {
+        box.style.borderColor = '';
+        box.style.background = '';
+        if (hint) hint.textContent = '👆 Click any menu item';
+      }, 2000);
+    }
+
+    document.addEventListener('click', function(e) {
+      var target = e.target.closest('a, .mega-col a, .sub-dropdown a, .dropdown a');
+      if (!target) return;
+
+      // Ignore logo / scroll links
+      var href = target.getAttribute('href') || '';
+      if (href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('https://youtube') || href.startsWith('https://www.facebook') || href.startsWith('https://t.me') || href.startsWith('https://instagram') || href.startsWith('https://wa.me')) return;
+
+      var text = target.textContent.replace(/›/g, '').trim();
+      if (!text || text.length < 2) return;
+
+      updateUrlBar(text, href);
+    });
+  })();
+</script>
+</body>
+</html>

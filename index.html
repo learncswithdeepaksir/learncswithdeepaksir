@@ -2430,18 +2430,28 @@ learn_python(s)
       return;
     }
 
-    const data = { studentName: name, class: cls, gender, mobile, email, subject, address, schoolName: school, board };
-
     const btn = document.querySelector('.btn-submit');
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
     btn.disabled = true;
 
-    let saved = false;
-    if (typeof window._saveToFirebase === 'function') {
-      saved = await window._saveToFirebase(data);
-    }
-    // Fallback: log to console if Firebase not yet configured
-    if (!saved) { console.log("Demo Registration:", data); }
+    // ─── WhatsApp pe bhejo ───
+    const msg =
+`🎓 *New Demo Class Registration*
+
+👤 *Name:* ${name}
+🏫 *Class:* ${cls}
+⚧ *Gender:* ${gender}
+📞 *Mobile:* ${mobile}
+📧 *Email:* ${email}
+📚 *Subject:* ${subject}
+🏫 *School:* ${school}
+📋 *Board:* ${board}
+🏠 *Address:* ${address || 'N/A'}`;
+
+    const waNumber = '919839254939'; // Country code + number (no + sign)
+    const waURL = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(msg);
+
+    window.open(waURL, '_blank');
 
     document.getElementById('formSection').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';

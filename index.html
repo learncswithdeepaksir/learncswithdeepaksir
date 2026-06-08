@@ -2895,7 +2895,7 @@ const faqs = [
   {
     q: "📞 Contact kaise karein?",
     keywords: ["contact","call","number","phone","email","reach","baat"],
-    a: "Hum se directly contact karein:\n📞 +91 9839254939\n📧 learncswithdeepaksir@gmail.com\n\nYa WhatsApp bhi kar sakte ho — hum jaldi reply karte hain! 💬"
+    a: "Hum se directly contact karein:\n📞 +91 9839254939\n📧 learncswithdeepaksir@gmail.com\n\n<a href='https://wa.me/919839254939' target='_blank' style='display:inline-block;margin-top:8px;background:#25D366;color:#fff;padding:7px 16px;border-radius:20px;text-decoration:none;font-weight:700;font-size:0.85rem;'><i class='fa-brands fa-whatsapp'></i> WhatsApp pe Chat Karein</a>"
   },
   {
     q: "🎥 YouTube videos available hain?",
@@ -2915,7 +2915,7 @@ function toggleChat() {
   if (chatOpen && !chatStarted) {
     chatStarted = true;
     setTimeout(() => {
-      addBotMsg("Namaste! 🙏 Main CS with Deepak Sir ka assistant hoon.\n\nAap kya jaanna chahte hain? Neeche se koi sawaal choose karein ya type karein! 👇");
+      addBotMsg("Namaste! 🙏 Main CS with Deepak Sir ka assistant hoon.\n\nAap kya jaanna chahte hain? Neeche se koi sawaal choose karein ya type karein! 👇\n\n<a href='https://wa.me/919839254939' target='_blank' style='display:inline-block;margin-top:8px;background:#25D366;color:#fff;padding:7px 16px;border-radius:20px;text-decoration:none;font-weight:700;font-size:0.85rem;'><i class='fa-brands fa-whatsapp'></i> WhatsApp pe Chat Karein</a>");
       showQuickReplies();
     }, 300);
   }
@@ -2978,7 +2978,7 @@ function sendChat() {
     if (match) {
       addBotMsg(match.a);
     } else {
-      addBotMsg("Mujhe is sawaal ka jawab nahi pata. 😅\nBehter hoga directly contact karein:\n📞 +91 9839254939\n📧 learncswithdeepaksir@gmail.com");
+      addBotMsg("Mujhe is sawaal ka jawab nahi pata. 😅\nBehter hoga directly contact karein:\n📞 +91 9839254939\n📧 learncswithdeepaksir@gmail.com\n\n<a href='https://wa.me/919839254939' target='_blank' style='display:inline-block;margin-top:8px;background:#25D366;color:#fff;padding:7px 16px;border-radius:20px;text-decoration:none;font-weight:700;font-size:0.85rem;'><i class='fa-brands fa-whatsapp'></i> WhatsApp pe Poochein</a>");
     }
     setTimeout(() => {
       addBotMsg("Koi aur sawaal? 😊");
@@ -2988,5 +2988,17 @@ function sendChat() {
 }
 </script>
 
+<script>
+  // ─── DYNAMIC TITLE BAR ───
+  const originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '👋 Wapas Aao! Deepak Sir Intezaar Kar Rahe Hain...';
+    } else {
+      document.title = '🎉 Welcome Back! | ' + originalTitle;
+      setTimeout(() => { document.title = originalTitle; }, 3000);
+    }
+  });
+</script>
 </body>
 </html>

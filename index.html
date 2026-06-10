@@ -25,12 +25,27 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* Global overflow fix for desktop-mode on mobile */
+  section, header, footer, nav, .topbar {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   body {
     font-family: 'Nunito', sans-serif;
     background: var(--bg);
     color: var(--text);
     overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
   }
+
+  img, video, iframe { max-width: 100%; }
 
   /* ─── TOP BAR ─── */
   .topbar {
@@ -43,6 +58,7 @@
     font-size: 0.83rem;
     flex-wrap: wrap;
     gap: 6px;
+    width: 100%;
   }
   .topbar a { color: #93c5fd; text-decoration: none; }
   .topbar .social-icons { display: flex; gap: 10px; align-items: center; }
@@ -255,6 +271,7 @@
     position: relative; overflow: hidden;
     padding: 70px 24px 80px;
     text-align: center;
+    width: 100%;
   }
   .hero::before {
     content: '';
@@ -583,10 +600,42 @@
 
   /* ─── MOBILE ─── */
   @media (max-width: 900px) {
-    .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: #fff; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 200; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: #fff; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 200; max-height: calc(100vh - 130px); overflow-y: auto; }
     .nav-links.open { display: flex; }
     .nav-links > li > a, .nav-links > li > span { font-size: 0.95rem; }
     .dropdown { position: static; box-shadow: none; border: none; background: #f8faff; margin-left: 12px; }
+    /* Mobile mega dropdown — fully inline, no fixed positioning */
+    .mega-dropdown {
+      position: static !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      top: auto !important;
+      left: auto !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      border-top: 2px solid var(--python-blue) !important;
+      margin-left: 8px;
+      padding: 12px !important;
+    }
+    .mega-cols { flex-direction: column; gap: 10px; }
+    .mega-col { min-width: unset; }
+    .mega-col a { white-space: normal; }
+    /* Sub-dropdown mobile */
+    .sub-dropdown {
+      position: static !important;
+      display: none;
+      left: auto !important;
+      right: auto !important;
+      max-height: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      border-top: none !important;
+      padding: 0 0 0 12px !important;
+      margin-left: 8px;
+      border-left: 2px solid #fed7aa;
+    }
+    .sub-dropdown.open { display: block; }
+    .has-sub > a { pointer-events: auto; cursor: pointer; }
     .hamburger { display: flex; }
     .nav-cta { display: none; }
     .about-grid { grid-template-columns: 1fr; }
@@ -594,6 +643,10 @@
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .footer-grid > .footer-brand { grid-column: 1 / -1; }
     .hero-code-bg { display: none; }
+    /* URL bar mobile fix */
+    .url-bar-wrap { padding: 6px 12px; flex-wrap: wrap; gap: 6px; }
+    .url-bar-label { display: none; }
+    .url-bar-hint { display: none; }
   }
   @media (max-width: 560px) {
     .footer-grid { grid-template-columns: 1fr; }
@@ -605,16 +658,19 @@
   .modal-overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(10,26,58,0.75); backdrop-filter: blur(4px);
-    z-index: 9999; overflow-y: auto;
-    padding: 20px;
+    z-index: 9999; overflow-y: auto; overflow-x: hidden;
+    padding: 16px;
+    -webkit-overflow-scrolling: touch;
   }
   .modal-overlay.active { display: flex; align-items: flex-start; justify-content: center; }
   .modal-box {
     background: #fff; border-radius: 18px;
     width: 100%; max-width: 640px;
+    min-width: 0;
     box-shadow: 0 24px 64px rgba(10,26,58,0.35);
     overflow: hidden; margin: auto;
     animation: modalIn 0.35s cubic-bezier(.22,1,.36,1);
+    word-break: break-word;
   }
   @keyframes modalIn { from { opacity:0; transform:translateY(32px) scale(0.97); } to { opacity:1; transform:none; } }
   .modal-header {
@@ -698,8 +754,217 @@
   @media (max-width: 560px) {
     .form-grid { grid-template-columns: 1fr; }
     .form-group.full { grid-column: 1; }
-    .modal-body { padding: 20px; }
-    .modal-footer { padding: 12px 20px 20px; }
+    .modal-body { padding: 16px; }
+    .modal-footer { padding: 10px 16px 18px; flex-direction: column; align-items: stretch; }
+    .modal-footer .btn-submit, .modal-footer .btn-reset { width: 100%; justify-content: center; }
+    .btn-back { margin-left: 0; }
+    .modal-header { padding: 18px 16px; }
+    .modal-header-text h2 { font-size: 1rem; }
+  }
+
+  /* ─── TOPPERS SECTION ─── */
+  .toppers-section {
+    background: linear-gradient(135deg, #0f2557 0%, #1a3a6b 60%, #1e4080 100%);
+    padding: 70px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .toppers-section::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(249,115,22,0.08);
+    pointer-events: none;
+  }
+  .toppers-section::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.08);
+    pointer-events: none;
+  }
+  .toppers-inner { max-width: 1200px; margin: 0 auto; }
+  .toppers-header { text-align: center; margin-bottom: 48px; }
+  .toppers-tag {
+    display: inline-block;
+    background: rgba(249,115,22,0.18);
+    color: #fb923c;
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 16px; border-radius: 20px;
+    margin-bottom: 14px;
+    border: 1px solid rgba(249,115,22,0.3);
+  }
+  .toppers-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 800; color: #fff;
+    margin-bottom: 12px; line-height: 1.25;
+  }
+  .toppers-header h2 span { color: #fb923c; }
+  .toppers-header p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.97rem; max-width: 520px; margin: 0 auto;
+  }
+  .toppers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+    margin-bottom: 40px;
+  }
+  .topper-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    padding: 28px 22px 22px;
+    text-align: center;
+    transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+    position: relative;
+    backdrop-filter: blur(6px);
+  }
+  .topper-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.10);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  }
+  .topper-rank {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    color: #fff; font-family: 'Poppins',sans-serif;
+    font-size: 0.72rem; font-weight: 800;
+    padding: 4px 14px; border-radius: 20px;
+    letter-spacing: 0.5px; white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(249,115,22,0.4);
+  }
+  .topper-rank.gold   { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+  .topper-rank.silver { background: linear-gradient(135deg, #6b7280, #9ca3af); }
+  .topper-rank.bronze { background: linear-gradient(135deg, #b45309, #d97706); }
+  .topper-avatar {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #1a3a6b);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.9rem; margin: 14px auto 14px;
+    border: 3px solid rgba(255,255,255,0.18);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .topper-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: #fff; margin-bottom: 4px;
+  }
+  .topper-class {
+    font-size: 0.78rem; color: rgba(255,255,255,0.55);
+    margin-bottom: 14px;
+  }
+  .topper-marks-box {
+    background: rgba(34,197,94,0.12);
+    border: 1px solid rgba(34,197,94,0.25);
+    border-radius: 12px; padding: 10px 14px;
+    margin-bottom: 14px;
+  }
+  .topper-marks-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.55rem; font-weight: 800;
+    color: #4ade80; line-height: 1;
+  }
+  .topper-marks-label {
+    font-size: 0.7rem; color: rgba(255,255,255,0.5);
+    margin-top: 3px;
+  }
+  .topper-subject-badge {
+    display: inline-block;
+    background: rgba(59,130,246,0.18);
+    color: #93c5fd;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px;
+    border: 1px solid rgba(59,130,246,0.25);
+    margin-bottom: 12px;
+  }
+  .topper-quote {
+    font-size: 0.82rem; color: rgba(255,255,255,0.6);
+    font-style: italic; line-height: 1.5;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 12px; margin-top: 4px;
+  }
+  .topper-quote::before { content: '"'; color: #fb923c; font-size: 1.1rem; }
+  .topper-quote::after  { content: '"'; color: #fb923c; font-size: 1.1rem; }
+  .toppers-cta {
+    text-align: center;
+    padding-top: 10px;
+  }
+  .toppers-cta p {
+    color: rgba(255,255,255,0.6); font-size: 0.88rem; margin-bottom: 18px;
+  }
+  .toppers-cta .btn-shine {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: #fff; padding: 13px 32px;
+    border-radius: 12px; font-family: 'Poppins',sans-serif;
+    font-size: 0.92rem; font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(249,115,22,0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .toppers-cta .btn-shine:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(249,115,22,0.55);
+  }
+  .topper-school {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 4px;
+    letter-spacing: 0.2px;
+  }
+  .topper-school i { color: #fb923c; margin-right: 3px; }
+
+  @media (max-width: 600px) {
+    .toppers-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── SESSION TABS ─── */
+  .session-tabs {
+    display: flex; gap: 10px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 36px;
+  }
+  .session-tab {
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.65);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    padding: 10px 22px; border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem; font-weight: 700;
+    cursor: pointer; transition: all 0.25s;
+    letter-spacing: 0.3px;
+  }
+  .session-tab:hover {
+    background: rgba(249,115,22,0.18);
+    border-color: rgba(249,115,22,0.45);
+    color: #fb923c;
+    transform: translateY(-2px);
+  }
+  .session-tab.active {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(249,115,22,0.45);
+    transform: translateY(-2px);
+  }
+  .session-panel { display: none; }
+  .session-panel.active { display: block; }
+  /* slide-in animation */
+  .session-panel.active {
+    animation: fadeSlideIn 0.35s ease;
+  }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 500px) {
+    .session-tab { font-size: 0.78rem; padding: 8px 14px; }
   }
 </style>
 </head>
@@ -844,7 +1109,20 @@
                   <a href="#">MCQ – Statistics</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – IX</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – IX ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2025_26/Mathematics-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2024_25/Mathematics-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2023_24/Mathematics-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2022_23/Mathematics-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2021_22/Mathematics-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2025_26/Mathematics-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2024_25/Mathematics-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- CBSE Class 10 -->
@@ -888,7 +1166,21 @@
                   <a href="#">MCQ – Probability</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – X</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – X ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Standard-SQP.pdf" target="_blank">2025–26 Sample Paper Standard (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Basic-SQP.pdf" target="_blank">2025–26 Sample Paper Basic (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2024_25/Mathematics-Standard-SQP.pdf" target="_blank">2024–25 Sample Paper Standard (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2023_24/Mathematics-Standard-SQP.pdf" target="_blank">2023–24 Sample Paper Standard (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2022_23/Mathematics-Standard-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2021_22/Mathematics-Standard-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Standard-MS.pdf" target="_blank">2025–26 Marking Scheme Standard ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Basic-MS.pdf" target="_blank">2025–26 Marking Scheme Basic ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- CBSE Class 11 -->
@@ -932,7 +1224,20 @@
                   <a href="#">MCQ – Probability</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – XI</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – XI ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/Mathematics-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/Mathematics-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2023_24/Mathematics-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2022_23/Mathematics-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2021_22/Mathematics-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/Mathematics-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/Mathematics-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- CBSE Class 12 -->
@@ -974,7 +1279,21 @@
                   <a href="#">MCQ – Probability</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – XII</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – XII ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Mathematics-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/Mathematics-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/Mathematics-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2022_23/Mathematics-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2021_22/Mathematics-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2020_21/Mathematics-SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Mathematics-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/Mathematics-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- ICSE Class 9 & 10 -->
@@ -1014,7 +1333,16 @@
                   <a href="#">MCQ – Coordinate Geometry</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – IX (ICSE)</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – IX (ICSE) ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Specimen Papers</span>
+                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2025/Mathematics.pdf" target="_blank">2025–26 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2024/Mathematics.pdf" target="_blank">2024–25 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2023/Mathematics.pdf" target="_blank">2023–24 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2022/Mathematics.pdf" target="_blank">2022–23 Specimen Paper (CISCE Official) ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- ICSE Class 10 -->
@@ -1073,7 +1401,16 @@
                   <a href="#">MCQ – Probability</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – X (ICSE)</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – X (ICSE) ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Specimen Papers</span>
+                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2025/Mathematics.pdf" target="_blank">2025–26 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2024/Mathematics.pdf" target="_blank">2024–25 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2023/Mathematics.pdf" target="_blank">2023–24 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2022/Mathematics.pdf" target="_blank">2022–23 Specimen Paper (CISCE Official) ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- ISC Class 11 -->
@@ -1118,7 +1455,16 @@
                   <a href="#">MCQ – Probability</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – XI (ISC)</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – XI (ISC) ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Specimen Papers</span>
+                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2025/Mathematics.pdf" target="_blank">2025–26 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2024/Mathematics.pdf" target="_blank">2024–25 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2023/Mathematics.pdf" target="_blank">2023–24 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2022/Mathematics.pdf" target="_blank">2022–23 Specimen Paper (CISCE Official) ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- ISC Class 12 -->
@@ -1160,7 +1506,16 @@
                   <a href="#">MCQ – Probability</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – XII (ISC)</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – XII (ISC) ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Specimen Papers</span>
+                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2025/Mathematics.pdf" target="_blank">2025–26 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2024/Mathematics.pdf" target="_blank">2024–25 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2023/Mathematics.pdf" target="_blank">2023–24 Specimen Paper (CISCE Official) ↗</a>
+                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2022/Mathematics.pdf" target="_blank">2022–23 Specimen Paper (CISCE Official) ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- Practice -->
@@ -1309,7 +1664,35 @@
                 </div>
               </div>
               <a href="#">Textbook Solutions</a>
-              <a href="#">Sample Papers</a>
+              <div class="has-sub">
+                <a href="#">PYQ – CS XII ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📋 Last 5 Years Board Papers (CBSE Class 12)</span>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/1407" target="_blank">🔗 CS Class 12 – All PYQ (selfstudys.com) ↗</a>
+                  <span class="part-label">📄 Year-wise Direct Links</span>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2025-91-1-1-set-1/1174068" target="_blank">2025 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2024-91-1-1-set-1/1099574" target="_blank">2024 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2023-91-1-1-set-1/1041669" target="_blank">2023 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2022-91-1-1-set-1/968700" target="_blank">2022 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2020-91-1-1-set-1/886400" target="_blank">2020 Board Paper Set-1 ↗</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Sample Papers – XII ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/ComputerScience-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/ComputerScience-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/ComputerScience-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2022_23/ComputerScience-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2021_22/ComputerScience-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2020_21/ComputerScience-SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/ComputerScience-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/ComputerScience-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/ComputerScience-MS.pdf" target="_blank">2023–24 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
             <div class="mega-col">
               <h5>Python</h5>
@@ -1321,7 +1704,15 @@
             <div class="mega-col">
               <h5>Resources</h5>
               <a href="#">CBSE Syllabus</a>
-              <a href="#">Sample Papers – CS</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – CS ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Class XII Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/ComputerScience-SQP.pdf" target="_blank">2025–26 Class XII Sample Paper ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/ComputerScience-SQP.pdf" target="_blank">2024–25 Class XII Sample Paper ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/ComputerScience-SQP.pdf" target="_blank">2023–24 Class XII Sample Paper ↗</a>
+                </div>
+              </div>
               <a href="#">Previous Year Papers</a>
               <a href="#">Python MCQs</a>
             </div>
@@ -1393,7 +1784,20 @@
                   <a href="#">Q&amp;A – Emerging Trends</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – XI</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – XI ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/InformaticsPractices-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/InformaticsPractices-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2023_24/InformaticsPractices-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2022_23/InformaticsPractices-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2021_22/InformaticsPractices-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/InformaticsPractices-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/InformaticsPractices-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
             <div class="mega-col">
               <h5>Informatics Practices XII (065)</h5>
@@ -1449,7 +1853,34 @@
                 </div>
               </div>
               <a href="#">Practical File Programs</a>
-              <a href="#">Sample Papers – XII</a>
+              <div class="has-sub">
+                <a href="#">PYQ – IP XII ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📋 Last 5 Years Board Papers (CBSE Class 12)</span>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/1410" target="_blank">🔗 IP Class 12 – All PYQ (selfstudys.com) ↗</a>
+                  <span class="part-label">📄 Year-wise Direct Links</span>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2025-90-1-1-set-1/1174081" target="_blank">2025 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2024-90-set-4/1100232" target="_blank">2024 Board Paper ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2023-90-1-1-set-1/1041680" target="_blank">2023 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2022-90-1-1-set-1/968714" target="_blank">2022 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2020-90-1-1-set-1/886412" target="_blank">2020 Board Paper Set-1 ↗</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Sample Papers – XII ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/InformaticsPractices-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/InformaticsPractices-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/InformaticsPractices-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2022_23/InformaticsPractices-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2021_22/InformaticsPractices-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2020_21/InformaticsPractices-SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/InformaticsPractices-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/InformaticsPractices-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
             <div class="mega-col">
               <h5>Python / Pandas</h5>
@@ -1482,8 +1913,8 @@
                 <a href="#">Notes ›</a>
                 <div class="sub-dropdown">
                   <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-I</a>
-                  <a href="#">Unit 2: Self-Management Skills-I</a>
+                  <a href="#comm-skills-notes-section" onclick="showCommSkillsNotes(event)">Unit 1: Communication Skills-I</a>
+                  <a href="https://cbseskilleducation.com/self-management-skills-class-9-notes/" target="_blank">Unit 2: Self-Management Skills-I ↗</a>
                   <a href="#">Unit 3: ICT Skills-I</a>
                   <a href="#">Unit 4: Entrepreneurial Skills-I</a>
                   <a href="#">Unit 5: Green Skills-I</a>
@@ -1531,6 +1962,19 @@
               </div>
               <a href="#">NCERT Solutions</a>
               <a href="#">Practical File</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – IX ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum23/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum21/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_IX/402_Information_Tech_MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_IX/402_Information_Tech_MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- IT Class 10 -->
@@ -1631,6 +2075,33 @@
               </div>
               <a href="#">Practical File</a>
               <a href="#">Board MCQs</a>
+              <div class="has-sub">
+                <a href="#">PYQ – IT X ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📋 Last 5 Years Board Papers (CBSE Class 10)</span>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/11177" target="_blank">🔗 IT/Comp App Class 10 – All PYQ ↗</a>
+                  <span class="part-label">📄 Year-wise Direct Links</span>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2025-set-4/1174178" target="_blank">2025 Board Paper ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2024-set-4/1099673" target="_blank">2024 Board Paper ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2023-set-4/1041780" target="_blank">2023 Board Paper ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2022-set-4/968810" target="_blank">2022 Board Paper ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2020-set-4/886504" target="_blank">2020 Board Paper ↗</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Sample Papers – X ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum23/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum21/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum20/SQP_BP_X/402_Information_Tech_SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_X/402_Information_Tech_MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_X/402_Information_Tech_MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- IT Class 11 -->
@@ -1688,7 +2159,19 @@
                 </div>
               </div>
               <a href="#">NCERT Solutions – XI</a>
-              <a href="#">Sample Papers – XI</a>
+              <div class="has-sub">
+                <a href="#">Sample Papers – XI ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum23/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum21/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
 
             <!-- IT Class 12 -->
@@ -1704,7 +2187,7 @@
                   <a href="#">Unit 4: Entrepreneurial Skills-IV</a>
                   <a href="#">Unit 5: Green Skills-IV</a>
                   <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: Database Concepts – RDBMS Tool (MySQL)</a>
+                  <a href="#db-notes-section" onclick="showDbNotes(event)">Unit 1: Database Concepts – RDBMS Tool (MySQL)</a>
                   <a href="#">Unit 2: Operating Web Based Applications</a>
                   <a href="#">Unit 3: Java Programming (OOP, Control Flow, Arrays, Exception Handling, Threads, String Manipulation)</a>
                   <a href="#">Unit 4: Work Integrated Learning IT – DMA</a>
@@ -1742,7 +2225,33 @@
                   <a href="#">Unit 4: Work Integrated Learning – DMA Q&amp;A</a>
                 </div>
               </div>
-              <a href="#">Sample Papers – IT</a>
+              <div class="has-sub">
+                <a href="#">PYQ – IT XII ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📋 Last 5 Years Board Papers (CBSE Class 12)</span>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/1407" target="_blank">🔗 CS/IT Class 12 – All PYQ ↗</a>
+                  <span class="part-label">📄 Year-wise Direct Links</span>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2025-91-1-1-set-1/1174068" target="_blank">2025 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2024-91-1-1-set-1/1099574" target="_blank">2024 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2023-91-1-1-set-1/1041669" target="_blank">2023 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2022-91-1-1-set-1/968700" target="_blank">2022 Board Paper Set-1 ↗</a>
+                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2020-91-1-1-set-1/886400" target="_blank">2020 Board Paper Set-1 ↗</a>
+                </div>
+              </div>
+              <div class="has-sub">
+                <a href="#">Sample Papers ›</a>
+                <div class="sub-dropdown">
+                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum23/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum21/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum20/SQP_BP_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
+                  <span class="part-label">📝 Marking Schemes</span>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
+                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -1750,6 +2259,15 @@
       </li>
 
     </ul>
+    <button onclick="showQuiz()" title="MCQ Quiz Practice"
+      style="display:inline-flex;align-items:center;gap:6px;background:#22c55e;color:#fff;
+      padding:9px 16px;border-radius:10px;font-size:0.82rem;font-weight:700;
+      border:none;cursor:pointer;white-space:nowrap;margin-right:6px;
+      box-shadow:0 3px 10px rgba(34,197,94,0.35);transition:all 0.2s;font-family:'Nunito',sans-serif;"
+      onmouseover="this.style.background='#16a34a';this.style.transform='translateY(-2px)'"
+      onmouseout="this.style.background='#22c55e';this.style.transform=''">
+      📝 MCQ Quiz
+    </button>
     <button onclick="openDemoForm()" class="nav-cta" title="Free Demo Class" style="font-family:'Nunito',sans-serif; cursor:pointer;">
       🎓 Free Demo
     </button>
@@ -2049,6 +2567,139 @@ learn_python(s)
 <div class="code-line"><span class="fn">print</span>(lp.<span class="fn">inspire</span>())</div>
 <div class="code-line"><span class="cm"># Inspiring Success</span><span class="code-cursor"></span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPPERS SECTION -->
+<section class="toppers-section" id="toppers">
+  <div class="toppers-inner">
+    <div class="toppers-header">
+      <div class="toppers-tag">🏆 Our Star Students</div>
+      <h2>Students Jinhone <span>Exam Mein Topp Kiya!</span></h2>
+      <p>Har session ke woh students jo mehnat aur lagan se shine kiye — CS with Deepak Sir ki family ke proud members.</p>
+    </div>
+
+    <!-- SESSION TABS -->
+    <div class="session-tabs">
+      <button class="session-tab active" onclick="switchSession('2024-25', this)">📅 Session 2024–25</button>
+      <button class="session-tab" onclick="switchSession('2025-26', this)">📅 Session 2025–26</button>
+    </div>
+
+    <!-- SESSION: 2025-26 -->
+    <div class="session-panel" id="session-2025-26">
+      <div class="toppers-grid">
+        <div class="topper-card">
+          <div class="topper-rank gold">🥇 1st Rank</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Aman Sharma</div>
+          <div class="topper-class">Class XII — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">98/100</div>
+            <div class="topper-marks-label">Computer Science (Code 083)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Science</div>
+          <div class="topper-quote">Deepak Sir ke notes aur practice sessions ne mere liye sab easy kar diya. Bahut khushi hui!</div>
+        </div>
+        <div class="topper-card">
+          <div class="topper-rank silver">🥈 2nd Rank</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Priya Verma</div>
+          <div class="topper-class">Class XII — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">96/100</div>
+            <div class="topper-marks-label">Informatics Practices (Code 065)</div>
+          </div>
+          <div class="topper-subject-badge">📊 Informatics Practices</div>
+          <div class="topper-quote">Sir ne every doubt clear kiya, MCQs aur sample papers se bilkul tayyar feel hua exam mein.</div>
+        </div>
+        <div class="topper-card">
+          <div class="topper-rank bronze">🥉 3rd Rank</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Rohan Gupta</div>
+          <div class="topper-class">Class XI — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">95/100</div>
+            <div class="topper-marks-label">Computer Science (Code 083)</div>
+          </div>
+          <div class="topper-subject-badge">🐍 Python Programming</div>
+          <div class="topper-quote">Python concepts itne clearly samjhaye ki mujhe lag hi nahi ki yeh tough subject hai!</div>
+        </div>
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa);">⭐ Topper</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Neha Singh</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">99/100</div>
+            <div class="topper-marks-label">IT — Information Technology (Code 402)</div>
+          </div>
+          <div class="topper-subject-badge">💡 IT — Code 402</div>
+          <div class="topper-quote">IT ke database aur networking topics Sir se sikhne ke baad school mein bhi best student ban gayi!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION: 2024-25 -->
+    <div class="session-panel active" id="session-2024-25">
+      <div class="toppers-grid">
+        <div class="topper-card">
+          <div class="topper-rank gold">🥇 1st Rank</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Ankita</div>
+          <div class="topper-school"><i class="fa-solid fa-school"></i>Udaya International School</div>
+          <div class="topper-class">CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">100/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Deepak Sir ki guidance se poore 100 marks aaye — yeh sirf unki mehnat ka result hai. Thank you Sir!</div>
+        </div>
+        <div class="topper-card">
+          <div class="topper-rank silver">🥈 2nd Rank</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Arjun Pandey</div>
+          <div class="topper-class">Class XII — ICSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">95/100</div>
+            <div class="topper-marks-label">Computer Science (ISC)</div>
+          </div>
+          <div class="topper-subject-badge">🖥️ ISC Computer Science</div>
+          <div class="topper-quote">Sir ke YouTube videos aur personal guidance dono ne mujhe exam ke liye fully ready kar diya!</div>
+        </div>
+        <div class="topper-card">
+          <div class="topper-rank bronze">🥉 3rd Rank</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Sahil Khan</div>
+          <div class="topper-class">Class XI — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">94/100</div>
+            <div class="topper-marks-label">Informatics Practices (Code 065)</div>
+          </div>
+          <div class="topper-subject-badge">📊 Informatics Practices</div>
+          <div class="topper-quote">IP ka SQL topic ek baar Sir se seekha toh phir kabhi nahi bhula. Bahut effective teaching!</div>
+        </div>
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#0891b2,#22d3ee);">🌟 Distinction</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Riya Tiwari</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">98/100</div>
+            <div class="topper-marks-label">IT — Information Technology (Code 402)</div>
+          </div>
+          <div class="topper-subject-badge">💡 IT — Code 402</div>
+          <div class="topper-quote">Sir ke notes itne simple hain ki ghar par bhi akele padh sakti thi. Thank you so much!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toppers-cta">
+      <p>Kya aap bhi apna naam is list mein dekhna chahte hain? Aaj hi join karein!</p>
+      <a href="javascript:void(0)" onclick="openDemoForm()" class="btn-shine">
+        🎓 Free Demo Class Register Karein
+      </a>
     </div>
   </div>
 </section>
@@ -2481,7 +3132,7 @@ learn_python(s)
     }
   });
 
-  // Mobile: toggle dropdowns on tap
+  // Mobile: toggle dropdowns on tap (has-dropdown items)
   document.querySelectorAll('.has-dropdown > span').forEach(el => {
     el.addEventListener('click', function(e) {
       if (window.innerWidth > 900) return;
@@ -2491,6 +3142,21 @@ learn_python(s)
       // close all others
       document.querySelectorAll('.has-dropdown > .dropdown, .has-dropdown > .mega-dropdown').forEach(d => d.style.display = '');
       dd.style.display = isOpen ? '' : 'block';
+    });
+  });
+
+  // Mobile: toggle sub-dropdowns on tap (has-sub items)
+  document.querySelectorAll('.has-sub > a').forEach(el => {
+    el.addEventListener('click', function(e) {
+      if (window.innerWidth > 900) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const sub = el.nextElementSibling;
+      if (!sub || !sub.classList.contains('sub-dropdown')) return;
+      const isOpen = sub.classList.contains('open');
+      // close all other sub-dropdowns in same parent
+      el.closest('.mega-col, .dropdown') && el.closest('.mega-col, .dropdown').querySelectorAll('.sub-dropdown.open').forEach(s => s.classList.remove('open'));
+      if (!isOpen) sub.classList.add('open');
     });
   });
 
@@ -3000,5 +3666,2477 @@ function sendChat() {
     }
   });
 </script>
+<!-- ═══════════════════════════════════ -->
+<!--        ADMISSION OPEN POPUP       -->
+<!-- ═══════════════════════════════════ -->
+<style>
+  .popup-overlay {
+    position: fixed; inset: 0; z-index: 99999;
+    background: rgba(10,20,50,0.75);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    animation: fadeInOverlay 0.4s ease;
+  }
+  @keyframes fadeInOverlay { from { opacity:0; } to { opacity:1; } }
+
+  .popup-box {
+    background: #fff;
+    border-radius: 24px;
+    width: min(520px, 92vw);
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(26,58,107,0.35);
+    animation: popIn 0.45s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.6) translateY(40px); opacity:0; }
+    to   { transform: scale(1) translateY(0);      opacity:1; }
+  }
+
+  .popup-header {
+    background: linear-gradient(135deg, #1a3a6b 0%, #3b82f6 60%, #f97316 100%);
+    padding: 32px 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .popup-header::before {
+    content:'';
+    position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .popup-badge {
+    display: inline-block;
+    background: #f97316;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    animation: pulse-badge 1.5s infinite;
+  }
+  @keyframes pulse-badge {
+    0%,100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.5); }
+    50%      { box-shadow: 0 0 0 8px rgba(249,115,22,0); }
+  }
+  .popup-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  .popup-title span { color: #facc15; }
+  .popup-sub {
+    color: rgba(255,255,255,0.88);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .popup-stars {
+    font-size: 1.2rem;
+    margin-top: 8px;
+    letter-spacing: 3px;
+  }
+
+  .popup-body { padding: 24px 28px; }
+  .popup-courses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .popup-course {
+    background: #f0f4ff;
+    border: 1.5px solid #e8f0fe;
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.85rem; font-weight: 700; color: #1a3a6b;
+    transition: all 0.2s;
+  }
+  .popup-course:hover { background: #e8f0fe; border-color: #3b82f6; transform: translateY(-2px); }
+  .popup-course i { font-size: 1.1rem; color: #f97316; }
+
+  .popup-highlight {
+    background: linear-gradient(135deg, #fff7ed, #fef3c7);
+    border: 1.5px solid #fde68a;
+    border-radius: 12px;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 18px;
+  }
+  .popup-highlight i { color: #f97316; margin-right: 6px; }
+
+  .popup-btns {
+    display: flex; gap: 10px;
+  }
+  .popup-btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, #1a3a6b, #3b82f6);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 13px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .popup-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.4); }
+  .popup-btn-close {
+    background: #f1f5f9;
+    color: #64748b;
+    border: none;
+    border-radius: 12px;
+    padding: 13px 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.2s;
+  }
+  .popup-btn-close:hover { background: #e2e8f0; color: #1e293b; }
+
+  .popup-close-x {
+    position: absolute; top: 14px; right: 16px;
+    background: rgba(255,255,255,0.2);
+    border: none; color: #fff;
+    width: 30px; height: 30px; border-radius: 50%;
+    cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .popup-close-x:hover { background: rgba(255,255,255,0.35); }
+</style>
+
+<!-- POPUP HTML -->
+<div class="popup-overlay" id="admissionPopup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <button class="popup-close-x" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="popup-badge">🎉 Limited Seats Available</div>
+      <div class="popup-title">Admission <span>Open!</span></div>
+      <div class="popup-sub">All Courses — Session 2026–27</div>
+      <div class="popup-stars">⭐⭐⭐⭐⭐</div>
+    </div>
+    <div class="popup-body">
+      <div class="popup-courses">
+        <div class="popup-course"><i class="fa-solid fa-laptop-code"></i> Computer Science</div>
+        <div class="popup-course"><i class="fa-solid fa-circle-info"></i> Informatics Practices</div>
+        <div class="popup-course"><i class="fa-solid fa-mobile-screen"></i> Information Technology</div>
+        <div class="popup-course"><i class="fa-solid fa-robot"></i> Artificial Intelligence</div>
+        <div class="popup-course"><i class="fa-solid fa-calculator"></i> Mathematics</div>
+        <div class="popup-course"><i class="fa-solid fa-desktop"></i> Computer Applications</div>
+      </div>
+      <div class="popup-highlight">
+        <i class="fa-solid fa-gift"></i> FREE Demo Class Available — Class 9, 10, 11 & 12
+      </div>
+      <div class="popup-btns">
+        <button class="popup-btn-primary" onclick="closePopup(); openDemoForm()">
+          <i class="fa-solid fa-graduation-cap"></i> Book FREE Demo Class
+        </button>
+        <button class="popup-btn-close" onclick="closePopup()">Later</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Show popup on load
+  function closePopup() {
+    const p = document.getElementById('admissionPopup');
+    p.style.animation = 'fadeInOverlay 0.3s ease reverse';
+    setTimeout(() => p.style.display = 'none', 280);
+  }
+  // Auto close after 15 seconds
+  setTimeout(closePopup, 15000);
+</script>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--   IT CLASS XII (802) — DATABASE CONCEPTS NOTES        -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<style>
+  /* ── Notes Page Overlay ── */
+  #db-notes-section {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #db-notes-section.active { display: block; }
+
+  .notes-topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: linear-gradient(90deg,#0f2557,#1a3a6b);
+    color: #fff; padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+  .notes-topbar h2 {
+    font-family: 'Poppins',sans-serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+    font-weight: 800; margin: 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .notes-back-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: #fff; border-radius: 9px;
+    padding: 7px 16px; font-size: 0.85rem; font-weight: 700;
+    cursor: pointer; font-family: 'Nunito',sans-serif;
+    display: flex; align-items: center; gap: 6px;
+    transition: background 0.2s; white-space: nowrap; flex-shrink: 0;
+  }
+  .notes-back-btn:hover { background: rgba(255,255,255,0.28); }
+
+  .notes-body { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* Chapter card */
+  .notes-chapter {
+    background: #fff; border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(26,58,107,0.09);
+    margin-bottom: 28px; overflow: hidden;
+    border-left: 5px solid var(--python-blue);
+  }
+  .notes-chapter-header {
+    background: linear-gradient(90deg,#eff6ff,#fff);
+    padding: 16px 22px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1.5px solid #dbeafe;
+  }
+  .notes-chapter-header h3 {
+    font-family: 'Poppins',sans-serif; font-size: 1rem; font-weight: 800;
+    color: var(--primary); margin: 0; display: flex; align-items: center; gap: 10px;
+  }
+  .notes-chapter-header .ch-badge {
+    background: var(--python-blue); color: #fff;
+    font-size: 0.7rem; font-weight: 800; padding: 3px 10px;
+    border-radius: 20px; letter-spacing: 0.3px; white-space: nowrap;
+  }
+  .notes-chapter-toggle {
+    font-size: 1.2rem; color: var(--python-blue);
+    transition: transform 0.3s; flex-shrink: 0;
+  }
+  .notes-chapter.open .notes-chapter-toggle { transform: rotate(180deg); }
+  .notes-chapter-body { display: none; padding: 22px; }
+  .notes-chapter.open .notes-chapter-body { display: block; }
+
+  /* Content blocks */
+  .notes-def {
+    background: #eff6ff; border-left: 4px solid var(--python-blue);
+    border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 14px 0;
+    font-size: 0.92rem; line-height: 1.75; color: var(--text);
+  }
+  .notes-def strong { color: var(--primary); }
+  .notes-def .def-term {
+    font-family: 'Poppins',sans-serif; font-size: 0.98rem;
+    font-weight: 800; color: var(--python-blue); display: block; margin-bottom: 5px;
+  }
+
+  .notes-example {
+    background: #fff7ed; border-left: 4px solid var(--secondary);
+    border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 14px 0;
+    font-size: 0.88rem; line-height: 1.8;
+  }
+  .notes-example .ex-title {
+    font-weight: 800; color: var(--secondary);
+    font-family: 'Poppins',sans-serif; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    display: block; margin-bottom: 6px;
+  }
+
+  .notes-important {
+    background: linear-gradient(135deg,#fef9c3,#fefce8);
+    border: 1.5px solid #fde68a; border-radius: 10px;
+    padding: 14px 18px; margin: 14px 0;
+    font-size: 0.9rem; line-height: 1.75;
+  }
+  .notes-important .imp-title {
+    font-weight: 800; color: #92400e;
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 6px; font-family: 'Poppins',sans-serif; font-size: 0.85rem;
+  }
+
+  .notes-table-wrap { overflow-x: auto; margin: 14px 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(26,58,107,0.08); }
+  .notes-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .notes-table th {
+    background: var(--primary); color: #fff;
+    padding: 10px 14px; text-align: left;
+    font-family: 'Poppins',sans-serif; font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .notes-table td { padding: 9px 14px; border-bottom: 1px solid #e8f0fe; color: var(--text); vertical-align: top; }
+  .notes-table tr:last-child td { border-bottom: none; }
+  .notes-table tr:nth-child(even) td { background: #f8faff; }
+  .notes-table tr:hover td { background: #eff6ff; }
+
+  .notes-code {
+    background: #1e293b; color: #93c5fd;
+    font-family: 'Fira Code', monospace; font-size: 0.83rem;
+    line-height: 1.8; border-radius: 10px;
+    padding: 16px 20px; margin: 14px 0; overflow-x: auto;
+    white-space: pre;
+  }
+  .notes-code .sql-kw { color: #f472b6; font-weight: 700; }
+  .notes-code .sql-fn { color: #a78bfa; }
+  .notes-code .sql-str { color: #86efac; }
+  .notes-code .sql-cm { color: #64748b; font-style: italic; }
+  .notes-code .sql-num { color: #facc15; }
+
+  .notes-ul { padding-left: 20px; margin: 10px 0; }
+  .notes-ul li { margin-bottom: 7px; font-size: 0.91rem; line-height: 1.7; color: var(--text); }
+  .notes-ul li::marker { color: var(--python-blue); }
+
+  .notes-h4 {
+    font-family: 'Poppins',sans-serif; font-size: 0.95rem;
+    font-weight: 800; color: var(--primary);
+    margin: 20px 0 8px; display: flex; align-items: center; gap: 8px;
+  }
+  .notes-h4::before { content: ''; width: 4px; height: 16px; background: var(--secondary); border-radius: 2px; display: inline-block; }
+
+  .notes-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  @media(max-width:600px){ .notes-grid-2 { grid-template-columns: 1fr; } }
+
+  .notes-card-mini {
+    background: #f8faff; border: 1.5px solid #dbeafe;
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .notes-card-mini h5 {
+    font-family: 'Poppins',sans-serif; font-size: 0.85rem;
+    font-weight: 800; color: var(--python-blue); margin-bottom: 7px;
+  }
+  .notes-card-mini p, .notes-card-mini li { font-size: 0.84rem; color: var(--text); line-height: 1.65; }
+  .notes-card-mini ul { padding-left: 16px; }
+  .notes-card-mini li { margin-bottom: 4px; }
+
+  /* Progress bar at top */
+  .notes-progress-wrap { background: #e2e8f0; height: 4px; }
+  .notes-progress-bar { height: 4px; background: var(--secondary); transition: width 0.3s; }
+
+  /* Print button */
+  .notes-print-btn {
+    background: #fff; border: 1.5px solid #cbd5e1; color: var(--text);
+    border-radius: 9px; padding: 7px 14px; font-size: 0.82rem; font-weight: 700;
+    cursor: pointer; font-family: 'Nunito',sans-serif;
+    display: flex; align-items: center; gap: 6px; transition: all 0.2s;
+  }
+  .notes-print-btn:hover { border-color: var(--python-blue); color: var(--python-blue); }
+
+  @media print {
+    #db-notes-section .notes-topbar,
+    #db-notes-section .notes-back-btn,
+    #db-notes-section .notes-print-btn { display: none !important; }
+    #db-notes-section .notes-chapter-body { display: block !important; }
+    #db-notes-section { position: static !important; overflow: visible !important; }
+  }
+
+  /* ─── NOTES SEARCH BAR ─── */
+  .notes-search-wrap {
+    padding: 12px 20px;
+    background: #fff;
+    border-bottom: 1.5px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .notes-search-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0f4ff;
+    border: 1.5px solid #dbeafe;
+    border-radius: 10px;
+    padding: 8px 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .notes-search-box:focus-within {
+    border-color: var(--python-blue);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+    background: #fff;
+  }
+  .notes-search-box i { color: var(--python-blue); font-size: 0.95rem; flex-shrink: 0; }
+  .notes-search-input {
+    border: none; background: transparent; outline: none;
+    font-family: 'Nunito', sans-serif; font-size: 0.92rem;
+    color: var(--text); flex: 1; min-width: 0;
+  }
+  .notes-search-input::placeholder { color: #94a3b8; }
+  .notes-search-clear {
+    background: none; border: none; color: #94a3b8;
+    cursor: pointer; font-size: 0.85rem; padding: 0 2px;
+    display: none; transition: color 0.2s;
+  }
+  .notes-search-clear:hover { color: var(--text); }
+  .notes-search-count {
+    font-size: 0.78rem; font-weight: 700; color: var(--python-blue);
+    background: #dbeafe; padding: 4px 10px; border-radius: 20px;
+    white-space: nowrap; display: none;
+  }
+  .search-highlight {
+    background: #fef08a; border-radius: 3px; padding: 0 2px;
+    font-weight: 700; color: #92400e;
+  }
+  .notes-no-results {
+    display: none; text-align: center; padding: 40px 20px;
+    color: var(--text-light); font-size: 0.95rem;
+  }
+  .notes-no-results i { font-size: 2.5rem; display: block; margin-bottom: 10px; color: #cbd5e1; }
+</style>
+
+<div id="db-notes-section">
+  <!-- Sticky top bar -->
+  <div class="notes-topbar">
+    <h2>
+      <span style="font-size:1.3rem;">🗄️</span>
+      IT Class XII (802) — Unit 1: Database Concepts &amp; RDBMS (MySQL)
+    </h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideDbNotes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="notesProgress" style="width:0%"></div></div>
+
+  <!-- SEARCH BAR -->
+  <div class="notes-search-wrap">
+    <div class="notes-search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input class="notes-search-input" id="dbNotesSearch" type="text" placeholder="Topics, definitions, keywords search karein..." oninput="searchNotes('db')">
+      <button class="notes-search-clear" id="dbSearchClear" onclick="clearSearch('db')" title="Clear">✕</button>
+    </div>
+    <span class="notes-search-count" id="dbSearchCount"></span>
+  </div>
+  <div class="notes-no-results" id="dbNoResults">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    Koi result nahi mila. Dusra keyword try karein.
+  </div>
+
+  <div class="notes-body" id="dbNotesBody">
+
+    <!-- ═══ INTRO BANNER ═══ -->
+    <div style="background:linear-gradient(135deg,#0f2557,#1d4ed8);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🗄️</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XII · IT Code 802 · Part B · Unit 1</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Database Concepts &amp; RDBMS Tool (MySQL)</h2>
+      <p style="color:#93c5fd;font-size:0.9rem;line-height:1.7;max-width:680px;">Comprehensive notes covering Database fundamentals, RDBMS concepts, Data Models, Keys, Relationships, SQL commands (DDL, DML, DCL, TCL) and MySQL queries — as per CBSE syllabus.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 8 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💡 Examples Included</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">🗃️ MySQL Queries</span>
+      </div>
+    </div>
+
+    <!-- ── TOPIC 1: Introduction to Database ── -->
+    <div class="notes-chapter open" id="ch1">
+      <div class="notes-chapter-header" onclick="toggleChapter('ch1')">
+        <h3><span class="ch-badge">Topic 1</span> Introduction to Database</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 Database (DB)</span>
+          A <strong>Database</strong> is an organised collection of related data stored in a structured format so that it can be easily accessed, managed, and updated. It eliminates redundancy and ensures data integrity.
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">📖 Database Management System (DBMS)</span>
+          A <strong>DBMS</strong> is a software system that enables users to <strong>define, create, maintain, and control</strong> access to a database. Examples: MySQL, Oracle, MS Access, PostgreSQL, SQLite.
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Why DBMS? — Advantages over File System</div>
+          <ul class="notes-ul" style="margin:0;">
+            <li><strong>Reduced Data Redundancy</strong> — Same data not stored multiple times.</li>
+            <li><strong>Data Consistency</strong> — Change once, reflected everywhere.</li>
+            <li><strong>Data Integrity</strong> — Rules ensure only valid data is stored.</li>
+            <li><strong>Data Security</strong> — Access control prevents unauthorised use.</li>
+            <li><strong>Data Sharing</strong> — Multiple users can access simultaneously.</li>
+            <li><strong>Backup &amp; Recovery</strong> — Automatic backup mechanisms.</li>
+            <li><strong>Data Independence</strong> — App programs independent of data storage.</li>
+          </ul>
+        </div>
+
+        <h4 class="notes-h4">Disadvantages of Traditional File System</h4>
+        <ul class="notes-ul">
+          <li>Data Redundancy and Inconsistency</li>
+          <li>Difficulty in accessing data</li>
+          <li>Data isolation — data scattered in multiple files</li>
+          <li>Integrity problems</li>
+          <li>Atomicity problems</li>
+          <li>Concurrent access anomalies</li>
+          <li>Security problems</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── TOPIC 2: RDBMS ── -->
+    <div class="notes-chapter" id="ch2">
+      <div class="notes-chapter-header" onclick="toggleChapter('ch2')">
+        <h3><span class="ch-badge">Topic 2</span> Relational Database Management System (RDBMS)</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 RDBMS</span>
+          An <strong>RDBMS</strong> is a type of DBMS that stores data in the form of <strong>tables (relations)</strong>. Tables are linked using <strong>keys</strong>. It is based on <strong>E.F. Codd's relational model</strong>.
+          <br><br>
+          <strong>Popular RDBMS:</strong> MySQL, Oracle, SQL Server, PostgreSQL, MariaDB, SQLite.
+        </div>
+
+        <h4 class="notes-h4">Basic Terminology</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead>
+              <tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Table / Relation</strong></td><td>Collection of data organised in rows and columns</td><td>STUDENT table</td></tr>
+              <tr><td><strong>Row / Tuple / Record</strong></td><td>A single horizontal entry in a table</td><td>One student's complete data</td></tr>
+              <tr><td><strong>Column / Attribute / Field</strong></td><td>A vertical entry representing one property</td><td>Name, Age, Marks</td></tr>
+              <tr><td><strong>Degree</strong></td><td>Total number of <em>columns</em> in a table</td><td>If 4 columns → Degree = 4</td></tr>
+              <tr><td><strong>Cardinality</strong></td><td>Total number of <em>rows</em> in a table</td><td>If 5 rows → Cardinality = 5</td></tr>
+              <tr><td><strong>Domain</strong></td><td>Set of valid values for an attribute</td><td>Age domain: 1–120</td></tr>
+              <tr><td><strong>Schema</strong></td><td>Structure/design of the database (table names, columns)</td><td>STUDENT(RollNo, Name, Age)</td></tr>
+              <tr><td><strong>Instance</strong></td><td>Actual data stored in the database at a particular time</td><td>Current rows in STUDENT</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-example">
+          <span class="ex-title">📊 Example Table — STUDENT</span>
+          <div class="notes-table-wrap" style="margin:0;">
+            <table class="notes-table">
+              <thead><tr><th>RollNo</th><th>Name</th><th>Age</th><th>City</th><th>Marks</th></tr></thead>
+              <tbody>
+                <tr><td>101</td><td>Aman Sharma</td><td>17</td><td>Delhi</td><td>89</td></tr>
+                <tr><td>102</td><td>Priya Singh</td><td>16</td><td>Mumbai</td><td>92</td></tr>
+                <tr><td>103</td><td>Rohan Gupta</td><td>17</td><td>Delhi</td><td>78</td></tr>
+                <tr><td>104</td><td>Neha Verma</td><td>16</td><td>Lucknow</td><td>95</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:8px;color:var(--text-light);font-size:0.82rem;">Degree = 5 (columns) | Cardinality = 4 (rows)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TOPIC 3: Keys ── -->
+    <div class="notes-chapter" id="ch3">
+      <div class="notes-chapter-header" onclick="toggleChapter('ch3')">
+        <h3><span class="ch-badge">Topic 3</span> Keys in RDBMS</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Keys — Most Important for Exam!</div>
+          Keys are used to <strong>uniquely identify</strong> rows in a table and to establish <strong>relationships</strong> between tables.
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">🔑 1. Candidate Key</span>
+          An attribute (or set of attributes) that can <strong>uniquely identify</strong> each row in a table. A table can have <strong>multiple candidate keys</strong>.<br>
+          <strong>Properties:</strong> Unique + Not Null.<br>
+          <strong>Example:</strong> In STUDENT table — RollNo and Email both can be candidate keys.
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">🔑 2. Primary Key (PK)</span>
+          The candidate key <strong>chosen by the designer</strong> to uniquely identify each row. A table has <strong>only one primary key</strong>.<br>
+          <strong>Properties:</strong> Unique + Not Null.<br>
+          <strong>Example:</strong> RollNo is chosen as Primary Key in STUDENT table.
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">🔑 3. Alternate Key</span>
+          All candidate keys <strong>except the primary key</strong> are called Alternate Keys.<br>
+          <strong>Example:</strong> If RollNo is PK, then Email becomes the Alternate Key.
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">🔑 4. Foreign Key (FK)</span>
+          An attribute in one table that is the <strong>Primary Key of another table</strong>. It creates a <strong>link between two tables</strong>.<br>
+          <strong>Example:</strong> In MARKS table, RollNo refers to RollNo in STUDENT table — so RollNo in MARKS is a Foreign Key.<br>
+          <strong>Referential Integrity:</strong> FK value must exist in the referenced table or be NULL.
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">🔑 5. Composite Key</span>
+          A key made of <strong>two or more attributes</strong> that together uniquely identify a row.<br>
+          <strong>Example:</strong> (StudentID + SubjectCode) together can be a composite key in EXAM table.
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">🔑 6. Super Key</span>
+          Any set of attributes that can <strong>uniquely identify</strong> a row. Every Primary Key is a Super Key but vice-versa is not always true.<br>
+          <strong>Example:</strong> {RollNo}, {RollNo, Name}, {RollNo, Age} — all are super keys.
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">📌 Key Summary Table</div>
+          <div class="notes-table-wrap" style="margin:0;">
+            <table class="notes-table">
+              <thead><tr><th>Key</th><th>Unique?</th><th>Not Null?</th><th>Count per Table</th></tr></thead>
+              <tbody>
+                <tr><td>Candidate Key</td><td>✅ Yes</td><td>✅ Yes</td><td>Can be many</td></tr>
+                <tr><td>Primary Key</td><td>✅ Yes</td><td>✅ Yes</td><td>Only ONE</td></tr>
+                <tr><td>Alternate Key</td><td>✅ Yes</td><td>✅ Yes</td><td>Candidates minus PK</td></tr>
+                <tr><td>Foreign Key</td><td>❌ Not required</td><td>❌ Can be NULL</td><td>Can be many</td></tr>
+                <tr><td>Composite Key</td><td>✅ Together</td><td>✅ Yes</td><td>Can be many</td></tr>
+                <tr><td>Super Key</td><td>✅ Yes</td><td>May/may not</td><td>Many</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="notes-example">
+          <span class="ex-title">📊 Example — Two Linked Tables</span>
+          <p><strong>STUDENT</strong></p>
+          <div class="notes-table-wrap" style="margin:4px 0 12px;">
+            <table class="notes-table">
+              <thead><tr><th>RollNo (PK)</th><th>Name</th><th>City</th></tr></thead>
+              <tbody>
+                <tr><td>101</td><td>Aman</td><td>Delhi</td></tr>
+                <tr><td>102</td><td>Priya</td><td>Mumbai</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>MARKS</strong></p>
+          <div class="notes-table-wrap" style="margin:4px 0;">
+            <table class="notes-table">
+              <thead><tr><th>SrNo (PK)</th><th>RollNo (FK→STUDENT)</th><th>Subject</th><th>Marks</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>101</td><td>IT</td><td>89</td></tr>
+                <tr><td>2</td><td>101</td><td>Maths</td><td>92</td></tr>
+                <tr><td>3</td><td>102</td><td>IT</td><td>78</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color:var(--text-light);font-size:0.82rem;margin-top:6px;">RollNo in MARKS is a Foreign Key referencing RollNo (PK) of STUDENT table.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TOPIC 4: Data Models ── -->
+    <div class="notes-chapter" id="ch4">
+      <div class="notes-chapter-header" onclick="toggleChapter('ch4')">
+        <h3><span class="ch-badge">Topic 4</span> Data Models &amp; ER Diagram</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <h4 class="notes-h4">Types of Data Models</h4>
+        <div class="notes-grid-2">
+          <div class="notes-card-mini">
+            <h5>🗂️ Hierarchical Model</h5>
+            <p>Data is organised in a <strong>tree structure</strong> (parent-child). One parent, multiple children. Example: File system.</p>
+            <ul><li>Fast access</li><li>Rigid structure</li><li>Complex many-to-many relations</li></ul>
+          </div>
+          <div class="notes-card-mini">
+            <h5>🔗 Network Model</h5>
+            <p>Data is organised as a <strong>graph</strong>. Records can have <strong>multiple parent and child</strong> records. Overcomes hierarchical limitations.</p>
+            <ul><li>Flexible</li><li>Complex to design</li><li>Hard to modify</li></ul>
+          </div>
+          <div class="notes-card-mini">
+            <h5>📋 Relational Model</h5>
+            <p>Data stored in <strong>tables (relations)</strong>. Tables linked via keys. Based on <strong>E.F. Codd's 12 rules</strong>. Most popular today.</p>
+            <ul><li>Simple tabular format</li><li>Easy to query (SQL)</li><li>MySQL, Oracle use this</li></ul>
+          </div>
+          <div class="notes-card-mini">
+            <h5>🔷 Object-Oriented Model</h5>
+            <p>Data stored as <strong>objects</strong> like in OOP. Objects have attributes and methods. Used in complex applications.</p>
+            <ul><li>Handles complex data</li><li>Reusability</li><li>Less common for CBSE</li></ul>
+          </div>
+        </div>
+
+        <h4 class="notes-h4">Entity-Relationship (ER) Model</h4>
+        <div class="notes-def">
+          <span class="def-term">📖 ER Diagram</span>
+          An <strong>Entity-Relationship Diagram</strong> is a visual representation of entities (objects) and the relationships between them. It is used in <strong>database design</strong>.
+        </div>
+
+        <h4 class="notes-h4">ER Diagram Components</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Symbol</th><th>Represents</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td>Rectangle</td><td>Entity (real-world object)</td><td>STUDENT, TEACHER, BOOK</td></tr>
+              <tr><td>Ellipse / Oval</td><td>Attribute (property of entity)</td><td>Name, Age, RollNo</td></tr>
+              <tr><td>Double Ellipse</td><td>Multi-valued Attribute</td><td>Phone (many numbers)</td></tr>
+              <tr><td>Dashed Ellipse</td><td>Derived Attribute</td><td>Age (derived from DOB)</td></tr>
+              <tr><td>Underlined Attribute</td><td>Primary Key Attribute</td><td><u>RollNo</u></td></tr>
+              <tr><td>Diamond</td><td>Relationship between entities</td><td>STUDIES, TEACHES</td></tr>
+              <tr><td>Double Rectangle</td><td>Weak Entity (no independent PK)</td><td>DEPENDENT of EMPLOYEE</td></tr>
+              <tr><td>Lines</td><td>Links entities, attributes, and relationships</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="notes-h4">Types of Relationships (Cardinality)</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Meaning</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>One-to-One (1:1)</strong></td><td>One entity relates to exactly one entity in another</td><td>Person ↔ Aadhar Card</td></tr>
+              <tr><td><strong>One-to-Many (1:M)</strong></td><td>One entity relates to many entities in another</td><td>One Teacher → Many Students</td></tr>
+              <tr><td><strong>Many-to-One (M:1)</strong></td><td>Many entities relate to one entity</td><td>Many Students → One School</td></tr>
+              <tr><td><strong>Many-to-Many (M:N)</strong></td><td>Many entities relate to many entities</td><td>Students ↔ Subjects</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TOPIC 5: SQL Introduction ── -->
+    <div class="notes-chapter" id="ch5">
+      <div class="notes-chapter-header" onclick="toggleChapter('ch5')">
+        <h3><span class="ch-badge">Topic 5</span> SQL — Structured Query Language</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 SQL (Structured Query Language)</span>
+          SQL is a <strong>standard language</strong> used to communicate with a relational database. It is used to <strong>create, read, update, and delete</strong> data in databases. SQL is <strong>not case-sensitive</strong>.
+        </div>
+
+        <h4 class="notes-h4">Types of SQL Commands</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Category</th><th>Full Form</th><th>Commands</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><strong>DDL</strong></td><td>Data Definition Language</td><td>CREATE, ALTER, DROP, TRUNCATE, RENAME</td><td>Define/modify structure</td></tr>
+              <tr><td><strong>DML</strong></td><td>Data Manipulation Language</td><td>INSERT, UPDATE, DELETE, SELECT</td><td>Manipulate data in tables</td></tr>
+              <tr><td><strong>DQL</strong></td><td>Data Query Language</td><td>SELECT</td><td>Retrieve/query data</td></tr>
+              <tr><td><strong>DCL</strong></td><td>Data Control Language</td><td>GRANT, REVOKE</td><td>Control access/permissions</td></tr>
+              <tr><td><strong>TCL</strong></td><td>Transaction Control Language</td><td>COMMIT, ROLLBACK, SAVEPOINT</td><td>Manage transactions</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="notes-h4">MySQL Data Types</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Category</th><th>Data Type</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="4"><strong>Numeric</strong></td><td>INT</td><td>Integer numbers</td><td>Age INT</td></tr>
+              <tr><td>FLOAT</td><td>Floating point (single precision)</td><td>Price FLOAT</td></tr>
+              <tr><td>DECIMAL(p,s)</td><td>Exact numeric with precision</td><td>Salary DECIMAL(10,2)</td></tr>
+              <tr><td>BIGINT</td><td>Large integers</td><td>Population BIGINT</td></tr>
+              <tr><td rowspan="4"><strong>String</strong></td><td>CHAR(n)</td><td>Fixed length string</td><td>Gender CHAR(1)</td></tr>
+              <tr><td>VARCHAR(n)</td><td>Variable length string</td><td>Name VARCHAR(50)</td></tr>
+              <tr><td>TEXT</td><td>Large text data</td><td>Description TEXT</td></tr>
+              <tr><td>ENUM</td><td>Set of allowed values</td><td>Grade ENUM('A','B','C')</td></tr>
+              <tr><td rowspan="3"><strong>Date/Time</strong></td><td>DATE</td><td>Date (YYYY-MM-DD)</td><td>DOB DATE</td></tr>
+              <tr><td>TIME</td><td>Time (HH:MM:SS)</td><td>InTime TIME</td></tr>
+              <tr><td>DATETIME</td><td>Date and time combined</td><td>CreatedAt DATETIME</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ CHAR vs VARCHAR — Important Difference</div>
+          <ul class="notes-ul" style="margin:0;">
+            <li><strong>CHAR(n):</strong> Always stores exactly n characters. If input is shorter, pads with spaces. Faster but wastes space.</li>
+            <li><strong>VARCHAR(n):</strong> Stores only the actual characters entered (up to n). Saves space. Slightly slower.</li>
+            <li><strong>Example:</strong> CHAR(10) for "Ram" stores "Ram       " (7 spaces added). VARCHAR(10) stores "Ram" only.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TOPIC 6: DDL Commands ── -->
+    <div class="notes-chapter" id="ch6">
+      <div class="notes-chapter-header" onclick="toggleChapter('ch6')">
+        <h3><span class="ch-badge">Topic 6</span> DDL Commands — CREATE, ALTER, DROP</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <h4 class="notes-h4">CREATE Command</h4>
+        <div class="notes-def">
+          Used to <strong>create a new database or table</strong>.
+        </div>
+
+        <div class="notes-code"><span class="sql-cm">-- Create a Database</span>
+<span class="sql-kw">CREATE DATABASE</span> school;
+
+<span class="sql-cm">-- Use/Select a Database</span>
+<span class="sql-kw">USE</span> school;
+
+<span class="sql-cm">-- Create a Table</span>
+<span class="sql-kw">CREATE TABLE</span> STUDENT (
+  RollNo    <span class="sql-fn">INT</span>           <span class="sql-kw">PRIMARY KEY</span>,
+  Name      <span class="sql-fn">VARCHAR</span>(<span class="sql-num">50</span>)  <span class="sql-kw">NOT NULL</span>,
+  Age       <span class="sql-fn">INT</span>,
+  City      <span class="sql-fn">VARCHAR</span>(<span class="sql-num">30</span>),
+  Marks     <span class="sql-fn">DECIMAL</span>(<span class="sql-num">5</span>,<span class="sql-num">2</span>),
+  Gender    <span class="sql-fn">CHAR</span>(<span class="sql-num">1</span>),
+  DOB       <span class="sql-fn">DATE</span>
+);</div>
+
+        <h4 class="notes-h4">Constraints in CREATE TABLE</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Constraint</th><th>Meaning</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td>PRIMARY KEY</td><td>Unique + Not Null identifier</td><td>RollNo INT PRIMARY KEY</td></tr>
+              <tr><td>NOT NULL</td><td>Column cannot be empty</td><td>Name VARCHAR(50) NOT NULL</td></tr>
+              <tr><td>UNIQUE</td><td>All values must be different</td><td>Email VARCHAR(100) UNIQUE</td></tr>
+              <tr><td>DEFAULT</td><td>Sets a default value if none provided</td><td>City VARCHAR(30) DEFAULT 'Delhi'</td></tr>
+              <tr><td>CHECK</td><td>Validates data before inserting</td><td>Age INT CHECK(Age &gt;= 5)</td></tr>
+              <tr><td>FOREIGN KEY</td><td>References PK of another table</td><td>FOREIGN KEY(RollNo) REFERENCES STUDENT(RollNo)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-code"><span class="sql-cm">-- Table with Foreign Key example</span>
+<span class="sql-kw">CREATE TABLE</span> MARKS (
+  SrNo    <span class="sql-fn">INT</span>          <span class="sql-kw">PRIMARY KEY</span>,
+  RollNo  <span class="sql-fn">INT</span>,
+  Subject <span class="sql-fn">VARCHAR</span>(<span class="sql-num">30</span>) <span class="sql-kw">NOT NULL</span>,
+  Score   <span class="sql-fn">INT</span>          <span class="sql-kw">CHECK</span>(Score <span class="sql-kw">BETWEEN</span> <span class="sql-num">0</span> <span class="sql-kw">AND</span> <span class="sql-num">100</span>),
+  <span class="sql-kw">FOREIGN KEY</span>(RollNo) <span class="sql-kw">REFERENCES</span> STUDENT(RollNo)
+);</div>
+
+        <h4 class="notes-h4">ALTER Command</h4>
+        <div class="notes-def">
+          Used to <strong>modify an existing table</strong> — add/remove/modify columns or constraints.
+        </div>
+        <div class="notes-code"><span class="sql-cm">-- Add a new column</span>
+<span class="sql-kw">ALTER TABLE</span> STUDENT <span class="sql-kw">ADD</span> Email <span class="sql-fn">VARCHAR</span>(<span class="sql-num">100</span>);
+
+<span class="sql-cm">-- Modify/change a column's data type</span>
+<span class="sql-kw">ALTER TABLE</span> STUDENT <span class="sql-kw">MODIFY</span> Age <span class="sql-fn">TINYINT</span>;
+
+<span class="sql-cm">-- Rename a column</span>
+<span class="sql-kw">ALTER TABLE</span> STUDENT <span class="sql-kw">RENAME COLUMN</span> City <span class="sql-kw">TO</span> Address;
+
+<span class="sql-cm">-- Drop (remove) a column</span>
+<span class="sql-kw">ALTER TABLE</span> STUDENT <span class="sql-kw">DROP COLUMN</span> Gender;
+
+<span class="sql-cm">-- Add a constraint</span>
+<span class="sql-kw">ALTER TABLE</span> STUDENT <span class="sql-kw">ADD CONSTRAINT</span> chk_age <span class="sql-kw">CHECK</span>(Age &gt; <span class="sql-num">0</span>);</div>
+
+        <h4 class="notes-h4">DROP and TRUNCATE</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Command</th><th>Effect</th><th>Can be Rolled Back?</th></tr></thead>
+            <tbody>
+              <tr><td>DROP TABLE</td><td>Deletes the entire table (structure + data)</td><td>❌ No</td></tr>
+              <tr><td>TRUNCATE TABLE</td><td>Deletes all rows but keeps table structure</td><td>❌ No (DDL)</td></tr>
+              <tr><td>DELETE (DML)</td><td>Deletes specific or all rows</td><td>✅ Yes (with ROLLBACK)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-code"><span class="sql-kw">DROP TABLE</span> STUDENT;          <span class="sql-cm">-- Remove table completely</span>
+<span class="sql-kw">DROP DATABASE</span> school;         <span class="sql-cm">-- Remove entire database</span>
+<span class="sql-kw">TRUNCATE TABLE</span> STUDENT;       <span class="sql-cm">-- Delete all rows, keep structure</span></div>
+      </div>
+    </div>
+
+    <!-- ── TOPIC 7: DML Commands ── -->
+    <div class="notes-chapter" id="ch7">
+      <div class="notes-chapter-header" onclick="toggleChapter('ch7')">
+        <h3><span class="ch-badge">Topic 7</span> DML Commands — INSERT, UPDATE, DELETE, SELECT</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <h4 class="notes-h4">INSERT Command</h4>
+        <div class="notes-code"><span class="sql-cm">-- Insert all columns (order must match table structure)</span>
+<span class="sql-kw">INSERT INTO</span> STUDENT <span class="sql-kw">VALUES</span> (<span class="sql-num">101</span>, <span class="sql-str">'Aman Sharma'</span>, <span class="sql-num">17</span>, <span class="sql-str">'Delhi'</span>, <span class="sql-num">89.5</span>, <span class="sql-str">'M'</span>, <span class="sql-str">'2007-05-14'</span>);
+
+<span class="sql-cm">-- Insert specific columns</span>
+<span class="sql-kw">INSERT INTO</span> STUDENT (RollNo, Name, Marks) <span class="sql-kw">VALUES</span> (<span class="sql-num">102</span>, <span class="sql-str">'Priya'</span>, <span class="sql-num">92</span>);
+
+<span class="sql-cm">-- Insert multiple rows</span>
+<span class="sql-kw">INSERT INTO</span> STUDENT <span class="sql-kw">VALUES</span>
+  (<span class="sql-num">103</span>, <span class="sql-str">'Rohan'</span>, <span class="sql-num">17</span>, <span class="sql-str">'Delhi'</span>, <span class="sql-num">78</span>, <span class="sql-str">'M'</span>, <span class="sql-str">'2007-01-20'</span>),
+  (<span class="sql-num">104</span>, <span class="sql-str">'Neha'</span>,  <span class="sql-num">16</span>, <span class="sql-str">'Lucknow'</span>, <span class="sql-num">95</span>, <span class="sql-str">'F'</span>, <span class="sql-str">'2008-03-11'</span>);</div>
+
+        <h4 class="notes-h4">SELECT Command (Most Important)</h4>
+        <div class="notes-code"><span class="sql-cm">-- Select all columns</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT;
+
+<span class="sql-cm">-- Select specific columns</span>
+<span class="sql-kw">SELECT</span> Name, Marks <span class="sql-kw">FROM</span> STUDENT;
+
+<span class="sql-cm">-- WHERE clause — filter rows</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">WHERE</span> City = <span class="sql-str">'Delhi'</span>;
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">WHERE</span> Marks &gt; <span class="sql-num">80</span>;
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">WHERE</span> Age <span class="sql-kw">BETWEEN</span> <span class="sql-num">15</span> <span class="sql-kw">AND</span> <span class="sql-num">18</span>;
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">WHERE</span> Name <span class="sql-kw">LIKE</span> <span class="sql-str">'A%'</span>;     <span class="sql-cm">-- starts with A</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">WHERE</span> Name <span class="sql-kw">LIKE</span> <span class="sql-str">'%a'</span>;     <span class="sql-cm">-- ends with a</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">WHERE</span> Name <span class="sql-kw">LIKE</span> <span class="sql-str">'_o%'</span>;    <span class="sql-cm">-- 2nd char is o</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">WHERE</span> City <span class="sql-kw">IN</span> (<span class="sql-str">'Delhi'</span>, <span class="sql-str">'Mumbai'</span>);
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">WHERE</span> Age <span class="sql-kw">IS NULL</span>;
+
+<span class="sql-cm">-- ORDER BY — sort results</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">ORDER BY</span> Marks <span class="sql-kw">DESC</span>;   <span class="sql-cm">-- highest first</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">ORDER BY</span> Name <span class="sql-kw">ASC</span>;     <span class="sql-cm">-- alphabetical</span>
+
+<span class="sql-cm">-- DISTINCT — remove duplicates</span>
+<span class="sql-kw">SELECT DISTINCT</span> City <span class="sql-kw">FROM</span> STUDENT;
+
+<span class="sql-cm">-- LIMIT — retrieve limited rows</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">LIMIT</span> <span class="sql-num">3</span>;</div>
+
+        <h4 class="notes-h4">Aggregate Functions with GROUP BY</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Function</th><th>Purpose</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td>COUNT()</td><td>Count number of rows</td><td>SELECT COUNT(*) FROM STUDENT;</td></tr>
+              <tr><td>SUM()</td><td>Sum of values in a column</td><td>SELECT SUM(Marks) FROM STUDENT;</td></tr>
+              <tr><td>AVG()</td><td>Average of values</td><td>SELECT AVG(Marks) FROM STUDENT;</td></tr>
+              <tr><td>MAX()</td><td>Maximum value</td><td>SELECT MAX(Marks) FROM STUDENT;</td></tr>
+              <tr><td>MIN()</td><td>Minimum value</td><td>SELECT MIN(Age) FROM STUDENT;</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-code"><span class="sql-cm">-- GROUP BY — group rows by a column</span>
+<span class="sql-kw">SELECT</span> City, <span class="sql-fn">COUNT</span>(*) <span class="sql-kw">AS</span> Total <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">GROUP BY</span> City;
+<span class="sql-kw">SELECT</span> City, <span class="sql-fn">AVG</span>(Marks) <span class="sql-kw">FROM</span> STUDENT <span class="sql-kw">GROUP BY</span> City;
+
+<span class="sql-cm">-- HAVING — filter after GROUP BY (like WHERE for groups)</span>
+<span class="sql-kw">SELECT</span> City, <span class="sql-fn">COUNT</span>(*) <span class="sql-kw">FROM</span> STUDENT
+<span class="sql-kw">GROUP BY</span> City <span class="sql-kw">HAVING</span> <span class="sql-fn">COUNT</span>(*) &gt; <span class="sql-num">1</span>;</div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ WHERE vs HAVING — Important!</div>
+          <ul class="notes-ul" style="margin:0;">
+            <li><strong>WHERE</strong> filters rows <em>before</em> grouping. Cannot use aggregate functions.</li>
+            <li><strong>HAVING</strong> filters groups <em>after</em> GROUP BY. Can use aggregate functions.</li>
+            <li>Example: <code style="background:#fde68a;padding:2px 6px;border-radius:4px;">WHERE Marks &gt; 50</code> → filters individual rows. <code style="background:#fde68a;padding:2px 6px;border-radius:4px;">HAVING AVG(Marks) &gt; 50</code> → filters groups.</li>
+          </ul>
+        </div>
+
+        <h4 class="notes-h4">UPDATE Command</h4>
+        <div class="notes-code"><span class="sql-cm">-- Update specific rows</span>
+<span class="sql-kw">UPDATE</span> STUDENT <span class="sql-kw">SET</span> Marks = <span class="sql-num">95</span> <span class="sql-kw">WHERE</span> RollNo = <span class="sql-num">101</span>;
+
+<span class="sql-cm">-- Update multiple columns</span>
+<span class="sql-kw">UPDATE</span> STUDENT <span class="sql-kw">SET</span> City = <span class="sql-str">'Chennai'</span>, Age = <span class="sql-num">18</span> <span class="sql-kw">WHERE</span> RollNo = <span class="sql-num">102</span>;
+
+<span class="sql-cm">-- Update all rows (no WHERE — be careful!)</span>
+<span class="sql-kw">UPDATE</span> STUDENT <span class="sql-kw">SET</span> Marks = Marks + <span class="sql-num">5</span>;</div>
+
+        <h4 class="notes-h4">DELETE Command</h4>
+        <div class="notes-code"><span class="sql-cm">-- Delete specific rows</span>
+<span class="sql-kw">DELETE FROM</span> STUDENT <span class="sql-kw">WHERE</span> RollNo = <span class="sql-num">103</span>;
+
+<span class="sql-cm">-- Delete rows matching condition</span>
+<span class="sql-kw">DELETE FROM</span> STUDENT <span class="sql-kw">WHERE</span> Marks &lt; <span class="sql-num">33</span>;
+
+<span class="sql-cm">-- Delete all rows (keeps table structure)</span>
+<span class="sql-kw">DELETE FROM</span> STUDENT;</div>
+      </div>
+    </div>
+
+    <!-- ── TOPIC 8: Joins ── -->
+    <div class="notes-chapter" id="ch8">
+      <div class="notes-chapter-header" onclick="toggleChapter('ch8')">
+        <h3><span class="ch-badge">Topic 8</span> SQL Joins &amp; Normalization</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <h4 class="notes-h4">SQL Joins</h4>
+        <div class="notes-def">
+          <span class="def-term">📖 JOIN</span>
+          A <strong>JOIN</strong> is used to retrieve data from <strong>two or more tables</strong> based on a related column (usually a Foreign Key – Primary Key pair).
+        </div>
+
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Join Type</th><th>Returns</th></tr></thead>
+            <tbody>
+              <tr><td><strong>INNER JOIN (JOIN)</strong></td><td>Only matching rows from BOTH tables</td></tr>
+              <tr><td><strong>LEFT JOIN</strong></td><td>All rows from left table + matching from right (NULL if no match)</td></tr>
+              <tr><td><strong>RIGHT JOIN</strong></td><td>All rows from right table + matching from left (NULL if no match)</td></tr>
+              <tr><td><strong>CROSS JOIN</strong></td><td>Cartesian product — every row of left × every row of right</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-code"><span class="sql-cm">-- INNER JOIN — common rows only</span>
+<span class="sql-kw">SELECT</span> S.Name, S.City, M.Subject, M.Score
+<span class="sql-kw">FROM</span> STUDENT S
+<span class="sql-kw">INNER JOIN</span> MARKS M <span class="sql-kw">ON</span> S.RollNo = M.RollNo;
+
+<span class="sql-cm">-- LEFT JOIN — all students, even without marks</span>
+<span class="sql-kw">SELECT</span> S.Name, M.Score
+<span class="sql-kw">FROM</span> STUDENT S
+<span class="sql-kw">LEFT JOIN</span> MARKS M <span class="sql-kw">ON</span> S.RollNo = M.RollNo;
+
+<span class="sql-cm">-- Cartesian Product (old syntax)</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> STUDENT, MARKS;</div>
+
+        <h4 class="notes-h4">Normalization</h4>
+        <div class="notes-def">
+          <span class="def-term">📖 Normalization</span>
+          The process of <strong>organising a database</strong> to reduce data redundancy and improve data integrity by dividing large tables into smaller related tables.
+        </div>
+
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Normal Form</th><th>Condition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1NF (First Normal Form)</strong></td><td>Each column must have <strong>atomic (indivisible)</strong> values. No repeating groups.</td></tr>
+              <tr><td><strong>2NF (Second Normal Form)</strong></td><td>Must be in 1NF + <strong>no partial dependency</strong> (every non-key attribute fully depends on the whole primary key).</td></tr>
+              <tr><td><strong>3NF (Third Normal Form)</strong></td><td>Must be in 2NF + <strong>no transitive dependency</strong> (non-key attributes should not depend on other non-key attributes).</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="notes-h4">Important MySQL Commands for Reference</h4>
+        <div class="notes-code"><span class="sql-cm">-- Show all databases</span>
+<span class="sql-kw">SHOW DATABASES</span>;
+
+<span class="sql-cm">-- Show all tables in current database</span>
+<span class="sql-kw">SHOW TABLES</span>;
+
+<span class="sql-cm">-- See structure/schema of a table</span>
+<span class="sql-kw">DESCRIBE</span> STUDENT;
+<span class="sql-fn">DESC</span> STUDENT;
+
+<span class="sql-cm">-- See the CREATE statement used for a table</span>
+<span class="sql-kw">SHOW CREATE TABLE</span> STUDENT;
+
+<span class="sql-cm">-- Column alias (rename in output)</span>
+<span class="sql-kw">SELECT</span> Name <span class="sql-kw">AS</span> StudentName, Marks <span class="sql-kw">AS</span> Score <span class="sql-kw">FROM</span> STUDENT;
+
+<span class="sql-cm">-- String functions</span>
+<span class="sql-kw">SELECT</span> <span class="sql-fn">UPPER</span>(Name), <span class="sql-fn">LOWER</span>(City), <span class="sql-fn">LENGTH</span>(Name) <span class="sql-kw">FROM</span> STUDENT;
+<span class="sql-kw">SELECT</span> <span class="sql-fn">SUBSTRING</span>(Name, <span class="sql-num">1</span>, <span class="sql-num">3</span>) <span class="sql-kw">FROM</span> STUDENT;
+<span class="sql-kw">SELECT</span> <span class="sql-fn">CONCAT</span>(Name, <span class="sql-str">' - '</span>, City) <span class="sql-kw">FROM</span> STUDENT;
+
+<span class="sql-cm">-- Math / Numeric functions</span>
+<span class="sql-kw">SELECT</span> <span class="sql-fn">ROUND</span>(<span class="sql-num">89.67</span>, <span class="sql-num">1</span>);          <span class="sql-cm">-- 89.7</span>
+<span class="sql-kw">SELECT</span> <span class="sql-fn">MOD</span>(<span class="sql-num">10</span>, <span class="sql-num">3</span>);              <span class="sql-cm">-- 1</span>
+<span class="sql-kw">SELECT</span> <span class="sql-fn">POWER</span>(<span class="sql-num">2</span>, <span class="sql-num">8</span>);             <span class="sql-cm">-- 256</span>
+
+<span class="sql-cm">-- Date functions</span>
+<span class="sql-kw">SELECT</span> <span class="sql-fn">NOW</span>();                   <span class="sql-cm">-- current date & time</span>
+<span class="sql-kw">SELECT</span> <span class="sql-fn">CURDATE</span>();               <span class="sql-cm">-- today's date</span>
+<span class="sql-kw">SELECT</span> <span class="sql-fn">YEAR</span>(DOB) <span class="sql-kw">FROM</span> STUDENT; <span class="sql-cm">-- extract year from date</span></div>
+
+        <h4 class="notes-h4">Transaction Control Language (TCL)</h4>
+        <div class="notes-def">
+          <span class="def-term">📖 Transaction</span>
+          A <strong>Transaction</strong> is a sequence of one or more SQL statements that are executed as a single unit. Either all succeed (<strong>COMMIT</strong>) or all fail (<strong>ROLLBACK</strong>) — this is called <strong>Atomicity</strong>.
+        </div>
+        <div class="notes-code"><span class="sql-kw">START TRANSACTION</span>;           <span class="sql-cm">-- Begin transaction</span>
+
+<span class="sql-kw">UPDATE</span> STUDENT <span class="sql-kw">SET</span> Marks = <span class="sql-num">90</span> <span class="sql-kw">WHERE</span> RollNo = <span class="sql-num">101</span>;
+<span class="sql-kw">DELETE FROM</span> STUDENT <span class="sql-kw">WHERE</span> RollNo = <span class="sql-num">999</span>;
+
+<span class="sql-kw">SAVEPOINT</span> sp1;               <span class="sql-cm">-- Create a save point</span>
+
+<span class="sql-kw">ROLLBACK TO</span> sp1;             <span class="sql-cm">-- Undo changes after sp1</span>
+<span class="sql-kw">ROLLBACK</span>;                    <span class="sql-cm">-- Undo ALL changes in transaction</span>
+<span class="sql-kw">COMMIT</span>;                      <span class="sql-cm">-- Save all changes permanently</span></div>
+
+        <div class="notes-important">
+          <div class="imp-title">📌 ACID Properties — Important for Exam!</div>
+          <div class="notes-table-wrap" style="margin:6px 0 0;">
+            <table class="notes-table">
+              <thead><tr><th>Property</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><strong>A — Atomicity</strong></td><td>All operations in a transaction complete or none do (all-or-nothing).</td></tr>
+                <tr><td><strong>C — Consistency</strong></td><td>Database moves from one valid state to another; constraints always met.</td></tr>
+                <tr><td><strong>I — Isolation</strong></td><td>Concurrent transactions do not interfere with each other.</td></tr>
+                <tr><td><strong>D — Durability</strong></td><td>Once committed, changes are permanent even after system failure.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Quick Revision Summary ── -->
+    <div style="background:linear-gradient(135deg,#0f2557,#1a3a6b);border-radius:14px;padding:28px;color:#fff;margin-top:8px;">
+      <h3 style="font-family:'Poppins',sans-serif;font-size:1.15rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+        ⚡ Quick Revision — Key Points for Exam
+      </h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+        <div style="background:rgba(255,255,255,0.09);border-radius:10px;padding:14px;">
+          <div style="font-weight:800;color:#facc15;margin-bottom:6px;font-size:0.88rem;">🔑 Keys</div>
+          <ul style="padding-left:16px;margin:0;font-size:0.8rem;color:#cbd5e1;line-height:1.8;">
+            <li>PK = Unique + Not Null, only ONE per table</li>
+            <li>FK references PK of another table</li>
+            <li>Candidate Key = all possible PKs</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.09);border-radius:10px;padding:14px;">
+          <div style="font-weight:800;color:#facc15;margin-bottom:6px;font-size:0.88rem;">📋 SQL Types</div>
+          <ul style="padding-left:16px;margin:0;font-size:0.8rem;color:#cbd5e1;line-height:1.8;">
+            <li>DDL: CREATE, ALTER, DROP, TRUNCATE</li>
+            <li>DML: INSERT, UPDATE, DELETE, SELECT</li>
+            <li>DCL: GRANT, REVOKE</li>
+            <li>TCL: COMMIT, ROLLBACK, SAVEPOINT</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.09);border-radius:10px;padding:14px;">
+          <div style="font-weight:800;color:#facc15;margin-bottom:6px;font-size:0.88rem;">📊 Aggregate</div>
+          <ul style="padding-left:16px;margin:0;font-size:0.8rem;color:#cbd5e1;line-height:1.8;">
+            <li>COUNT, SUM, AVG, MAX, MIN</li>
+            <li>GROUP BY groups rows</li>
+            <li>HAVING filters groups (≠ WHERE)</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.09);border-radius:10px;padding:14px;">
+          <div style="font-weight:800;color:#facc15;margin-bottom:6px;font-size:0.88rem;">🔗 Join Types</div>
+          <ul style="padding-left:16px;margin:0;font-size:0.8rem;color:#cbd5e1;line-height:1.8;">
+            <li>INNER JOIN: matching rows only</li>
+            <li>LEFT JOIN: all left + matching right</li>
+            <li>CROSS JOIN: cartesian product</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.09);border-radius:10px;padding:14px;">
+          <div style="font-weight:800;color:#facc15;margin-bottom:6px;font-size:0.88rem;">🏗️ Normalization</div>
+          <ul style="padding-left:16px;margin:0;font-size:0.8rem;color:#cbd5e1;line-height:1.8;">
+            <li>1NF: Atomic values</li>
+            <li>2NF: No partial dependency</li>
+            <li>3NF: No transitive dependency</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.09);border-radius:10px;padding:14px;">
+          <div style="font-weight:800;color:#facc15;margin-bottom:6px;font-size:0.88rem;">💾 ACID</div>
+          <ul style="padding-left:16px;margin:0;font-size:0.8rem;color:#cbd5e1;line-height:1.8;">
+            <li>Atomicity: all-or-nothing</li>
+            <li>Consistency: valid state always</li>
+            <li>Isolation: concurrent safety</li>
+            <li>Durability: committed = permanent</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:18px;text-align:center;">
+        <button class="notes-back-btn" onclick="hideDbNotes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+      </div>
+    </div>
+
+  </div><!-- /notes-body -->
+</div><!-- /db-notes-section -->
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--   IT CLASS IX (402) — COMMUNICATION SKILLS I NOTES    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<style>
+  #comm-skills-notes-section {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #comm-skills-notes-section.active { display: block; }
+  @media print {
+    #comm-skills-notes-section .notes-topbar,
+    #comm-skills-notes-section .notes-back-btn,
+    #comm-skills-notes-section .notes-print-btn { display: none !important; }
+    #comm-skills-notes-section .notes-chapter-body { display: block !important; }
+    #comm-skills-notes-section { position: static !important; overflow: visible !important; }
+  }
+</style>
+
+<div id="comm-skills-notes-section">
+  <!-- Sticky top bar -->
+  <div class="notes-topbar">
+    <h2>
+      <span style="font-size:1.3rem;">💬</span>
+      IT Class IX (402) — Unit 1: Communication Skills – I
+    </h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCommSkillsNotes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="commNotesProgress" style="width:0%"></div></div>
+
+  <!-- SEARCH BAR -->
+  <div class="notes-search-wrap">
+    <div class="notes-search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input class="notes-search-input" id="commNotesSearch" type="text" placeholder="Topics, definitions, keywords search karein..." oninput="searchNotes('comm')">
+      <button class="notes-search-clear" id="commSearchClear" onclick="clearSearch('comm')" title="Clear">✕</button>
+    </div>
+    <span class="notes-search-count" id="commSearchCount"></span>
+  </div>
+  <div class="notes-no-results" id="commNoResults">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    Koi result nahi mila. Dusra keyword try karein.
+  </div>
+
+  <div class="notes-body" id="commNotesBody">
+
+    <!-- ═══ INTRO BANNER ═══ -->
+    <div style="background:linear-gradient(135deg,#0f2557,#1d4ed8);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">💬</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class IX · IT Code 402 · Part A · Unit 1</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Communication Skills – I</h2>
+      <p style="color:#93c5fd;font-size:0.9rem;line-height:1.7;max-width:680px;">Complete notes covering Introduction to Communication, Verbal &amp; Non-Verbal Communication, Writing Skills, Pronunciation, Greetings, and Asking Questions — as per CBSE Employability Skills syllabus.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 7 Sessions</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💡 Examples Included</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">🔤 7Cs of Communication</span>
+      </div>
+    </div>
+
+    <!-- ── SESSION 1: Introduction to Communication ── -->
+    <div class="notes-chapter open" id="cs-ch1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs-ch1')">
+        <h3><span class="ch-badge">Session 1</span> Introduction to Communication</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 What is Communication?</span>
+          The word <strong>'Communication'</strong> comes from the Latin word <em>commūnicāre</em>, meaning <strong>'to share'</strong>. Communication is the exchange of information through signs, signals, speech, writing, or other forms of media.
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Importance of Communication</div>
+          Communication skills are needed to:
+          <ul class="notes-ul" style="margin:8px 0 0;">
+            <li><strong>Inform</strong> — Give facts or information to someone.</li>
+            <li><strong>Influence</strong> — Change or persuade someone in an indirect but important way.</li>
+            <li><strong>Express Feelings</strong> — Talking about your feelings is a healthy way to express them.</li>
+          </ul>
+        </div>
+
+        <h4 class="notes-h4">Elements of Communication</h4>
+        <p style="margin-bottom:10px;">Communication is a <strong>two-way exchange</strong> of information — giving and receiving.</p>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Element</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Sender</strong></td><td>The person who starts the communication process by sending a message.</td></tr>
+              <tr><td><strong>Message</strong></td><td>The information, idea, or feeling the sender wants to convey.</td></tr>
+              <tr><td><strong>Channel</strong></td><td>The path/medium used (phone, face-to-face, writing, email, etc.).</td></tr>
+              <tr><td><strong>Receiver</strong></td><td>The person who receives and understands the message.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="notes-h4">Perspectives in Communication</h4>
+        <div class="notes-def">
+          <span class="def-term">📖 Perspectives</span>
+          Perspectives are <strong>ideas, views, or fixed ways of thinking</strong> that sometimes affect our communication. For example, if your teacher is usually strict, even when they are being friendly, you may think they are scolding you.
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Factors Affecting Perspectives in Communication</div>
+          <ul class="notes-ul" style="margin:0;">
+            <li><strong>Language</strong> — Incorrect words, unfamiliar language, or lack of detail can act as a barrier.</li>
+            <li><strong>Visual Perception</strong> — The brain's ability to make sense of what we see. E.g., partially drawn pictures can be misunderstood.</li>
+            <li><strong>Past Experience</strong> — Earlier experiences can stop us from understanding clearly. E.g., "This shopkeeper cheated me last time."</li>
+            <li><strong>Prejudice</strong> — Fixed ideas like "No one in my class likes me" may stop a student from communicating openly.</li>
+            <li><strong>Feelings</strong> — Emotions like lack of interest or distrust affect communication. E.g., "I am not feeling well."</li>
+            <li><strong>Environment</strong> — Noise or disturbance in surroundings can make communication difficult.</li>
+            <li><strong>Personal Factors</strong> — Your own feelings, habits, and ways of thinking.</li>
+            <li><strong>Culture</strong> — Signs mean different things in different cultures. E.g., showing a thumb means 'good job' for some but may be insulting to others.</li>
+          </ul>
+        </div>
+
+        <h4 class="notes-h4">7Cs — Principles of Effective Communication</h4>
+        <p style="margin-bottom:12px;">Effective communication can happen if we follow the <strong>7C principles</strong> of professional communication:</p>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>C</th><th>Principle</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td>1️⃣</td><td><strong>Clear</strong></td><td>Be clear about what you want to say.</td></tr>
+              <tr><td>2️⃣</td><td><strong>Concise</strong></td><td>Use simple words and say only what is needed.</td></tr>
+              <tr><td>3️⃣</td><td><strong>Concrete</strong></td><td>Use exact words and specific phrases.</td></tr>
+              <tr><td>4️⃣</td><td><strong>Correct</strong></td><td>Use correct spellings, language, and grammar.</td></tr>
+              <tr><td>5️⃣</td><td><strong>Coherent</strong></td><td>Your words should make sense and relate to the main topic.</td></tr>
+              <tr><td>6️⃣</td><td><strong>Complete</strong></td><td>Your message should have all the needed information.</td></tr>
+              <tr><td>7️⃣</td><td><strong>Courteous</strong></td><td>Be respectful, friendly, and honest.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SESSION 2: Verbal Communication ── -->
+    <div class="notes-chapter" id="cs-ch2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs-ch2')">
+        <h3><span class="ch-badge">Session 2</span> Verbal Communication</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 Verbal Communication</span>
+          Verbal communication is the <strong>sharing of information by using words</strong>. It is the most commonly used method of communication. Using the right words is very important — wrong words cause confusion.
+        </div>
+
+        <h4 class="notes-h4">Types of Verbal Communication</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Oral / Spoken Communication</strong></td>
+                <td>Exchanging information using spoken words</td>
+                <td>Face-to-face conversation, phone calls, classroom teaching, business discussions, public speeches</td>
+              </tr>
+              <tr>
+                <td><strong>Written Communication</strong></td>
+                <td>Conveying information through written words</td>
+                <td>Letters, notes, emails, SMS, books, newspapers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Advantages &amp; Disadvantages of Verbal Communication</div>
+          <p><strong>✅ Advantages:</strong></p>
+          <ul class="notes-ul" style="margin:4px 0 10px;">
+            <li>Easy and quick to use.</li>
+            <li>Easier to exchange ideas back and forth.</li>
+            <li>You can change your communication based on the other person's reply.</li>
+          </ul>
+          <p><strong>❌ Disadvantages:</strong></p>
+          <ul class="notes-ul" style="margin:4px 0 0;">
+            <li>Cultural differences between sender and receiver can cause misunderstandings.</li>
+            <li>If the right words are not used, meanings become confusing and difficult to understand.</li>
+          </ul>
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">🎤 Public Speaking</span>
+          Speaking in front of a large group is known as <strong>public speaking</strong>. The most difficult part is fear and nervousness. You can use the <strong>3Ps method</strong> to overcome your fears.
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ 3Ps of Public Speaking</div>
+          <ul class="notes-ul" style="margin:0;">
+            <li><strong>Prepare</strong>
+              <ul style="margin-top:4px;padding-left:18px;">
+                <li>Think about your topic.</li>
+                <li>Think about what your listeners need to know.</li>
+                <li>Think about the best way to help listeners understand.</li>
+                <li>Write what you plan to say.</li>
+              </ul>
+            </li>
+            <li><strong>Practice</strong>
+              <ul style="margin-top:4px;padding-left:18px;">
+                <li>Practice by yourself first.</li>
+                <li>Talk in front of a mirror.</li>
+                <li>Talk in front of family and friends and ask for feedback.</li>
+                <li>Speak clearly, loudly, and at the right speed.</li>
+              </ul>
+            </li>
+            <li><strong>Perform</strong>
+              <ul style="margin-top:4px;padding-left:18px;">
+                <li>Take a few deep breaths if feeling nervous.</li>
+                <li>Think about what you have prepared and start speaking confidently.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SESSION 3: Non-Verbal Communication ── -->
+    <div class="notes-chapter" id="cs-ch3">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs-ch3')">
+        <h3><span class="ch-badge">Session 3</span> Non-Verbal Communication</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 Non-Verbal Communication</span>
+          Non-verbal communication is the <strong>message we send to others without using any words</strong>. We communicate through signals, expressions, gestures, body postures, and body language.
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Importance of Non-Verbal Communication</div>
+          Research shows that most of our daily communication is done through:
+          <ul class="notes-ul" style="margin:8px 0 0;">
+            <li><strong>Body movements</strong> (face, arms, movements, etc.) — ~55%</li>
+            <li><strong>Voice control</strong> (tone, pauses, volume) — ~38%</li>
+            <li><strong>Words</strong> (actual content spoken) — only ~7%</li>
+          </ul>
+          This shows non-verbal communication is more powerful than verbal!
+        </div>
+
+        <h4 class="notes-h4">Types of Non-Verbal Communication</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Facial Expression</strong></td><td>Shows the feelings of a person through face movements</td><td>Smiling, frowning, raised eyebrows</td></tr>
+              <tr><td><strong>Posture</strong></td><td>Body positions showing confidence and feelings</td><td>Standing straight = confidence; slouching = boredom</td></tr>
+              <tr><td><strong>Gestures / Body Language</strong></td><td>Movements of hands or head to express an idea</td><td>Waving goodbye, nodding yes</td></tr>
+              <tr><td><strong>Touch</strong></td><td>Communication through physical contact</td><td>Shaking hands, patting on the back</td></tr>
+              <tr><td><strong>Space (Proxemics)</strong></td><td>Maintaining proper distance while talking</td><td>Standing closer with close friends</td></tr>
+              <tr><td><strong>Eye Contact</strong></td><td>Looking at the person while talking shows interest</td><td>Looking away can make the other person feel ignored</td></tr>
+              <tr><td><strong>Paralanguage</strong></td><td>Tone, speed, and volume of voice that changes the meaning</td><td>Saying "Really?" with surprise vs. sarcasm</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">🖼️ Visual Communication</span>
+          Visual communication involves <strong>sending and understanding messages only through images or pictures</strong>.
+          <br><br>
+          <strong>Advantages:</strong>
+          <ul class="notes-ul" style="margin:6px 0 0;">
+            <li>Easy to understand by everyone.</li>
+            <li>Can convey the message to a large audience quickly.</li>
+          </ul>
+          <br>
+          <strong>Examples:</strong> Traffic signs, maps, charts, graphs, emojis, logos, diagrams.
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SESSION 4: Writing Skills — Parts of Speech ── -->
+    <div class="notes-chapter" id="cs-ch4">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs-ch4')">
+        <h3><span class="ch-badge">Session 4</span> Writing Skills: Parts of Speech</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 Sentence vs Phrase</span>
+          <ul class="notes-ul" style="margin:6px 0 0;">
+            <li><strong>Sentence</strong> — A group of words that communicates a <strong>complete thought</strong>. Begins with a capital letter and ends with a full stop, question mark, or exclamation mark. <em>Example: Raju goes to school.</em></li>
+            <li><strong>Phrase</strong> — A group of words that does <strong>NOT make complete sense</strong>. <em>Example: goes to school</em></li>
+          </ul>
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ MINTS — Capitalisation Rules</div>
+          <table class="notes-table" style="margin:8px 0 0;">
+            <thead><tr><th>Letter</th><th>Rule</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>M</strong></td><td>Months, Days, Holidays</td><td>January, Monday, Diwali</td></tr>
+              <tr><td><strong>I</strong></td><td>The word "I" is always capitalised</td><td>I am a student.</td></tr>
+              <tr><td><strong>N</strong></td><td>Names of people and places</td><td>Rahul, Delhi, India</td></tr>
+              <tr><td><strong>T</strong></td><td>Titles and headings</td><td>Mr. Sharma, Dr. Gupta</td></tr>
+              <tr><td><strong>S</strong></td><td>Start of every sentence</td><td>The boy is playing.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="notes-h4">Punctuation Marks</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Name</th><th>Sign</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td>Full Stop</td><td><strong>.</strong></td><td>End of a statement sentence</td></tr>
+              <tr><td>Comma</td><td><strong>,</strong></td><td>Short pause in a sentence; separating items in a list</td></tr>
+              <tr><td>Question Mark</td><td><strong>?</strong></td><td>End of a question sentence</td></tr>
+              <tr><td>Exclamation Mark</td><td><strong>!</strong></td><td>Shows strong feelings — surprise, anger, joy</td></tr>
+              <tr><td>Apostrophe</td><td><strong>'</strong></td><td>Shows possession or omission (e.g., Rahul's, don't)</td></tr>
+              <tr><td>Inverted Commas</td><td><strong>" "</strong></td><td>Encloses direct speech or quoted text</td></tr>
+              <tr><td>Colon</td><td><strong>:</strong></td><td>Introduces a list or explanation</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="notes-h4">Basic Parts of Speech</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Part of Speech</th><th>Definition</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Noun</strong></td><td>Name of a person, place, thing, or idea</td><td>Rahul, Delhi, book, love</td></tr>
+              <tr><td><strong>Pronoun</strong></td><td>Word used in place of a noun</td><td>he, she, it, they, I, we</td></tr>
+              <tr><td><strong>Verb</strong></td><td>Action or state of being</td><td>run, eat, is, are, was</td></tr>
+              <tr><td><strong>Adjective</strong></td><td>Describes a noun or pronoun</td><td>tall, red, happy, big</td></tr>
+              <tr><td><strong>Adverb</strong></td><td>Describes a verb, adjective, or another adverb</td><td>quickly, very, well, slowly</td></tr>
+              <tr><td><strong>Preposition</strong></td><td>Shows the relationship between noun and other words</td><td>in, on, at, under, beside</td></tr>
+              <tr><td><strong>Conjunction</strong></td><td>Joins words, phrases, or clauses</td><td>and, but, or, because, so</td></tr>
+              <tr><td><strong>Interjection</strong></td><td>Expresses sudden emotion</td><td>Oh! Wow! Hurray! Ouch!</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SESSION 5: Writing Skills — Sentences ── -->
+    <div class="notes-chapter" id="cs-ch5">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs-ch5')">
+        <h3><span class="ch-badge">Session 5</span> Writing Skills: Sentences</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 Subject, Verb and Object</span>
+          <ul class="notes-ul" style="margin:6px 0 0;">
+            <li><strong>Subject</strong> — The person or thing that performs the action. <em>Example: <u>Raju</u> eats a mango.</em></li>
+            <li><strong>Verb</strong> — The action word. <em>Example: Raju <u>eats</u> a mango.</em></li>
+            <li><strong>Object</strong> — The person or thing on which the action is performed. <em>Example: Raju eats <u>a mango</u>.</em></li>
+          </ul>
+        </div>
+
+        <h4 class="notes-h4">Types of Objects</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Direct Object</strong></td><td>Directly receives the action of the verb</td><td>Priya gave <u>a book</u>.</td></tr>
+              <tr><td><strong>Indirect Object</strong></td><td>Tells to whom or for whom the action is done</td><td>Priya gave <u>Rahul</u> a book.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="notes-h4">Types of Sentences (Based on Structure)</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Simple Sentence</strong></td><td>Has one subject and one verb (one independent clause)</td><td>Raju goes to school.</td></tr>
+              <tr><td><strong>Compound Sentence</strong></td><td>Two or more simple sentences joined by a conjunction</td><td>Raju goes to school and he studies hard.</td></tr>
+              <tr><td><strong>Complex Sentence</strong></td><td>One main clause + one or more dependent clauses</td><td>Although it rained, Raju went to school.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="notes-h4">Types of Sentences (Based on Purpose)</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>End Mark</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Declarative</strong></td><td>Makes a statement</td><td>.</td><td>She reads a book.</td></tr>
+              <tr><td><strong>Interrogative</strong></td><td>Asks a question</td><td>?</td><td>Does she read a book?</td></tr>
+              <tr><td><strong>Imperative</strong></td><td>Gives a command or request</td><td>. or !</td><td>Read the book now.</td></tr>
+              <tr><td><strong>Exclamatory</strong></td><td>Expresses strong feeling</td><td>!</td><td>What a great book!</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">📖 Paragraph</span>
+          A <strong>paragraph</strong> is a group of related sentences that deal with a <strong>single main idea</strong>. A good paragraph has:
+          <ul class="notes-ul" style="margin:6px 0 0;">
+            <li><strong>Topic Sentence</strong> — States the main idea of the paragraph.</li>
+            <li><strong>Supporting Sentences</strong> — Give details and examples to explain the main idea.</li>
+            <li><strong>Concluding Sentence</strong> — Summarises or wraps up the paragraph.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SESSION 6: Pronunciation Basics ── -->
+    <div class="notes-chapter" id="cs-ch6">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs-ch6')">
+        <h3><span class="ch-badge">Session 6</span> Pronunciation Basics</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 Pronunciation</span>
+          Pronunciation is the <strong>way we speak a word</strong> — the sounds we make and the stress we place on certain syllables. Correct pronunciation helps others understand us clearly.
+        </div>
+
+        <div class="notes-def">
+          <span class="def-term">📖 Phonetics</span>
+          Phonetics is the <strong>study of the sounds of speech</strong>. It helps us understand how to correctly pronounce words. Each sound in a language is represented by a phonetic symbol.
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Key Pronunciation Tips</div>
+          <ul class="notes-ul" style="margin:0;">
+            <li>Speak <strong>clearly</strong> and at a moderate speed — not too fast, not too slow.</li>
+            <li>Pay attention to <strong>stress</strong> in words. E.g., <em>PREsent</em> (noun) vs <em>preSENT</em> (verb).</li>
+            <li>Words can have <strong>silent letters</strong>. E.g., the 'k' in 'knife' is silent.</li>
+            <li>Practice with a dictionary that shows phonetic symbols.</li>
+            <li>Listen carefully to how native or fluent speakers pronounce words.</li>
+          </ul>
+        </div>
+
+        <div class="notes-example">
+          <span class="ex-title">📊 Common Pronunciation Mistakes (Indian English)</span>
+          <div class="notes-table-wrap" style="margin:0;">
+            <table class="notes-table">
+              <thead><tr><th>Word</th><th>Wrong Pronunciation</th><th>Correct Pronunciation</th></tr></thead>
+              <tbody>
+                <tr><td>Knife</td><td>K-nife</td><td>Nife (silent 'k')</td></tr>
+                <tr><td>Wednesday</td><td>Wed-nes-day</td><td>Wenz-day</td></tr>
+                <tr><td>Receipt</td><td>Re-see-pt</td><td>Ri-seet (silent 'p')</td></tr>
+                <tr><td>Doubt</td><td>Doubt (with 'b' sound)</td><td>Dout (silent 'b')</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SESSION 7: Greetings and Introductions ── -->
+    <div class="notes-chapter" id="cs-ch7">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs-ch7')">
+        <h3><span class="ch-badge">Session 7</span> Greetings and Introductions</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 Greeting</span>
+          A greeting is a <strong>word or phrase used to welcome</strong> or acknowledge someone when you meet them or communicate with them. It is the first step in any communication.
+        </div>
+
+        <h4 class="notes-h4">Types of Greetings</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Examples</th><th>When to Use</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Formal Greetings</strong></td><td>Good morning, Good afternoon, Good evening, How do you do?</td><td>With teachers, elders, strangers, in professional settings</td></tr>
+              <tr><td><strong>Informal Greetings</strong></td><td>Hi, Hello, Hey, What's up?</td><td>With friends, classmates, family of similar age</td></tr>
+              <tr><td><strong>Written Greetings</strong></td><td>Dear Sir/Madam, To Whom It May Concern, Hi [Name]</td><td>In letters, emails, messages</td></tr>
+              <tr><td><strong>Cultural Greetings</strong></td><td>Namaste, Sat Sri Akal, Salaam</td><td>Based on cultural or regional context</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Self-Introduction Tips</div>
+          When introducing yourself, always include:
+          <ul class="notes-ul" style="margin:8px 0 0;">
+            <li>Your <strong>name</strong></li>
+            <li>Your <strong>class / school</strong></li>
+            <li>Your <strong>hometown / city</strong></li>
+            <li>Your <strong>interests / hobbies</strong> (optional but good)</li>
+          </ul>
+          <br>
+          <strong>Example:</strong> "Good morning! My name is Rahul Sharma. I am a student of Class IX at ABC School in Lucknow. I enjoy reading books and playing cricket."
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SESSION 9 & 10: Asking Questions ── -->
+    <div class="notes-chapter" id="cs-ch8">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs-ch8')">
+        <h3><span class="ch-badge">Session 9 &amp; 10</span> Asking Questions</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+
+        <div class="notes-def">
+          <span class="def-term">📖 Asking Questions</span>
+          Asking questions is an important communication skill. It helps us <strong>gather information, clarify doubts, and show interest</strong> in what the other person is saying.
+        </div>
+
+        <h4 class="notes-h4">Types of Questions</h4>
+        <div class="notes-table-wrap">
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Open Questions</strong></td>
+                <td>Cannot be answered with just Yes or No. They invite a detailed response and start with Wh- words.</td>
+                <td>What do you think about this? / How did you do that?</td>
+              </tr>
+              <tr>
+                <td><strong>Closed Questions</strong></td>
+                <td>Can be answered with a simple Yes or No or a one-word answer.</td>
+                <td>Did you do your homework? / Are you coming?</td>
+              </tr>
+              <tr>
+                <td><strong>Clarifying Questions</strong></td>
+                <td>Asked when you do not understand something and want to make it clear.</td>
+                <td>Could you please explain that again? / What do you mean by that?</td>
+              </tr>
+              <tr>
+                <td><strong>Probing Questions</strong></td>
+                <td>Used to dig deeper into a topic or find more details.</td>
+                <td>Why do you think that? / Can you give an example?</td>
+              </tr>
+              <tr>
+                <td><strong>Rhetorical Questions</strong></td>
+                <td>Asked for effect — not expecting an actual answer.</td>
+                <td>Isn't the sky beautiful today?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notes-important">
+          <div class="imp-title">⭐ Wh- Question Words</div>
+          <div class="notes-table-wrap" style="margin:0;">
+            <table class="notes-table">
+              <thead><tr><th>Question Word</th><th>Used to Ask About</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td><strong>What</strong></td><td>Things / Information</td><td>What is your name?</td></tr>
+                <tr><td><strong>Who</strong></td><td>Person</td><td>Who is your teacher?</td></tr>
+                <tr><td><strong>Where</strong></td><td>Place</td><td>Where do you live?</td></tr>
+                <tr><td><strong>When</strong></td><td>Time</td><td>When is your exam?</td></tr>
+                <tr><td><strong>Why</strong></td><td>Reason</td><td>Why were you absent?</td></tr>
+                <tr><td><strong>How</strong></td><td>Manner / Method</td><td>How do you spell that?</td></tr>
+                <tr><td><strong>Which</strong></td><td>Choice between options</td><td>Which subject do you like?</td></tr>
+                <tr><td><strong>Whose</strong></td><td>Ownership</td><td>Whose book is this?</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer inside notes -->
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCommSkillsNotes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+
+  </div><!-- /notes-body -->
+</div><!-- /comm-skills-notes-section -->
+
+<script>
+  function showDbNotes(e) {
+    if (e) e.preventDefault();
+    const section = document.getElementById('db-notes-section');
+    section.classList.add('active');
+    section.scrollTop = 0;
+    // close mobile nav
+    const nav = document.getElementById('navLinks');
+    if (nav) nav.classList.remove('open');
+  }
+
+  function hideDbNotes() {
+    document.getElementById('db-notes-section').classList.remove('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showCommSkillsNotes(e) {
+    if (e) e.preventDefault();
+    const section = document.getElementById('comm-skills-notes-section');
+    section.classList.add('active');
+    section.scrollTop = 0;
+    const nav = document.getElementById('navLinks');
+    if (nav) nav.classList.remove('open');
+  }
+
+  function hideCommSkillsNotes() {
+    document.getElementById('comm-skills-notes-section').classList.remove('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Reading progress bar for Comm Skills notes
+  const commNotesSection = document.getElementById('comm-skills-notes-section');
+  commNotesSection.addEventListener('scroll', function () {
+    const scrollTop = commNotesSection.scrollTop;
+    const scrollHeight = commNotesSection.scrollHeight - commNotesSection.clientHeight;
+    const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    document.getElementById('commNotesProgress').style.width = pct + '%';
+  });
+
+  function toggleChapter(id) {
+    const ch = document.getElementById(id);
+    ch.classList.toggle('open');
+  }
+
+  function switchSession(sessionId, btn) {
+    // Hide all panels
+    document.querySelectorAll('.session-panel').forEach(p => p.classList.remove('active'));
+    // Deactivate all tabs
+    document.querySelectorAll('.session-tab').forEach(t => t.classList.remove('active'));
+    // Show selected panel
+    document.getElementById('session-' + sessionId).classList.add('active');
+    // Activate clicked tab
+    btn.classList.add('active');
+  }
+
+  // Reading progress bar
+  const notesSection = document.getElementById('db-notes-section');
+  notesSection.addEventListener('scroll', function () {
+    const scrollTop = notesSection.scrollTop;
+    const scrollHeight = notesSection.scrollHeight - notesSection.clientHeight;
+    const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    document.getElementById('notesProgress').style.width = pct + '%';
+  });
+</script>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--              MCQ QUIZ SECTION                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<style>
+  #quiz-section {
+    display: none; position: fixed; inset: 0; z-index: 60000;
+    background: #f0f4ff; overflow-y: auto;
+  }
+  #quiz-section.active { display: block; }
+
+  .quiz-topbar {
+    background: #fff; border-bottom: 2px solid #e8f0fe;
+    padding: 14px 24px; display: flex; align-items: center;
+    justify-content: space-between; gap: 12px;
+    position: sticky; top: 0; z-index: 10;
+    box-shadow: 0 2px 12px rgba(26,58,107,0.08);
+  }
+  .quiz-topbar h2 {
+    font-family: 'Poppins',sans-serif; font-size: 1.1rem;
+    font-weight: 800; color: var(--primary);
+    display: flex; align-items: center; gap: 8px; margin: 0;
+  }
+  .quiz-back-btn {
+    background: var(--primary); color: #fff;
+    border: none; border-radius: 9px; padding: 8px 18px;
+    font-family: 'Nunito',sans-serif; font-weight: 700;
+    font-size: 0.88rem; cursor: pointer; transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .quiz-back-btn:hover { background: #0f2557; }
+
+  .quiz-body { max-width: 860px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  /* Chapter selector */
+  .quiz-chapter-select {
+    background: #fff; border-radius: 14px;
+    padding: 24px; box-shadow: 0 4px 20px rgba(26,58,107,0.08);
+    margin-bottom: 24px;
+  }
+  .quiz-chapter-select h3 {
+    font-family: 'Poppins',sans-serif; font-size: 1rem; font-weight: 800;
+    color: var(--primary); margin-bottom: 16px;
+  }
+  .quiz-subject-tabs {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .quiz-subj-tab {
+    padding: 7px 16px; border-radius: 20px; font-size: 0.82rem;
+    font-weight: 700; cursor: pointer; border: 2px solid #dbeafe;
+    background: #fff; color: var(--text); transition: all 0.2s;
+  }
+  .quiz-subj-tab.active {
+    background: var(--primary); color: #fff; border-color: var(--primary);
+  }
+  .quiz-chapters-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .quiz-chapter-btn {
+    background: #f0f4ff; border: 1.5px solid #dbeafe; border-radius: 10px;
+    padding: 12px 16px; cursor: pointer; text-align: left;
+    font-family: 'Nunito',sans-serif; font-size: 0.85rem; font-weight: 700;
+    color: var(--primary); transition: all 0.2s; display: flex;
+    align-items: center; gap: 8px;
+  }
+  .quiz-chapter-btn:hover {
+    background: var(--python-blue); color: #fff; border-color: var(--python-blue);
+    transform: translateY(-2px);
+  }
+  .quiz-chapter-btn .qcb-num {
+    background: var(--python-blue); color: #fff; border-radius: 6px;
+    font-size: 0.72rem; padding: 2px 7px; font-weight: 800; flex-shrink: 0;
+  }
+  .quiz-chapter-btn:hover .qcb-num { background: rgba(255,255,255,0.3); }
+
+  /* Quiz active area */
+  .quiz-active-area { display: none; }
+  .quiz-active-area.visible { display: block; }
+
+  .quiz-progress-info {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
+  }
+  .quiz-progress-info span { font-size: 0.85rem; color: var(--text-light); font-weight: 600; }
+  .quiz-timer {
+    background: #fff; border: 2px solid #dbeafe; border-radius: 20px;
+    padding: 5px 14px; font-weight: 800; font-size: 0.88rem;
+    color: var(--primary); display: flex; align-items: center; gap: 6px;
+  }
+  .quiz-timer.danger { border-color: #fca5a5; color: #dc2626; background: #fff1f2; }
+
+  .quiz-progress-track {
+    background: #e2e8f0; border-radius: 4px; height: 6px; margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%; background: linear-gradient(90deg, var(--python-blue), var(--secondary));
+    border-radius: 4px; transition: width 0.4s ease;
+  }
+
+  .quiz-card {
+    background: #fff; border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(26,58,107,0.09);
+    padding: 28px 28px 22px; margin-bottom: 20px;
+    animation: fadeSlideIn 0.3s ease;
+  }
+  .quiz-qnum {
+    font-size: 0.75rem; font-weight: 800; color: var(--python-blue);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;
+  }
+  .quiz-question {
+    font-family: 'Poppins',sans-serif; font-size: 1.05rem; font-weight: 700;
+    color: var(--text); margin-bottom: 20px; line-height: 1.55;
+  }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+  .quiz-option {
+    display: flex; align-items: center; gap: 12px;
+    background: #f8faff; border: 2px solid #e2e8f0;
+    border-radius: 10px; padding: 12px 16px; cursor: pointer;
+    transition: all 0.2s; font-size: 0.92rem; color: var(--text);
+    font-weight: 600;
+  }
+  .quiz-option:hover { border-color: var(--python-blue); background: #eff6ff; }
+  .quiz-option.selected { border-color: var(--python-blue); background: #dbeafe; color: var(--primary); }
+  .quiz-option.correct { border-color: #22c55e; background: #f0fdf4; color: #166534; }
+  .quiz-option.wrong { border-color: #ef4444; background: #fff1f2; color: #991b1b; }
+  .quiz-option.show-correct { border-color: #22c55e; background: #f0fdf4; color: #166534; }
+  .quiz-option .opt-letter {
+    width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 800;
+    background: #dbeafe; color: var(--python-blue);
+  }
+  .quiz-option.correct .opt-letter { background: #bbf7d0; color: #166534; }
+  .quiz-option.wrong .opt-letter { background: #fecaca; color: #991b1b; }
+  .quiz-option.show-correct .opt-letter { background: #bbf7d0; color: #166534; }
+
+  .quiz-explanation {
+    display: none; margin-top: 14px; padding: 12px 16px;
+    background: #f0fdf4; border-left: 4px solid #22c55e;
+    border-radius: 0 10px 10px 0; font-size: 0.88rem; color: #166534;
+    line-height: 1.65;
+  }
+  .quiz-explanation.wrong-exp { background: #fff7ed; border-color: var(--secondary); color: #92400e; }
+  .quiz-explanation.show { display: block; animation: fadeSlideIn 0.25s ease; }
+
+  .quiz-nav-btns {
+    display: flex; gap: 10px; justify-content: space-between;
+    align-items: center; margin-top: 8px; flex-wrap: wrap;
+  }
+  .quiz-btn {
+    padding: 10px 24px; border-radius: 10px; font-weight: 700;
+    font-size: 0.9rem; cursor: pointer; border: none; transition: all 0.2s;
+    font-family: 'Nunito',sans-serif; display: flex; align-items: center; gap: 7px;
+  }
+  .quiz-btn-primary { background: var(--primary); color: #fff; }
+  .quiz-btn-primary:hover { background: #0f2557; transform: translateY(-1px); }
+  .quiz-btn-secondary { background: #f1f5f9; color: var(--text); }
+  .quiz-btn-secondary:hover { background: #e2e8f0; }
+  .quiz-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+  /* Result Screen */
+  .quiz-result {
+    display: none; background: #fff; border-radius: 16px;
+    padding: 36px 28px; text-align: center;
+    box-shadow: 0 4px 24px rgba(26,58,107,0.09);
+  }
+  .quiz-result.show { display: block; animation: fadeSlideIn 0.4s ease; }
+  .quiz-result-emoji { font-size: 3.5rem; margin-bottom: 12px; }
+  .quiz-result h2 {
+    font-family: 'Poppins',sans-serif; font-size: 1.5rem; font-weight: 900;
+    color: var(--primary); margin-bottom: 8px;
+  }
+  .quiz-score-ring {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--python-blue), var(--secondary));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 20px auto; color: #fff;
+  }
+  .quiz-score-ring .score-num {
+    font-family: 'Poppins',sans-serif; font-size: 2.2rem; font-weight: 900; line-height: 1;
+  }
+  .quiz-score-ring .score-label { font-size: 0.75rem; opacity: 0.85; margin-top: 2px; }
+  .quiz-result-stats {
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+    margin: 18px 0 24px;
+  }
+  .qrs { text-align: center; }
+  .qrs-num { font-family: 'Poppins',sans-serif; font-size: 1.4rem; font-weight: 800; }
+  .qrs-num.correct { color: #22c55e; }
+  .qrs-num.wrong { color: #ef4444; }
+  .qrs-num.skipped { color: #94a3b8; }
+  .qrs-label { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; }
+  .quiz-result-msg {
+    font-size: 0.95rem; color: var(--text-light); margin-bottom: 22px; line-height: 1.6;
+  }
+
+  @media (max-width: 560px) {
+    .quiz-card { padding: 18px 14px; }
+    .quiz-question { font-size: 0.95rem; }
+    .quiz-option { padding: 10px 12px; font-size: 0.85rem; }
+    .quiz-score-ring { width: 100px; height: 100px; }
+    .quiz-score-ring .score-num { font-size: 1.8rem; }
+  }
+</style>
+
+<!-- Quiz Section HTML -->
+<div id="quiz-section">
+  <div class="quiz-topbar">
+    <h2><span>📝</span> MCQ Quiz — Practice Test</h2>
+    <button class="quiz-back-btn" onclick="hideQuiz()">← Back to Home</button>
+  </div>
+
+  <div class="quiz-body">
+
+    <!-- Chapter Selector -->
+    <div class="quiz-chapter-select" id="quizChapterSelect">
+      <h3>📚 Subject aur Chapter choose karein</h3>
+      <div class="quiz-subject-tabs">
+        <button class="quiz-subj-tab active" onclick="switchQuizSubject('db', this)">🗄️ Database (IT XII)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('comm', this)">💬 Comm Skills (IT IX)</button>
+      </div>
+      <div class="quiz-chapters-grid" id="quizChaptersGrid"></div>
+    </div>
+
+    <!-- Quiz Active -->
+    <div class="quiz-active-area" id="quizActiveArea">
+      <div class="quiz-progress-info">
+        <span id="quizProgressText">Question 1 of 10</span>
+        <div class="quiz-timer" id="quizTimer">⏱️ <span id="quizTimerVal">30</span>s</div>
+      </div>
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+      </div>
+      <div id="quizCardContainer"></div>
+      <div class="quiz-nav-btns">
+        <button class="quiz-btn quiz-btn-secondary" id="quizPrevBtn" onclick="quizPrev()" disabled>← Previous</button>
+        <button class="quiz-btn quiz-btn-primary" id="quizSubmitBtn" onclick="submitAnswer()">Check Answer ✓</button>
+        <button class="quiz-btn quiz-btn-primary" id="quizNextBtn" onclick="quizNext()" style="display:none">Next →</button>
+        <button class="quiz-btn quiz-btn-primary" id="quizFinishBtn" onclick="showQuizResult()" style="display:none">View Result 🏆</button>
+      </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-result-emoji" id="resultEmoji">🎉</div>
+      <h2 id="resultTitle">Excellent!</h2>
+      <div class="quiz-score-ring">
+        <div class="score-num" id="resultScore">0%</div>
+        <div class="score-label">Score</div>
+      </div>
+      <div class="quiz-result-stats">
+        <div class="qrs"><div class="qrs-num correct" id="resultCorrect">0</div><div class="qrs-label">✅ Correct</div></div>
+        <div class="qrs"><div class="qrs-num wrong" id="resultWrong">0</div><div class="qrs-label">❌ Wrong</div></div>
+        <div class="qrs"><div class="qrs-num skipped" id="resultSkipped">0</div><div class="qrs-label">⏭️ Skipped</div></div>
+      </div>
+      <p class="quiz-result-msg" id="resultMsg">Well done! Keep it up!</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="quiz-btn quiz-btn-primary" onclick="restartQuiz()">🔁 Try Again</button>
+        <button class="quiz-btn quiz-btn-secondary" onclick="backToChapters()">📚 Change Chapter</button>
+        <button class="quiz-btn quiz-btn-secondary" onclick="hideQuiz()">🏠 Home</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Quiz Trigger Button (floating) -->
+<button id="quizFab" onclick="showQuiz()" title="MCQ Quiz Practice"
+  style="position:fixed;bottom:100px;right:28px;z-index:9990;
+  width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;
+  box-shadow:0 4px 18px rgba(34,197,94,0.45);font-size:1.3rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform 0.2s,box-shadow 0.2s;"
+  onmouseover="this.style.transform='scale(1.12)'"
+  onmouseout="this.style.transform='scale(1)'">
+  📝
+  <span style="position:absolute;top:-4px;right:-4px;background:#f97316;color:#fff;
+  font-size:0.55rem;font-weight:800;width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;">NEW</span>
+</button>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//   NOTES SEARCH FUNCTIONALITY
+// ═══════════════════════════════════════════════════════
+function searchNotes(which) {
+  const inputId = which === 'db' ? 'dbNotesSearch' : 'commNotesSearch';
+  const countId = which === 'db' ? 'dbSearchCount' : 'commSearchCount';
+  const clearId = which === 'db' ? 'dbSearchClear' : 'commSearchClear';
+  const noResId = which === 'db' ? 'dbNoResults' : 'commNoResults';
+  const bodyId  = which === 'db' ? 'dbNotesBody' : 'commNotesBody';
+
+  const q = document.getElementById(inputId).value.trim().toLowerCase();
+  const countEl = document.getElementById(countId);
+  const clearEl = document.getElementById(clearId);
+  const noRes   = document.getElementById(noResId);
+  const body    = document.getElementById(bodyId);
+
+  if (!q) {
+    clearSearch(which);
+    return;
+  }
+  clearEl.style.display = 'block';
+
+  const chapters = body ? body.querySelectorAll('.notes-chapter') : [];
+  let totalMatches = 0;
+  let visibleChapters = 0;
+
+  chapters.forEach(ch => {
+    const header = ch.querySelector('.notes-chapter-header');
+    const chBody = ch.querySelector('.notes-chapter-body');
+    const headerText = header ? header.textContent.toLowerCase() : '';
+    const bodyText   = chBody  ? chBody.textContent.toLowerCase()  : '';
+
+    if (headerText.includes(q) || bodyText.includes(q)) {
+      ch.style.display = '';
+      ch.classList.add('open');
+      visibleChapters++;
+
+      // Count keyword occurrences in body
+      if (chBody) {
+        const matches = (chBody.textContent.toLowerCase().match(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+        totalMatches += matches;
+        highlightText(chBody, q);
+      }
+      if (headerText.includes(q) && header) highlightText(header, q);
+    } else {
+      ch.style.display = 'none';
+    }
+  });
+
+  if (visibleChapters === 0) {
+    noRes.style.display = 'block';
+    countEl.style.display = 'none';
+  } else {
+    noRes.style.display = 'none';
+    countEl.style.display = 'inline-block';
+    countEl.textContent = totalMatches + ' results';
+  }
+}
+
+function highlightText(el, q) {
+  // Remove old highlights first
+  el.querySelectorAll('.search-highlight').forEach(h => {
+    h.replaceWith(document.createTextNode(h.textContent));
+  });
+  if (!q) return;
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+  const nodes = [];
+  let node;
+  while (node = walker.nextNode()) nodes.push(node);
+  const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  nodes.forEach(n => {
+    if (!n.textContent.toLowerCase().includes(q)) return;
+    const frag = document.createDocumentFragment();
+    const parts = n.textContent.split(re);
+    parts.forEach(p => {
+      if (p.toLowerCase() === q) {
+        const mark = document.createElement('mark');
+        mark.className = 'search-highlight';
+        mark.textContent = p;
+        frag.appendChild(mark);
+      } else {
+        frag.appendChild(document.createTextNode(p));
+      }
+    });
+    n.parentNode.replaceChild(frag, n);
+  });
+}
+
+function clearSearch(which) {
+  const inputId = which === 'db' ? 'dbNotesSearch' : 'commNotesSearch';
+  const countId = which === 'db' ? 'dbSearchCount' : 'commSearchCount';
+  const clearId = which === 'db' ? 'dbSearchClear' : 'commSearchClear';
+  const noResId = which === 'db' ? 'dbNoResults' : 'commNoResults';
+  const bodyId  = which === 'db' ? 'dbNotesBody' : 'commNotesBody';
+
+  document.getElementById(inputId).value = '';
+  document.getElementById(countId).style.display = 'none';
+  document.getElementById(clearId).style.display = 'none';
+  document.getElementById(noResId).style.display = 'none';
+
+  const body = document.getElementById(bodyId);
+  if (body) {
+    body.querySelectorAll('.notes-chapter').forEach(ch => {
+      ch.style.display = '';
+      ch.querySelectorAll('.search-highlight').forEach(h => {
+        h.replaceWith(document.createTextNode(h.textContent));
+      });
+    });
+    const header = body.querySelector('.notes-chapter-header');
+    if (header) header.querySelectorAll('.search-highlight').forEach(h => h.replaceWith(document.createTextNode(h.textContent)));
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//   MCQ QUIZ DATA
+// ═══════════════════════════════════════════════════════
+const quizData = {
+  db: {
+    label: '🗄️ Database (IT XII)',
+    chapters: [
+      {
+        title: 'Topic 1: Introduction to Database',
+        questions: [
+          { q: 'What does the term "Database" mean?', opts: ['Storing data in a single file', 'An organised collection of related data', 'Storing data randomly', 'Storing only numbers'], ans: 1, exp: 'A database is an organised collection of related data stored in a structured format.' },
+          { q: 'What is the full form of DBMS?', opts: ['Data Base Management System', 'Database Manipulation System', 'Data Backup Management System', 'Digital Base Management System'], ans: 0, exp: 'DBMS stands for Database Management System — software that is used to define, create, and maintain a database.' },
+          { q: 'What is the main advantage of DBMS over a file system?', opts: ['It uses more storage', 'It reduces data redundancy', 'It is slower', 'It is meant for only one user'], ans: 1, exp: 'DBMS reduces data redundancy — the same data does not need to be stored repeatedly.' },
+          { q: 'What type of DBMS is MySQL?', opts: ['Hierarchical DBMS', 'Network DBMS', 'Relational DBMS (RDBMS)', 'Object-Oriented DBMS'], ans: 2, exp: 'MySQL is a Relational DBMS (RDBMS) where data is stored in tables.' },
+          { q: 'What does Data Integrity mean?', opts: ['Data is accessed very quickly', 'Only valid and accurate data is stored', 'Data cannot be deleted', 'Data is stored in compressed form'], ans: 1, exp: 'Data Integrity ensures that only valid, accurate, and consistent data is stored in the database.' }
+        ]
+      },
+      {
+        title: 'Topic 2: Keys in Database',
+        questions: [
+          { q: 'What is a Primary Key?', opts: ['A column that allows NULL values', 'A column that uniquely identifies each record', 'Any random column', 'A column that links to a foreign table'], ans: 1, exp: 'A Primary Key is a column (or combination of columns) that uniquely identifies every row in a table and cannot be NULL.' },
+          { q: 'What is the purpose of a Foreign Key?', opts: ['To define the primary column in a table', 'To establish a relationship between two tables', 'To delete data', 'To lock a table'], ans: 1, exp: 'A Foreign Key is a column in one table that refers to the Primary Key of another table — it creates a link between two tables.' },
+          { q: 'What is a Candidate Key?', opts: ['A key that is eligible to become a primary key', 'A key with only one value', 'A key that allows duplicate values', 'A key that allows NULL values'], ans: 0, exp: 'A Candidate Key is a column (or set of columns) that can qualify as a primary key — it must be unique and NOT NULL.' },
+          { q: 'What does a Composite Key consist of?', opts: ['Only one column', 'Two or more columns combined to form a key', 'Only numeric values', 'An automatically generated value'], ans: 1, exp: 'A Composite Key consists of two or more columns that together form a unique identifier.' },
+          { q: 'What does a NULL value mean?', opts: ['Zero (0)', 'Empty string', 'A value that is absent or unknown', 'A space character'], ans: 2, exp: 'NULL means that the value is not present or is unknown — it is different from 0 or an empty string.' }
+        ]
+      },
+      {
+        title: 'Topic 3: SQL Commands (DDL, DML)',
+        questions: [
+          { q: 'What is the full form of DDL?', opts: ['Data Definition Language', 'Data Display Language', 'Data Deletion Language', 'Dynamic Data Language'], ans: 0, exp: 'DDL stands for Data Definition Language — commands such as CREATE, ALTER, and DROP belong to this category.' },
+          { q: 'Which SQL command is used to create a table?', opts: ['MAKE TABLE', 'BUILD TABLE', 'CREATE TABLE', 'NEW TABLE'], ans: 2, exp: 'The CREATE TABLE command is used to create a new table, where columns and their data types are defined.' },
+          { q: 'Which DML command is used to insert data?', opts: ['ADD', 'INSERT INTO', 'PUT', 'APPEND'], ans: 1, exp: 'The INSERT INTO command is used to add a new record (row) into a table.' },
+          { q: 'Which command is used to delete data from a table?', opts: ['REMOVE', 'ERASE', 'DELETE FROM', 'CLEAR'], ans: 2, exp: 'The DELETE FROM command is used to delete specific rows from a table. A WHERE clause is used to specify the condition.' },
+          { q: 'Which command is used to update existing data?', opts: ['MODIFY', 'CHANGE', 'UPDATE', 'EDIT'], ans: 2, exp: 'The UPDATE command is used to change values in existing rows. The SET clause specifies the new value and WHERE specifies the condition.' }
+        ]
+      }
+    ]
+  },
+  comm: {
+    label: '💬 Communication Skills (IT IX)',
+    chapters: [
+      {
+        title: 'Session 1: Introduction to Communication',
+        questions: [
+          { q: 'Which Latin word does the word "Communication" come from?', opts: ['communis', 'commūnicāre', 'communicatio', 'communicatus'], ans: 1, exp: 'The word "Communication" comes from the Latin word "commūnicāre", which means "to share".' },
+          { q: 'What are the main elements of Communication?', opts: ['Sender, Message, Receiver', 'Speaker, Paper, Listener', 'Writer, Pen, Reader', 'Teacher, Board, Student'], ans: 0, exp: 'The main elements of communication are: Sender (the one who sends), Message (the content), Channel (the medium), and Receiver (the one who receives).' },
+          { q: 'What is the primary goal of Communication?', opts: ['Entertainment', 'Exchange of information and understanding', 'Wasting time', 'Arguing'], ans: 1, exp: 'The primary goal of communication is to share information and establish mutual understanding.' },
+          { q: 'What role does Feedback play in Communication?', opts: ['No role at all', 'The receiver\'s response is sent back to the sender', 'It destroys the message', 'It blocks the channel'], ans: 1, exp: 'Feedback is the last step of communication — the receiver\'s response tells the sender whether the message was understood or not.' },
+          { q: 'What does Noise (barrier) do in Communication?', opts: ['Speeds up the message', 'Improves communication', 'Interrupts or distorts the message', 'Improves feedback'], ans: 2, exp: 'Noise (physical, psychological, or language barriers) creates a hindrance in communication and distorts the message.' }
+        ]
+      },
+      {
+        title: 'Session 2 & 3: Types of Communication',
+        questions: [
+          { q: 'What does Verbal Communication include?', opts: ['Gestures and facial expressions', 'Spoken and written words', 'Body language and posture', 'Sign language only'], ans: 1, exp: 'Verbal communication includes both spoken (oral) and written forms.' },
+          { q: 'What is the first "C" in the 7Cs of Communication?', opts: ['Complete', 'Clear', 'Concise', 'Correct'], ans: 1, exp: 'The 7Cs are: Clear, Concise, Concrete, Correct, Coherent, Complete, Courteous. Clear is the first and most important.' },
+          { q: 'What is an example of Non-Verbal Communication?', opts: ['Writing a letter', 'Talking on the phone', 'Smiling or shaking hands', 'Sending an email'], ans: 2, exp: 'Non-verbal communication includes body language, facial expressions, gestures, eye contact, and posture. Smiling is an example of this.' },
+          { q: 'What does "Concise" communication mean?', opts: ['A very long message', 'A short and to-the-point message', 'Incorrect information', 'Casual conversation'], ans: 1, exp: 'Concise means the message is short, clear, and to the point — without using unnecessary words.' },
+          { q: 'What is an example of Formal Communication?', opts: ['A WhatsApp message to a friend', 'Casual talk in a classroom', 'Writing a letter to the Principal', 'Chatting with family'], ans: 2, exp: 'Formal communication takes place in professional settings — such as writing a letter to the Principal, sending an official email, or recording meeting minutes.' }
+        ]
+      },
+      {
+        title: 'Session 7: Greetings & Introductions',
+        questions: [
+          { q: 'What type of greeting is "Good Morning"?', opts: ['Informal', 'Cultural', 'Formal', 'Written'], ans: 2, exp: 'Good Morning, Good Afternoon, Good Evening — these are all formal greetings used in professional or respectful settings.' },
+          { q: 'What should a self-introduction include?', opts: ['Only your name', 'Name, class, school, and hobbies', 'Only your hometown', 'Nothing in particular'], ans: 1, exp: 'A self-introduction should include your name, class/school, hometown, and optionally your hobbies and interests.' },
+          { q: 'What type of greeting is "Namaste"?', opts: ['Formal', 'Informal', 'Cultural/Traditional', 'Written'], ans: 2, exp: 'Namaste, Sat Sri Akal, Salaam — these are cultural greetings used in regional or religious contexts.' },
+          { q: 'How does a greeting in a formal email typically begin?', opts: ['Hi friend!', 'Hey!', 'Dear Sir/Madam', 'Hello buddy!'], ans: 2, exp: 'In written/formal communication such as email, we begin with "Dear Sir/Madam" or "To Whom It May Concern".' },
+          { q: 'What is an example of an Informal greeting?', opts: ['Good morning Sir', 'How do you do?', 'Hey! What\'s up?', 'Dear Mr. Sharma'], ans: 2, exp: 'Informal greetings such as "Hi", "Hey", "What\'s up?" are used with friends, classmates, and family.' }
+        ]
+      }
+    ]
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+//   QUIZ STATE & FUNCTIONS
+// ═══════════════════════════════════════════════════════
+let currentQuizSubject = 'db';
+let currentChapterIdx = 0;
+let currentQIdx = 0;
+let userAnswers = [];
+let quizTimerInterval = null;
+let timeLeft = 30;
+let answered = false;
+
+function showQuiz() {
+  document.getElementById('quiz-section').classList.add('active');
+  renderChapterList();
+  document.body.style.overflow = 'hidden';
+}
+function hideQuiz() {
+  document.getElementById('quiz-section').classList.remove('active');
+  document.body.style.overflow = '';
+  stopTimer();
+}
+function switchQuizSubject(subj, btn) {
+  currentQuizSubject = subj;
+  document.querySelectorAll('.quiz-subj-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderChapterList();
+}
+function renderChapterList() {
+  const grid = document.getElementById('quizChaptersGrid');
+  const chapters = quizData[currentQuizSubject].chapters;
+  grid.innerHTML = chapters.map((ch, i) => `
+    <button class="quiz-chapter-btn" onclick="startQuiz(${i})">
+      <span class="qcb-num">Ch ${i+1}</span>
+      <span>${ch.title.replace(/^(Topic|Session)\s[\d\s&]+:\s*/,'')}</span>
+    </button>
+  `).join('');
+}
+function startQuiz(chapterIdx) {
+  currentChapterIdx = chapterIdx;
+  currentQIdx = 0;
+  const qs = quizData[currentQuizSubject].chapters[chapterIdx].questions;
+  userAnswers = new Array(qs.length).fill(null);
+  answered = false;
+
+  document.getElementById('quizChapterSelect').style.display = 'none';
+  document.getElementById('quizActiveArea').classList.add('visible');
+  document.getElementById('quizResult').classList.remove('show');
+  renderQuestion();
+}
+function renderQuestion() {
+  const qs = quizData[currentQuizSubject].chapters[currentChapterIdx].questions;
+  const q = qs[currentQIdx];
+  answered = userAnswers[currentQIdx] !== null;
+
+  document.getElementById('quizProgressText').textContent = `Question ${currentQIdx+1} of ${qs.length}`;
+  document.getElementById('quizProgressFill').style.width = ((currentQIdx+1)/qs.length*100) + '%';
+
+  const optLetters = ['A', 'B', 'C', 'D'];
+  const ua = userAnswers[currentQIdx];
+
+  document.getElementById('quizCardContainer').innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-qnum">Question ${currentQIdx+1} / ${qs.length}</div>
+      <div class="quiz-question">${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((opt, i) => {
+          let cls = '';
+          if (answered) {
+            if (i === q.ans) cls = 'correct';
+            else if (ua === i) cls = 'wrong';
+          } else if (ua === i) cls = 'selected';
+          return `<div class="quiz-option ${cls}" onclick="selectOption(${i})" id="opt_${i}">
+            <span class="opt-letter">${optLetters[i]}</span>
+            <span>${opt}</span>
+          </div>`;
+        }).join('')}
+      </div>
+      <div class="quiz-explanation ${ua !== null && ua !== q.ans ? 'wrong-exp' : ''} ${answered ? 'show' : ''}" id="quizExp">
+        ${answered ? (ua === q.ans ? '✅ Correct! ' : '❌ Wrong. Correct answer: <strong>' + q.opts[q.ans] + '</strong>. ') + q.exp : ''}
+      </div>
+    </div>
+  `;
+
+  // Update buttons
+  document.getElementById('quizPrevBtn').disabled = currentQIdx === 0;
+  const isLast = currentQIdx === qs.length - 1;
+  document.getElementById('quizSubmitBtn').style.display = answered ? 'none' : 'flex';
+  document.getElementById('quizNextBtn').style.display = (answered && !isLast) ? 'flex' : 'none';
+  document.getElementById('quizFinishBtn').style.display = (answered && isLast) ? 'flex' : 'none';
+
+  if (!answered) startTimer();
+  else stopTimer();
+}
+function selectOption(idx) {
+  if (answered) return;
+  userAnswers[currentQIdx] = idx;
+  document.querySelectorAll('.quiz-option').forEach((el, i) => {
+    el.classList.toggle('selected', i === idx);
+  });
+}
+function submitAnswer() {
+  if (userAnswers[currentQIdx] === null) {
+    alert('Please select an option first!');
+    return;
+  }
+  answered = true;
+  stopTimer();
+  renderQuestion();
+}
+function quizNext() {
+  currentQIdx++;
+  answered = false;
+  renderQuestion();
+}
+function quizPrev() {
+  if (currentQIdx > 0) {
+    currentQIdx--;
+    answered = userAnswers[currentQIdx] !== null;
+    renderQuestion();
+  }
+}
+function showQuizResult() {
+  stopTimer();
+  const qs = quizData[currentQuizSubject].chapters[currentChapterIdx].questions;
+  let correct = 0, wrong = 0, skipped = 0;
+  qs.forEach((q, i) => {
+    if (userAnswers[i] === null) skipped++;
+    else if (userAnswers[i] === q.ans) correct++;
+    else wrong++;
+  });
+  const pct = Math.round((correct / qs.length) * 100);
+
+  document.getElementById('quizActiveArea').classList.remove('visible');
+  const res = document.getElementById('quizResult');
+  res.classList.add('show');
+
+  let emoji = pct >= 80 ? '🏆' : pct >= 60 ? '😊' : pct >= 40 ? '📚' : '💪';
+  let title = pct >= 80 ? 'Excellent!' : pct >= 60 ? 'Well Done!' : pct >= 40 ? 'Keep Practising!' : 'Keep Going!';
+  let msg = pct >= 80 ? 'Outstanding performance! Your concepts are very clear.' :
+            pct >= 60 ? 'Well done! A little more practice and you\'ll score 100%.' :
+            pct >= 40 ? 'Revise your notes and attempt the quiz again.' :
+            'Please read the notes for this topic carefully and try again.';
+
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultScore').textContent = pct + '%';
+  document.getElementById('resultCorrect').textContent = correct;
+  document.getElementById('resultWrong').textContent = wrong;
+  document.getElementById('resultSkipped').textContent = skipped;
+  document.getElementById('resultMsg').textContent = msg;
+}
+function restartQuiz() {
+  startQuiz(currentChapterIdx);
+  document.getElementById('quizResult').classList.remove('show');
+}
+function backToChapters() {
+  stopTimer();
+  document.getElementById('quizResult').classList.remove('show');
+  document.getElementById('quizActiveArea').classList.remove('visible');
+  document.getElementById('quizChapterSelect').style.display = 'block';
+}
+function startTimer() {
+  stopTimer();
+  timeLeft = 30;
+  updateTimerDisplay();
+  quizTimerInterval = setInterval(() => {
+    timeLeft--;
+    updateTimerDisplay();
+    if (timeLeft <= 0) {
+      stopTimer();
+      if (userAnswers[currentQIdx] === null) userAnswers[currentQIdx] = -1;
+      answered = true;
+      renderQuestion();
+    }
+  }, 1000);
+}
+function stopTimer() {
+  if (quizTimerInterval) { clearInterval(quizTimerInterval); quizTimerInterval = null; }
+}
+function updateTimerDisplay() {
+  const el = document.getElementById('quizTimerVal');
+  const wrap = document.getElementById('quizTimer');
+  if (el) el.textContent = timeLeft;
+  if (wrap) wrap.classList.toggle('danger', timeLeft <= 10);
+}
+</script>
+
 </body>
 </html>

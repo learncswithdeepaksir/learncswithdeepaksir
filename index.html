@@ -202,6 +202,41 @@
     background: #fff7ed; border-bottom: 1px solid #fed7aa;
   }
 
+
+  /* ─── UNIFIED SUBJECT TAB DROPDOWNS ─── */
+  .subj-mega { display:none; position:fixed; background:#fff;
+    box-shadow:0 12px 40px rgba(26,58,107,0.18); border-radius:14px;
+    z-index:9999; border-top:3px solid #3b82f6; overflow:hidden; }
+  .subj-tabbar { display:flex; background:#f0f4ff; border-bottom:2px solid #dbeafe;
+    overflow-x:auto; }
+  .subj-tab { flex:1; min-width:80px; padding:11px 6px; font-family:'Poppins',sans-serif;
+    font-size:0.76rem; font-weight:700; color:#64748b; background:transparent;
+    border:none; border-bottom:3px solid transparent; cursor:pointer;
+    transition:all 0.2s; white-space:nowrap; }
+  .subj-tab.active { background:#fff; color:#1a3a6b; border-bottom:3px solid #3b82f6; }
+  .subj-tab:hover:not(.active) { background:rgba(255,255,255,0.55); color:#1a3a6b; }
+  .subj-panels { padding:16px 20px; }
+  .subj-panel { }
+  .subj-grid { display:grid; gap:10px 22px; }
+  .subj-col-hd { font-family:'Poppins',sans-serif; font-size:0.68rem; font-weight:800;
+    text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;
+    padding-bottom:5px; border-bottom:2px solid; }
+  .subj-ch-link { display:flex; align-items:center; gap:5px; padding:4px 8px;
+    font-size:0.79rem; color:#1e293b; text-decoration:none; border-radius:6px;
+    transition:background 0.13s, color 0.13s, padding-left 0.13s;
+    white-space:normal; word-break:break-word; line-height:1.4; }
+  .subj-ch-link::before { content:"›"; color:#3b82f6; font-weight:800; flex-shrink:0; }
+  .subj-ch-link:hover { background:#eff6ff; color:#1d4ed8; padding-left:13px; }
+  .subj-sec-label { font-size:0.68rem; font-weight:800; text-transform:uppercase;
+    letter-spacing:0.4px; color:#94a3b8; padding:6px 8px 3px;
+    margin-top:4px; border-top:1px solid #f1f5f9; }
+  @media (max-width:900px) {
+    .subj-mega { position:static !important; width:100% !important;
+      max-width:100% !important; box-shadow:none !important; border-radius:0 !important; }
+    .subj-grid { grid-template-columns:1fr !important; }
+    .subj-tab { font-size:0.72rem; padding:9px 4px; }
+  }
+
   .nav-cta {
     display: inline-flex; align-items: center; gap: 6px;
     background: var(--secondary); color: #fff;
@@ -1089,1193 +1124,349 @@
       <!-- 3. Maths -->
       <li class="has-dropdown">
         <span>Maths ▾</span>
-        <div class="mega-dropdown mega-dropdown-wide">
-          <div class="mega-cols">
-
-            <!-- CBSE Class 9 -->
-            <div class="mega-col">
-              <h5>Class 9 CBSE (Code 041)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">Ch 1 – Number Systems</a>
-                  <a href="#">Ch 2 – Polynomials</a>
-                  <a href="#">Ch 3 – Coordinate Geometry</a>
-                  <a href="#">Ch 4 – Linear Equations in Two Variables</a>
-                  <a href="#">Ch 5 – Introduction to Euclid's Geometry</a>
-                  <a href="#">Ch 6 – Lines and Angles</a>
-                  <a href="#">Ch 7 – Triangles</a>
-                  <a href="#">Ch 8 – Quadrilaterals</a>
-                  <a href="#">Ch 9 – Circles</a>
-                  <a href="#">Ch 10 – Heron's Formula</a>
-                  <a href="#">Ch 11 – Surface Areas and Volumes</a>
-                  <a href="#">Ch 12 – Statistics</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">MCQ – Number Systems</a>
-                  <a href="#">MCQ – Polynomials</a>
-                  <a href="#">MCQ – Coordinate Geometry</a>
-                  <a href="#">MCQ – Linear Equations</a>
-                  <a href="#">MCQ – Euclid's Geometry</a>
-                  <a href="#">MCQ – Lines and Angles</a>
-                  <a href="#">MCQ – Triangles</a>
-                  <a href="#">MCQ – Quadrilaterals</a>
-                  <a href="#">MCQ – Circles</a>
-                  <a href="#">MCQ – Heron's Formula</a>
-                  <a href="#">MCQ – Surface Areas &amp; Volumes</a>
-                  <a href="#">MCQ – Statistics</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – IX ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2025_26/Mathematics-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2024_25/Mathematics-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2023_24/Mathematics-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2022_23/Mathematics-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2021_22/Mathematics-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2025_26/Mathematics-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2024_25/Mathematics-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- CBSE Class 10 -->
-            <div class="mega-col">
-              <h5>Class 10 CBSE (041 / 241)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">Ch 1 – Real Numbers</a>
-                  <a href="#">Ch 2 – Polynomials</a>
-                  <a href="#">Ch 3 – Pair of Linear Equations in Two Variables</a>
-                  <a href="#">Ch 4 – Quadratic Equations</a>
-                  <a href="#">Ch 5 – Arithmetic Progressions</a>
-                  <a href="#">Ch 6 – Triangles</a>
-                  <a href="#">Ch 7 – Coordinate Geometry</a>
-                  <a href="#">Ch 8 – Introduction to Trigonometry</a>
-                  <a href="#">Ch 9 – Some Applications of Trigonometry</a>
-                  <a href="#">Ch 10 – Circles</a>
-                  <a href="#">Ch 11 – Areas Related to Circles</a>
-                  <a href="#">Ch 12 – Surface Areas and Volumes</a>
-                  <a href="#">Ch 13 – Statistics</a>
-                  <a href="#">Ch 14 – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">MCQ – Real Numbers</a>
-                  <a href="#">MCQ – Polynomials</a>
-                  <a href="#">MCQ – Linear Equations</a>
-                  <a href="#">MCQ – Quadratic Equations</a>
-                  <a href="#">MCQ – Arithmetic Progressions</a>
-                  <a href="#">MCQ – Triangles</a>
-                  <a href="#">MCQ – Coordinate Geometry</a>
-                  <a href="#">MCQ – Trigonometry</a>
-                  <a href="#">MCQ – Applications of Trigonometry</a>
-                  <a href="#">MCQ – Circles</a>
-                  <a href="#">MCQ – Areas Related to Circles</a>
-                  <a href="#">MCQ – Surface Areas &amp; Volumes</a>
-                  <a href="#">MCQ – Statistics</a>
-                  <a href="#">MCQ – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – X ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Standard-SQP.pdf" target="_blank">2025–26 Sample Paper Standard (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Basic-SQP.pdf" target="_blank">2025–26 Sample Paper Basic (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2024_25/Mathematics-Standard-SQP.pdf" target="_blank">2024–25 Sample Paper Standard (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2023_24/Mathematics-Standard-SQP.pdf" target="_blank">2023–24 Sample Paper Standard (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2022_23/Mathematics-Standard-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2021_22/Mathematics-Standard-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Standard-MS.pdf" target="_blank">2025–26 Marking Scheme Standard ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Basic-MS.pdf" target="_blank">2025–26 Marking Scheme Basic ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- CBSE Class 11 -->
-            <div class="mega-col">
-              <h5>Class 11 CBSE (Code 041)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">Ch 1 – Sets</a>
-                  <a href="#">Ch 2 – Relations and Functions</a>
-                  <a href="#">Ch 3 – Trigonometric Functions</a>
-                  <a href="#">Ch 4 – Complex Numbers &amp; Quadratic Equations</a>
-                  <a href="#">Ch 5 – Linear Inequalities</a>
-                  <a href="#">Ch 6 – Permutations and Combinations</a>
-                  <a href="#">Ch 7 – Binomial Theorem</a>
-                  <a href="#">Ch 8 – Sequences and Series</a>
-                  <a href="#">Ch 9 – Straight Lines</a>
-                  <a href="#">Ch 10 – Conic Sections</a>
-                  <a href="#">Ch 11 – Introduction to 3D Geometry</a>
-                  <a href="#">Ch 12 – Limits and Derivatives</a>
-                  <a href="#">Ch 13 – Statistics</a>
-                  <a href="#">Ch 14 – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">MCQ – Sets</a>
-                  <a href="#">MCQ – Relations and Functions</a>
-                  <a href="#">MCQ – Trigonometric Functions</a>
-                  <a href="#">MCQ – Complex Numbers</a>
-                  <a href="#">MCQ – Linear Inequalities</a>
-                  <a href="#">MCQ – Permutations &amp; Combinations</a>
-                  <a href="#">MCQ – Binomial Theorem</a>
-                  <a href="#">MCQ – Sequences and Series</a>
-                  <a href="#">MCQ – Straight Lines</a>
-                  <a href="#">MCQ – Conic Sections</a>
-                  <a href="#">MCQ – 3D Geometry</a>
-                  <a href="#">MCQ – Limits and Derivatives</a>
-                  <a href="#">MCQ – Statistics</a>
-                  <a href="#">MCQ – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – XI ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/Mathematics-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/Mathematics-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2023_24/Mathematics-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2022_23/Mathematics-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2021_22/Mathematics-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/Mathematics-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/Mathematics-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- CBSE Class 12 -->
-            <div class="mega-col">
-              <h5>Class 12 CBSE (Code 041)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">Ch 1 – Relations and Functions</a>
-                  <a href="#">Ch 2 – Inverse Trigonometric Functions</a>
-                  <a href="#">Ch 3 – Matrices</a>
-                  <a href="#">Ch 4 – Determinants</a>
-                  <a href="#">Ch 5 – Continuity and Differentiability</a>
-                  <a href="#">Ch 6 – Application of Derivatives</a>
-                  <a href="#">Ch 7 – Integrals</a>
-                  <a href="#">Ch 8 – Application of Integrals</a>
-                  <a href="#">Ch 9 – Differential Equations</a>
-                  <a href="#">Ch 10 – Vector Algebra</a>
-                  <a href="#">Ch 11 – Three Dimensional Geometry</a>
-                  <a href="#">Ch 12 – Linear Programming</a>
-                  <a href="#">Ch 13 – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">MCQ – Relations and Functions</a>
-                  <a href="#">MCQ – Inverse Trigonometry</a>
-                  <a href="#">MCQ – Matrices</a>
-                  <a href="#">MCQ – Determinants</a>
-                  <a href="#">MCQ – Continuity &amp; Differentiability</a>
-                  <a href="#">MCQ – Application of Derivatives</a>
-                  <a href="#">MCQ – Integrals</a>
-                  <a href="#">MCQ – Application of Integrals</a>
-                  <a href="#">MCQ – Differential Equations</a>
-                  <a href="#">MCQ – Vector Algebra</a>
-                  <a href="#">MCQ – 3D Geometry</a>
-                  <a href="#">MCQ – Linear Programming</a>
-                  <a href="#">MCQ – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – XII ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Mathematics-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/Mathematics-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/Mathematics-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2022_23/Mathematics-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2021_22/Mathematics-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2020_21/Mathematics-SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Mathematics-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/Mathematics-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- ICSE Class 9 & 10 -->
-            <div class="mega-col">
-              <h5>Class 9 (ICSE)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">Pure Arithmetic – Rational Numbers</a>
-                  <a href="#">Commercial Mathematics</a>
-                  <a href="#">Algebra – Expansions &amp; Factorisation</a>
-                  <a href="#">Simultaneous Linear Equations</a>
-                  <a href="#">Indices / Exponents</a>
-                  <a href="#">Logarithms</a>
-                  <a href="#">Geometry – Lines, Angles &amp; Triangles</a>
-                  <a href="#">Rectilinear Figures</a>
-                  <a href="#">Circle – Chord Properties</a>
-                  <a href="#">Statistics – Mean, Median, Mode</a>
-                  <a href="#">Mensuration</a>
-                  <a href="#">Trigonometry – Basics</a>
-                  <a href="#">Coordinate Geometry</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">MCQ – Rational Numbers</a>
-                  <a href="#">MCQ – Commercial Maths</a>
-                  <a href="#">MCQ – Algebra</a>
-                  <a href="#">MCQ – Linear Equations</a>
-                  <a href="#">MCQ – Logarithms</a>
-                  <a href="#">MCQ – Geometry</a>
-                  <a href="#">MCQ – Circle</a>
-                  <a href="#">MCQ – Statistics</a>
-                  <a href="#">MCQ – Mensuration</a>
-                  <a href="#">MCQ – Trigonometry</a>
-                  <a href="#">MCQ – Coordinate Geometry</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – IX (ICSE) ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Specimen Papers</span>
-                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2025/Mathematics.pdf" target="_blank">2025–26 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2024/Mathematics.pdf" target="_blank">2024–25 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2023/Mathematics.pdf" target="_blank">2023–24 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2022/Mathematics.pdf" target="_blank">2022–23 Specimen Paper (CISCE Official) ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- ICSE Class 10 -->
-            <div class="mega-col">
-              <h5>Class 10 (ICSE)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="unit-label">Commercial Maths</span>
-                  <a href="#">Goods and Services Tax (GST)</a>
-                  <a href="#">Banking</a>
-                  <a href="#">Shares and Dividends</a>
-                  <span class="unit-label">Algebra</span>
-                  <a href="#">Linear Inequations</a>
-                  <a href="#">Quadratic Equations</a>
-                  <a href="#">Ratio and Proportion</a>
-                  <a href="#">Factorisation</a>
-                  <a href="#">Matrices</a>
-                  <a href="#">Arithmetic Progression (AP)</a>
-                  <span class="unit-label">Geometry</span>
-                  <a href="#">Reflection</a>
-                  <a href="#">Section Formula</a>
-                  <a href="#">Equation of a Straight Line</a>
-                  <a href="#">Similarity</a>
-                  <a href="#">Circles</a>
-                  <a href="#">Loci (Locus and its Constructions)</a>
-                  <span class="unit-label">Mensuration &amp; Trigonometry</span>
-                  <a href="#">Mensuration (Surface Areas &amp; Volumes)</a>
-                  <a href="#">Trigonometry</a>
-                  <a href="#">Heights and Distances</a>
-                  <span class="unit-label">Statistics &amp; Probability</span>
-                  <a href="#">Measures of Central Tendency</a>
-                  <a href="#">Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">MCQ – GST</a>
-                  <a href="#">MCQ – Banking</a>
-                  <a href="#">MCQ – Shares &amp; Dividends</a>
-                  <a href="#">MCQ – Linear Inequations</a>
-                  <a href="#">MCQ – Quadratic Equations</a>
-                  <a href="#">MCQ – Ratio &amp; Proportion</a>
-                  <a href="#">MCQ – Factorisation</a>
-                  <a href="#">MCQ – Matrices</a>
-                  <a href="#">MCQ – Arithmetic Progression</a>
-                  <a href="#">MCQ – Reflection</a>
-                  <a href="#">MCQ – Section Formula</a>
-                  <a href="#">MCQ – Straight Line</a>
-                  <a href="#">MCQ – Similarity</a>
-                  <a href="#">MCQ – Circles</a>
-                  <a href="#">MCQ – Mensuration</a>
-                  <a href="#">MCQ – Trigonometry</a>
-                  <a href="#">MCQ – Statistics</a>
-                  <a href="#">MCQ – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – X (ICSE) ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Specimen Papers</span>
-                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2025/Mathematics.pdf" target="_blank">2025–26 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2024/Mathematics.pdf" target="_blank">2024–25 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2023/Mathematics.pdf" target="_blank">2023–24 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ICSE-Specimen-Question-Papers-2022/Mathematics.pdf" target="_blank">2022–23 Specimen Paper (CISCE Official) ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- ISC Class 11 -->
-            <div class="mega-col">
-              <h5>Class 11 (ISC)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">Sets and Functions</a>
-                  <a href="#">Relations and Functions</a>
-                  <a href="#">Trigonometric Functions</a>
-                  <a href="#">Principle of Mathematical Induction</a>
-                  <a href="#">Complex Numbers &amp; Quadratic Equations</a>
-                  <a href="#">Linear Inequalities</a>
-                  <a href="#">Permutations and Combinations</a>
-                  <a href="#">Binomial Theorem</a>
-                  <a href="#">Sequence and Series</a>
-                  <a href="#">Straight Lines</a>
-                  <a href="#">Conic Sections</a>
-                  <a href="#">Introduction to 3D Geometry</a>
-                  <a href="#">Limits and Derivatives</a>
-                  <a href="#">Statistics</a>
-                  <a href="#">Probability</a>
-                  <a href="#">Boolean Algebra (ISC specific)</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">MCQ – Sets</a>
-                  <a href="#">MCQ – Relations &amp; Functions</a>
-                  <a href="#">MCQ – Trigonometry</a>
-                  <a href="#">MCQ – Complex Numbers</a>
-                  <a href="#">MCQ – Linear Inequalities</a>
-                  <a href="#">MCQ – P &amp; C</a>
-                  <a href="#">MCQ – Binomial Theorem</a>
-                  <a href="#">MCQ – Sequences &amp; Series</a>
-                  <a href="#">MCQ – Straight Lines</a>
-                  <a href="#">MCQ – Conic Sections</a>
-                  <a href="#">MCQ – Limits &amp; Derivatives</a>
-                  <a href="#">MCQ – Statistics</a>
-                  <a href="#">MCQ – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – XI (ISC) ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Specimen Papers</span>
-                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2025/Mathematics.pdf" target="_blank">2025–26 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2024/Mathematics.pdf" target="_blank">2024–25 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2023/Mathematics.pdf" target="_blank">2023–24 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2022/Mathematics.pdf" target="_blank">2022–23 Specimen Paper (CISCE Official) ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- ISC Class 12 -->
-            <div class="mega-col">
-              <h5>Class 12 (ISC)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">Relations and Functions</a>
-                  <a href="#">Inverse Trigonometric Functions</a>
-                  <a href="#">Matrices</a>
-                  <a href="#">Determinants</a>
-                  <a href="#">Continuity and Differentiability</a>
-                  <a href="#">Application of Derivatives</a>
-                  <a href="#">Integrals</a>
-                  <a href="#">Application of Integrals</a>
-                  <a href="#">Differential Equations</a>
-                  <a href="#">Vector Algebra</a>
-                  <a href="#">Three Dimensional Geometry</a>
-                  <a href="#">Linear Programming</a>
-                  <a href="#">Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <a href="#">MCQ – Relations &amp; Functions</a>
-                  <a href="#">MCQ – Inverse Trigonometry</a>
-                  <a href="#">MCQ – Matrices</a>
-                  <a href="#">MCQ – Determinants</a>
-                  <a href="#">MCQ – Continuity &amp; Differentiability</a>
-                  <a href="#">MCQ – Application of Derivatives</a>
-                  <a href="#">MCQ – Integrals</a>
-                  <a href="#">MCQ – Application of Integrals</a>
-                  <a href="#">MCQ – Differential Equations</a>
-                  <a href="#">MCQ – Vector Algebra</a>
-                  <a href="#">MCQ – 3D Geometry</a>
-                  <a href="#">MCQ – Linear Programming</a>
-                  <a href="#">MCQ – Probability</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – XII (ISC) ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Specimen Papers</span>
-                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2025/Mathematics.pdf" target="_blank">2025–26 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2024/Mathematics.pdf" target="_blank">2024–25 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2023/Mathematics.pdf" target="_blank">2023–24 Specimen Paper (CISCE Official) ↗</a>
-                  <a href="https://www.cisce.org/pdf/ISC-Specimen-Question-Papers-2022/Mathematics.pdf" target="_blank">2022–23 Specimen Paper (CISCE Official) ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Practice -->
-            <div class="mega-col">
-              <h5>Practice</h5>
-              <a href="#">Online Quiz – Maths</a>
-              <a href="#">Previous Year Papers (CBSE)</a>
-              <a href="#">Previous Year Papers (ICSE/ISC)</a>
-              <a href="#">Formula Sheets – All Classes</a>
-            </div>
-
-          </div>
-        </div>
+        <div class="mega-dropdown subj-mega" style="width:860px;max-width:calc(100vw - 20px);padding:0;overflow:hidden;"><div class="subj-tabbar"><button class="subj-tab active" onclick="subjTab(event,'math9')">📐 Class 9</button><button class="subj-tab" onclick="subjTab(event,'math10')">📏 Class 10</button><button class="subj-tab" onclick="subjTab(event,'math11')">∑ Class 11</button><button class="subj-tab" onclick="subjTab(event,'math12')">∫ Class 12</button></div><div class="subj-panels"><div id="math9" class="subj-panel" style="display:block;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">📚 NCERT Chapters</div><a href="#" class="subj-ch-link">Ch 1 – Number Systems</a>
+<a href="#" class="subj-ch-link">Ch 2 – Polynomials</a>
+<a href="#" class="subj-ch-link">Ch 3 – Coordinate Geometry</a>
+<a href="#" class="subj-ch-link">Ch 4 – Linear Equations in Two Variables</a>
+<a href="#" class="subj-ch-link">Ch 5 – Introduction to Euclid's Geometry</a>
+<a href="#" class="subj-ch-link">Ch 6 – Lines and Angles</a>
+<a href="#" class="subj-ch-link">Ch 7 – Triangles</a>
+<a href="#" class="subj-ch-link">Ch 8 – Quadrilaterals</a>
+<a href="#" class="subj-ch-link">Ch 9 – Circles</a>
+<a href="#" class="subj-ch-link">Ch 10 – Heron's Formula</a>
+<a href="#" class="subj-ch-link">Ch 11 – Surface Areas and Volumes</a>
+<a href="#" class="subj-ch-link">Ch 12 – Statistics</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Sample Papers & MCQs</div><div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2025_26/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2024_25/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2023_24/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2025_26/Mathematics-MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+<div class="subj-sec-label">MCQs</div>
+<a href="#" class="subj-ch-link">MCQ – Number Systems</a>
+<a href="#" class="subj-ch-link">MCQ – Polynomials</a>
+<a href="#" class="subj-ch-link">MCQ – Coordinate Geometry</a>
+<a href="#" class="subj-ch-link">MCQ – Lines and Angles</a>
+<a href="#" class="subj-ch-link">MCQ – Triangles</a>
+<a href="#" class="subj-ch-link">MCQ – Statistics</a>
+</div></div></div><div id="math10" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">📚 NCERT Chapters</div><a href="#" class="subj-ch-link">Ch 1 – Real Numbers</a>
+<a href="#" class="subj-ch-link">Ch 2 – Polynomials</a>
+<a href="#" class="subj-ch-link">Ch 3 – Pair of Linear Equations in Two Variables</a>
+<a href="#" class="subj-ch-link">Ch 4 – Quadratic Equations</a>
+<a href="#" class="subj-ch-link">Ch 5 – Arithmetic Progressions</a>
+<a href="#" class="subj-ch-link">Ch 6 – Triangles</a>
+<a href="#" class="subj-ch-link">Ch 7 – Coordinate Geometry</a>
+<a href="#" class="subj-ch-link">Ch 8 – Introduction to Trigonometry</a>
+<a href="#" class="subj-ch-link">Ch 9 – Some Applications of Trigonometry</a>
+<a href="#" class="subj-ch-link">Ch 10 – Circles</a>
+<a href="#" class="subj-ch-link">Ch 11 – Areas Related to Circles</a>
+<a href="#" class="subj-ch-link">Ch 12 – Surface Areas and Volumes</a>
+<a href="#" class="subj-ch-link">Ch 13 – Statistics</a>
+<a href="#" class="subj-ch-link">Ch 14 – Probability</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Sample Papers & MCQs</div><div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Standard-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Standard ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Basic-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Basic ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2024_25/Mathematics-Standard-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Standard ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2023_24/Mathematics-Standard-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Standard ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Mathematics-Standard-MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+<div class="subj-sec-label">MCQs</div>
+<a href="#" class="subj-ch-link">MCQ – Real Numbers</a>
+<a href="#" class="subj-ch-link">MCQ – Quadratic Equations</a>
+<a href="#" class="subj-ch-link">MCQ – Trigonometry</a>
+<a href="#" class="subj-ch-link">MCQ – Circles</a>
+<a href="#" class="subj-ch-link">MCQ – Probability</a>
+</div></div></div><div id="math11" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">📚 NCERT Chapters</div><a href="#" class="subj-ch-link">Ch 1 – Sets</a>
+<a href="#" class="subj-ch-link">Ch 2 – Relations and Functions</a>
+<a href="#" class="subj-ch-link">Ch 3 – Trigonometric Functions</a>
+<a href="#" class="subj-ch-link">Ch 4 – Complex Numbers and Quadratic Equations</a>
+<a href="#" class="subj-ch-link">Ch 5 – Linear Inequalities</a>
+<a href="#" class="subj-ch-link">Ch 6 – Permutations and Combinations</a>
+<a href="#" class="subj-ch-link">Ch 7 – Binomial Theorem</a>
+<a href="#" class="subj-ch-link">Ch 8 – Sequences and Series</a>
+<a href="#" class="subj-ch-link">Ch 9 – Straight Lines</a>
+<a href="#" class="subj-ch-link">Ch 10 – Conic Sections</a>
+<a href="#" class="subj-ch-link">Ch 11 – Introduction to 3D Geometry</a>
+<a href="#" class="subj-ch-link">Ch 12 – Limits and Derivatives</a>
+<a href="#" class="subj-ch-link">Ch 13 – Statistics</a>
+<a href="#" class="subj-ch-link">Ch 14 – Probability</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Sample Papers</div><a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2023_24/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2022_23/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2022–23 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/Mathematics-MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+</div></div></div><div id="math12" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">📚 NCERT Chapters</div><a href="#" class="subj-ch-link">Ch 1 – Relations and Functions</a>
+<a href="#" class="subj-ch-link">Ch 2 – Inverse Trigonometric Functions</a>
+<a href="#" class="subj-ch-link">Ch 3 – Matrices</a>
+<a href="#" class="subj-ch-link">Ch 4 – Determinants</a>
+<a href="#" class="subj-ch-link">Ch 5 – Continuity and Differentiability</a>
+<a href="#" class="subj-ch-link">Ch 6 – Application of Derivatives</a>
+<a href="#" class="subj-ch-link">Ch 7 – Integrals</a>
+<a href="#" class="subj-ch-link">Ch 8 – Application of Integrals</a>
+<a href="#" class="subj-ch-link">Ch 9 – Differential Equations</a>
+<a href="#" class="subj-ch-link">Ch 10 – Vector Algebra</a>
+<a href="#" class="subj-ch-link">Ch 11 – Three Dimensional Geometry</a>
+<a href="#" class="subj-ch-link">Ch 12 – Linear Programming</a>
+<a href="#" class="subj-ch-link">Ch 13 – Probability</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Sample Papers</div><a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2022_23/Mathematics-SQP.pdf" target="_blank" class="subj-ch-link">2022–23 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Mathematics-MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+</div></div></div></div></div>
       </li>
+
+      <!-- 4. Biology -->
+      <li class="has-dropdown">
+        <span>Biology ▾</span>
+        <div class="mega-dropdown subj-mega" style="width:860px;max-width:calc(100vw - 20px);padding:0;overflow:hidden;"><div class="subj-tabbar"><button class="subj-tab active" onclick="subjTab(event,'bio9')">🧬 Class 9</button><button class="subj-tab" onclick="subjTab(event,'bio10')">🔬 Class 10</button><button class="subj-tab" onclick="subjTab(event,'bio11')">🌿 Class 11</button><button class="subj-tab" onclick="subjTab(event,'bio12')">🧪 Class 12</button></div><div class="subj-panels"><div id="bio9" class="subj-panel" style="display:block;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#15803d;border-color:#bbf7d0;">📚 NCERT Chapters</div><a href="https://ncert.nic.in/ncerts/l/iesc101.pdf" target="_blank" class="subj-ch-link">Ch 1 – The Fundamental Unit of Life</a>
+<a href="https://ncert.nic.in/ncerts/l/iesc102.pdf" target="_blank" class="subj-ch-link">Ch 2 – Tissues</a>
+<a href="https://ncert.nic.in/ncerts/l/iesc103.pdf" target="_blank" class="subj-ch-link">Ch 3 – Diversity in Living Organisms</a>
+<a href="https://ncert.nic.in/ncerts/l/iesc104.pdf" target="_blank" class="subj-ch-link">Ch 4 – Why Do We Fall Ill</a>
+<a href="https://ncert.nic.in/ncerts/l/iesc105.pdf" target="_blank" class="subj-ch-link">Ch 5 – Natural Resources</a>
+<a href="https://ncert.nic.in/ncerts/l/iesc106.pdf" target="_blank" class="subj-ch-link">Ch 6 – Improvement in Food Resources</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Sample Papers</div><a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2025_26/Science-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2024_25/Science-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassIX_2023_24/Science-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+</div></div></div><div id="bio10" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#15803d;border-color:#bbf7d0;">📚 NCERT Chapters</div><a href="https://ncert.nic.in/ncerts/l/jesc101.pdf" target="_blank" class="subj-ch-link">Ch 1 – Life Processes</a>
+<a href="https://ncert.nic.in/ncerts/l/jesc102.pdf" target="_blank" class="subj-ch-link">Ch 2 – Control and Coordination</a>
+<a href="https://ncert.nic.in/ncerts/l/jesc103.pdf" target="_blank" class="subj-ch-link">Ch 3 – How do Organisms Reproduce?</a>
+<a href="https://ncert.nic.in/ncerts/l/jesc104.pdf" target="_blank" class="subj-ch-link">Ch 4 – Heredity</a>
+<a href="https://ncert.nic.in/ncerts/l/jesc105.pdf" target="_blank" class="subj-ch-link">Ch 5 – Our Environment</a>
+<a href="https://ncert.nic.in/ncerts/l/jesc106.pdf" target="_blank" class="subj-ch-link">Ch 6 – Management of Natural Resources</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Sample Papers</div><a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2025_26/Science-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2024_25/Science-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassX_2023_24/Science-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+</div></div></div><div id="bio11" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#15803d;border-color:#bbf7d0;">📚 Chapters 1–9</div><a href="https://ncert.nic.in/ncerts/l/kebo101.pdf" target="_blank" class="subj-ch-link">Ch 1 – The Living World</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo102.pdf" target="_blank" class="subj-ch-link">Ch 2 – Biological Classification</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo103.pdf" target="_blank" class="subj-ch-link">Ch 3 – Plant Kingdom</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo104.pdf" target="_blank" class="subj-ch-link">Ch 4 – Animal Kingdom</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo105.pdf" target="_blank" class="subj-ch-link">Ch 5 – Morphology of Flowering Plants</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo106.pdf" target="_blank" class="subj-ch-link">Ch 6 – Anatomy of Flowering Plants</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo107.pdf" target="_blank" class="subj-ch-link">Ch 7 – Structural Organisation in Animals</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo108.pdf" target="_blank" class="subj-ch-link">Ch 8 – Cell: The Unit of Life</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo109.pdf" target="_blank" class="subj-ch-link">Ch 9 – Cell Cycle and Cell Division</a>
+</div><div><div class="subj-col-hd" style="color:#15803d;border-color:#bbf7d0;">📚 Chapters 10–18 + Papers</div><a href="https://ncert.nic.in/ncerts/l/kebo110.pdf" target="_blank" class="subj-ch-link">Ch 10 – Photosynthesis in Higher Plants</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo111.pdf" target="_blank" class="subj-ch-link">Ch 11 – Respiration in Plants</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo112.pdf" target="_blank" class="subj-ch-link">Ch 12 – Plant Growth and Development</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo113.pdf" target="_blank" class="subj-ch-link">Ch 13 – Breathing and Exchange of Gases</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo114.pdf" target="_blank" class="subj-ch-link">Ch 14 – Body Fluids and Circulation</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo115.pdf" target="_blank" class="subj-ch-link">Ch 15 – Excretory Products and Elimination</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo116.pdf" target="_blank" class="subj-ch-link">Ch 16 – Locomotion and Movement</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo117.pdf" target="_blank" class="subj-ch-link">Ch 17 – Neural Control and Coordination</a>
+<a href="https://ncert.nic.in/ncerts/l/kebo118.pdf" target="_blank" class="subj-ch-link">Ch 18 – Chemical Coordination and Integration</a>
+<div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/Biology-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/Biology-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+</div></div></div><div id="bio12" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#15803d;border-color:#bbf7d0;">📚 Chapters 1–8</div><a href="https://ncert.nic.in/ncerts/l/lebo101.pdf" target="_blank" class="subj-ch-link">Ch 1 – Reproduction in Organisms</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo102.pdf" target="_blank" class="subj-ch-link">Ch 2 – Sexual Reproduction in Flowering Plants</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo103.pdf" target="_blank" class="subj-ch-link">Ch 3 – Human Reproduction</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo104.pdf" target="_blank" class="subj-ch-link">Ch 4 – Reproductive Health</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo105.pdf" target="_blank" class="subj-ch-link">Ch 5 – Principles of Inheritance and Variation</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo106.pdf" target="_blank" class="subj-ch-link">Ch 6 – Molecular Basis of Inheritance</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo107.pdf" target="_blank" class="subj-ch-link">Ch 7 – Evolution</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo108.pdf" target="_blank" class="subj-ch-link">Ch 8 – Human Health and Disease</a>
+</div><div><div class="subj-col-hd" style="color:#15803d;border-color:#bbf7d0;">📚 Chapters 9–16 + Papers</div><a href="https://ncert.nic.in/ncerts/l/lebo109.pdf" target="_blank" class="subj-ch-link">Ch 9 – Strategies for Enhancement in Food Production</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo110.pdf" target="_blank" class="subj-ch-link">Ch 10 – Microbes in Human Welfare</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo111.pdf" target="_blank" class="subj-ch-link">Ch 11 – Biotechnology: Principles and Processes</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo112.pdf" target="_blank" class="subj-ch-link">Ch 12 – Biotechnology and its Applications</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo113.pdf" target="_blank" class="subj-ch-link">Ch 13 – Organisms and Populations</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo114.pdf" target="_blank" class="subj-ch-link">Ch 14 – Ecosystem</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo115.pdf" target="_blank" class="subj-ch-link">Ch 15 – Biodiversity and Conservation</a>
+<a href="https://ncert.nic.in/ncerts/l/lebo116.pdf" target="_blank" class="subj-ch-link">Ch 16 – Environmental Issues</a>
+<div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Biology-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/Biology-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+</div></div></div></div></div>
+      </li>
+
 
       <!-- 4. Computer Science -->
       <li class="has-dropdown">
         <span>Computer Sc. ▾</span>
-        <div class="mega-dropdown">
-          <div class="mega-cols">
-            <div class="mega-col">
-              <h5>CS Class 11</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Computer Systems &amp; Organisation</span>
-                  <a href="#cs11-ch1-notes" onclick="showCs11Ch1Notes(event)">Ch 1 – Computer System &amp; Organisation</a>
-                  <a href="#cs11-ch2-notes" onclick="showCs11Ch2Notes(event)">Ch 2 – Encoding Schemes &amp; Number System</a>
-                  <span class="part-label">Unit 2: Computational Thinking &amp; Programming</span>
-                  <a href="#">Ch 3 – Introduction to Problem Solving</a>
-                  <a href="#">Ch 4 – Getting Started with Python</a>
-                  <a href="#">Ch 5 – Flow of Control</a>
-                  <a href="#">Ch 6 – Functions</a>
-                  <a href="#">Ch 7 – Strings</a>
-                  <a href="#">Ch 8 – Lists</a>
-                  <a href="#">Ch 9 – Tuples &amp; Dictionaries</a>
-                  <span class="part-label">Unit 3: Society, Law &amp; Ethics</span>
-                  <a href="#">Ch 10 – Society, Law and Ethics</a>
-                  <a href="#">Ch 11 – Emerging Trends</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Computer Systems &amp; Organisation</span>
-                  <a href="#">MCQ – Computer System &amp; Organisation</a>
-                  <a href="#">MCQ – Encoding Schemes &amp; Number System</a>
-                  <span class="part-label">Unit 2: Computational Thinking &amp; Programming</span>
-                  <a href="#">MCQ – Introduction to Problem Solving</a>
-                  <a href="#">MCQ – Getting Started with Python</a>
-                  <a href="#">MCQ – Flow of Control</a>
-                  <a href="#">MCQ – Functions</a>
-                  <a href="#">MCQ – Strings</a>
-                  <a href="#">MCQ – Lists</a>
-                  <a href="#">MCQ – Tuples &amp; Dictionaries</a>
-                  <span class="part-label">Unit 3: Society, Law &amp; Ethics</span>
-                  <a href="#">MCQ – Society, Law and Ethics</a>
-                  <a href="#">MCQ – Emerging Trends</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Q &amp; A ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Computer Systems &amp; Organisation</span>
-                  <a href="#">Q&amp;A – Computer System &amp; Organisation</a>
-                  <a href="#">Q&amp;A – Encoding Schemes &amp; Number System</a>
-                  <span class="part-label">Unit 2: Computational Thinking &amp; Programming</span>
-                  <a href="#">Q&amp;A – Introduction to Problem Solving</a>
-                  <a href="#">Q&amp;A – Getting Started with Python</a>
-                  <a href="#">Q&amp;A – Flow of Control</a>
-                  <a href="#">Q&amp;A – Functions</a>
-                  <a href="#">Q&amp;A – Strings</a>
-                  <a href="#">Q&amp;A – Lists</a>
-                  <a href="#">Q&amp;A – Tuples &amp; Dictionaries</a>
-                  <span class="part-label">Unit 3: Society, Law &amp; Ethics</span>
-                  <a href="#">Q&amp;A – Society, Law and Ethics</a>
-                  <a href="#">Q&amp;A – Emerging Trends</a>
-                </div>
-              </div>
-              <a href="#">Textbook Solutions</a>
-              <a href="#">Lab Activity</a>
-            </div>
-            <div class="mega-col">
-              <h5>CS Class 12</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Computational Thinking &amp; Programming – 2</span>
-                  <a href="#">Ch 1 – Python Revision Tour</a>
-                  <a href="#">Ch 2 – Exception Handling in Python</a>
-                  <a href="#">Ch 3 – File Handling in Python</a>
-                  <a href="#">Ch 4 – Stack</a>
-                  <a href="#">Ch 5 – Queue</a>
-                  <a href="#">Ch 6 – Sorting Algorithms</a>
-                  <a href="#">Ch 7 – Searching Algorithms</a>
-                  <span class="part-label">Unit 2: Computer Networks</span>
-                  <a href="#">Ch 8 – Computer Networks</a>
-                  <a href="#">Ch 9 – Data Communication</a>
-                  <a href="#">Ch 10 – Security Aspects</a>
-                  <span class="part-label">Unit 3: Database Management</span>
-                  <a href="#">Ch 11 – Understanding Data</a>
-                  <a href="#">Ch 12 – Database Concepts</a>
-                  <a href="#">Ch 13 – Structured Query Language (SQL)</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Computational Thinking &amp; Programming – 2</span>
-                  <a href="#">MCQ – Python Revision Tour</a>
-                  <a href="#">MCQ – Exception Handling in Python</a>
-                  <a href="#">MCQ – File Handling in Python</a>
-                  <a href="#">MCQ – Stack</a>
-                  <a href="#">MCQ – Queue</a>
-                  <a href="#">MCQ – Sorting Algorithms</a>
-                  <a href="#">MCQ – Searching Algorithms</a>
-                  <span class="part-label">Unit 2: Computer Networks</span>
-                  <a href="#">MCQ – Computer Networks</a>
-                  <a href="#">MCQ – Data Communication</a>
-                  <a href="#">MCQ – Security Aspects</a>
-                  <span class="part-label">Unit 3: Database Management</span>
-                  <a href="#">MCQ – Understanding Data</a>
-                  <a href="#">MCQ – Database Concepts</a>
-                  <a href="#">MCQ – Structured Query Language (SQL)</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Q &amp; A ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Computational Thinking &amp; Programming – 2</span>
-                  <a href="#">Q&amp;A – Python Revision Tour</a>
-                  <a href="#">Q&amp;A – Exception Handling in Python</a>
-                  <a href="#">Q&amp;A – File Handling in Python</a>
-                  <a href="#">Q&amp;A – Stack</a>
-                  <a href="#">Q&amp;A – Queue</a>
-                  <a href="#">Q&amp;A – Sorting Algorithms</a>
-                  <a href="#">Q&amp;A – Searching Algorithms</a>
-                  <span class="part-label">Unit 2: Computer Networks</span>
-                  <a href="#">Q&amp;A – Computer Networks</a>
-                  <a href="#">Q&amp;A – Data Communication</a>
-                  <a href="#">Q&amp;A – Security Aspects</a>
-                  <span class="part-label">Unit 3: Database Management</span>
-                  <a href="#">Q&amp;A – Understanding Data</a>
-                  <a href="#">Q&amp;A – Database Concepts</a>
-                  <a href="#">Q&amp;A – Structured Query Language (SQL)</a>
-                </div>
-              </div>
-              <a href="#">Textbook Solutions</a>
-              <div class="has-sub">
-                <a href="#">PYQ – CS XII ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📋 Last 5 Years Board Papers (CBSE Class 12)</span>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/1407" target="_blank">🔗 CS Class 12 – All PYQ (selfstudys.com) ↗</a>
-                  <span class="part-label">📄 Year-wise Direct Links</span>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2025-91-1-1-set-1/1174068" target="_blank">2025 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2024-91-1-1-set-1/1099574" target="_blank">2024 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2023-91-1-1-set-1/1041669" target="_blank">2023 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2022-91-1-1-set-1/968700" target="_blank">2022 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2020-91-1-1-set-1/886400" target="_blank">2020 Board Paper Set-1 ↗</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – XII ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/ComputerScience-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/ComputerScience-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/ComputerScience-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2022_23/ComputerScience-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2021_22/ComputerScience-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2020_21/ComputerScience-SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/ComputerScience-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/ComputerScience-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/ComputerScience-MS.pdf" target="_blank">2023–24 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-            <div class="mega-col">
-              <h5>Python</h5>
-              <a href="#">Python Programs – XI</a>
-              <a href="#">Python Programs – XII</a>
-              <a href="#">Projects – CS</a>
-              <a href="#">Online Compiler</a>
-            </div>
-            <div class="mega-col">
-              <h5>Resources</h5>
-              <a href="#">CBSE Syllabus</a>
-              <div class="has-sub">
-                <a href="#">Sample Papers – CS ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Class XII Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/ComputerScience-SQP.pdf" target="_blank">2025–26 Class XII Sample Paper ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/ComputerScience-SQP.pdf" target="_blank">2024–25 Class XII Sample Paper ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/ComputerScience-SQP.pdf" target="_blank">2023–24 Class XII Sample Paper ↗</a>
-                </div>
-              </div>
-              <a href="#">Previous Year Papers</a>
-              <a href="#">Python MCQs</a>
-            </div>
-          </div>
-        </div>
+        <div class="mega-dropdown subj-mega" style="width:860px;max-width:calc(100vw - 20px);padding:0;overflow:hidden;"><div class="subj-tabbar"><button class="subj-tab active" onclick="subjTab(event,'cs11')">💻 CS 11</button><button class="subj-tab" onclick="subjTab(event,'cs12')">🐍 CS 12</button></div><div class="subj-panels"><div id="cs11" class="subj-panel" style="display:block;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">📚 Chapters</div><div class="subj-sec-label">Unit 1: Computer Systems</div>
+<a href="#cs11-ch1-notes" onclick="showCs11Ch1Notes(event)" class="subj-ch-link">Ch 1 – Computer System &amp; Organisation</a>
+<a href="#cs11-ch2-notes" onclick="showCs11Ch2Notes(event)" class="subj-ch-link">Ch 2 – Encoding Schemes &amp; Number System</a>
+<div class="subj-sec-label">Unit 2: Computational Thinking</div>
+<a href="#cs11-ch3-notes" onclick="showCs11Ch3Notes(event)" class="subj-ch-link">Ch 3 – Introduction to Problem Solving</a>
+<a href="#cs11-ch4-notes" onclick="showCs11Ch4Notes(event)" class="subj-ch-link">Ch 4 – Getting Started with Python</a>
+<a href="#cs11-ch5-notes" onclick="showCs11Ch5Notes(event)" class="subj-ch-link">Ch 5 – Flow of Control</a>
+<a href="#cs11-ch6-notes" onclick="showCs11Ch6Notes(event)" class="subj-ch-link">Ch 6 – Functions</a>
+<a href="#cs11-ch7-notes" onclick="showCs11Ch7Notes(event)" class="subj-ch-link">Ch 7 – Strings</a>
+<a href="#cs11-ch8-notes" onclick="showCs11Ch8Notes(event)" class="subj-ch-link">Ch 8 – Lists</a>
+<a href="#cs11-ch9-notes" onclick="showCs11Ch9Notes(event)" class="subj-ch-link">Ch 9 – Tuples &amp; Dictionaries</a>
+<div class="subj-sec-label">Unit 3: Society, Law &amp; Ethics</div>
+<a href="#cs11-ch10-notes" onclick="showCs11Ch10Notes(event)" class="subj-ch-link">Ch 10 – Society, Law and Ethics</a>
+<a href="#cs11-ch11-notes" onclick="showCs11Ch11Notes(event)" class="subj-ch-link">Ch 11 – Emerging Trends</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Resources</div><div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/ComputerScience-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/ComputerScience-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2023_24/ComputerScience-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/ComputerScience-MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+<div class="subj-sec-label">More</div>
+<a href="#" class="subj-ch-link">MCQs – CS 11</a>
+<a href="#" class="subj-ch-link">Q &amp; A – CS 11</a>
+<a href="#" class="subj-ch-link">Textbook Solutions</a>
+<a href="#" class="subj-ch-link">Lab Activity</a>
+<a href="#" class="subj-ch-link">Python Programs – XI</a>
+</div></div></div><div id="cs12" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">📚 Chapters</div><div class="subj-sec-label">Unit 1: Computational Thinking – 2</div>
+<a href="#" class="subj-ch-link">Ch 1 – Python Revision Tour</a>
+<a href="#" class="subj-ch-link">Ch 2 – Exception Handling in Python</a>
+<a href="#" class="subj-ch-link">Ch 3 – File Handling in Python</a>
+<a href="#" class="subj-ch-link">Ch 4 – Stack</a>
+<a href="#" class="subj-ch-link">Ch 5 – Queue</a>
+<a href="#" class="subj-ch-link">Ch 6 – Sorting Algorithms</a>
+<a href="#" class="subj-ch-link">Ch 7 – Searching Algorithms</a>
+<div class="subj-sec-label">Unit 2: Computer Networks</div>
+<a href="#" class="subj-ch-link">Ch 8 – Computer Networks</a>
+<a href="#" class="subj-ch-link">Ch 9 – Data Communication</a>
+<a href="#" class="subj-ch-link">Ch 10 – Security Aspects</a>
+<div class="subj-sec-label">Unit 3: Database Management</div>
+<a href="#" class="subj-ch-link">Ch 11 – Understanding Data</a>
+<a href="#" class="subj-ch-link">Ch 12 – Database Concepts</a>
+<a href="#" class="subj-ch-link">Ch 13 – SQL</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Resources</div><div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/ComputerScience-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/ComputerScience-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/ComputerScience-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/ComputerScience-MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+<div class="subj-sec-label">PYQ Board Papers</div>
+<a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2025-91-1-1-set-1/1174068" target="_blank" class="subj-ch-link">2025 Board Paper Set-1 ↗</a>
+<a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2024-91-1-1-set-1/1099574" target="_blank" class="subj-ch-link">2024 Board Paper Set-1 ↗</a>
+<a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2023-91-1-1-set-1/1041669" target="_blank" class="subj-ch-link">2023 Board Paper ↗</a>
+<div class="subj-sec-label">More</div>
+<a href="#" class="subj-ch-link">MCQs – CS 12</a>
+<a href="#" class="subj-ch-link">Q &amp; A – CS 12</a>
+<a href="#" class="subj-ch-link">Textbook Solutions</a>
+<a href="#" class="subj-ch-link">Python Programs – XII</a>
+</div></div></div></div></div>
       </li>
 
       <!-- 5. IP -->
       <li class="has-dropdown">
         <span>IP ▾</span>
-        <div class="mega-dropdown">
-          <div class="mega-cols">
-            <div class="mega-col">
-              <h5>Informatics Practices XI (065)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Introduction to Computer System</span>
-                  <a href="#">Ch 1 – Introduction to Computer System</a>
-                  <span class="part-label">Unit 2: Introduction to Python</span>
-                  <a href="#">Ch 2 – Getting Started with Python</a>
-                  <a href="#">Ch 3 – Flow of Control</a>
-                  <a href="#">Ch 4 – Functions</a>
-                  <a href="#">Ch 5 – Strings</a>
-                  <a href="#">Ch 6 – Lists</a>
-                  <a href="#">Ch 7 – Tuples &amp; Dictionaries</a>
-                  <span class="part-label">Unit 3: Database Concepts &amp; SQL</span>
-                  <a href="#">Ch 8 – Database Concepts</a>
-                  <a href="#">Ch 9 – Introduction to SQL</a>
-                  <span class="part-label">Unit 4: Emerging Trends</span>
-                  <a href="#">Ch 10 – Emerging Trends</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Introduction to Computer System</span>
-                  <a href="#">MCQ – Introduction to Computer System</a>
-                  <span class="part-label">Unit 2: Introduction to Python</span>
-                  <a href="#">MCQ – Getting Started with Python</a>
-                  <a href="#">MCQ – Flow of Control</a>
-                  <a href="#">MCQ – Functions</a>
-                  <a href="#">MCQ – Strings</a>
-                  <a href="#">MCQ – Lists</a>
-                  <a href="#">MCQ – Tuples &amp; Dictionaries</a>
-                  <span class="part-label">Unit 3: Database Concepts &amp; SQL</span>
-                  <a href="#">MCQ – Database Concepts</a>
-                  <a href="#">MCQ – Introduction to SQL</a>
-                  <span class="part-label">Unit 4: Emerging Trends</span>
-                  <a href="#">MCQ – Emerging Trends</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Q &amp; A ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Introduction to Computer System</span>
-                  <a href="#">Q&amp;A – Introduction to Computer System</a>
-                  <span class="part-label">Unit 2: Introduction to Python</span>
-                  <a href="#">Q&amp;A – Getting Started with Python</a>
-                  <a href="#">Q&amp;A – Flow of Control</a>
-                  <a href="#">Q&amp;A – Functions</a>
-                  <a href="#">Q&amp;A – Strings</a>
-                  <a href="#">Q&amp;A – Lists</a>
-                  <a href="#">Q&amp;A – Tuples &amp; Dictionaries</a>
-                  <span class="part-label">Unit 3: Database Concepts &amp; SQL</span>
-                  <a href="#">Q&amp;A – Database Concepts</a>
-                  <a href="#">Q&amp;A – Introduction to SQL</a>
-                  <span class="part-label">Unit 4: Emerging Trends</span>
-                  <a href="#">Q&amp;A – Emerging Trends</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – XI ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/InformaticsPractices-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/InformaticsPractices-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2023_24/InformaticsPractices-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2022_23/InformaticsPractices-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2021_22/InformaticsPractices-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/InformaticsPractices-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/InformaticsPractices-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-            <div class="mega-col">
-              <h5>Informatics Practices XII (065)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Data Handling using Pandas</span>
-                  <a href="#">Ch 1 – Data Handling using Pandas – I</a>
-                  <a href="#">Ch 2 – Data Handling using Pandas – II</a>
-                  <a href="#">Ch 3 – Plotting Data using Matplotlib</a>
-                  <span class="part-label">Unit 2: Database Query using SQL</span>
-                  <a href="#">Ch 4 – Functions in SQL</a>
-                  <a href="#">Ch 5 – GROUP BY &amp; Operations on Relations</a>
-                  <a href="#">Ch 6 – Joins in SQL</a>
-                  <span class="part-label">Unit 3: Introduction to Computer Networks</span>
-                  <a href="#">Ch 7 – Introduction to Computer Networks</a>
-                  <span class="part-label">Unit 4: Societal Impacts</span>
-                  <a href="#">Ch 8 – Societal Impacts</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Data Handling using Pandas</span>
-                  <a href="#">MCQ – Data Handling using Pandas – I</a>
-                  <a href="#">MCQ – Data Handling using Pandas – II</a>
-                  <a href="#">MCQ – Plotting Data using Matplotlib</a>
-                  <span class="part-label">Unit 2: Database Query using SQL</span>
-                  <a href="#">MCQ – Functions in SQL</a>
-                  <a href="#">MCQ – GROUP BY &amp; Operations on Relations</a>
-                  <a href="#">MCQ – Joins in SQL</a>
-                  <span class="part-label">Unit 3: Introduction to Computer Networks</span>
-                  <a href="#">MCQ – Introduction to Computer Networks</a>
-                  <span class="part-label">Unit 4: Societal Impacts</span>
-                  <a href="#">MCQ – Societal Impacts</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Q &amp; A ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Unit 1: Data Handling using Pandas</span>
-                  <a href="#">Q&amp;A – Data Handling using Pandas – I</a>
-                  <a href="#">Q&amp;A – Data Handling using Pandas – II</a>
-                  <a href="#">Q&amp;A – Plotting Data using Matplotlib</a>
-                  <span class="part-label">Unit 2: Database Query using SQL</span>
-                  <a href="#">Q&amp;A – Functions in SQL</a>
-                  <a href="#">Q&amp;A – GROUP BY &amp; Operations on Relations</a>
-                  <a href="#">Q&amp;A – Joins in SQL</a>
-                  <span class="part-label">Unit 3: Introduction to Computer Networks</span>
-                  <a href="#">Q&amp;A – Introduction to Computer Networks</a>
-                  <span class="part-label">Unit 4: Societal Impacts</span>
-                  <a href="#">Q&amp;A – Societal Impacts</a>
-                </div>
-              </div>
-              <a href="#">Practical File Programs</a>
-              <div class="has-sub">
-                <a href="#">PYQ – IP XII ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📋 Last 5 Years Board Papers (CBSE Class 12)</span>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/1410" target="_blank">🔗 IP Class 12 – All PYQ (selfstudys.com) ↗</a>
-                  <span class="part-label">📄 Year-wise Direct Links</span>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2025-90-1-1-set-1/1174081" target="_blank">2025 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2024-90-set-4/1100232" target="_blank">2024 Board Paper ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2023-90-1-1-set-1/1041680" target="_blank">2023 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2022-90-1-1-set-1/968714" target="_blank">2022 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2020-90-1-1-set-1/886412" target="_blank">2020 Board Paper Set-1 ↗</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – XII ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/InformaticsPractices-SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/InformaticsPractices-SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/InformaticsPractices-SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2022_23/InformaticsPractices-SQP.pdf" target="_blank">2022–23 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2021_22/InformaticsPractices-SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2020_21/InformaticsPractices-SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/InformaticsPractices-MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/InformaticsPractices-MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-            <div class="mega-col">
-              <h5>Python / Pandas</h5>
-              <a href="#">Python Pandas Notes</a>
-              <a href="#">NumPy Notes</a>
-              <a href="#">Data Visualization</a>
-              <a href="#">MySQL with Python</a>
-            </div>
-            <div class="mega-col">
-              <h5>Resources</h5>
-              <a href="#">Projects – IP</a>
-              <a href="#">Python MCQs – IP</a>
-              <a href="#">Online Quiz</a>
-              <a href="#">CBSE Syllabus – IP</a>
-            </div>
-          </div>
-        </div>
+        <div class="mega-dropdown subj-mega" style="width:860px;max-width:calc(100vw - 20px);padding:0;overflow:hidden;"><div class="subj-tabbar"><button class="subj-tab active" onclick="subjTab(event,'ip11')">🗄️ IP 11</button><button class="subj-tab" onclick="subjTab(event,'ip12')">📊 IP 12</button></div><div class="subj-panels"><div id="ip11" class="subj-panel" style="display:block;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#7c3aed;border-color:#ddd6fe;">📚 Chapters</div><div class="subj-sec-label">Unit 1: Computer System</div>
+<a href="#" class="subj-ch-link">Ch 1 – Introduction to Computer System</a>
+<div class="subj-sec-label">Unit 2: Introduction to Python</div>
+<a href="#" class="subj-ch-link">Ch 2 – Getting Started with Python</a>
+<a href="#" class="subj-ch-link">Ch 3 – Flow of Control</a>
+<a href="#" class="subj-ch-link">Ch 4 – Functions</a>
+<a href="#" class="subj-ch-link">Ch 5 – Strings</a>
+<a href="#" class="subj-ch-link">Ch 6 – Lists</a>
+<a href="#" class="subj-ch-link">Ch 7 – Tuples &amp; Dictionaries</a>
+<div class="subj-sec-label">Unit 3: Database &amp; SQL</div>
+<a href="#" class="subj-ch-link">Ch 8 – Database Concepts</a>
+<a href="#" class="subj-ch-link">Ch 9 – Introduction to SQL</a>
+<div class="subj-sec-label">Unit 4: Emerging Trends</div>
+<a href="#" class="subj-ch-link">Ch 10 – Emerging Trends</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Resources</div><div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/InformaticsPractices-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2024_25/InformaticsPractices-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2023_24/InformaticsPractices-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXI_2025_26/InformaticsPractices-MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+<div class="subj-sec-label">More</div>
+<a href="#" class="subj-ch-link">MCQs – IP 11</a>
+<a href="#" class="subj-ch-link">Q &amp; A – IP 11</a>
+<a href="#" class="subj-ch-link">Python Pandas Notes</a>
+<a href="#" class="subj-ch-link">MySQL with Python</a>
+</div></div></div><div id="ip12" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#7c3aed;border-color:#ddd6fe;">📚 Chapters</div><div class="subj-sec-label">Unit 1: Data Handling – Pandas</div>
+<a href="#" class="subj-ch-link">Ch 1 – Data Handling using Pandas – I</a>
+<a href="#" class="subj-ch-link">Ch 2 – Data Handling using Pandas – II</a>
+<a href="#" class="subj-ch-link">Ch 3 – Plotting Data using Matplotlib</a>
+<div class="subj-sec-label">Unit 2: Database Query – SQL</div>
+<a href="#" class="subj-ch-link">Ch 4 – Functions in SQL</a>
+<a href="#" class="subj-ch-link">Ch 5 – GROUP BY &amp; Operations on Relations</a>
+<a href="#" class="subj-ch-link">Ch 6 – Joins in SQL</a>
+<div class="subj-sec-label">Unit 3: Computer Networks</div>
+<a href="#" class="subj-ch-link">Ch 7 – Introduction to Computer Networks</a>
+<div class="subj-sec-label">Unit 4: Societal Impacts</div>
+<a href="#" class="subj-ch-link">Ch 8 – Societal Impacts</a>
+</div><div><div class="subj-col-hd" style="color:#ea580c;border-color:#fed7aa;">📄 Resources</div><div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/InformaticsPractices-SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2024_25/InformaticsPractices-SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2023_24/InformaticsPractices-SQP.pdf" target="_blank" class="subj-ch-link">2023–24 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/InformaticsPractices-MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+<div class="subj-sec-label">PYQ Board Papers</div>
+<a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2025-90-1-1-set-1/1174081" target="_blank" class="subj-ch-link">2025 Board Paper ↗</a>
+<a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/informatics-practices-pyp/informatics-practices-2024-90-set-4/1100232" target="_blank" class="subj-ch-link">2024 Board Paper ↗</a>
+<div class="subj-sec-label">More</div>
+<a href="#" class="subj-ch-link">MCQs – IP 12</a>
+<a href="#" class="subj-ch-link">Q &amp; A – IP 12</a>
+<a href="#" class="subj-ch-link">Practical File Programs</a>
+</div></div></div></div></div>
       </li>
 
       <!-- 6. IT -->
       <li class="has-dropdown">
         <span>IT ▾</span>
-        <div class="mega-dropdown">
-          <div class="mega-cols">
-
-            <!-- IT Class 9 -->
-            <div class="mega-col">
-              <h5>IT – Class IX (Code 402)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#comm-skills-notes-section" onclick="showCommSkillsNotes(event)">Unit 1: Communication Skills-I</a>
-                  <a href="#" onclick="showSelfMgmtNotes(event)">Unit 2: Self-Management Skills-I</a>
-                  <a href="#" onclick="showIctNotes(event)">Unit 3: ICT Skills-I</a>
-                  <a href="#" onclick="showEntreNotes(event)">Unit 4: Entrepreneurial Skills-I</a>
-                  <a href="#" onclick="showGreenNotes(event)">Unit 5: Green Skills-I</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: Introduction to IT–ITeS Industry</a>
-                  <a href="#">Unit 2: Data Entry &amp; Keyboarding Skills</a>
-                  <a href="#">Unit 3: Digital Documentation (LibreOffice Writer)</a>
-                  <a href="#">Unit 4: Electronic Spreadsheet (LibreOffice Calc)</a>
-                  <a href="#">Unit 5: Digital Presentation (LibreOffice Impress)</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-I MCQs</a>
-                  <a href="#">Unit 2: Self-Management Skills-I MCQs</a>
-                  <a href="#">Unit 3: ICT Skills-I MCQs</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-I MCQs</a>
-                  <a href="#">Unit 5: Green Skills-I MCQs</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: Introduction to IT–ITeS Industry MCQs</a>
-                  <a href="#">Unit 2: Data Entry &amp; Keyboarding Skills MCQs</a>
-                  <a href="#">Unit 3: Digital Documentation MCQs</a>
-                  <a href="#">Unit 4: Electronic Spreadsheet MCQs</a>
-                  <a href="#">Unit 5: Digital Presentation MCQs</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Q &amp; A ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-I Q&amp;A</a>
-                  <a href="#">Unit 2: Self-Management Skills-I Q&amp;A</a>
-                  <a href="#">Unit 3: ICT Skills-I Q&amp;A</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-I Q&amp;A</a>
-                  <a href="#">Unit 5: Green Skills-I Q&amp;A</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: Introduction to IT–ITeS Industry Q&amp;A</a>
-                  <a href="#">Unit 2: Data Entry &amp; Keyboarding Skills Q&amp;A</a>
-                  <a href="#">Unit 3: Digital Documentation Q&amp;A</a>
-                  <a href="#">Unit 4: Electronic Spreadsheet Q&amp;A</a>
-                  <a href="#">Unit 5: Digital Presentation Q&amp;A</a>
-                </div>
-              </div>
-              <a href="#">NCERT Solutions</a>
-              <a href="#">Practical File</a>
-              <div class="has-sub">
-                <a href="#">Sample Papers – IX ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum23/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum21/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_IX/402_Information_Tech_MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_IX/402_Information_Tech_MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- IT Class 10 -->
-            <div class="mega-col">
-              <h5>IT – Class X (Code 402)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#c10-comm-notes" onclick="showC10CommNotes(event)">Unit 1: Communication Skills-II</a>
-                  <a href="#c10-selfmgmt-notes" onclick="showC10SelfMgmtNotes(event)">Unit 2: Self-Management Skills-II</a>
-                  <a href="#c10-ict-notes" onclick="showC10IctNotes(event)">Unit 3: ICT Skills-II</a>
-                  <a href="#c10-entrep-notes" onclick="showC10EntrepNotes(event)">Unit 4: Entrepreneurial Skills-II</a>
-                  <a href="#c10-green-notes" onclick="showC10GreenNotes(event)">Unit 5: Green Skills-II</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <span class="unit-label">Unit 1: Digital Documentation (Writer)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 1: Introduction to Styles</a>
-                  <a href="#">&nbsp;&nbsp;Ch 2: Working with Images</a>
-                  <a href="#">&nbsp;&nbsp;Ch 3: Advanced Features of Writer</a>
-                  <span class="unit-label">Unit 2: Electronic Spreadsheet (Calc)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 4: Scenarios &amp; Goal Seek</a>
-                  <a href="#">&nbsp;&nbsp;Ch 5: Using Macros in Spreadsheet</a>
-                  <a href="#">&nbsp;&nbsp;Ch 6: Linking Spreadsheet Data</a>
-                  <a href="#">&nbsp;&nbsp;Ch 7: Share and Review a Spreadsheet</a>
-                  <span class="unit-label">Unit 3: Database Management System (Base)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 8: Introduction to DBMS</a>
-                  <a href="#">&nbsp;&nbsp;Ch 9: Starting with LibreOffice Base</a>
-                  <a href="#">&nbsp;&nbsp;Ch 10: Working with Multiple Tables</a>
-                  <a href="#">&nbsp;&nbsp;Ch 11: Queries in Base</a>
-                  <a href="#">&nbsp;&nbsp;Ch 12: Forms and Reports</a>
-                  <span class="unit-label">Unit 4: Health, Safety &amp; Security</span>
-                  <a href="#">&nbsp;&nbsp;Ch 13: Health, Safety and Security at Workplace</a>
-                  <a href="#">&nbsp;&nbsp;Ch 14: Workplace Quality Measures</a>
-                  <a href="#">&nbsp;&nbsp;Ch 15: Prevent Accidents and Emergencies</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-II MCQs</a>
-                  <a href="#">Unit 2: Self-Management Skills-II MCQs</a>
-                  <a href="#">Unit 3: ICT Skills-II MCQs</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-II MCQs</a>
-                  <a href="#">Unit 5: Green Skills-II MCQs</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <span class="unit-label">Unit 1: Digital Documentation (Writer)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 1: Introduction to Styles MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 2: Working with Images MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 3: Advanced Features of Writer MCQs</a>
-                  <span class="unit-label">Unit 2: Electronic Spreadsheet (Calc)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 4: Scenarios &amp; Goal Seek MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 5: Using Macros MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 6: Linking Spreadsheet Data MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 7: Share and Review Spreadsheet MCQs</a>
-                  <span class="unit-label">Unit 3: Database Management System (Base)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 8: Introduction to DBMS MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 9: Starting with LibreOffice Base MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 10: Working with Multiple Tables MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 11: Queries in Base MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 12: Forms and Reports MCQs</a>
-                  <span class="unit-label">Unit 4: Health, Safety &amp; Security</span>
-                  <a href="#">&nbsp;&nbsp;Ch 13: Health, Safety &amp; Security MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 14: Workplace Quality Measures MCQs</a>
-                  <a href="#">&nbsp;&nbsp;Ch 15: Prevent Accidents &amp; Emergencies MCQs</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Q &amp; A ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-II Q&amp;A</a>
-                  <a href="#">Unit 2: Self-Management Skills-II Q&amp;A</a>
-                  <a href="#">Unit 3: ICT Skills-II Q&amp;A</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-II Q&amp;A</a>
-                  <a href="#">Unit 5: Green Skills-II Q&amp;A</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <span class="unit-label">Unit 1: Digital Documentation (Writer)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 1: Introduction to Styles Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 2: Working with Images Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 3: Advanced Features of Writer Q&amp;A</a>
-                  <span class="unit-label">Unit 2: Electronic Spreadsheet (Calc)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 4: Scenarios &amp; Goal Seek Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 5: Using Macros Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 6: Linking Spreadsheet Data Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 7: Share and Review Spreadsheet Q&amp;A</a>
-                  <span class="unit-label">Unit 3: Database Management System (Base)</span>
-                  <a href="#">&nbsp;&nbsp;Ch 8: Introduction to DBMS Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 9: Starting with LibreOffice Base Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 10: Working with Multiple Tables Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 11: Queries in Base Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 12: Forms and Reports Q&amp;A</a>
-                  <span class="unit-label">Unit 4: Health, Safety &amp; Security</span>
-                  <a href="#">&nbsp;&nbsp;Ch 13: Health, Safety &amp; Security Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 14: Workplace Quality Measures Q&amp;A</a>
-                  <a href="#">&nbsp;&nbsp;Ch 15: Prevent Accidents &amp; Emergencies Q&amp;A</a>
-                </div>
-              </div>
-              <a href="#">Practical File</a>
-              <a href="#">Board MCQs</a>
-              <div class="has-sub">
-                <a href="#">PYQ – IT X ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📋 Last 5 Years Board Papers (CBSE Class 10)</span>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/11177" target="_blank">🔗 IT/Comp App Class 10 – All PYQ ↗</a>
-                  <span class="part-label">📄 Year-wise Direct Links</span>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2025-set-4/1174178" target="_blank">2025 Board Paper ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2024-set-4/1099673" target="_blank">2024 Board Paper ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2023-set-4/1041780" target="_blank">2023 Board Paper ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2022-set-4/968810" target="_blank">2022 Board Paper ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-10th/computer-applications-pyp/computer-application-2020-set-4/886504" target="_blank">2020 Board Paper ↗</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers – X ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum23/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum21/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum20/SQP_BP_X/402_Information_Tech_SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_X/402_Information_Tech_MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_X/402_Information_Tech_MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- IT Class 11 -->
-            <div class="mega-col">
-              <h5>IT – Class XI (Code 802)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-III</a>
-                  <a href="#">Unit 2: Self-Management Skills-III</a>
-                  <a href="#">Unit 3: ICT Skills-III</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-III</a>
-                  <a href="#">Unit 5: Green Skills-III</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: Computer Organization</a>
-                  <a href="#">Unit 2: Networking and Internet</a>
-                  <a href="#">Unit 3: Office Automation Tools (Writer, Calc, Impress)</a>
-                  <a href="#">Unit 4: RDBMS (MySQL)</a>
-                  <a href="#">Unit 5: Fundamentals of Java (NetBeans)</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-III MCQs</a>
-                  <a href="#">Unit 2: Self-Management Skills-III MCQs</a>
-                  <a href="#">Unit 3: ICT Skills-III MCQs</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-III MCQs</a>
-                  <a href="#">Unit 5: Green Skills-III MCQs</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: Computer Organization MCQs</a>
-                  <a href="#">Unit 2: Networking and Internet MCQs</a>
-                  <a href="#">Unit 3: Office Automation Tools MCQs</a>
-                  <a href="#">Unit 4: RDBMS &amp; MySQL MCQs</a>
-                  <a href="#">Unit 5: Fundamentals of Java MCQs</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Q &amp; A ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-III Q&amp;A</a>
-                  <a href="#">Unit 2: Self-Management Skills-III Q&amp;A</a>
-                  <a href="#">Unit 3: ICT Skills-III Q&amp;A</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-III Q&amp;A</a>
-                  <a href="#">Unit 5: Green Skills-III Q&amp;A</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: Computer Organization Q&amp;A</a>
-                  <a href="#">Unit 2: Networking and Internet Q&amp;A</a>
-                  <a href="#">Unit 3: Office Automation Tools Q&amp;A</a>
-                  <a href="#">Unit 4: RDBMS (MySQL) Q&amp;A</a>
-                  <a href="#">Unit 5: Fundamentals of Java Q&amp;A</a>
-                </div>
-              </div>
-              <a href="#">NCERT Solutions – XI</a>
-              <div class="has-sub">
-                <a href="#">Sample Papers – XI ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum23/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum21/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- IT Class 12 -->
-            <div class="mega-col">
-              <h5>IT – Class XII (Code 802)</h5>
-              <div class="has-sub">
-                <a href="#">Notes ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-IV</a>
-                  <a href="#">Unit 2: Self-Management Skills-IV</a>
-                  <a href="#">Unit 3: ICT Skills-IV</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-IV</a>
-                  <a href="#">Unit 5: Green Skills-IV</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#db-notes-section" onclick="showDbNotes(event)">Unit 1: Database Concepts – RDBMS Tool (MySQL)</a>
-                  <a href="#">Unit 2: Operating Web Based Applications</a>
-                  <a href="#">Unit 3: Java Programming (OOP, Control Flow, Arrays, Exception Handling, Threads, String Manipulation)</a>
-                  <a href="#">Unit 4: Work Integrated Learning IT – DMA</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">MCQs ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-IV MCQs</a>
-                  <a href="#">Unit 2: Self-Management Skills-IV MCQs</a>
-                  <a href="#">Unit 3: ICT Skills-IV MCQs</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-IV MCQs</a>
-                  <a href="#">Unit 5: Green Skills-IV MCQs</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: RDBMS &amp; SQL MCQs</a>
-                  <a href="#">Unit 2: Web Based Applications MCQs</a>
-                  <a href="#">Unit 3: Java Programming MCQs</a>
-                  <a href="#">Unit 4: Work Integrated Learning MCQs</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Q &amp; A ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">Part A — Employability Skills</span>
-                  <a href="#">Unit 1: Communication Skills-IV Q&amp;A</a>
-                  <a href="#">Unit 2: Self-Management Skills-IV Q&amp;A</a>
-                  <a href="#">Unit 3: ICT Skills-IV Q&amp;A</a>
-                  <a href="#">Unit 4: Entrepreneurial Skills-IV Q&amp;A</a>
-                  <a href="#">Unit 5: Green Skills-IV Q&amp;A</a>
-                  <span class="part-label">Part B — Subject Specific Skills</span>
-                  <a href="#">Unit 1: Database Concepts – RDBMS (MySQL) Q&amp;A</a>
-                  <a href="#">Unit 2: Operating Web Based Applications Q&amp;A</a>
-                  <a href="#">Unit 3: Java Programming Q&amp;A</a>
-                  <a href="#">Unit 4: Work Integrated Learning – DMA Q&amp;A</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">PYQ – IT XII ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📋 Last 5 Years Board Papers (CBSE Class 12)</span>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/1407" target="_blank">🔗 CS/IT Class 12 – All PYQ ↗</a>
-                  <span class="part-label">📄 Year-wise Direct Links</span>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2025-91-1-1-set-1/1174068" target="_blank">2025 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2024-91-1-1-set-1/1099574" target="_blank">2024 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2023-91-1-1-set-1/1041669" target="_blank">2023 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2022-91-1-1-set-1/968700" target="_blank">2022 Board Paper Set-1 ↗</a>
-                  <a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2020-91-1-1-set-1/886400" target="_blank">2020 Board Paper Set-1 ↗</a>
-                </div>
-              </div>
-              <div class="has-sub">
-                <a href="#">Sample Papers ›</a>
-                <div class="sub-dropdown">
-                  <span class="part-label">📄 Last 5 Years Sample Papers</span>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2025–26 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2024–25 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum23/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2023–24 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum21/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2021–22 Sample Paper (CBSE Official) ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum20/SQP_BP_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank">2020–21 Sample Paper (CBSE Official) ↗</a>
-                  <span class="part-label">📝 Marking Schemes</span>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank">2025–26 Marking Scheme ↗</a>
-                  <a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank">2024–25 Marking Scheme ↗</a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <div class="mega-dropdown subj-mega" style="width:860px;max-width:calc(100vw - 20px);padding:0;overflow:hidden;"><div class="subj-tabbar"><button class="subj-tab active" onclick="subjTab(event,'it9')">🖥️ IT Class 9</button><button class="subj-tab" onclick="subjTab(event,'it10')">📋 IT Class 10</button><button class="subj-tab" onclick="subjTab(event,'it11')">🌐 IT Class 11</button><button class="subj-tab" onclick="subjTab(event,'it12')">☕ IT Class 12</button></div><div class="subj-panels"><div id="it9" class="subj-panel" style="display:block;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#059669;border-color:#a7f3d0;">📚 Part A – Employability Skills</div><a href="#comm-skills-notes-section" onclick="showCommSkillsNotes(event)" class="subj-ch-link">Unit 1: Communication Skills-I</a>
+<a href="#" onclick="showSelfMgmtNotes(event)" class="subj-ch-link">Unit 2: Self-Management Skills-I</a>
+<a href="#" onclick="showIctNotes(event)" class="subj-ch-link">Unit 3: ICT Skills-I</a>
+<a href="#" onclick="showEntreNotes(event)" class="subj-ch-link">Unit 4: Entrepreneurial Skills-I</a>
+<a href="#" onclick="showGreenNotes(event)" class="subj-ch-link">Unit 5: Green Skills-I</a>
+</div><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">💼 Part B – Subject Specific Skills</div><a href="#" class="subj-ch-link">Unit 1: Introduction to IT–ITeS Industry</a>
+<a href="#" class="subj-ch-link">Unit 2: Data Entry &amp; Keyboarding Skills</a>
+<a href="#" class="subj-ch-link">Unit 3: Digital Documentation (LibreOffice Writer)</a>
+<a href="#" class="subj-ch-link">Unit 4: Electronic Spreadsheet (LibreOffice Calc)</a>
+<a href="#" class="subj-ch-link">Unit 5: Digital Presentation (LibreOffice Impress)</a>
+<div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_IX/402_Information_Tech_SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_IX/402_Information_Tech_MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+<div class="subj-sec-label">More</div>
+<a href="#" class="subj-ch-link">MCQs – IT 9</a>
+<a href="#" class="subj-ch-link">NCERT Solutions</a>
+<a href="#" class="subj-ch-link">Practical File</a>
+</div></div></div><div id="it10" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#059669;border-color:#a7f3d0;">📚 Part A – Employability Skills</div><a href="#c10-comm-notes" onclick="showC10CommNotes(event)" class="subj-ch-link">Unit 1: Communication Skills-II</a>
+<a href="#c10-selfmgmt-notes" onclick="showC10SelfMgmtNotes(event)" class="subj-ch-link">Unit 2: Self-Management Skills-II</a>
+<a href="#c10-ict-notes" onclick="showC10IctNotes(event)" class="subj-ch-link">Unit 3: ICT Skills-II</a>
+<a href="#c10-entrep-notes" onclick="showC10EntrepNotes(event)" class="subj-ch-link">Unit 4: Entrepreneurial Skills-II</a>
+<a href="#c10-green-notes" onclick="showC10GreenNotes(event)" class="subj-ch-link">Unit 5: Green Skills-II</a>
+</div><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">💼 Part B – Subject Specific Skills</div><div class="subj-sec-label">Unit 1: Digital Documentation</div>
+<a href="#" class="subj-ch-link">Ch 1 – Introduction to Styles</a>
+<a href="#" class="subj-ch-link">Ch 2 – Working with Images</a>
+<a href="#" class="subj-ch-link">Ch 3 – Advanced Features of Writer</a>
+<div class="subj-sec-label">Unit 2: Electronic Spreadsheet</div>
+<a href="#" class="subj-ch-link">Ch 4 – Scenarios &amp; Goal Seek</a>
+<a href="#" class="subj-ch-link">Ch 5 – Using Macros in Spreadsheet</a>
+<div class="subj-sec-label">Unit 3: DBMS (Base)</div>
+<a href="#" class="subj-ch-link">Ch 8 – Introduction to DBMS</a>
+<a href="#" class="subj-ch-link">Ch 9 – Starting with LibreOffice Base</a>
+<div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_X/402_Information_Tech_SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+</div></div></div><div id="it11" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#059669;border-color:#a7f3d0;">📚 Part A – Employability Skills</div><a href="#" class="subj-ch-link">Unit 1: Communication Skills-III</a>
+<a href="#" class="subj-ch-link">Unit 2: Self-Management Skills-III</a>
+<a href="#" class="subj-ch-link">Unit 3: ICT Skills-III</a>
+<a href="#" class="subj-ch-link">Unit 4: Entrepreneurial Skills-III</a>
+<a href="#" class="subj-ch-link">Unit 5: Green Skills-III</a>
+</div><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">💼 Part B – Subject Specific Skills</div><a href="#" class="subj-ch-link">Unit 1: Web Application (HTML, CSS)</a>
+<a href="#" class="subj-ch-link">Unit 2: Programming in Python</a>
+<a href="#" class="subj-ch-link">Unit 3: RDBMS (MySQL)</a>
+<a href="#" class="subj-ch-link">Unit 4: System Administration &amp; Maintenance</a>
+<div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XI/802_INFORMATION_TECHNOLOGY_MS.pdf" target="_blank" class="subj-ch-link">2025–26 Marking Scheme ↗</a>
+<div class="subj-sec-label">More</div>
+<a href="#" class="subj-ch-link">MCQs – IT 11</a>
+<a href="#" class="subj-ch-link">NCERT Solutions – XI</a>
+</div></div></div><div id="it12" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#059669;border-color:#a7f3d0;">📚 Part A – Employability Skills</div><a href="#" class="subj-ch-link">Unit 1: Communication Skills-IV</a>
+<a href="#" class="subj-ch-link">Unit 2: Self-Management Skills-IV</a>
+<a href="#" class="subj-ch-link">Unit 3: ICT Skills-IV</a>
+<a href="#" class="subj-ch-link">Unit 4: Entrepreneurial Skills-IV</a>
+<a href="#" class="subj-ch-link">Unit 5: Green Skills-IV</a>
+</div><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">💼 Part B – Subject Specific Skills</div><a href="#db-notes-section" onclick="showDbNotes(event)" class="subj-ch-link">Unit 1: Database – RDBMS (MySQL)</a>
+<a href="#" class="subj-ch-link">Unit 2: Operating Web Based Applications</a>
+<a href="#" class="subj-ch-link">Unit 3: Java Programming (OOP, Arrays, Threads)</a>
+<a href="#" class="subj-ch-link">Unit 4: Work Integrated Learning IT – DMA</a>
+<div class="subj-sec-label">Sample Papers</div>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum25/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank" class="subj-ch-link">2025–26 Sample Paper ↗</a>
+<a href="https://cbseacademic.nic.in/web_material/Curriculum24/SQP_MS_XII/802_INFORMATION_TECHNOLOGY_SQP.pdf" target="_blank" class="subj-ch-link">2024–25 Sample Paper ↗</a>
+<div class="subj-sec-label">PYQ Board Papers</div>
+<a href="https://www.selfstudys.com/books/cbse-prev-paper/english/class-12th/computer-science-c-pyp/computer-science-2025-91-1-1-set-1/1174068" target="_blank" class="subj-ch-link">2025 Board Paper ↗</a>
+<div class="subj-sec-label">More</div>
+<a href="#" class="subj-ch-link">MCQs – IT 12</a>
+<a href="#" class="subj-ch-link">Q &amp; A – IT 12</a>
+</div></div></div></div></div>
       </li>
 
       <li class="has-dropdown">
@@ -4203,7 +3394,7 @@ learn_python(s)
 
   // ─── MEGA DROPDOWN POSITIONING (desktop) ───
   document.querySelectorAll('.has-dropdown').forEach(li => {
-    const mega = li.querySelector('.mega-dropdown');
+    const mega = li.querySelector('.mega-dropdown, .subj-mega');
     if (!mega) return;
 
     let closeTimer;
@@ -4297,6 +3488,19 @@ learn_python(s)
 </script>
 
 <script>
+
+  // ─── Universal Subject Tab Switcher ───
+  function subjTab(e, panelId) {
+    e.stopPropagation();
+    var container = e.currentTarget.closest('.subj-mega') || e.currentTarget.closest('.mega-dropdown');
+    if (!container) return;
+    container.querySelectorAll('.subj-panel').forEach(function(p){ p.style.display='none'; });
+    container.querySelectorAll('.subj-tab').forEach(function(t){ t.classList.remove('active'); });
+    var panel = document.getElementById(panelId);
+    if (panel) panel.style.display='block';
+    e.currentTarget.classList.add('active');
+  }
+
   // ─── VISITOR COUNTER ───
   (function() {
     const TOTAL_KEY  = 'vc_total';
@@ -9826,6 +9030,1291 @@ function updateTimerDisplay() {
 </div>
 <!-- /cs11-ch1-notes -->
 
+<!-- ═══════════ CS CLASS 11 — CHAPTER 3: INTRODUCTION TO PROBLEM SOLVING ═══════════ -->
+<style>
+  #cs11-ch3-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch3-notes.active { display: block; }
+  @media print {
+    #cs11-ch3-notes .notes-topbar,
+    #cs11-ch3-notes .notes-back-btn,
+    #cs11-ch3-notes .notes-print-btn { display: none !important; }
+    #cs11-ch3-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch3-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch3-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🧠</span> CS Class 11 (083) — Unit 2: Chapter 3 – Introduction to Problem Solving</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch3Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch3Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch3NotesBody">
+
+    <div style="background:linear-gradient(135deg,#064e3b,#065f46);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🧠</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 3</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Introduction to Problem Solving</h2>
+      <p style="color:#a7f3d0;font-size:0.9rem;line-height:1.7;max-width:680px;">Algorithm, Flowchart, Pseudocode, Steps of Problem Solving, Flow of Control, Decomposition — सब कुछ आसान भाषा में।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch3-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch3-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Problem Solving — परिभाषा और Steps</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Problem Solving</span>
+          Problem solving किसी problem को पहचानने, analyze करने, उसका algorithm develop करने और उसे program के रूप में implement करने की प्रक्रिया है।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Problem Solving के 4 Steps</div>
+          <table class="notes-table">
+            <thead><tr><th>Step</th><th>नाम</th><th>विवरण</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><strong>Analyze the Problem</strong></td><td>Problem को अच्छी तरह समझें — inputs, outputs और process पहचानें</td></tr>
+              <tr><td>2</td><td><strong>Developing an Algorithm</strong></td><td>Problem solve करने के लिए step-by-step plan बनाएं</td></tr>
+              <tr><td>3</td><td><strong>Coding</strong></td><td>Algorithm को Programming Language में लिखें</td></tr>
+              <tr><td>4</td><td><strong>Testing &amp; Debugging</strong></td><td>Program को test करें और errors ढूंढकर ठीक करें</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch3-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch3-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Algorithm</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Algorithm</span>
+          किसी problem को solve करने के लिए लिखे गए <strong>precise, finite और sequential steps</strong> का set — जिसमें definite beginning और definite end हो।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Algorithm की विशेषताएं (Characteristics)</div>
+          <ul class="notes-ul">
+            <li><strong>Precision</strong> — Steps clearly defined हों</li>
+            <li><strong>Uniqueness</strong> — हर step का result uniquely defined हो</li>
+            <li><strong>Finiteness</strong> — Algorithm finite steps में खत्म हो</li>
+            <li><strong>Input</strong> — Algorithm input लेता हो</li>
+            <li><strong>Output</strong> — Algorithm output देता हो</li>
+          </ul>
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Algorithm की जरूरत क्यों? (Why Algorithm?)</div>
+          <ul class="notes-ul">
+            <li>Programmer को instructions clearly visualize करने में मदद करता है</li>
+            <li>Solution की reliability, accuracy और efficiency बढ़ाता है</li>
+            <li>Problem को बिना ज्यादा detail में गए आसानी से describe करता है</li>
+            <li>Problem का flow concisely समझाता है</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch3-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch3-t3')">
+        <h3><span class="ch-badge">Topic 3</span> Flowchart और Pseudocode</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Flowchart</span>
+          Algorithm का <strong>visual/diagrammatic representation</strong> — boxes, diamonds और arrows से बना diagram जो solution के steps दर्शाता है।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Flowchart Symbols</div>
+          <table class="notes-table">
+            <thead><tr><th>Symbol</th><th>Shape</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td>Terminal</td><td>Oval / Rounded Rectangle</td><td>Start / End</td></tr>
+              <tr><td>Process</td><td>Rectangle</td><td>Computation / Assignment</td></tr>
+              <tr><td>Decision</td><td>Diamond</td><td>Condition (Yes/No)</td></tr>
+              <tr><td>Input/Output</td><td>Parallelogram</td><td>Input लेना / Output दिखाना</td></tr>
+              <tr><td>Arrow / Flow Lines</td><td>Arrow</td><td>Steps के बीच flow दर्शाना</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-def" style="margin-top:16px;">
+          <span class="def-term">📖 Pseudocode</span>
+          Algorithm को represent करने का informal तरीका — <strong>not real code</strong>, human-readable भाषा में लिखा जाता है। Computer directly execute नहीं कर सकता। Keywords: INPUT, COMPUTE, PRINT, IF/ELSE, WHILE, TRUE/FALSE
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">💡 Example — दो numbers में बड़ा number ढूंढना</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            INPUT num1, num2<br>
+            IF num1 &gt; num2 THEN<br>
+            &nbsp;&nbsp;PRINT "num1 is largest"<br>
+            ELSE<br>
+            &nbsp;&nbsp;PRINT "num2 is largest"<br>
+            ENDIF
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch3-t4">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch3-t4')">
+        <h3><span class="ch-badge">Topic 4</span> Flow of Control — Selection &amp; Repetition</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Flow of Control के प्रकार</div>
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Meaning</th><th>Keyword</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Sequence</strong></td><td>Steps एक-एक करके execute होते हैं</td><td>—</td></tr>
+              <tr><td><strong>Selection</strong></td><td>Condition के आधार पर steps execute होते हैं</td><td>IF / ELSE</td></tr>
+              <tr><td><strong>Repetition</strong></td><td>Steps बार-बार (loop में) execute होते हैं</td><td>WHILE</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:14px;">
+          <div class="imp-title">💡 Repetition Example — "Hello" 10 बार print करना</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            SET count = 0<br>
+            WHILE count &lt; 10<br>
+            &nbsp;&nbsp;PRINT "Hello"<br>
+            &nbsp;&nbsp;count = count + 1<br>
+            END WHILE
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch3-t5">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch3-t5')">
+        <h3><span class="ch-badge">Topic 5</span> Decomposition</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Decomposition</span>
+          किसी <strong>complex problem को छोटे-छोटे sub-problems में तोड़ना</strong> ताकि उन्हें आसानी से solve किया जा सके। सभी sub-problems के solutions को मिलाकर final solution बनता है।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Decomposition के फायदे</div>
+          <ul class="notes-ul">
+            <li>Complex problem आसान हो जाती है</li>
+            <li>Time और effort दोनों कम होते हैं</li>
+            <li>अलग-अलग experts को अलग-अलग subprograms दिए जा सकते हैं</li>
+            <li>Errors ढूंढना आसान होता है</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch3Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch3-notes -->
+
+<!-- ═══════════ CS CLASS 11 — CHAPTER 4: GETTING STARTED WITH PYTHON ═══════════ -->
+<style>
+  #cs11-ch4-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch4-notes.active { display: block; }
+  @media print {
+    #cs11-ch4-notes .notes-topbar,
+    #cs11-ch4-notes .notes-back-btn,
+    #cs11-ch4-notes .notes-print-btn { display: none !important; }
+    #cs11-ch4-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch4-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch4-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🐍</span> CS Class 11 (083) — Unit 2: Chapter 4 – Getting Started with Python</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch4Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch4Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch4NotesBody">
+
+    <div style="background:linear-gradient(135deg,#1e3a5f,#3b6ea5);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🐍</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 4</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Getting Started with Python</h2>
+      <p style="color:#bfdbfe;font-size:0.9rem;line-height:1.7;max-width:680px;">Python basics — Features, Keywords, Identifiers, Variables, Data Types, Operators, Input/Output, Type Conversion और Errors।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch4-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch4-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Python — Introduction &amp; Features</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Python</span>
+          Python एक <strong>General Purpose, High Level Programming Language</strong> है जिसका उपयोग application software develop करने के लिए होता है।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Python की विशेषताएं (Features)</div>
+          <ul class="notes-ul">
+            <li><strong>High Level</strong> — मानव-पठनीय भाषा</li>
+            <li><strong>Free and Open Source</strong> — मुफ्त में उपलब्ध</li>
+            <li><strong>Case Sensitive</strong> — Name और name अलग हैं</li>
+            <li><strong>Interpreted</strong> — Line-by-line execute होता है</li>
+            <li><strong>Platform Independent</strong> — किसी भी OS पर चलता है</li>
+            <li><strong>Rich Library</strong> — बहुत सारे built-in functions</li>
+            <li><strong>Dynamic</strong> — Runtime पर variable का type बदल सकता है</li>
+          </ul>
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Execution Modes</div>
+          <table class="notes-table">
+            <thead><tr><th>Mode</th><th>विशेषता</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Interactive Mode</strong></td><td>एक-एक statement तुरंत execute, save नहीं होता</td></tr>
+              <tr><td><strong>Script Mode</strong></td><td>पूरा program एक साथ लिखो और .py file में save करो</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch4-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch4-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Keywords, Identifiers &amp; Variables</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Keywords</span>
+          Python में predefined reserved words जिनका specific meaning होता है। ये case-sensitive होते हैं। जैसे: <code>if, else, for, while, def, class, True, False, None</code>
+        </div>
+        <div class="notes-def" style="margin-top:12px;">
+          <span class="def-term">📖 Identifier</span>
+          Variable, function या किसी entity को identify करने के लिए दिया गया नाम।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Identifier के Rules</div>
+          <ul class="notes-ul">
+            <li>Letter (a-z, A-Z) या underscore (_) से शुरू हो</li>
+            <li>Letter, digit (0-9) या underscore हो सकते हैं</li>
+            <li>Python keyword नहीं होना चाहिए</li>
+            <li>Special symbols (!, @, #, $, %) नहीं होने चाहिए</li>
+            <li>Case-sensitive होते हैं — <code>Name</code> और <code>name</code> अलग हैं</li>
+          </ul>
+        </div>
+        <div class="notes-def" style="margin-top:12px;">
+          <span class="def-term">📖 Variable</span>
+          Memory space जो value store करता है। Assignment statement से बनाया जाता है। जैसे: <code>x = 10</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch4-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch4-t3')">
+        <h3><span class="ch-badge">Topic 3</span> Data Types &amp; Operators</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Python Data Types</div>
+          <table class="notes-table">
+            <thead><tr><th>Data Type</th><th>Example</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>int</strong></td><td>10, -5, 0</td><td>पूर्ण संख्या (Integer)</td></tr>
+              <tr><td><strong>float</strong></td><td>3.14, -2.5</td><td>दशमलव संख्या</td></tr>
+              <tr><td><strong>complex</strong></td><td>3+4j</td><td>Complex number</td></tr>
+              <tr><td><strong>str</strong></td><td>'Hello', "World"</td><td>Text / String</td></tr>
+              <tr><td><strong>bool</strong></td><td>True, False</td><td>Boolean</td></tr>
+              <tr><td><strong>list</strong></td><td>[1, 2, 3]</td><td>Mutable sequence</td></tr>
+              <tr><td><strong>tuple</strong></td><td>(1, 2, 3)</td><td>Immutable sequence</td></tr>
+              <tr><td><strong>dict</strong></td><td>{'a':1}</td><td>Key-value pairs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:14px;">
+          <div class="imp-title">⭐ Python Operators</div>
+          <table class="notes-table">
+            <thead><tr><th>Operator Type</th><th>Symbols</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Arithmetic</strong></td><td>+ &nbsp; - &nbsp; * &nbsp; / &nbsp; // &nbsp; % &nbsp; **</td></tr>
+              <tr><td><strong>Relational</strong></td><td>== &nbsp; != &nbsp; &gt; &nbsp; &lt; &nbsp; &gt;= &nbsp; &lt;=</td></tr>
+              <tr><td><strong>Assignment</strong></td><td>= &nbsp; += &nbsp; -= &nbsp; *= &nbsp; /= &nbsp; //= &nbsp; %=</td></tr>
+              <tr><td><strong>Logical</strong></td><td>and &nbsp; or &nbsp; not</td></tr>
+              <tr><td><strong>Identity</strong></td><td>is &nbsp; is not</td></tr>
+              <tr><td><strong>Membership</strong></td><td>in &nbsp; not in</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch4-t4">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch4-t4')">
+        <h3><span class="ch-badge">Topic 4</span> Input/Output, Type Conversion &amp; Errors</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Input &amp; Output Functions</div>
+          <table class="notes-table">
+            <thead><tr><th>Function</th><th>Use</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><code>input()</code></td><td>User से input लेना (हमेशा string return करता है)</td><td><code>x = input("Enter: ")</code></td></tr>
+              <tr><td><code>print()</code></td><td>Output display करना</td><td><code>print("Hello", x)</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:14px;">
+          <div class="imp-title">⭐ Type Conversion</div>
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Explicit (Type Casting)</strong></td><td>Programmer manually type बदलता है</td><td><code>int("10")</code>, <code>float("3.5")</code></td></tr>
+              <tr><td><strong>Implicit (Coercion)</strong></td><td>Python automatically type बदलता है (int → float)</td><td><code>10 + 3.4 = 13.4</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:14px;">
+          <div class="imp-title">⭐ Types of Errors</div>
+          <table class="notes-table">
+            <thead><tr><th>Error</th><th>कब होती है</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Syntax Error</strong></td><td>Programming rules के against code लिखने पर</td><td>गलत function name, wrong indentation</td></tr>
+              <tr><td><strong>Logical Error</strong></td><td>Program चलता है लेकिन wrong output देता है</td><td>गलत condition लिखना</td></tr>
+              <tr><td><strong>Runtime Error</strong></td><td>Execution के दौरान program crash हो जाता है</td><td>Division by Zero</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch4Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch4-notes -->
+
+<!-- ═══════════ CS CLASS 11 — CHAPTER 5: FLOW OF CONTROL ═══════════ -->
+<style>
+  #cs11-ch5-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch5-notes.active { display: block; }
+  @media print {
+    #cs11-ch5-notes .notes-topbar,
+    #cs11-ch5-notes .notes-back-btn,
+    #cs11-ch5-notes .notes-print-btn { display: none !important; }
+    #cs11-ch5-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch5-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch5-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🔀</span> CS Class 11 (083) — Unit 2: Chapter 5 – Flow of Control</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch5Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch5Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch5NotesBody">
+
+    <div style="background:linear-gradient(135deg,#4c1d95,#7c3aed);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🔀</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 5</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Flow of Control</h2>
+      <p style="color:#e9d5ff;font-size:0.9rem;line-height:1.7;max-width:680px;">if, if-else, if-elif-else, for loop, while loop, break, continue, pass — Python में flow control पूरी तरह।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch5-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch5-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Conditional Statements — if, if-else, if-elif-else</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Conditional Statement</span>
+          वे statements जो किसी <strong>condition के True या False होने पर</strong> अलग-अलग code block execute करते हैं।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ if Statement</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            if condition:<br>
+            &nbsp;&nbsp;statement(s)
+          </div>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ if-else Statement</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            if condition:<br>
+            &nbsp;&nbsp;statement(s)  # True होने पर<br>
+            else:<br>
+            &nbsp;&nbsp;statement(s)  # False होने पर
+          </div>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ if-elif-else Statement</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            if condition1:<br>
+            &nbsp;&nbsp;statement(s)<br>
+            elif condition2:<br>
+            &nbsp;&nbsp;statement(s)<br>
+            else:<br>
+            &nbsp;&nbsp;statement(s)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch5-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch5-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Loops — for &amp; while</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ for Loop — range() के साथ</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            for variable in range(start, stop, step):<br>
+            &nbsp;&nbsp;statement(s)<br><br>
+            # Example: 1 से 5 तक print करना<br>
+            for i in range(1, 6):<br>
+            &nbsp;&nbsp;print(i)
+          </div>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ while Loop</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            while condition:<br>
+            &nbsp;&nbsp;statement(s)<br><br>
+            # Example: 1 से 5 तक print करना<br>
+            i = 1<br>
+            while i &lt;= 5:<br>
+            &nbsp;&nbsp;print(i)<br>
+            &nbsp;&nbsp;i = i + 1
+          </div>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ break, continue &amp; pass</div>
+          <table class="notes-table">
+            <thead><tr><th>Statement</th><th>काम</th></tr></thead>
+            <tbody>
+              <tr><td><code>break</code></td><td>Loop को तुरंत बंद कर देता है</td></tr>
+              <tr><td><code>continue</code></td><td>Current iteration छोड़कर अगला iteration शुरू करता है</td></tr>
+              <tr><td><code>pass</code></td><td>कुछ नहीं करता — placeholder की तरह काम आता है</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch5Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch5-notes -->
+
+<!-- ═══════════ CS CLASS 11 — CHAPTER 6: FUNCTIONS ═══════════ -->
+<style>
+  #cs11-ch6-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch6-notes.active { display: block; }
+  @media print {
+    #cs11-ch6-notes .notes-topbar,
+    #cs11-ch6-notes .notes-back-btn,
+    #cs11-ch6-notes .notes-print-btn { display: none !important; }
+    #cs11-ch6-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch6-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch6-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">⚙️</span> CS Class 11 (083) — Unit 2: Chapter 6 – Functions</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch6Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch6Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch6NotesBody">
+
+    <div style="background:linear-gradient(135deg,#7c2d12,#c2410c);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 6</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Functions in Python</h2>
+      <p style="color:#fed7aa;font-size:0.9rem;line-height:1.7;max-width:680px;">User-defined Functions, Built-in Functions, Parameters, Arguments, return statement, Scope of Variables।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch6-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch6-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Functions — परिभाषा और प्रकार</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Function</span>
+          Code का एक named block जो specific task करता है और जिसे बार-बार call किया जा सकता है। Code reusability बढ़ाता है।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Functions के प्रकार</div>
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Built-in Functions</strong></td><td>Python में already defined</td><td>print(), input(), len(), range(), type()</td></tr>
+              <tr><td><strong>User-defined Functions</strong></td><td>Programmer खुद define करता है</td><td>def myFunc():</td></tr>
+              <tr><td><strong>Library Functions</strong></td><td>Modules से import की जाती हैं</td><td>math.sqrt(), random.randint()</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch6-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch6-t2')">
+        <h3><span class="ch-badge">Topic 2</span> User-Defined Function — Syntax &amp; Examples</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Function Definition &amp; Calling</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            # Function define करना<br>
+            def functionName(parameters):<br>
+            &nbsp;&nbsp;statement(s)<br>
+            &nbsp;&nbsp;return value  # optional<br><br>
+            # Function call करना<br>
+            functionName(arguments)
+          </div>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">💡 Example — दो numbers का जोड़</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            def add(a, b):<br>
+            &nbsp;&nbsp;result = a + b<br>
+            &nbsp;&nbsp;return result<br><br>
+            total = add(5, 3)<br>
+            print(total)  # Output: 8
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch6-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch6-t3')">
+        <h3><span class="ch-badge">Topic 3</span> Scope of Variables — Local &amp; Global</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Variable Scope</div>
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>कहाँ define होता है</th><th>कहाँ accessible है</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Local Variable</strong></td><td>Function के अंदर</td><td>सिर्फ उसी function में</td></tr>
+              <tr><td><strong>Global Variable</strong></td><td>Function के बाहर (Main program में)</td><td>पूरे program में</td></tr>
+            </tbody>
+          </table>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;margin-top:10px;">
+            x = 10  # Global variable<br><br>
+            def myFunc():<br>
+            &nbsp;&nbsp;y = 20  # Local variable<br>
+            &nbsp;&nbsp;print(x)  # Global accessible: 10<br>
+            &nbsp;&nbsp;print(y)  # Local: 20<br><br>
+            myFunc()<br>
+            # print(y)  # Error! y is local
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch6Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch6-notes -->
+
+<!-- ═══════════ CS CLASS 11 — CHAPTER 7: STRINGS ═══════════ -->
+<style>
+  #cs11-ch7-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch7-notes.active { display: block; }
+  @media print {
+    #cs11-ch7-notes .notes-topbar,
+    #cs11-ch7-notes .notes-back-btn,
+    #cs11-ch7-notes .notes-print-btn { display: none !important; }
+    #cs11-ch7-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch7-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch7-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🔤</span> CS Class 11 (083) — Unit 2: Chapter 7 – Strings</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch7Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch7Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch7NotesBody">
+
+    <div style="background:linear-gradient(135deg,#164e63,#0e7490);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 7</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Strings in Python</h2>
+      <p style="color:#a5f3fc;font-size:0.9rem;line-height:1.7;max-width:680px;">Indexing, Slicing, String Operations, Traversing, String Functions — सब एक जगह।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch7-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch7-t1')">
+        <h3><span class="ch-badge">Topic 1</span> String — परिभाषा, Indexing &amp; Immutability</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 String</span>
+          एक या अधिक <strong>UNICODE characters का sequence</strong>। Single, double या triple quotes में लिखी जाती है। String <strong>Immutable</strong> होती है — create होने के बाद बदली नहीं जा सकती।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Indexing — String के characters access करना</div>
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Start</th><th>Direction</th><th>Example (s="Hello")</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Positive Index</strong></td><td>0</td><td>Left → Right</td><td>s[0]='H', s[1]='e'</td></tr>
+              <tr><td><strong>Negative Index</strong></td><td>-1</td><td>Right → Left</td><td>s[-1]='o', s[-2]='l'</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch7-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch7-t2')">
+        <h3><span class="ch-badge">Topic 2</span> String Operations</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ String Operations — Summary Table</div>
+          <table class="notes-table">
+            <thead><tr><th>Operation</th><th>Operator</th><th>Example</th><th>Output</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Concatenation</strong></td><td>+</td><td>"Hello" + " World"</td><td>"Hello World"</td></tr>
+              <tr><td><strong>Repetition</strong></td><td>*</td><td>"Hi" * 3</td><td>"HiHiHi"</td></tr>
+              <tr><td><strong>Membership (in)</strong></td><td>in</td><td>"He" in "Hello"</td><td>True</td></tr>
+              <tr><td><strong>Membership (not in)</strong></td><td>not in</td><td>"Bye" not in "Hello"</td><td>True</td></tr>
+              <tr><td><strong>Slicing</strong></td><td>[ : ]</td><td>"Hello"[1:4]</td><td>"ell"</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Slicing Syntax</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:14px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            string[start : end : step]<br>
+            # end index हमेशा exclude होता है<br><br>
+            s = "Python"<br>
+            s[0:3]   → "Pyt"<br>
+            s[::2]   → "Pto"<br>
+            s[::-1]  → "nohtyP"  (reverse)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch7-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch7-t3')">
+        <h3><span class="ch-badge">Topic 3</span> String Functions</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Important String Functions</div>
+          <table class="notes-table">
+            <thead><tr><th>Function</th><th>काम</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><code>len(s)</code></td><td>Length / characters की संख्या</td><td>len("Hello") → 5</td></tr>
+              <tr><td><code>s.upper()</code></td><td>Uppercase में बदलना</td><td>"hello".upper() → "HELLO"</td></tr>
+              <tr><td><code>s.lower()</code></td><td>Lowercase में बदलना</td><td>"HELLO".lower() → "hello"</td></tr>
+              <tr><td><code>s.strip()</code></td><td>Whitespace हटाना</td><td>" hi ".strip() → "hi"</td></tr>
+              <tr><td><code>s.replace(a,b)</code></td><td>a को b से बदलना</td><td>"Hello".replace("l","r") → "Herro"</td></tr>
+              <tr><td><code>s.find(sub)</code></td><td>Substring की position</td><td>"Hello".find("ll") → 2</td></tr>
+              <tr><td><code>s.count(sub)</code></td><td>Substring की count</td><td>"hello".count("l") → 2</td></tr>
+              <tr><td><code>s.split(sep)</code></td><td>List में तोड़ना</td><td>"a,b,c".split(",") → ['a','b','c']</td></tr>
+              <tr><td><code>s.isdigit()</code></td><td>सभी digit हैं?</td><td>"123".isdigit() → True</td></tr>
+              <tr><td><code>s.isalpha()</code></td><td>सभी alphabet हैं?</td><td>"abc".isalpha() → True</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch7Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch7-notes -->
+
+<!-- ═══════════ CS CLASS 11 — CHAPTER 8: LISTS ═══════════ -->
+<style>
+  #cs11-ch8-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch8-notes.active { display: block; }
+  @media print {
+    #cs11-ch8-notes .notes-topbar,
+    #cs11-ch8-notes .notes-back-btn,
+    #cs11-ch8-notes .notes-print-btn { display: none !important; }
+    #cs11-ch8-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch8-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch8-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">📋</span> CS Class 11 (083) — Unit 2: Chapter 8 – Lists</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch8Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch8Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch8NotesBody">
+
+    <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 8</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Lists in Python</h2>
+      <p style="color:#c7d2fe;font-size:0.9rem;line-height:1.7;max-width:680px;">List creation, Indexing, Slicing, List Operations, List Methods, Traversing &amp; Nested List।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch8-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch8-t1')">
+        <h3><span class="ch-badge">Topic 1</span> List — परिभाषा, Indexing &amp; Mutability</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 List</span>
+          Python का built-in <strong>sequence data type</strong> जो square brackets [ ] में multiple values store करता है। List <strong>Mutable</strong> होती है — create होने के बाद बदली जा सकती है।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ List की विशेषताएं</div>
+          <ul class="notes-ul">
+            <li>Multiple values store करती है</li>
+            <li>Items <strong>different data types</strong> के हो सकते हैं</li>
+            <li>Items comma separated, square brackets में</li>
+            <li>Index 0 से शुरू होता है</li>
+            <li><strong>Mutable</strong> — values बदली जा सकती हैं</li>
+          </ul>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:14px;font-family:monospace;font-size:0.9rem;margin-top:10px;">
+            L = [10, "Hello", 3.14, True]<br>
+            print(L[0])   # 10<br>
+            print(L[-1])  # True<br>
+            L[0] = 99     # Mutable — बदल सकते हैं
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch8-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch8-t2')">
+        <h3><span class="ch-badge">Topic 2</span> List Operations &amp; Slicing</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ List Operations</div>
+          <table class="notes-table">
+            <thead><tr><th>Operation</th><th>Example</th><th>Output</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Concatenation (+)</strong></td><td>[1,2] + [3,4]</td><td>[1,2,3,4]</td></tr>
+              <tr><td><strong>Repetition (*)</strong></td><td>[1,2] * 3</td><td>[1,2,1,2,1,2]</td></tr>
+              <tr><td><strong>Membership (in)</strong></td><td>2 in [1,2,3]</td><td>True</td></tr>
+              <tr><td><strong>Slicing [s:e:step]</strong></td><td>[1,2,3,4,5][1:4]</td><td>[2,3,4]</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch8-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch8-t3')">
+        <h3><span class="ch-badge">Topic 3</span> List Methods &amp; Nested List</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Important List Methods</div>
+          <table class="notes-table">
+            <thead><tr><th>Method</th><th>काम</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><code>append(x)</code></td><td>End में element add करना</td><td>L.append(5)</td></tr>
+              <tr><td><code>insert(i, x)</code></td><td>Position i पर element add</td><td>L.insert(1, 99)</td></tr>
+              <tr><td><code>remove(x)</code></td><td>पहला x हटाना</td><td>L.remove(3)</td></tr>
+              <tr><td><code>pop(i)</code></td><td>Index i पर element हटाना और return करना</td><td>L.pop(0)</td></tr>
+              <tr><td><code>sort()</code></td><td>Ascending order में sort करना</td><td>L.sort()</td></tr>
+              <tr><td><code>reverse()</code></td><td>List को reverse करना</td><td>L.reverse()</td></tr>
+              <tr><td><code>len(L)</code></td><td>List की length</td><td>len(L)</td></tr>
+              <tr><td><code>index(x)</code></td><td>x की index return करना</td><td>L.index(3)</td></tr>
+              <tr><td><code>count(x)</code></td><td>x कितनी बार है</td><td>L.count(2)</td></tr>
+              <tr><td><code>extend(list)</code></td><td>दूसरी list जोड़ना</td><td>L.extend([6,7])</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-def" style="margin-top:12px;">
+          <span class="def-term">📖 Nested List</span>
+          एक list के अंदर दूसरी list। जैसे: <code>L = [[1,2], [3,4], [5,6]]</code> → <code>L[0][1]</code> = 2
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch8Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch8-notes -->
+
+<!-- ═══════════ CS CLASS 11 — CHAPTER 9: TUPLES & DICTIONARIES ═══════════ -->
+<style>
+  #cs11-ch9-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch9-notes.active { display: block; }
+  @media print {
+    #cs11-ch9-notes .notes-topbar,
+    #cs11-ch9-notes .notes-back-btn,
+    #cs11-ch9-notes .notes-print-btn { display: none !important; }
+    #cs11-ch9-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch9-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch9-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">📦</span> CS Class 11 (083) — Unit 2: Chapter 9 – Tuples &amp; Dictionaries</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch9Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch9Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch9NotesBody">
+
+    <div style="background:linear-gradient(135deg,#0c4a6e,#0369a1);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 9</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Tuples &amp; Dictionaries in Python</h2>
+      <p style="color:#bae6fd;font-size:0.9rem;line-height:1.7;max-width:680px;">Tuple (Immutable), Dictionary (Key-Value), उनके methods और operations।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch9-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch9-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Tuple — परिभाषा &amp; विशेषताएं</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Tuple</span>
+          Python का built-in sequence data type — parentheses ( ) में लिखा जाता है। <strong>Immutable</strong> होता है — create होने के बाद बदला नहीं जा सकता।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ List vs Tuple — Comparison</div>
+          <table class="notes-table">
+            <thead><tr><th>Feature</th><th>List</th><th>Tuple</th></tr></thead>
+            <tbody>
+              <tr><td>Brackets</td><td>[ ]</td><td>( )</td></tr>
+              <tr><td>Mutability</td><td>Mutable</td><td>Immutable</td></tr>
+              <tr><td>Speed</td><td>Slower</td><td>Faster</td></tr>
+              <tr><td>Methods</td><td>Many (append, remove...)</td><td>Only count(), index()</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Tuple Operations</div>
+          <table class="notes-table">
+            <thead><tr><th>Operation</th><th>Example</th><th>Output</th></tr></thead>
+            <tbody>
+              <tr><td>Concatenation</td><td>(1,2) + (3,4)</td><td>(1,2,3,4)</td></tr>
+              <tr><td>Repetition</td><td>(1,2) * 2</td><td>(1,2,1,2)</td></tr>
+              <tr><td>Membership</td><td>3 in (1,2,3)</td><td>True</td></tr>
+              <tr><td>Slicing</td><td>(1,2,3,4)[1:3]</td><td>(2,3)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch9-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch9-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Dictionary — परिभाषा &amp; Methods</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Dictionary</span>
+          <strong>Key:Value pairs</strong> का unordered collection — curly brackets { } में। Keys unique और immutable होनी चाहिए। Values कोई भी data type हो सकती है।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Dictionary — Create &amp; Access</div>
+          <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:14px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
+            d = {'name': 'Deepak', 'age': 25, 'city': 'Delhi'}<br>
+            print(d['name'])   # Deepak<br>
+            d['age'] = 26      # Modify करना<br>
+            d['email'] = 'x@x' # New item add करना
+          </div>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Dictionary Methods</div>
+          <table class="notes-table">
+            <thead><tr><th>Method</th><th>काम</th></tr></thead>
+            <tbody>
+              <tr><td><code>d.keys()</code></td><td>सभी keys return करना</td></tr>
+              <tr><td><code>d.values()</code></td><td>सभी values return करना</td></tr>
+              <tr><td><code>d.items()</code></td><td>सभी key-value pairs return करना</td></tr>
+              <tr><td><code>d.get(key)</code></td><td>Key की value — KeyError नहीं देता</td></tr>
+              <tr><td><code>d.pop(key)</code></td><td>Key-value pair delete करना</td></tr>
+              <tr><td><code>d.update(d2)</code></td><td>दूसरी dictionary merge करना</td></tr>
+              <tr><td><code>len(d)</code></td><td>Items की संख्या</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch9Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch9-notes -->
+
+<!-- ═══════════ CS CLASS 11 — CHAPTER 10: SOCIETY, LAW AND ETHICS ═══════════ -->
+<style>
+  #cs11-ch10-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch10-notes.active { display: block; }
+  @media print {
+    #cs11-ch10-notes .notes-topbar,
+    #cs11-ch10-notes .notes-back-btn,
+    #cs11-ch10-notes .notes-print-btn { display: none !important; }
+    #cs11-ch10-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch10-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch10-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">⚖️</span> CS Class 11 (083) — Unit 3: Chapter 10 – Society, Law and Ethics</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch10Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch10Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch10NotesBody">
+
+    <div style="background:linear-gradient(135deg,#1c1917,#44403c);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 3 · Chapter 10</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Society, Law and Ethics</h2>
+      <p style="color:#e7e5e4;font-size:0.9rem;line-height:1.7;max-width:680px;">Digital Footprint, Net Etiquettes, IPR, Cyber Crime, IT Act 2000, E-Waste।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch10-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch10-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Digital Footprint &amp; Net Etiquettes</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Digital Footprint</span>
+          Internet पर किसी भी activity के बाद बना data/records का collection। इन्हें <strong>Digital Tattoos</strong> भी कहते हैं — ये permanent होते हैं।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Digital Footprint के प्रकार</div>
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Active</strong></td><td>जानबूझकर share की गई जानकारी</td><td>Social media posts, Online forms</td></tr>
+              <tr><td><strong>Passive</strong></td><td>बिना जानकारी के record होती है</td><td>Geo-location, Auto-cookies</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Net Etiquettes — Do's &amp; Don'ts</div>
+          <table class="notes-table">
+            <thead><tr><th>✅ Do's</th><th>❌ Don'ts</th></tr></thead>
+            <tbody>
+              <tr><td>दूसरों की Privacy का सम्मान करें</td><td>Copyright laws का उल्लंघन न करें</td></tr>
+              <tr><td>Cyber Bullying से बचें</td><td>Spam न करें</td></tr>
+              <tr><td>Credentials नियमित update करें</td><td>Personal information share न करें</td></tr>
+              <tr><td>Digital Footprint के बारे में जागरूक रहें</td><td>Sarcasm का उपयोग न करें</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch10-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch10-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Intellectual Property Rights (IPR)</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Intellectual Property Rights</span>
+          किसी व्यक्ति या संगठन के <strong>बौद्धिक creation</strong> (literary works, inventions, artwork, software) पर उनका अधिकार।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ IPR के प्रकार</div>
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>क्या protect करता है</th><th>विशेषता</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Copyright</strong></td><td>Literary, artistic, musical works</td><td>60 साल तक, automatically मिलता है</td></tr>
+              <tr><td><strong>Patent</strong></td><td>Inventions, Machines, Processes</td><td>Register करवाना पड़ता है</td></tr>
+              <tr><td><strong>Trademark</strong></td><td>Brand name, symbol, logo</td><td>Product को identify करता है</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ IPR Violations</div>
+          <ul class="notes-ul">
+            <li><strong>Plagiarism</strong> — किसी और के work को अपना बताना</li>
+            <li><strong>Copyright Infringement</strong> — बिना permission के copyrighted material use करना</li>
+            <li><strong>Trademark Infringement</strong> — किसी के trademark का unauthorized use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch10-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch10-t3')">
+        <h3><span class="ch-badge">Topic 3</span> Cyber Crime &amp; IT Act 2000</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Types of Cyber Crime</div>
+          <table class="notes-table">
+            <thead><tr><th>Crime</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Hacking</strong></td><td>किसी computer system में unauthorized access (White hat = ethical, Black hat = non-ethical)</td></tr>
+              <tr><td><strong>Phishing</strong></td><td>Fake email/message से sensitive info चुराना (password, bank details)</td></tr>
+              <tr><td><strong>Identity Theft</strong></td><td>किसी की personal info चुराकर illegal activities करना</td></tr>
+              <tr><td><strong>Cyber Bullying</strong></td><td>Online harassment या intimidation</td></tr>
+              <tr><td><strong>DoS Attack</strong></td><td>Server को requests से overwhelm करना</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-def" style="margin-top:12px;">
+          <span class="def-term">📖 Indian IT Act 2000</span>
+          Cyber crime और e-commerce के लिए भारत का कानून। October 27, 2009 से लागू। इसमें Digital Signature, Electronic Governance, Offences &amp; Penalties शामिल हैं।
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch10-t4">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch10-t4')">
+        <h3><span class="ch-badge">Topic 4</span> E-Waste &amp; Licensing</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 E-Waste</span>
+          बेकार हो चुके electrical/electronic gadgets। इनमें cadmium, mercury, beryllium जैसे harmful elements होते हैं।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ E-Waste Management — 3R</div>
+          <ul class="notes-ul">
+            <li><strong>Reduce</strong> — Electronic gadgets की consumption कम करें</li>
+            <li><strong>Reuse</strong> — पुराने gadgets donate करें या किसी को दें</li>
+            <li><strong>Recycle</strong> — Electronic devices को recycle करें</li>
+          </ul>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Software Licensing</div>
+          <table class="notes-table">
+            <thead><tr><th>License Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Open Source (GNU GPL)</strong></td><td>Free — use, modify, distribute कर सकते हैं, source code भी मिलता है</td></tr>
+              <tr><td><strong>Creative Commons (CC)</strong></td><td>Creative works के लिए free license — 6 types होते हैं</td></tr>
+              <tr><td><strong>Proprietary</strong></td><td>Paid — source code नहीं मिलता</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch10Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch10-notes -->
+
+<!-- ═══════════ CS CLASS 11 — CHAPTER 11: EMERGING TRENDS ═══════════ -->
+<style>
+  #cs11-ch11-notes {
+    display: none;
+    position: fixed; inset: 0; z-index: 50000;
+    background: #f0f4ff;
+    overflow-y: auto;
+  }
+  #cs11-ch11-notes.active { display: block; }
+  @media print {
+    #cs11-ch11-notes .notes-topbar,
+    #cs11-ch11-notes .notes-back-btn,
+    #cs11-ch11-notes .notes-print-btn { display: none !important; }
+    #cs11-ch11-notes .notes-chapter-body { display: block !important; }
+    #cs11-ch11-notes { position: static !important; overflow: visible !important; }
+  }
+</style>
+<div id="cs11-ch11-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🚀</span> CS Class 11 (083) — Unit 3: Chapter 11 – Emerging Trends</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideCs11Ch11Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch11Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="cs11ch11NotesBody">
+
+    <div style="background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 3 · Chapter 11</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Emerging Trends in Technology</h2>
+      <p style="color:#bfdbfe;font-size:0.9rem;line-height:1.7;max-width:680px;">AI, Machine Learning, Natural Language Processing, Immersive Technology, IoT, Cloud Computing, Big Data &amp; Blockchain।</p>
+    </div>
+
+    <div class="notes-chapter open" id="cs11ch11-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch11-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Artificial Intelligence (AI) &amp; Machine Learning</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Artificial Intelligence (AI)</span>
+          Computers को <strong>human-like intelligence</strong> देने की technology — जैसे सोचना, सीखना, decision लेना और problem solve करना।
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ AI की Branches</div>
+          <table class="notes-table">
+            <thead><tr><th>Branch</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Machine Learning (ML)</strong></td><td>Data से खुद सीखने की ability</td><td>Spam filter, Netflix recommendations</td></tr>
+              <tr><td><strong>Natural Language Processing (NLP)</strong></td><td>Human language समझना</td><td>Siri, Google Assistant, Chatbots</td></tr>
+              <tr><td><strong>Computer Vision</strong></td><td>Images/Videos से information निकालना</td><td>Face recognition, Medical imaging</td></tr>
+              <tr><td><strong>Robotics</strong></td><td>Intelligent robots बनाना</td><td>Industrial robots, Surgical robots</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch11-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch11-t2')">
+        <h3><span class="ch-badge">Topic 2</span> IoT, Cloud Computing &amp; Big Data</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Internet of Things (IoT)</span>
+          Physical devices (sensors, gadgets) को <strong>Internet से connect</strong> करके data share करना। जैसे Smart Home, Smart City, Wearables।
+        </div>
+        <div class="notes-def" style="margin-top:12px;">
+          <span class="def-term">📖 Cloud Computing</span>
+          Internet के through computing services (storage, servers, databases, software) provide करना — बिना खुद hardware रखे। जैसे Google Drive, AWS, Microsoft Azure।
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Cloud Service Models</div>
+          <table class="notes-table">
+            <thead><tr><th>Model</th><th>Full Form</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>IaaS</strong></td><td>Infrastructure as a Service</td><td>AWS EC2, Google Compute Engine</td></tr>
+              <tr><td><strong>PaaS</strong></td><td>Platform as a Service</td><td>Google App Engine, Heroku</td></tr>
+              <tr><td><strong>SaaS</strong></td><td>Software as a Service</td><td>Gmail, Google Docs, Zoom</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-def" style="margin-top:12px;">
+          <span class="def-term">📖 Big Data</span>
+          बहुत बड़े और complex datasets जिन्हें traditional tools से process नहीं किया जा सकता। <strong>5 V's</strong>: Volume, Velocity, Variety, Veracity, Value।
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="cs11ch11-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('cs11ch11-t3')">
+        <h3><span class="ch-badge">Topic 3</span> Blockchain, AR/VR &amp; Other Trends</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Blockchain</span>
+          एक <strong>distributed, decentralized ledger</strong> जो transactions को secure और transparent तरीके से record करता है। हर record (block) chain में linked होता है। Bitcoin और Cryptocurrencies में use होता है।
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Immersive Technology</div>
+          <table class="notes-table">
+            <thead><tr><th>Technology</th><th>Full Form</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>VR</strong></td><td>Virtual Reality</td><td>पूरी तरह artificial environment — headset पहनकर</td></tr>
+              <tr><td><strong>AR</strong></td><td>Augmented Reality</td><td>Real world पर digital elements overlay होते हैं</td></tr>
+              <tr><td><strong>MR</strong></td><td>Mixed Reality</td><td>Real और Virtual दोनों interact करते हैं</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Other Emerging Trends</div>
+          <ul class="notes-ul">
+            <li><strong>3D Printing</strong> — Digital design से physical object बनाना</li>
+            <li><strong>Smart Cities</strong> — IoT और AI से शहरों को intelligent बनाना</li>
+            <li><strong>5G Technology</strong> — Ultra-fast wireless connectivity</li>
+            <li><strong>Cyber Security</strong> — Digital systems को attacks से बचाना</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideCs11Ch11Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /cs11-ch11-notes -->
+
+
 <script>
   // ── Class 10 Notes Functions ──
   var c10Sections = ['c10-comm-notes','c10-selfmgmt-notes','c10-ict-notes','c10-entrep-notes','c10-green-notes'];
@@ -9880,6 +10369,159 @@ function updateTimerDisplay() {
     var el = document.getElementById('cs11-ch1-notes');
     var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
     document.getElementById('cs11ch1Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch3 Notes ──
+  function showCs11Ch3Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch3-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch3Notes() {
+    document.getElementById('cs11-ch3-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch3-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch3-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch3Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch4 Notes ──
+  function showCs11Ch4Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch4-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch4Notes() {
+    document.getElementById('cs11-ch4-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch4-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch4-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch4Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch5 Notes ──
+  function showCs11Ch5Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch5-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch5Notes() {
+    document.getElementById('cs11-ch5-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch5-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch5-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch5Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch6 Notes ──
+  function showCs11Ch6Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch6-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch6Notes() {
+    document.getElementById('cs11-ch6-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch6-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch6-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch6Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch7 Notes ──
+  function showCs11Ch7Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch7-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch7Notes() {
+    document.getElementById('cs11-ch7-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch7-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch7-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch7Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch8 Notes ──
+  function showCs11Ch8Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch8-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch8Notes() {
+    document.getElementById('cs11-ch8-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch8-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch8-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch8Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch9 Notes ──
+  function showCs11Ch9Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch9-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch9Notes() {
+    document.getElementById('cs11-ch9-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch9-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch9-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch9Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch10 Notes ──
+  function showCs11Ch10Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch10-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch10Notes() {
+    document.getElementById('cs11-ch10-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch10-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch10-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch10Progress').style.width = pct+'%';
+  });
+
+  // ── CS11 Ch11 Notes ──
+  function showCs11Ch11Notes(e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById('cs11-ch11-notes');
+    el.classList.add('active'); el.scrollTop = 0;
+    var nav = document.getElementById('navLinks'); if (nav) nav.classList.remove('open');
+  }
+  function hideCs11Ch11Notes() {
+    document.getElementById('cs11-ch11-notes').classList.remove('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('cs11-ch11-notes').addEventListener('scroll', function(){
+    var el = document.getElementById('cs11-ch11-notes');
+    var pct = el.scrollHeight - el.clientHeight > 0 ? (el.scrollTop/(el.scrollHeight-el.clientHeight))*100 : 0;
+    document.getElementById('cs11ch11Progress').style.width = pct+'%';
   });
 
   function showC10CommNotes(e){ openC10Section('c10-comm-notes',e); }

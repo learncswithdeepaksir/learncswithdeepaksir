@@ -9032,20 +9032,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 3: INTRODUCTION TO PROBLEM SOLVING ═══════════ -->
 <style>
-  #cs11-ch3-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch3-notes.active { display: block; }
-  @media print {
-    #cs11-ch3-notes .notes-topbar,
-    #cs11-ch3-notes .notes-back-btn,
-    #cs11-ch3-notes .notes-print-btn { display: none !important; }
-    #cs11-ch3-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch3-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch3-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch3-notes.active { display:block; }
+  @media print { #cs11-ch3-notes .notes-topbar, #cs11-ch3-notes .notes-back-btn, #cs11-ch3-notes .notes-print-btn { display:none !important; } #cs11-ch3-notes .notes-chapter-body { display:block !important; } #cs11-ch3-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch3-notes">
   <div class="notes-topbar">
@@ -9057,33 +9046,37 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch3Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch3NotesBody">
-
     <div style="background:linear-gradient(135deg,#064e3b,#065f46);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
       <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🧠</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 3</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Introduction to Problem Solving</h2>
-      <p style="color:#a7f3d0;font-size:0.9rem;line-height:1.7;max-width:680px;">Algorithm, Flowchart, Pseudocode, Steps of Problem Solving, Flow of Control, Decomposition — सब कुछ आसान भाषा में।</p>
+      <p style="color:#a7f3d0;font-size:0.9rem;line-height:1.7;max-width:680px;">Algorithm, Flowchart, Pseudocode, Steps of Problem Solving, Flow of Control, and Decomposition — complete notes as per CBSE syllabus.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 5 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💡 Examples Included</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch3-t1">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch3-t1')">
-        <h3><span class="ch-badge">Topic 1</span> Problem Solving — परिभाषा और Steps</h3>
+        <h3><span class="ch-badge">Topic 1</span> Problem Solving — Definition &amp; Steps</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Problem Solving</span>
-          Problem solving किसी problem को पहचानने, analyze करने, उसका algorithm develop करने और उसे program के रूप में implement करने की प्रक्रिया है।
+          Problem solving is the process of identifying a problem, analyzing it, developing an algorithm, and finally implementing the algorithm to develop a program.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Problem Solving के 4 Steps</div>
+          <div class="imp-title">⭐ 4 Steps of Problem Solving</div>
           <table class="notes-table">
-            <thead><tr><th>Step</th><th>नाम</th><th>विवरण</th></tr></thead>
+            <thead><tr><th>Step</th><th>Name</th><th>Description</th></tr></thead>
             <tbody>
-              <tr><td>1</td><td><strong>Analyze the Problem</strong></td><td>Problem को अच्छी तरह समझें — inputs, outputs और process पहचानें</td></tr>
-              <tr><td>2</td><td><strong>Developing an Algorithm</strong></td><td>Problem solve करने के लिए step-by-step plan बनाएं</td></tr>
-              <tr><td>3</td><td><strong>Coding</strong></td><td>Algorithm को Programming Language में लिखें</td></tr>
-              <tr><td>4</td><td><strong>Testing &amp; Debugging</strong></td><td>Program को test करें और errors ढूंढकर ठीक करें</td></tr>
+              <tr><td>1</td><td><strong>Analyze the Problem</strong></td><td>Understand the problem clearly — identify inputs, outputs and process required</td></tr>
+              <tr><td>2</td><td><strong>Developing an Algorithm</strong></td><td>Create a step-by-step plan to solve the problem</td></tr>
+              <tr><td>3</td><td><strong>Coding</strong></td><td>Write the algorithm in a Programming Language</td></tr>
+              <tr><td>4</td><td><strong>Testing &amp; Debugging</strong></td><td>Test the program and find and fix errors</td></tr>
             </tbody>
           </table>
         </div>
@@ -9098,25 +9091,25 @@ function updateTimerDisplay() {
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Algorithm</span>
-          किसी problem को solve करने के लिए लिखे गए <strong>precise, finite और sequential steps</strong> का set — जिसमें definite beginning और definite end हो।
+          A set of <strong>precise, finite and sequential steps</strong> written to solve a problem and get the desired output. It has a definite beginning and a definite end.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Algorithm की विशेषताएं (Characteristics)</div>
+          <div class="imp-title">⭐ Characteristics of a Good Algorithm</div>
           <ul class="notes-ul">
-            <li><strong>Precision</strong> — Steps clearly defined हों</li>
-            <li><strong>Uniqueness</strong> — हर step का result uniquely defined हो</li>
-            <li><strong>Finiteness</strong> — Algorithm finite steps में खत्म हो</li>
-            <li><strong>Input</strong> — Algorithm input लेता हो</li>
-            <li><strong>Output</strong> — Algorithm output देता हो</li>
+            <li><strong>Precision</strong> — Steps are precisely stated/defined.</li>
+            <li><strong>Uniqueness</strong> — Results of each step are uniquely defined.</li>
+            <li><strong>Finiteness</strong> — Algorithm always stops after a finite number of steps.</li>
+            <li><strong>Input</strong> — Algorithm receives some input.</li>
+            <li><strong>Output</strong> — Algorithm produces some output.</li>
           </ul>
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Algorithm की जरूरत क्यों? (Why Algorithm?)</div>
+          <div class="imp-title">⭐ Why do we need an Algorithm?</div>
           <ul class="notes-ul">
-            <li>Programmer को instructions clearly visualize करने में मदद करता है</li>
-            <li>Solution की reliability, accuracy और efficiency बढ़ाता है</li>
-            <li>Problem को बिना ज्यादा detail में गए आसानी से describe करता है</li>
-            <li>Problem का flow concisely समझाता है</li>
+            <li>Helps programmers clearly visualize the instructions to be written.</li>
+            <li>Enhances the reliability, accuracy and efficiency of obtaining solution.</li>
+            <li>Easiest way to describe a problem without going into too much detail.</li>
+            <li>Lets the programmer understand the flow of the problem concisely.</li>
           </ul>
         </div>
       </div>
@@ -9124,13 +9117,13 @@ function updateTimerDisplay() {
 
     <div class="notes-chapter" id="cs11ch3-t3">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch3-t3')">
-        <h3><span class="ch-badge">Topic 3</span> Flowchart और Pseudocode</h3>
+        <h3><span class="ch-badge">Topic 3</span> Flowchart and Pseudocode</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Flowchart</span>
-          Algorithm का <strong>visual/diagrammatic representation</strong> — boxes, diamonds और arrows से बना diagram जो solution के steps दर्शाता है।
+          A <strong>visual/diagrammatic representation</strong> of an algorithm using boxes, diamonds and arrows. Each shape represents a step of the solution process.
         </div>
         <div class="notes-important">
           <div class="imp-title">⭐ Flowchart Symbols</div>
@@ -9139,18 +9132,18 @@ function updateTimerDisplay() {
             <tbody>
               <tr><td>Terminal</td><td>Oval / Rounded Rectangle</td><td>Start / End</td></tr>
               <tr><td>Process</td><td>Rectangle</td><td>Computation / Assignment</td></tr>
-              <tr><td>Decision</td><td>Diamond</td><td>Condition (Yes/No)</td></tr>
-              <tr><td>Input/Output</td><td>Parallelogram</td><td>Input लेना / Output दिखाना</td></tr>
-              <tr><td>Arrow / Flow Lines</td><td>Arrow</td><td>Steps के बीच flow दर्शाना</td></tr>
+              <tr><td>Decision</td><td>Diamond</td><td>Condition check (Yes/No)</td></tr>
+              <tr><td>Input/Output</td><td>Parallelogram</td><td>Taking input / Showing output</td></tr>
+              <tr><td>Flow Lines</td><td>Arrow</td><td>Shows flow between steps</td></tr>
             </tbody>
           </table>
         </div>
         <div class="notes-def" style="margin-top:16px;">
           <span class="def-term">📖 Pseudocode</span>
-          Algorithm को represent करने का informal तरीका — <strong>not real code</strong>, human-readable भाषा में लिखा जाता है। Computer directly execute नहीं कर सकता। Keywords: INPUT, COMPUTE, PRINT, IF/ELSE, WHILE, TRUE/FALSE
+          An informal way to represent an algorithm in plain English-like language. It is <strong>not real code</strong> and cannot be executed directly by a computer. Keywords used: INPUT, COMPUTE, PRINT, IF/ELSE, WHILE, TRUE/FALSE.
         </div>
         <div class="notes-important">
-          <div class="imp-title">💡 Example — दो numbers में बड़ा number ढूंढना</div>
+          <div class="imp-title">💡 Example — Find the larger of two numbers</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
             INPUT num1, num2<br>
             IF num1 &gt; num2 THEN<br>
@@ -9170,18 +9163,18 @@ function updateTimerDisplay() {
       </div>
       <div class="notes-chapter-body">
         <div class="notes-important">
-          <div class="imp-title">⭐ Flow of Control के प्रकार</div>
+          <div class="imp-title">⭐ Types of Flow of Control</div>
           <table class="notes-table">
             <thead><tr><th>Type</th><th>Meaning</th><th>Keyword</th></tr></thead>
             <tbody>
-              <tr><td><strong>Sequence</strong></td><td>Steps एक-एक करके execute होते हैं</td><td>—</td></tr>
-              <tr><td><strong>Selection</strong></td><td>Condition के आधार पर steps execute होते हैं</td><td>IF / ELSE</td></tr>
-              <tr><td><strong>Repetition</strong></td><td>Steps बार-बार (loop में) execute होते हैं</td><td>WHILE</td></tr>
+              <tr><td><strong>Sequence</strong></td><td>Steps execute one after another in order</td><td>—</td></tr>
+              <tr><td><strong>Selection</strong></td><td>Steps execute based on a condition (True/False)</td><td>IF / ELSE</td></tr>
+              <tr><td><strong>Repetition</strong></td><td>Steps execute repeatedly (in a loop)</td><td>WHILE</td></tr>
             </tbody>
           </table>
         </div>
         <div class="notes-important" style="margin-top:14px;">
-          <div class="imp-title">💡 Repetition Example — "Hello" 10 बार print करना</div>
+          <div class="imp-title">💡 Repetition Example — Print "Hello" 10 times</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
             SET count = 0<br>
             WHILE count &lt; 10<br>
@@ -9201,15 +9194,15 @@ function updateTimerDisplay() {
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Decomposition</span>
-          किसी <strong>complex problem को छोटे-छोटे sub-problems में तोड़ना</strong> ताकि उन्हें आसानी से solve किया जा सके। सभी sub-problems के solutions को मिलाकर final solution बनता है।
+          Breaking a <strong>complex problem into smaller sub-problems</strong> so that each can be solved conveniently. The solutions of all sub-problems are then combined to get the final solution.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Decomposition के फायदे</div>
+          <div class="imp-title">⭐ Advantages of Decomposition</div>
           <ul class="notes-ul">
-            <li>Complex problem आसान हो जाती है</li>
-            <li>Time और effort दोनों कम होते हैं</li>
-            <li>अलग-अलग experts को अलग-अलग subprograms दिए जा सकते हैं</li>
-            <li>Errors ढूंढना आसान होता है</li>
+            <li>Makes a complex problem easier to handle.</li>
+            <li>Reduces time and effort required.</li>
+            <li>Different sub-problems can be assigned to different experts.</li>
+            <li>Makes it easier to locate and fix errors.</li>
           </ul>
         </div>
       </div>
@@ -9224,20 +9217,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 4: GETTING STARTED WITH PYTHON ═══════════ -->
 <style>
-  #cs11-ch4-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch4-notes.active { display: block; }
-  @media print {
-    #cs11-ch4-notes .notes-topbar,
-    #cs11-ch4-notes .notes-back-btn,
-    #cs11-ch4-notes .notes-print-btn { display: none !important; }
-    #cs11-ch4-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch4-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch4-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch4-notes.active { display:block; }
+  @media print { #cs11-ch4-notes .notes-topbar, #cs11-ch4-notes .notes-back-btn, #cs11-ch4-notes .notes-print-btn { display:none !important; } #cs11-ch4-notes .notes-chapter-body { display:block !important; } #cs11-ch4-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch4-notes">
   <div class="notes-topbar">
@@ -9249,12 +9231,16 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch4Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch4NotesBody">
-
     <div style="background:linear-gradient(135deg,#1e3a5f,#3b6ea5);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
       <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🐍</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 4</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Getting Started with Python</h2>
-      <p style="color:#bfdbfe;font-size:0.9rem;line-height:1.7;max-width:680px;">Python basics — Features, Keywords, Identifiers, Variables, Data Types, Operators, Input/Output, Type Conversion और Errors।</p>
+      <p style="color:#bfdbfe;font-size:0.9rem;line-height:1.7;max-width:680px;">Features of Python, Keywords, Identifiers, Variables, Data Types, Operators, Input/Output, Type Conversion and Errors.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 4 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💻 Code Examples</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch4-t1">
@@ -9265,27 +9251,28 @@ function updateTimerDisplay() {
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Python</span>
-          Python एक <strong>General Purpose, High Level Programming Language</strong> है जिसका उपयोग application software develop करने के लिए होता है।
+          Python is a <strong>General Purpose, High Level Programming Language</strong> used for developing application software.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Python की विशेषताएं (Features)</div>
+          <div class="imp-title">⭐ Features of Python</div>
           <ul class="notes-ul">
-            <li><strong>High Level</strong> — मानव-पठनीय भाषा</li>
-            <li><strong>Free and Open Source</strong> — मुफ्त में उपलब्ध</li>
-            <li><strong>Case Sensitive</strong> — Name और name अलग हैं</li>
-            <li><strong>Interpreted</strong> — Line-by-line execute होता है</li>
-            <li><strong>Platform Independent</strong> — किसी भी OS पर चलता है</li>
-            <li><strong>Rich Library</strong> — बहुत सारे built-in functions</li>
-            <li><strong>Dynamic</strong> — Runtime पर variable का type बदल सकता है</li>
+            <li><strong>High Level</strong> — Human-readable language.</li>
+            <li><strong>Free and Open Source</strong> — Available at no cost.</li>
+            <li><strong>Case Sensitive</strong> — Name and name are different identifiers.</li>
+            <li><strong>Interpreted</strong> — Executes line by line.</li>
+            <li><strong>Platform Independent</strong> — Runs on any Operating System.</li>
+            <li><strong>Rich Library</strong> — Large collection of built-in functions and modules.</li>
+            <li><strong>Dynamic</strong> — Variable type can change at runtime.</li>
+            <li><strong>General Purpose</strong> — Used for web, AI, data science, automation, etc.</li>
           </ul>
         </div>
         <div class="notes-important">
           <div class="imp-title">⭐ Execution Modes</div>
           <table class="notes-table">
-            <thead><tr><th>Mode</th><th>विशेषता</th></tr></thead>
+            <thead><tr><th>Mode</th><th>Feature</th></tr></thead>
             <tbody>
-              <tr><td><strong>Interactive Mode</strong></td><td>एक-एक statement तुरंत execute, save नहीं होता</td></tr>
-              <tr><td><strong>Script Mode</strong></td><td>पूरा program एक साथ लिखो और .py file में save करो</td></tr>
+              <tr><td><strong>Interactive Mode</strong></td><td>Executes one statement at a time instantly; statements cannot be saved.</td></tr>
+              <tr><td><strong>Script Mode</strong></td><td>Write complete program and save as .py file; run later as needed.</td></tr>
             </tbody>
           </table>
         </div>
@@ -9300,25 +9287,25 @@ function updateTimerDisplay() {
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Keywords</span>
-          Python में predefined reserved words जिनका specific meaning होता है। ये case-sensitive होते हैं। जैसे: <code>if, else, for, while, def, class, True, False, None</code>
+          Predefined reserved words with a specific meaning to the Python interpreter. They are case-sensitive. Examples: <code>if, else, for, while, def, True, False, None</code>
         </div>
         <div class="notes-def" style="margin-top:12px;">
           <span class="def-term">📖 Identifier</span>
-          Variable, function या किसी entity को identify करने के लिए दिया गया नाम।
+          A name given to a variable, function or any other entity in a program.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Identifier के Rules</div>
+          <div class="imp-title">⭐ Rules for Naming Identifiers</div>
           <ul class="notes-ul">
-            <li>Letter (a-z, A-Z) या underscore (_) से शुरू हो</li>
-            <li>Letter, digit (0-9) या underscore हो सकते हैं</li>
-            <li>Python keyword नहीं होना चाहिए</li>
-            <li>Special symbols (!, @, #, $, %) नहीं होने चाहिए</li>
-            <li>Case-sensitive होते हैं — <code>Name</code> और <code>name</code> अलग हैं</li>
+            <li>Must begin with a letter (a–z, A–Z) or underscore (_).</li>
+            <li>Can contain letters, digits (0–9) or underscores.</li>
+            <li>Cannot be a Python keyword.</li>
+            <li>Cannot contain special symbols like !, @, #, $, %.</li>
+            <li>Case-sensitive — <code>Name</code> and <code>name</code> are different identifiers.</li>
           </ul>
         </div>
         <div class="notes-def" style="margin-top:12px;">
           <span class="def-term">📖 Variable</span>
-          Memory space जो value store करता है। Assignment statement से बनाया जाता है। जैसे: <code>x = 10</code>
+          A named memory location that stores a value. Created using an assignment statement. Example: <code>x = 10</code>
         </div>
       </div>
     </div>
@@ -9334,14 +9321,14 @@ function updateTimerDisplay() {
           <table class="notes-table">
             <thead><tr><th>Data Type</th><th>Example</th><th>Description</th></tr></thead>
             <tbody>
-              <tr><td><strong>int</strong></td><td>10, -5, 0</td><td>पूर्ण संख्या (Integer)</td></tr>
-              <tr><td><strong>float</strong></td><td>3.14, -2.5</td><td>दशमलव संख्या</td></tr>
-              <tr><td><strong>complex</strong></td><td>3+4j</td><td>Complex number</td></tr>
+              <tr><td><strong>int</strong></td><td>10, -5, 0</td><td>Whole numbers</td></tr>
+              <tr><td><strong>float</strong></td><td>3.14, -2.5</td><td>Decimal numbers</td></tr>
+              <tr><td><strong>complex</strong></td><td>3+4j</td><td>Complex numbers</td></tr>
               <tr><td><strong>str</strong></td><td>'Hello', "World"</td><td>Text / String</td></tr>
-              <tr><td><strong>bool</strong></td><td>True, False</td><td>Boolean</td></tr>
-              <tr><td><strong>list</strong></td><td>[1, 2, 3]</td><td>Mutable sequence</td></tr>
-              <tr><td><strong>tuple</strong></td><td>(1, 2, 3)</td><td>Immutable sequence</td></tr>
-              <tr><td><strong>dict</strong></td><td>{'a':1}</td><td>Key-value pairs</td></tr>
+              <tr><td><strong>bool</strong></td><td>True, False</td><td>Boolean values</td></tr>
+              <tr><td><strong>list</strong></td><td>[1, 2, 3]</td><td>Mutable ordered sequence</td></tr>
+              <tr><td><strong>tuple</strong></td><td>(1, 2, 3)</td><td>Immutable ordered sequence</td></tr>
+              <tr><td><strong>dict</strong></td><td>{'a': 1}</td><td>Key-value pairs</td></tr>
             </tbody>
           </table>
         </div>
@@ -9359,6 +9346,10 @@ function updateTimerDisplay() {
             </tbody>
           </table>
         </div>
+        <div class="notes-important" style="margin-top:14px;">
+          <div class="imp-title">⭐ Operator Precedence (High to Low)</div>
+          <p style="margin:0;font-size:0.9rem;">** → *, /, //, % → +, - → Relational → not → and → or</p>
+        </div>
       </div>
     </div>
 
@@ -9373,8 +9364,8 @@ function updateTimerDisplay() {
           <table class="notes-table">
             <thead><tr><th>Function</th><th>Use</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td><code>input()</code></td><td>User से input लेना (हमेशा string return करता है)</td><td><code>x = input("Enter: ")</code></td></tr>
-              <tr><td><code>print()</code></td><td>Output display करना</td><td><code>print("Hello", x)</code></td></tr>
+              <tr><td><code>input()</code></td><td>Takes input from user (always returns a string)</td><td><code>x = input("Enter: ")</code></td></tr>
+              <tr><td><code>print()</code></td><td>Displays output on screen</td><td><code>print("Hello", x)</code></td></tr>
             </tbody>
           </table>
         </div>
@@ -9383,19 +9374,19 @@ function updateTimerDisplay() {
           <table class="notes-table">
             <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td><strong>Explicit (Type Casting)</strong></td><td>Programmer manually type बदलता है</td><td><code>int("10")</code>, <code>float("3.5")</code></td></tr>
-              <tr><td><strong>Implicit (Coercion)</strong></td><td>Python automatically type बदलता है (int → float)</td><td><code>10 + 3.4 = 13.4</code></td></tr>
+              <tr><td><strong>Explicit (Type Casting)</strong></td><td>Programmer manually converts the type</td><td><code>int("10")</code>, <code>float("3.5")</code></td></tr>
+              <tr><td><strong>Implicit (Coercion)</strong></td><td>Python automatically converts smaller type to wider type</td><td><code>10 + 3.4 = 13.4</code> (int → float)</td></tr>
             </tbody>
           </table>
         </div>
         <div class="notes-important" style="margin-top:14px;">
           <div class="imp-title">⭐ Types of Errors</div>
           <table class="notes-table">
-            <thead><tr><th>Error</th><th>कब होती है</th><th>Example</th></tr></thead>
+            <thead><tr><th>Error</th><th>When it occurs</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td><strong>Syntax Error</strong></td><td>Programming rules के against code लिखने पर</td><td>गलत function name, wrong indentation</td></tr>
-              <tr><td><strong>Logical Error</strong></td><td>Program चलता है लेकिन wrong output देता है</td><td>गलत condition लिखना</td></tr>
-              <tr><td><strong>Runtime Error</strong></td><td>Execution के दौरान program crash हो जाता है</td><td>Division by Zero</td></tr>
+              <tr><td><strong>Syntax Error</strong></td><td>Code written against Python rules; program cannot run</td><td>Wrong function name, wrong indentation</td></tr>
+              <tr><td><strong>Logical Error</strong></td><td>Program runs but produces incorrect output</td><td>Wrong condition written</td></tr>
+              <tr><td><strong>Runtime Error</strong></td><td>Program crashes during execution</td><td>Division by Zero</td></tr>
             </tbody>
           </table>
         </div>
@@ -9411,20 +9402,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 5: FLOW OF CONTROL ═══════════ -->
 <style>
-  #cs11-ch5-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch5-notes.active { display: block; }
-  @media print {
-    #cs11-ch5-notes .notes-topbar,
-    #cs11-ch5-notes .notes-back-btn,
-    #cs11-ch5-notes .notes-print-btn { display: none !important; }
-    #cs11-ch5-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch5-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch5-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch5-notes.active { display:block; }
+  @media print { #cs11-ch5-notes .notes-topbar, #cs11-ch5-notes .notes-back-btn, #cs11-ch5-notes .notes-print-btn { display:none !important; } #cs11-ch5-notes .notes-chapter-body { display:block !important; } #cs11-ch5-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch5-notes">
   <div class="notes-topbar">
@@ -9436,12 +9416,16 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch5Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch5NotesBody">
-
     <div style="background:linear-gradient(135deg,#4c1d95,#7c3aed);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
       <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🔀</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 5</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Flow of Control</h2>
-      <p style="color:#e9d5ff;font-size:0.9rem;line-height:1.7;max-width:680px;">if, if-else, if-elif-else, for loop, while loop, break, continue, pass — Python में flow control पूरी तरह।</p>
+      <p style="color:#e9d5ff;font-size:0.9rem;line-height:1.7;max-width:680px;">if, if-else, if-elif-else, for loop, while loop, break, continue and pass — complete flow control in Python.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 2 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💻 Code Examples</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch5-t1">
@@ -9452,33 +9436,24 @@ function updateTimerDisplay() {
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Conditional Statement</span>
-          वे statements जो किसी <strong>condition के True या False होने पर</strong> अलग-अलग code block execute करते हैं।
+          Statements that execute different blocks of code based on whether a <strong>condition is True or False</strong>.
         </div>
         <div class="notes-important">
           <div class="imp-title">⭐ if Statement</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
-            if condition:<br>
-            &nbsp;&nbsp;statement(s)
+            if condition:<br>&nbsp;&nbsp;statement(s)
           </div>
         </div>
         <div class="notes-important" style="margin-top:12px;">
           <div class="imp-title">⭐ if-else Statement</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
-            if condition:<br>
-            &nbsp;&nbsp;statement(s)  # True होने पर<br>
-            else:<br>
-            &nbsp;&nbsp;statement(s)  # False होने पर
+            if condition:<br>&nbsp;&nbsp;statement(s)&nbsp;&nbsp;# executes when True<br>else:<br>&nbsp;&nbsp;statement(s)&nbsp;&nbsp;# executes when False
           </div>
         </div>
         <div class="notes-important" style="margin-top:12px;">
           <div class="imp-title">⭐ if-elif-else Statement</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
-            if condition1:<br>
-            &nbsp;&nbsp;statement(s)<br>
-            elif condition2:<br>
-            &nbsp;&nbsp;statement(s)<br>
-            else:<br>
-            &nbsp;&nbsp;statement(s)
+            if condition1:<br>&nbsp;&nbsp;statement(s)<br>elif condition2:<br>&nbsp;&nbsp;statement(s)<br>else:<br>&nbsp;&nbsp;statement(s)
           </div>
         </div>
       </div>
@@ -9486,40 +9461,35 @@ function updateTimerDisplay() {
 
     <div class="notes-chapter" id="cs11ch5-t2">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch5-t2')">
-        <h3><span class="ch-badge">Topic 2</span> Loops — for &amp; while</h3>
+        <h3><span class="ch-badge">Topic 2</span> Loops — for &amp; while, break, continue, pass</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-important">
-          <div class="imp-title">⭐ for Loop — range() के साथ</div>
+          <div class="imp-title">⭐ for Loop — with range()</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
-            for variable in range(start, stop, step):<br>
-            &nbsp;&nbsp;statement(s)<br><br>
-            # Example: 1 से 5 तक print करना<br>
-            for i in range(1, 6):<br>
-            &nbsp;&nbsp;print(i)
+            for variable in range(start, stop, step):<br>&nbsp;&nbsp;statement(s)<br><br>
+            # Example: Print 1 to 5<br>
+            for i in range(1, 6):<br>&nbsp;&nbsp;print(i)
           </div>
         </div>
         <div class="notes-important" style="margin-top:12px;">
           <div class="imp-title">⭐ while Loop</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
-            while condition:<br>
-            &nbsp;&nbsp;statement(s)<br><br>
-            # Example: 1 से 5 तक print करना<br>
+            while condition:<br>&nbsp;&nbsp;statement(s)<br><br>
+            # Example: Print 1 to 5<br>
             i = 1<br>
-            while i &lt;= 5:<br>
-            &nbsp;&nbsp;print(i)<br>
-            &nbsp;&nbsp;i = i + 1
+            while i &lt;= 5:<br>&nbsp;&nbsp;print(i)<br>&nbsp;&nbsp;i = i + 1
           </div>
         </div>
         <div class="notes-important" style="margin-top:12px;">
           <div class="imp-title">⭐ break, continue &amp; pass</div>
           <table class="notes-table">
-            <thead><tr><th>Statement</th><th>काम</th></tr></thead>
+            <thead><tr><th>Statement</th><th>Function</th></tr></thead>
             <tbody>
-              <tr><td><code>break</code></td><td>Loop को तुरंत बंद कर देता है</td></tr>
-              <tr><td><code>continue</code></td><td>Current iteration छोड़कर अगला iteration शुरू करता है</td></tr>
-              <tr><td><code>pass</code></td><td>कुछ नहीं करता — placeholder की तरह काम आता है</td></tr>
+              <tr><td><code>break</code></td><td>Terminates the loop immediately</td></tr>
+              <tr><td><code>continue</code></td><td>Skips the current iteration and moves to the next</td></tr>
+              <tr><td><code>pass</code></td><td>Does nothing — used as a placeholder</td></tr>
             </tbody>
           </table>
         </div>
@@ -9535,20 +9505,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 6: FUNCTIONS ═══════════ -->
 <style>
-  #cs11-ch6-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch6-notes.active { display: block; }
-  @media print {
-    #cs11-ch6-notes .notes-topbar,
-    #cs11-ch6-notes .notes-back-btn,
-    #cs11-ch6-notes .notes-print-btn { display: none !important; }
-    #cs11-ch6-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch6-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch6-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch6-notes.active { display:block; }
+  @media print { #cs11-ch6-notes .notes-topbar, #cs11-ch6-notes .notes-back-btn, #cs11-ch6-notes .notes-print-btn { display:none !important; } #cs11-ch6-notes .notes-chapter-body { display:block !important; } #cs11-ch6-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch6-notes">
   <div class="notes-topbar">
@@ -9560,31 +9519,36 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch6Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch6NotesBody">
-
     <div style="background:linear-gradient(135deg,#7c2d12,#c2410c);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">⚙️</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 6</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Functions in Python</h2>
-      <p style="color:#fed7aa;font-size:0.9rem;line-height:1.7;max-width:680px;">User-defined Functions, Built-in Functions, Parameters, Arguments, return statement, Scope of Variables।</p>
+      <p style="color:#fed7aa;font-size:0.9rem;line-height:1.7;max-width:680px;">User-defined Functions, Built-in Functions, Parameters, Arguments, return statement and Scope of Variables.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 3 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💻 Code Examples</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch6-t1">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch6-t1')">
-        <h3><span class="ch-badge">Topic 1</span> Functions — परिभाषा और प्रकार</h3>
+        <h3><span class="ch-badge">Topic 1</span> Functions — Definition and Types</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Function</span>
-          Code का एक named block जो specific task करता है और जिसे बार-बार call किया जा सकता है। Code reusability बढ़ाता है।
+          A named block of code that performs a specific task and can be called multiple times. Functions increase code reusability and reduce repetition.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Functions के प्रकार</div>
+          <div class="imp-title">⭐ Types of Functions</div>
           <table class="notes-table">
             <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td><strong>Built-in Functions</strong></td><td>Python में already defined</td><td>print(), input(), len(), range(), type()</td></tr>
-              <tr><td><strong>User-defined Functions</strong></td><td>Programmer खुद define करता है</td><td>def myFunc():</td></tr>
-              <tr><td><strong>Library Functions</strong></td><td>Modules से import की जाती हैं</td><td>math.sqrt(), random.randint()</td></tr>
+              <tr><td><strong>Built-in Functions</strong></td><td>Already defined in Python</td><td>print(), input(), len(), range(), type()</td></tr>
+              <tr><td><strong>User-defined Functions</strong></td><td>Defined by the programmer</td><td>def myFunc():</td></tr>
+              <tr><td><strong>Library Functions</strong></td><td>Imported from modules</td><td>math.sqrt(), random.randint()</td></tr>
             </tbody>
           </table>
         </div>
@@ -9598,24 +9562,20 @@ function updateTimerDisplay() {
       </div>
       <div class="notes-chapter-body">
         <div class="notes-important">
-          <div class="imp-title">⭐ Function Definition &amp; Calling</div>
+          <div class="imp-title">⭐ Defining and Calling a Function</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
-            # Function define करना<br>
-            def functionName(parameters):<br>
-            &nbsp;&nbsp;statement(s)<br>
-            &nbsp;&nbsp;return value  # optional<br><br>
-            # Function call करना<br>
+            # Defining a function<br>
+            def functionName(parameters):<br>&nbsp;&nbsp;statement(s)<br>&nbsp;&nbsp;return value&nbsp;&nbsp;# optional<br><br>
+            # Calling a function<br>
             functionName(arguments)
           </div>
         </div>
         <div class="notes-important" style="margin-top:12px;">
-          <div class="imp-title">💡 Example — दो numbers का जोड़</div>
+          <div class="imp-title">💡 Example — Addition of two numbers</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
-            def add(a, b):<br>
-            &nbsp;&nbsp;result = a + b<br>
-            &nbsp;&nbsp;return result<br><br>
+            def add(a, b):<br>&nbsp;&nbsp;result = a + b<br>&nbsp;&nbsp;return result<br><br>
             total = add(5, 3)<br>
-            print(total)  # Output: 8
+            print(total)&nbsp;&nbsp;# Output: 8
           </div>
         </div>
       </div>
@@ -9630,20 +9590,17 @@ function updateTimerDisplay() {
         <div class="notes-important">
           <div class="imp-title">⭐ Variable Scope</div>
           <table class="notes-table">
-            <thead><tr><th>Type</th><th>कहाँ define होता है</th><th>कहाँ accessible है</th></tr></thead>
+            <thead><tr><th>Type</th><th>Defined Where</th><th>Accessible Where</th></tr></thead>
             <tbody>
-              <tr><td><strong>Local Variable</strong></td><td>Function के अंदर</td><td>सिर्फ उसी function में</td></tr>
-              <tr><td><strong>Global Variable</strong></td><td>Function के बाहर (Main program में)</td><td>पूरे program में</td></tr>
+              <tr><td><strong>Local Variable</strong></td><td>Inside a function</td><td>Only within that function</td></tr>
+              <tr><td><strong>Global Variable</strong></td><td>Outside all functions (main program)</td><td>Throughout the entire program</td></tr>
             </tbody>
           </table>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:16px;font-family:monospace;font-size:0.9rem;line-height:1.8;margin-top:10px;">
-            x = 10  # Global variable<br><br>
-            def myFunc():<br>
-            &nbsp;&nbsp;y = 20  # Local variable<br>
-            &nbsp;&nbsp;print(x)  # Global accessible: 10<br>
-            &nbsp;&nbsp;print(y)  # Local: 20<br><br>
+            x = 10&nbsp;&nbsp;# Global variable<br><br>
+            def myFunc():<br>&nbsp;&nbsp;y = 20&nbsp;&nbsp;# Local variable<br>&nbsp;&nbsp;print(x)&nbsp;&nbsp;# Accessible: 10<br>&nbsp;&nbsp;print(y)&nbsp;&nbsp;# Accessible: 20<br><br>
             myFunc()<br>
-            # print(y)  # Error! y is local
+            # print(y)&nbsp;&nbsp;# Error! y is local to myFunc
           </div>
         </div>
       </div>
@@ -9658,20 +9615,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 7: STRINGS ═══════════ -->
 <style>
-  #cs11-ch7-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch7-notes.active { display: block; }
-  @media print {
-    #cs11-ch7-notes .notes-topbar,
-    #cs11-ch7-notes .notes-back-btn,
-    #cs11-ch7-notes .notes-print-btn { display: none !important; }
-    #cs11-ch7-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch7-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch7-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch7-notes.active { display:block; }
+  @media print { #cs11-ch7-notes .notes-topbar, #cs11-ch7-notes .notes-back-btn, #cs11-ch7-notes .notes-print-btn { display:none !important; } #cs11-ch7-notes .notes-chapter-body { display:block !important; } #cs11-ch7-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch7-notes">
   <div class="notes-topbar">
@@ -9683,44 +9629,50 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch7Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch7NotesBody">
-
     <div style="background:linear-gradient(135deg,#164e63,#0e7490);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🔤</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 7</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Strings in Python</h2>
-      <p style="color:#a5f3fc;font-size:0.9rem;line-height:1.7;max-width:680px;">Indexing, Slicing, String Operations, Traversing, String Functions — सब एक जगह।</p>
+      <p style="color:#a5f3fc;font-size:0.9rem;line-height:1.7;max-width:680px;">Indexing, Slicing, String Operations, Traversing and String Functions — all in one place.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 3 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💻 Code Examples</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch7-t1">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch7-t1')">
-        <h3><span class="ch-badge">Topic 1</span> String — परिभाषा, Indexing &amp; Immutability</h3>
+        <h3><span class="ch-badge">Topic 1</span> String — Definition, Indexing &amp; Immutability</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 String</span>
-          एक या अधिक <strong>UNICODE characters का sequence</strong>। Single, double या triple quotes में लिखी जाती है। String <strong>Immutable</strong> होती है — create होने के बाद बदली नहीं जा सकती।
+          A <strong>sequence of one or more UNICODE characters</strong> enclosed in single, double or triple quotes. Strings are <strong>Immutable</strong> — their content cannot be changed after creation.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Indexing — String के characters access करना</div>
+          <div class="imp-title">⭐ Indexing — Accessing Characters in a String</div>
           <table class="notes-table">
-            <thead><tr><th>Type</th><th>Start</th><th>Direction</th><th>Example (s="Hello")</th></tr></thead>
+            <thead><tr><th>Type</th><th>Starts At</th><th>Direction</th><th>Example (s = "Hello")</th></tr></thead>
             <tbody>
-              <tr><td><strong>Positive Index</strong></td><td>0</td><td>Left → Right</td><td>s[0]='H', s[1]='e'</td></tr>
-              <tr><td><strong>Negative Index</strong></td><td>-1</td><td>Right → Left</td><td>s[-1]='o', s[-2]='l'</td></tr>
+              <tr><td><strong>Positive Index</strong></td><td>0</td><td>Left to Right</td><td>s[0] = 'H', s[1] = 'e'</td></tr>
+              <tr><td><strong>Negative Index</strong></td><td>-1</td><td>Right to Left</td><td>s[-1] = 'o', s[-2] = 'l'</td></tr>
             </tbody>
           </table>
+          <p style="font-size:0.82rem;color:#64748b;margin-top:6px;">💡 IndexError occurs when the index is out of range.</p>
         </div>
       </div>
     </div>
 
     <div class="notes-chapter" id="cs11ch7-t2">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch7-t2')">
-        <h3><span class="ch-badge">Topic 2</span> String Operations</h3>
+        <h3><span class="ch-badge">Topic 2</span> String Operations &amp; Slicing</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-important">
-          <div class="imp-title">⭐ String Operations — Summary Table</div>
+          <div class="imp-title">⭐ String Operations</div>
           <table class="notes-table">
             <thead><tr><th>Operation</th><th>Operator</th><th>Example</th><th>Output</th></tr></thead>
             <tbody>
@@ -9728,19 +9680,17 @@ function updateTimerDisplay() {
               <tr><td><strong>Repetition</strong></td><td>*</td><td>"Hi" * 3</td><td>"HiHiHi"</td></tr>
               <tr><td><strong>Membership (in)</strong></td><td>in</td><td>"He" in "Hello"</td><td>True</td></tr>
               <tr><td><strong>Membership (not in)</strong></td><td>not in</td><td>"Bye" not in "Hello"</td><td>True</td></tr>
-              <tr><td><strong>Slicing</strong></td><td>[ : ]</td><td>"Hello"[1:4]</td><td>"ell"</td></tr>
             </tbody>
           </table>
         </div>
         <div class="notes-important" style="margin-top:12px;">
-          <div class="imp-title">⭐ Slicing Syntax</div>
+          <div class="imp-title">⭐ String Slicing — string[start : end : step]</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:14px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
-            string[start : end : step]<br>
-            # end index हमेशा exclude होता है<br><br>
+            # end index is always excluded<br>
             s = "Python"<br>
-            s[0:3]   → "Pyt"<br>
-            s[::2]   → "Pto"<br>
-            s[::-1]  → "nohtyP"  (reverse)
+            s[0:3]&nbsp;&nbsp; → "Pyt"<br>
+            s[::2]&nbsp;&nbsp; → "Pto"<br>
+            s[::-1]  → "nohtyP"&nbsp;&nbsp;(reverse string)
           </div>
         </div>
       </div>
@@ -9755,18 +9705,18 @@ function updateTimerDisplay() {
         <div class="notes-important">
           <div class="imp-title">⭐ Important String Functions</div>
           <table class="notes-table">
-            <thead><tr><th>Function</th><th>काम</th><th>Example</th></tr></thead>
+            <thead><tr><th>Function</th><th>Purpose</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td><code>len(s)</code></td><td>Length / characters की संख्या</td><td>len("Hello") → 5</td></tr>
-              <tr><td><code>s.upper()</code></td><td>Uppercase में बदलना</td><td>"hello".upper() → "HELLO"</td></tr>
-              <tr><td><code>s.lower()</code></td><td>Lowercase में बदलना</td><td>"HELLO".lower() → "hello"</td></tr>
-              <tr><td><code>s.strip()</code></td><td>Whitespace हटाना</td><td>" hi ".strip() → "hi"</td></tr>
-              <tr><td><code>s.replace(a,b)</code></td><td>a को b से बदलना</td><td>"Hello".replace("l","r") → "Herro"</td></tr>
-              <tr><td><code>s.find(sub)</code></td><td>Substring की position</td><td>"Hello".find("ll") → 2</td></tr>
-              <tr><td><code>s.count(sub)</code></td><td>Substring की count</td><td>"hello".count("l") → 2</td></tr>
-              <tr><td><code>s.split(sep)</code></td><td>List में तोड़ना</td><td>"a,b,c".split(",") → ['a','b','c']</td></tr>
-              <tr><td><code>s.isdigit()</code></td><td>सभी digit हैं?</td><td>"123".isdigit() → True</td></tr>
-              <tr><td><code>s.isalpha()</code></td><td>सभी alphabet हैं?</td><td>"abc".isalpha() → True</td></tr>
+              <tr><td><code>len(s)</code></td><td>Returns number of characters</td><td>len("Hello") → 5</td></tr>
+              <tr><td><code>s.upper()</code></td><td>Converts to uppercase</td><td>"hello".upper() → "HELLO"</td></tr>
+              <tr><td><code>s.lower()</code></td><td>Converts to lowercase</td><td>"HELLO".lower() → "hello"</td></tr>
+              <tr><td><code>s.strip()</code></td><td>Removes leading/trailing whitespace</td><td>" hi ".strip() → "hi"</td></tr>
+              <tr><td><code>s.replace(a,b)</code></td><td>Replaces a with b</td><td>"Hello".replace("l","r") → "Herro"</td></tr>
+              <tr><td><code>s.find(sub)</code></td><td>Returns index of first occurrence</td><td>"Hello".find("ll") → 2</td></tr>
+              <tr><td><code>s.count(sub)</code></td><td>Counts occurrences of sub</td><td>"hello".count("l") → 2</td></tr>
+              <tr><td><code>s.split(sep)</code></td><td>Splits string into a list</td><td>"a,b,c".split(",") → ['a','b','c']</td></tr>
+              <tr><td><code>s.isdigit()</code></td><td>Returns True if all digits</td><td>"123".isdigit() → True</td></tr>
+              <tr><td><code>s.isalpha()</code></td><td>Returns True if all alphabets</td><td>"abc".isalpha() → True</td></tr>
             </tbody>
           </table>
         </div>
@@ -9782,20 +9732,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 8: LISTS ═══════════ -->
 <style>
-  #cs11-ch8-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch8-notes.active { display: block; }
-  @media print {
-    #cs11-ch8-notes .notes-topbar,
-    #cs11-ch8-notes .notes-back-btn,
-    #cs11-ch8-notes .notes-print-btn { display: none !important; }
-    #cs11-ch8-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch8-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch8-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch8-notes.active { display:block; }
+  @media print { #cs11-ch8-notes .notes-topbar, #cs11-ch8-notes .notes-back-btn, #cs11-ch8-notes .notes-print-btn { display:none !important; } #cs11-ch8-notes .notes-chapter-body { display:block !important; } #cs11-ch8-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch8-notes">
   <div class="notes-topbar">
@@ -9807,37 +9746,42 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch8Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch8NotesBody">
-
     <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">📋</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 8</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Lists in Python</h2>
-      <p style="color:#c7d2fe;font-size:0.9rem;line-height:1.7;max-width:680px;">List creation, Indexing, Slicing, List Operations, List Methods, Traversing &amp; Nested List।</p>
+      <p style="color:#c7d2fe;font-size:0.9rem;line-height:1.7;max-width:680px;">List creation, Indexing, Slicing, List Operations, List Methods, Traversing and Nested List.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 3 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💻 Code Examples</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch8-t1">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch8-t1')">
-        <h3><span class="ch-badge">Topic 1</span> List — परिभाषा, Indexing &amp; Mutability</h3>
+        <h3><span class="ch-badge">Topic 1</span> List — Definition, Indexing &amp; Mutability</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 List</span>
-          Python का built-in <strong>sequence data type</strong> जो square brackets [ ] में multiple values store करता है। List <strong>Mutable</strong> होती है — create होने के बाद बदली जा सकती है।
+          A built-in <strong>sequence data type</strong> in Python that stores multiple values inside square brackets [ ]. Lists are <strong>Mutable</strong> — their content can be changed after creation.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ List की विशेषताएं</div>
+          <div class="imp-title">⭐ Features of List</div>
           <ul class="notes-ul">
-            <li>Multiple values store करती है</li>
-            <li>Items <strong>different data types</strong> के हो सकते हैं</li>
-            <li>Items comma separated, square brackets में</li>
-            <li>Index 0 से शुरू होता है</li>
-            <li><strong>Mutable</strong> — values बदली जा सकती हैं</li>
+            <li>Stores multiple values.</li>
+            <li>Items can be of <strong>different data types</strong>.</li>
+            <li>Items are comma-separated and enclosed in square brackets.</li>
+            <li>Index always begins from 0.</li>
+            <li><strong>Mutable</strong> — values can be changed after creation.</li>
           </ul>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:14px;font-family:monospace;font-size:0.9rem;margin-top:10px;">
             L = [10, "Hello", 3.14, True]<br>
-            print(L[0])   # 10<br>
-            print(L[-1])  # True<br>
-            L[0] = 99     # Mutable — बदल सकते हैं
+            print(L[0])&nbsp;&nbsp;# 10<br>
+            print(L[-1]) # True<br>
+            L[0] = 99&nbsp;&nbsp;&nbsp; # Mutable — value can be changed
           </div>
         </div>
       </div>
@@ -9854,10 +9798,10 @@ function updateTimerDisplay() {
           <table class="notes-table">
             <thead><tr><th>Operation</th><th>Example</th><th>Output</th></tr></thead>
             <tbody>
-              <tr><td><strong>Concatenation (+)</strong></td><td>[1,2] + [3,4]</td><td>[1,2,3,4]</td></tr>
-              <tr><td><strong>Repetition (*)</strong></td><td>[1,2] * 3</td><td>[1,2,1,2,1,2]</td></tr>
+              <tr><td><strong>Concatenation (+)</strong></td><td>[1,2] + [3,4]</td><td>[1, 2, 3, 4]</td></tr>
+              <tr><td><strong>Repetition (*)</strong></td><td>[1,2] * 3</td><td>[1, 2, 1, 2, 1, 2]</td></tr>
               <tr><td><strong>Membership (in)</strong></td><td>2 in [1,2,3]</td><td>True</td></tr>
-              <tr><td><strong>Slicing [s:e:step]</strong></td><td>[1,2,3,4,5][1:4]</td><td>[2,3,4]</td></tr>
+              <tr><td><strong>Slicing [s:e:step]</strong></td><td>[1,2,3,4,5][1:4]</td><td>[2, 3, 4]</td></tr>
             </tbody>
           </table>
         </div>
@@ -9873,24 +9817,24 @@ function updateTimerDisplay() {
         <div class="notes-important">
           <div class="imp-title">⭐ Important List Methods</div>
           <table class="notes-table">
-            <thead><tr><th>Method</th><th>काम</th><th>Example</th></tr></thead>
+            <thead><tr><th>Method</th><th>Purpose</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td><code>append(x)</code></td><td>End में element add करना</td><td>L.append(5)</td></tr>
-              <tr><td><code>insert(i, x)</code></td><td>Position i पर element add</td><td>L.insert(1, 99)</td></tr>
-              <tr><td><code>remove(x)</code></td><td>पहला x हटाना</td><td>L.remove(3)</td></tr>
-              <tr><td><code>pop(i)</code></td><td>Index i पर element हटाना और return करना</td><td>L.pop(0)</td></tr>
-              <tr><td><code>sort()</code></td><td>Ascending order में sort करना</td><td>L.sort()</td></tr>
-              <tr><td><code>reverse()</code></td><td>List को reverse करना</td><td>L.reverse()</td></tr>
-              <tr><td><code>len(L)</code></td><td>List की length</td><td>len(L)</td></tr>
-              <tr><td><code>index(x)</code></td><td>x की index return करना</td><td>L.index(3)</td></tr>
-              <tr><td><code>count(x)</code></td><td>x कितनी बार है</td><td>L.count(2)</td></tr>
-              <tr><td><code>extend(list)</code></td><td>दूसरी list जोड़ना</td><td>L.extend([6,7])</td></tr>
+              <tr><td><code>append(x)</code></td><td>Adds element x at the end</td><td>L.append(5)</td></tr>
+              <tr><td><code>insert(i, x)</code></td><td>Inserts x at position i</td><td>L.insert(1, 99)</td></tr>
+              <tr><td><code>remove(x)</code></td><td>Removes first occurrence of x</td><td>L.remove(3)</td></tr>
+              <tr><td><code>pop(i)</code></td><td>Removes and returns element at index i</td><td>L.pop(0)</td></tr>
+              <tr><td><code>sort()</code></td><td>Sorts list in ascending order</td><td>L.sort()</td></tr>
+              <tr><td><code>reverse()</code></td><td>Reverses the list</td><td>L.reverse()</td></tr>
+              <tr><td><code>len(L)</code></td><td>Returns length of list</td><td>len(L)</td></tr>
+              <tr><td><code>index(x)</code></td><td>Returns index of first occurrence of x</td><td>L.index(3)</td></tr>
+              <tr><td><code>count(x)</code></td><td>Returns count of x in list</td><td>L.count(2)</td></tr>
+              <tr><td><code>extend(list)</code></td><td>Appends all items of another list</td><td>L.extend([6,7])</td></tr>
             </tbody>
           </table>
         </div>
         <div class="notes-def" style="margin-top:12px;">
           <span class="def-term">📖 Nested List</span>
-          एक list के अंदर दूसरी list। जैसे: <code>L = [[1,2], [3,4], [5,6]]</code> → <code>L[0][1]</code> = 2
+          A list inside another list. Example: <code>L = [[1,2], [3,4], [5,6]]</code> → <code>L[0][1]</code> = 2
         </div>
       </div>
     </div>
@@ -9904,20 +9848,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 9: TUPLES & DICTIONARIES ═══════════ -->
 <style>
-  #cs11-ch9-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch9-notes.active { display: block; }
-  @media print {
-    #cs11-ch9-notes .notes-topbar,
-    #cs11-ch9-notes .notes-back-btn,
-    #cs11-ch9-notes .notes-print-btn { display: none !important; }
-    #cs11-ch9-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch9-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch9-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch9-notes.active { display:block; }
+  @media print { #cs11-ch9-notes .notes-topbar, #cs11-ch9-notes .notes-back-btn, #cs11-ch9-notes .notes-print-btn { display:none !important; } #cs11-ch9-notes .notes-chapter-body { display:block !important; } #cs11-ch9-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch9-notes">
   <div class="notes-topbar">
@@ -9929,22 +9862,27 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch9Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch9NotesBody">
-
     <div style="background:linear-gradient(135deg,#0c4a6e,#0369a1);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">📦</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 2 · Chapter 9</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Tuples &amp; Dictionaries in Python</h2>
-      <p style="color:#bae6fd;font-size:0.9rem;line-height:1.7;max-width:680px;">Tuple (Immutable), Dictionary (Key-Value), उनके methods और operations।</p>
+      <p style="color:#bae6fd;font-size:0.9rem;line-height:1.7;max-width:680px;">Tuple (Immutable sequence), Dictionary (Key-Value mapping), their methods and operations.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 2 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">💻 Code Examples</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch9-t1">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch9-t1')">
-        <h3><span class="ch-badge">Topic 1</span> Tuple — परिभाषा &amp; विशेषताएं</h3>
+        <h3><span class="ch-badge">Topic 1</span> Tuple — Definition &amp; Features</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Tuple</span>
-          Python का built-in sequence data type — parentheses ( ) में लिखा जाता है। <strong>Immutable</strong> होता है — create होने के बाद बदला नहीं जा सकता।
+          A built-in sequence data type in Python written inside parentheses ( ). Tuples are <strong>Immutable</strong> — their content cannot be changed after creation.
         </div>
         <div class="notes-important">
           <div class="imp-title">⭐ List vs Tuple — Comparison</div>
@@ -9954,7 +9892,7 @@ function updateTimerDisplay() {
               <tr><td>Brackets</td><td>[ ]</td><td>( )</td></tr>
               <tr><td>Mutability</td><td>Mutable</td><td>Immutable</td></tr>
               <tr><td>Speed</td><td>Slower</td><td>Faster</td></tr>
-              <tr><td>Methods</td><td>Many (append, remove...)</td><td>Only count(), index()</td></tr>
+              <tr><td>Methods Available</td><td>Many (append, remove, sort...)</td><td>Only count() and index()</td></tr>
             </tbody>
           </table>
         </div>
@@ -9963,10 +9901,10 @@ function updateTimerDisplay() {
           <table class="notes-table">
             <thead><tr><th>Operation</th><th>Example</th><th>Output</th></tr></thead>
             <tbody>
-              <tr><td>Concatenation</td><td>(1,2) + (3,4)</td><td>(1,2,3,4)</td></tr>
-              <tr><td>Repetition</td><td>(1,2) * 2</td><td>(1,2,1,2)</td></tr>
+              <tr><td>Concatenation</td><td>(1,2) + (3,4)</td><td>(1, 2, 3, 4)</td></tr>
+              <tr><td>Repetition</td><td>(1,2) * 2</td><td>(1, 2, 1, 2)</td></tr>
               <tr><td>Membership</td><td>3 in (1,2,3)</td><td>True</td></tr>
-              <tr><td>Slicing</td><td>(1,2,3,4)[1:3]</td><td>(2,3)</td></tr>
+              <tr><td>Slicing</td><td>(1,2,3,4)[1:3]</td><td>(2, 3)</td></tr>
             </tbody>
           </table>
         </div>
@@ -9975,35 +9913,35 @@ function updateTimerDisplay() {
 
     <div class="notes-chapter" id="cs11ch9-t2">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch9-t2')">
-        <h3><span class="ch-badge">Topic 2</span> Dictionary — परिभाषा &amp; Methods</h3>
+        <h3><span class="ch-badge">Topic 2</span> Dictionary — Definition &amp; Methods</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Dictionary</span>
-          <strong>Key:Value pairs</strong> का unordered collection — curly brackets { } में। Keys unique और immutable होनी चाहिए। Values कोई भी data type हो सकती है।
+          An unordered collection of <strong>Key:Value pairs</strong> stored in curly brackets { }. Keys must be unique and immutable. Values can be of any data type.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Dictionary — Create &amp; Access</div>
+          <div class="imp-title">⭐ Creating and Accessing a Dictionary</div>
           <div style="background:#1e293b;color:#e2e8f0;border-radius:10px;padding:14px;font-family:monospace;font-size:0.9rem;line-height:1.8;">
             d = {'name': 'Deepak', 'age': 25, 'city': 'Delhi'}<br>
-            print(d['name'])   # Deepak<br>
-            d['age'] = 26      # Modify करना<br>
-            d['email'] = 'x@x' # New item add करना
+            print(d['name'])&nbsp;&nbsp; # Deepak<br>
+            d['age'] = 26&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Modify existing item<br>
+            d['email'] = 'x@x' # Add new item
           </div>
         </div>
         <div class="notes-important" style="margin-top:12px;">
           <div class="imp-title">⭐ Dictionary Methods</div>
           <table class="notes-table">
-            <thead><tr><th>Method</th><th>काम</th></tr></thead>
+            <thead><tr><th>Method</th><th>Purpose</th></tr></thead>
             <tbody>
-              <tr><td><code>d.keys()</code></td><td>सभी keys return करना</td></tr>
-              <tr><td><code>d.values()</code></td><td>सभी values return करना</td></tr>
-              <tr><td><code>d.items()</code></td><td>सभी key-value pairs return करना</td></tr>
-              <tr><td><code>d.get(key)</code></td><td>Key की value — KeyError नहीं देता</td></tr>
-              <tr><td><code>d.pop(key)</code></td><td>Key-value pair delete करना</td></tr>
-              <tr><td><code>d.update(d2)</code></td><td>दूसरी dictionary merge करना</td></tr>
-              <tr><td><code>len(d)</code></td><td>Items की संख्या</td></tr>
+              <tr><td><code>d.keys()</code></td><td>Returns all keys</td></tr>
+              <tr><td><code>d.values()</code></td><td>Returns all values</td></tr>
+              <tr><td><code>d.items()</code></td><td>Returns all key-value pairs</td></tr>
+              <tr><td><code>d.get(key)</code></td><td>Returns value of key; no KeyError if missing</td></tr>
+              <tr><td><code>d.pop(key)</code></td><td>Removes and returns the specified key-value pair</td></tr>
+              <tr><td><code>d.update(d2)</code></td><td>Merges another dictionary into d</td></tr>
+              <tr><td><code>len(d)</code></td><td>Returns number of items</td></tr>
             </tbody>
           </table>
         </div>
@@ -10019,20 +9957,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 10: SOCIETY, LAW AND ETHICS ═══════════ -->
 <style>
-  #cs11-ch10-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch10-notes.active { display: block; }
-  @media print {
-    #cs11-ch10-notes .notes-topbar,
-    #cs11-ch10-notes .notes-back-btn,
-    #cs11-ch10-notes .notes-print-btn { display: none !important; }
-    #cs11-ch10-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch10-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch10-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch10-notes.active { display:block; }
+  @media print { #cs11-ch10-notes .notes-topbar, #cs11-ch10-notes .notes-back-btn, #cs11-ch10-notes .notes-print-btn { display:none !important; } #cs11-ch10-notes .notes-chapter-body { display:block !important; } #cs11-ch10-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch10-notes">
   <div class="notes-topbar">
@@ -10044,11 +9971,16 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch10Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch10NotesBody">
-
     <div style="background:linear-gradient(135deg,#1c1917,#44403c);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">⚖️</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 3 · Chapter 10</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Society, Law and Ethics</h2>
-      <p style="color:#e7e5e4;font-size:0.9rem;line-height:1.7;max-width:680px;">Digital Footprint, Net Etiquettes, IPR, Cyber Crime, IT Act 2000, E-Waste।</p>
+      <p style="color:#e7e5e4;font-size:0.9rem;line-height:1.7;max-width:680px;">Digital Footprint, Net Etiquettes, Intellectual Property Rights, Cyber Crime, IT Act 2000 and E-Waste.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 4 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">⚖️ Law &amp; Ethics</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch10-t1">
@@ -10059,15 +9991,15 @@ function updateTimerDisplay() {
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Digital Footprint</span>
-          Internet पर किसी भी activity के बाद बना data/records का collection। इन्हें <strong>Digital Tattoos</strong> भी कहते हैं — ये permanent होते हैं।
+          The collection of data or records generated after any activity performed by an individual on the internet. Also called <strong>Digital Tattoos</strong> — they are permanent.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ Digital Footprint के प्रकार</div>
+          <div class="imp-title">⭐ Types of Digital Footprint</div>
           <table class="notes-table">
             <thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td><strong>Active</strong></td><td>जानबूझकर share की गई जानकारी</td><td>Social media posts, Online forms</td></tr>
-              <tr><td><strong>Passive</strong></td><td>बिना जानकारी के record होती है</td><td>Geo-location, Auto-cookies</td></tr>
+              <tr><td><strong>Active</strong></td><td>Data shared intentionally by the user</td><td>Social media posts, filling online forms</td></tr>
+              <tr><td><strong>Passive</strong></td><td>Data recorded without the user's direct knowledge</td><td>Geo-location tracking, auto-installed cookies</td></tr>
             </tbody>
           </table>
         </div>
@@ -10076,10 +10008,10 @@ function updateTimerDisplay() {
           <table class="notes-table">
             <thead><tr><th>✅ Do's</th><th>❌ Don'ts</th></tr></thead>
             <tbody>
-              <tr><td>दूसरों की Privacy का सम्मान करें</td><td>Copyright laws का उल्लंघन न करें</td></tr>
-              <tr><td>Cyber Bullying से बचें</td><td>Spam न करें</td></tr>
-              <tr><td>Credentials नियमित update करें</td><td>Personal information share न करें</td></tr>
-              <tr><td>Digital Footprint के बारे में जागरूक रहें</td><td>Sarcasm का उपयोग न करें</td></tr>
+              <tr><td>Respect others' privacy</td><td>Do not violate copyright laws</td></tr>
+              <tr><td>Avoid cyber bullying</td><td>Do not spam</td></tr>
+              <tr><td>Update credentials regularly</td><td>Do not share personal/sensitive information</td></tr>
+              <tr><td>Be aware of your digital footprint</td><td>Do not use sarcasm in communication</td></tr>
             </tbody>
           </table>
         </div>
@@ -10094,82 +10026,97 @@ function updateTimerDisplay() {
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Intellectual Property Rights</span>
-          किसी व्यक्ति या संगठन के <strong>बौद्धिक creation</strong> (literary works, inventions, artwork, software) पर उनका अधिकार।
+          The rights granted to a person or organization over their <strong>intellectual creations</strong> such as literary works, inventions, artwork, software, etc. IPR enables creators to earn recognition or financial benefit from their work.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ IPR के प्रकार</div>
+          <div class="imp-title">⭐ Types of IPR</div>
           <table class="notes-table">
-            <thead><tr><th>Type</th><th>क्या protect करता है</th><th>विशेषता</th></tr></thead>
+            <thead><tr><th>Type</th><th>What it Protects</th><th>Key Feature</th></tr></thead>
             <tbody>
-              <tr><td><strong>Copyright</strong></td><td>Literary, artistic, musical works</td><td>60 साल तक, automatically मिलता है</td></tr>
-              <tr><td><strong>Patent</strong></td><td>Inventions, Machines, Processes</td><td>Register करवाना पड़ता है</td></tr>
-              <tr><td><strong>Trademark</strong></td><td>Brand name, symbol, logo</td><td>Product को identify करता है</td></tr>
+              <tr><td><strong>Copyright</strong></td><td>Literary, artistic, musical and creative works</td><td>Lasts 60 years; granted automatically</td></tr>
+              <tr><td><strong>Patent</strong></td><td>Inventions, machines and processes</td><td>Must be registered with government agencies</td></tr>
+              <tr><td><strong>Trademark</strong></td><td>Brand name, symbol or logo identifying a product</td><td>Must be unique; distinguishes products</td></tr>
             </tbody>
           </table>
         </div>
         <div class="notes-important" style="margin-top:12px;">
           <div class="imp-title">⭐ IPR Violations</div>
           <ul class="notes-ul">
-            <li><strong>Plagiarism</strong> — किसी और के work को अपना बताना</li>
-            <li><strong>Copyright Infringement</strong> — बिना permission के copyrighted material use करना</li>
-            <li><strong>Trademark Infringement</strong> — किसी के trademark का unauthorized use</li>
+            <li><strong>Plagiarism</strong> — Copying someone else's work and presenting it as one's own.</li>
+            <li><strong>Copyright Infringement</strong> — Using copyrighted material without permission.</li>
+            <li><strong>Trademark Infringement</strong> — Unauthorized use of another's trademark.</li>
           </ul>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Licensing</div>
+          <table class="notes-table">
+            <thead><tr><th>License</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>GNU GPL (Open Source)</strong></td><td>Free to use, modify and distribute; source code is provided</td></tr>
+              <tr><td><strong>Creative Commons (CC)</strong></td><td>Free license for creative works — 6 types available</td></tr>
+              <tr><td><strong>Proprietary</strong></td><td>Paid software; source code is not available</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
     <div class="notes-chapter" id="cs11ch10-t3">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch10-t3')">
-        <h3><span class="ch-badge">Topic 3</span> Cyber Crime &amp; IT Act 2000</h3>
+        <h3><span class="ch-badge">Topic 3</span> Cyber Crime &amp; Indian IT Act 2000</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Cyber Crime</span>
+          Any criminal offence involving the use of a computer, internet or digital technology. Can target a computer system (e.g. hacking) or use it as a tool (e.g. identity theft).
+        </div>
         <div class="notes-important">
           <div class="imp-title">⭐ Types of Cyber Crime</div>
           <table class="notes-table">
             <thead><tr><th>Crime</th><th>Definition</th></tr></thead>
             <tbody>
-              <tr><td><strong>Hacking</strong></td><td>किसी computer system में unauthorized access (White hat = ethical, Black hat = non-ethical)</td></tr>
-              <tr><td><strong>Phishing</strong></td><td>Fake email/message से sensitive info चुराना (password, bank details)</td></tr>
-              <tr><td><strong>Identity Theft</strong></td><td>किसी की personal info चुराकर illegal activities करना</td></tr>
-              <tr><td><strong>Cyber Bullying</strong></td><td>Online harassment या intimidation</td></tr>
-              <tr><td><strong>DoS Attack</strong></td><td>Server को requests से overwhelm करना</td></tr>
+              <tr><td><strong>Hacking</strong></td><td>Gaining unauthorized access to a computer system. Ethical hacking (White hat) vs Non-ethical hacking (Black hat).</td></tr>
+              <tr><td><strong>Phishing</strong></td><td>Stealing sensitive information (passwords, bank details) by impersonating a legitimate entity via email or message.</td></tr>
+              <tr><td><strong>Identity Theft</strong></td><td>Stealing personal information (bank details, voter ID, PAN) to misuse in illegal activities.</td></tr>
+              <tr><td><strong>Cyber Bullying</strong></td><td>Online harassment or intimidation of individuals.</td></tr>
+              <tr><td><strong>DoS Attack</strong></td><td>Overwhelming a server with requests to make it unavailable to users.</td></tr>
             </tbody>
           </table>
         </div>
         <div class="notes-def" style="margin-top:12px;">
           <span class="def-term">📖 Indian IT Act 2000</span>
-          Cyber crime और e-commerce के लिए भारत का कानून। October 27, 2009 से लागू। इसमें Digital Signature, Electronic Governance, Offences &amp; Penalties शामिल हैं।
+          India's law governing cyber crime and e-commerce. It came into force on <strong>October 27, 2009</strong>. Key inclusions: Digital Signature, Electronic Governance, Offences and Penalties.
         </div>
       </div>
     </div>
 
     <div class="notes-chapter" id="cs11ch10-t4">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch10-t4')">
-        <h3><span class="ch-badge">Topic 4</span> E-Waste &amp; Licensing</h3>
+        <h3><span class="ch-badge">Topic 4</span> E-Waste</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 E-Waste</span>
-          बेकार हो चुके electrical/electronic gadgets। इनमें cadmium, mercury, beryllium जैसे harmful elements होते हैं।
+          All electrical and electronic gadgets and components that are no longer in use. E-waste contains harmful elements like cadmium, beryllium and mercury. Globally, e-waste constitutes more than 5% of municipal solid waste.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ E-Waste Management — 3R</div>
+          <div class="imp-title">⭐ E-Waste Hazards</div>
           <ul class="notes-ul">
-            <li><strong>Reduce</strong> — Electronic gadgets की consumption कम करें</li>
-            <li><strong>Reuse</strong> — पुराने gadgets donate करें या किसी को दें</li>
-            <li><strong>Recycle</strong> — Electronic devices को recycle करें</li>
+            <li>Soil acidification and air pollution.</li>
+            <li>Groundwater pollution with lead and heavy metals.</li>
+            <li>Health risks: Lung cancer, asthma, kidney and heart damage.</li>
           </ul>
         </div>
         <div class="notes-important" style="margin-top:12px;">
-          <div class="imp-title">⭐ Software Licensing</div>
+          <div class="imp-title">⭐ E-Waste Management — 3R</div>
           <table class="notes-table">
-            <thead><tr><th>License Type</th><th>Description</th></tr></thead>
+            <thead><tr><th>R</th><th>Meaning</th></tr></thead>
             <tbody>
-              <tr><td><strong>Open Source (GNU GPL)</strong></td><td>Free — use, modify, distribute कर सकते हैं, source code भी मिलता है</td></tr>
-              <tr><td><strong>Creative Commons (CC)</strong></td><td>Creative works के लिए free license — 6 types होते हैं</td></tr>
-              <tr><td><strong>Proprietary</strong></td><td>Paid — source code नहीं मिलता</td></tr>
+              <tr><td><strong>Reduce</strong></td><td>Minimize consumption of electronic gadgets; purchase only when needed.</td></tr>
+              <tr><td><strong>Reuse</strong></td><td>Donate or resell electronic goods instead of discarding them.</td></tr>
+              <tr><td><strong>Recycle</strong></td><td>Convert old electronic devices into something reusable.</td></tr>
             </tbody>
           </table>
         </div>
@@ -10185,20 +10132,9 @@ function updateTimerDisplay() {
 
 <!-- ═══════════ CS CLASS 11 — CHAPTER 11: EMERGING TRENDS ═══════════ -->
 <style>
-  #cs11-ch11-notes {
-    display: none;
-    position: fixed; inset: 0; z-index: 50000;
-    background: #f0f4ff;
-    overflow-y: auto;
-  }
-  #cs11-ch11-notes.active { display: block; }
-  @media print {
-    #cs11-ch11-notes .notes-topbar,
-    #cs11-ch11-notes .notes-back-btn,
-    #cs11-ch11-notes .notes-print-btn { display: none !important; }
-    #cs11-ch11-notes .notes-chapter-body { display: block !important; }
-    #cs11-ch11-notes { position: static !important; overflow: visible !important; }
-  }
+  #cs11-ch11-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #cs11-ch11-notes.active { display:block; }
+  @media print { #cs11-ch11-notes .notes-topbar, #cs11-ch11-notes .notes-back-btn, #cs11-ch11-notes .notes-print-btn { display:none !important; } #cs11-ch11-notes .notes-chapter-body { display:block !important; } #cs11-ch11-notes { position:static !important; overflow:visible !important; } }
 </style>
 <div id="cs11-ch11-notes">
   <div class="notes-topbar">
@@ -10210,32 +10146,37 @@ function updateTimerDisplay() {
   </div>
   <div class="notes-progress-wrap"><div class="notes-progress-bar" id="cs11ch11Progress" style="width:0%"></div></div>
   <div class="notes-body" id="cs11ch11NotesBody">
-
     <div style="background:linear-gradient(135deg,#0f172a,#1e3a8a);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🚀</div>
       <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XI · Computer Science Code 083 · Unit 3 · Chapter 11</div>
       <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Emerging Trends in Technology</h2>
-      <p style="color:#bfdbfe;font-size:0.9rem;line-height:1.7;max-width:680px;">AI, Machine Learning, Natural Language Processing, Immersive Technology, IoT, Cloud Computing, Big Data &amp; Blockchain।</p>
+      <p style="color:#bfdbfe;font-size:0.9rem;line-height:1.7;max-width:680px;">Artificial Intelligence, Machine Learning, NLP, IoT, Cloud Computing, Big Data, Blockchain, AR/VR and more.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">📚 3 Topics</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">✅ Full Syllabus</span>
+        <span style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 14px;font-size:0.8rem;font-weight:700;">🌐 Latest Tech</span>
+      </div>
     </div>
 
     <div class="notes-chapter open" id="cs11ch11-t1">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch11-t1')">
-        <h3><span class="ch-badge">Topic 1</span> Artificial Intelligence (AI) &amp; Machine Learning</h3>
+        <h3><span class="ch-badge">Topic 1</span> Artificial Intelligence &amp; Machine Learning</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Artificial Intelligence (AI)</span>
-          Computers को <strong>human-like intelligence</strong> देने की technology — जैसे सोचना, सीखना, decision लेना और problem solve करना।
+          The technology that enables computers to simulate <strong>human-like intelligence</strong> — thinking, learning, decision-making and problem solving.
         </div>
         <div class="notes-important">
-          <div class="imp-title">⭐ AI की Branches</div>
+          <div class="imp-title">⭐ Branches of AI</div>
           <table class="notes-table">
             <thead><tr><th>Branch</th><th>Description</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td><strong>Machine Learning (ML)</strong></td><td>Data से खुद सीखने की ability</td><td>Spam filter, Netflix recommendations</td></tr>
-              <tr><td><strong>Natural Language Processing (NLP)</strong></td><td>Human language समझना</td><td>Siri, Google Assistant, Chatbots</td></tr>
-              <tr><td><strong>Computer Vision</strong></td><td>Images/Videos से information निकालना</td><td>Face recognition, Medical imaging</td></tr>
-              <tr><td><strong>Robotics</strong></td><td>Intelligent robots बनाना</td><td>Industrial robots, Surgical robots</td></tr>
+              <tr><td><strong>Machine Learning (ML)</strong></td><td>Systems that learn from data to improve performance</td><td>Spam filter, Netflix recommendations</td></tr>
+              <tr><td><strong>Natural Language Processing (NLP)</strong></td><td>Enables computers to understand and process human language</td><td>Siri, Google Assistant, Chatbots</td></tr>
+              <tr><td><strong>Computer Vision</strong></td><td>Extracting information from images and videos</td><td>Face recognition, Medical imaging</td></tr>
+              <tr><td><strong>Robotics</strong></td><td>Building intelligent machines that can perform tasks</td><td>Industrial robots, Surgical robots</td></tr>
             </tbody>
           </table>
         </div>
@@ -10250,11 +10191,11 @@ function updateTimerDisplay() {
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Internet of Things (IoT)</span>
-          Physical devices (sensors, gadgets) को <strong>Internet से connect</strong> करके data share करना। जैसे Smart Home, Smart City, Wearables।
+          Connecting physical devices (sensors, gadgets) to the <strong>Internet</strong> to collect and share data without human-to-human or human-to-computer interaction. Examples: Smart Home, Smart City, Wearable devices.
         </div>
         <div class="notes-def" style="margin-top:12px;">
           <span class="def-term">📖 Cloud Computing</span>
-          Internet के through computing services (storage, servers, databases, software) provide करना — बिना खुद hardware रखे। जैसे Google Drive, AWS, Microsoft Azure।
+          Delivering computing services (storage, servers, databases, software) over the Internet without owning physical hardware. Examples: Google Drive, AWS, Microsoft Azure.
         </div>
         <div class="notes-important" style="margin-top:12px;">
           <div class="imp-title">⭐ Cloud Service Models</div>
@@ -10269,39 +10210,39 @@ function updateTimerDisplay() {
         </div>
         <div class="notes-def" style="margin-top:12px;">
           <span class="def-term">📖 Big Data</span>
-          बहुत बड़े और complex datasets जिन्हें traditional tools से process नहीं किया जा सकता। <strong>5 V's</strong>: Volume, Velocity, Variety, Veracity, Value।
+          Extremely large and complex datasets that cannot be processed by traditional tools. Characterized by the <strong>5 V's</strong>: Volume, Velocity, Variety, Veracity and Value.
         </div>
       </div>
     </div>
 
     <div class="notes-chapter" id="cs11ch11-t3">
       <div class="notes-chapter-header" onclick="toggleChapter('cs11ch11-t3')">
-        <h3><span class="ch-badge">Topic 3</span> Blockchain, AR/VR &amp; Other Trends</h3>
+        <h3><span class="ch-badge">Topic 3</span> Blockchain, AR/VR &amp; Other Emerging Trends</h3>
         <span class="notes-chapter-toggle">▼</span>
       </div>
       <div class="notes-chapter-body">
         <div class="notes-def">
           <span class="def-term">📖 Blockchain</span>
-          एक <strong>distributed, decentralized ledger</strong> जो transactions को secure और transparent तरीके से record करता है। हर record (block) chain में linked होता है। Bitcoin और Cryptocurrencies में use होता है।
+          A <strong>distributed, decentralized digital ledger</strong> that records transactions in a secure and transparent manner. Each record (block) is linked to the previous one forming a chain. Used in Bitcoin and other cryptocurrencies.
         </div>
         <div class="notes-important" style="margin-top:12px;">
-          <div class="imp-title">⭐ Immersive Technology</div>
+          <div class="imp-title">⭐ Immersive Technology (AR / VR / MR)</div>
           <table class="notes-table">
             <thead><tr><th>Technology</th><th>Full Form</th><th>Description</th></tr></thead>
             <tbody>
-              <tr><td><strong>VR</strong></td><td>Virtual Reality</td><td>पूरी तरह artificial environment — headset पहनकर</td></tr>
-              <tr><td><strong>AR</strong></td><td>Augmented Reality</td><td>Real world पर digital elements overlay होते हैं</td></tr>
-              <tr><td><strong>MR</strong></td><td>Mixed Reality</td><td>Real और Virtual दोनों interact करते हैं</td></tr>
+              <tr><td><strong>VR</strong></td><td>Virtual Reality</td><td>Fully artificial simulated environment experienced through a headset</td></tr>
+              <tr><td><strong>AR</strong></td><td>Augmented Reality</td><td>Digital elements overlaid on the real world (e.g. Pokémon GO)</td></tr>
+              <tr><td><strong>MR</strong></td><td>Mixed Reality</td><td>Real and virtual objects interact with each other in real time</td></tr>
             </tbody>
           </table>
         </div>
         <div class="notes-important" style="margin-top:12px;">
           <div class="imp-title">⭐ Other Emerging Trends</div>
           <ul class="notes-ul">
-            <li><strong>3D Printing</strong> — Digital design से physical object बनाना</li>
-            <li><strong>Smart Cities</strong> — IoT और AI से शहरों को intelligent बनाना</li>
-            <li><strong>5G Technology</strong> — Ultra-fast wireless connectivity</li>
-            <li><strong>Cyber Security</strong> — Digital systems को attacks से बचाना</li>
+            <li><strong>3D Printing</strong> — Creating physical objects directly from a digital design.</li>
+            <li><strong>Smart Cities</strong> — Using IoT and AI to make cities more intelligent and efficient.</li>
+            <li><strong>5G Technology</strong> — Ultra-fast wireless connectivity for next-generation networks.</li>
+            <li><strong>Cyber Security</strong> — Protecting digital systems, networks and data from cyberattacks.</li>
           </ul>
         </div>
       </div>

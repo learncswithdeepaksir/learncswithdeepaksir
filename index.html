@@ -81,7 +81,12 @@
   .nav-inner {
     max-width: 1280px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 28px; height: 72px;
+    padding: 0 16px; height: 72px; flex-wrap: nowrap;
+  }
+  @media (max-width: 1300px) {
+    .nav-links > li > a, .nav-links > li > span { padding: 10px 9px; font-size: 0.86rem; }
+    .nav-cta { padding: 8px 12px; font-size: 0.8rem; margin-left: 4px; }
+    button[onclick="showQuiz()"] { padding: 8px 11px !important; font-size: 0.78rem !important; margin-right: 4px !important; }
   }
   .logo {
     font-family: 'Poppins', sans-serif;
@@ -1037,6 +1042,8 @@
     <a href="https://www.instagram.com/officialdeepakkld?utm_source=qr&igsh=dmE5bnliODhpOW80" title="Instagram" style="background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 75%,#285AEB 100%);"><i class="fa-brands fa-instagram"></i></a>
     <a href="https://t.me/+7nIqdQOpaKk4MjY1" title="Telegram" style="background:#2AABEE;"><i class="fa-brands fa-telegram"></i></a>
     <a href="https://whatsapp.com/channel/0029Vb7WBeq9Bb5pCLwQTQ0j" title="WhatsApp" style="background:#25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+    <button onclick="showQuiz()" title="MCQ Quiz Practice" style="display:inline-flex;align-items:center;gap:5px;background:#22c55e;color:#fff;padding:5px 13px;border-radius:8px;font-size:0.78rem;font-weight:700;border:none;cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif;box-shadow:0 2px 8px rgba(34,197,94,0.3);">📝 MCQ Quiz</button>
+    <button onclick="openDemoForm()" title="Free Demo Class" style="display:inline-flex;align-items:center;gap:5px;background:#f97316;color:#fff;padding:5px 13px;border-radius:8px;font-size:0.78rem;font-weight:700;border:none;cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif;box-shadow:0 2px 8px rgba(249,115,22,0.3);">🎓 Free Demo</button>
   </div>
 </div>
 
@@ -1449,11 +1456,11 @@
 <div class="subj-sec-label">More</div>
 <a href="#" class="subj-ch-link">MCQs – IT 11</a>
 <a href="#" class="subj-ch-link">NCERT Solutions – XI</a>
-</div></div></div><div id="it12" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#059669;border-color:#a7f3d0;">📚 Part A – Employability Skills</div><a href="#" class="subj-ch-link">Unit 1: Communication Skills-IV</a>
-<a href="#" class="subj-ch-link">Unit 2: Self-Management Skills-IV</a>
-<a href="#" class="subj-ch-link">Unit 3: ICT Skills-IV</a>
-<a href="#" class="subj-ch-link">Unit 4: Entrepreneurial Skills-IV</a>
-<a href="#" class="subj-ch-link">Unit 5: Green Skills-IV</a>
+</div></div></div><div id="it12" class="subj-panel" style="display:none;"><div class="subj-grid" style="grid-template-columns:repeat(2,1fr);"><div><div class="subj-col-hd" style="color:#059669;border-color:#a7f3d0;">📚 Part A – Employability Skills</div><a href="#it12-u1-notes" onclick="showIt12U1Notes(event)" class="subj-ch-link">Unit 1: Communication Skills-IV</a>
+<a href="#it12-u2a-notes" onclick="showIt12U2aNotes(event)" class="subj-ch-link">Unit 2: Self-Management Skills-IV</a>
+<a href="#it12-u3a-notes" onclick="showIt12U3aNotes(event)" class="subj-ch-link">Unit 3: ICT Skills-IV</a>
+<a href="#it12-u4a-notes" onclick="showIt12U4aNotes(event)" class="subj-ch-link">Unit 4: Entrepreneurial Skills-IV</a>
+<a href="#it12-u5-notes" onclick="showIt12U5Notes(event)" class="subj-ch-link">Unit 5: Green Skills-IV</a>
 </div><div><div class="subj-col-hd" style="color:#1d4ed8;border-color:#bfdbfe;">💼 Part B – Subject Specific Skills</div><a href="#db-notes-section" onclick="showDbNotes(event)" class="subj-ch-link">Unit 1: Database – RDBMS (MySQL)</a>
 <a href="#it12-u2-notes" onclick="showIt12U2Notes(event)" class="subj-ch-link">Unit 2: Operating Web Based Applications</a>
 <a href="#it12-u3-notes" onclick="showIt12U3Notes(event)" class="subj-ch-link">Unit 3: Java Programming (OOP, Arrays, Threads)</a>
@@ -1482,18 +1489,6 @@
       </li>
 
     </ul>
-    <button onclick="showQuiz()" title="MCQ Quiz Practice"
-      style="display:inline-flex;align-items:center;gap:6px;background:#22c55e;color:#fff;
-      padding:9px 16px;border-radius:10px;font-size:0.82rem;font-weight:700;
-      border:none;cursor:pointer;white-space:nowrap;margin-right:6px;
-      box-shadow:0 3px 10px rgba(34,197,94,0.35);transition:all 0.2s;font-family:'Nunito',sans-serif;"
-      onmouseover="this.style.background='#16a34a';this.style.transform='translateY(-2px)'"
-      onmouseout="this.style.background='#22c55e';this.style.transform=''">
-      📝 MCQ Quiz
-    </button>
-    <button onclick="openDemoForm()" class="nav-cta" title="Free Demo Class" style="font-family:'Nunito',sans-serif; cursor:pointer;">
-      🎓 Free Demo
-    </button>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -2678,6 +2673,210 @@ learn_python(s)
           <div class="topper-subject-badge">💡 IT — Code 402</div>
           <div class="topper-quote">IT ke database aur networking topics Sir se sikhne ke baad school mein bhi best student ban gayi!</div>
         </div>
+      </div>
+
+      <!-- CLASS X — COMPUTER APPLICATION (CODE 165) TOPPERS — SESSION 2025-26 -->
+      <div style="text-align:center; margin: 36px 0 20px;">
+        <div style="display:inline-block; background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.35); color:#fb923c; font-family:'Poppins',sans-serif; font-size:0.8rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; padding:6px 20px; border-radius:20px; margin-bottom:10px;">💻 Class X — Computer Application (Code 165)</div>
+        <p style="color:rgba(255,255,255,0.5); font-size:0.85rem;">CBSE Board · Session 2025–26 · Remarkable Results!</p>
+      </div>
+      <div class="toppers-grid">
+
+        <div class="topper-card">
+          <div class="topper-rank gold">🥇 1st Rank</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Priya Subhashchandra Yadav</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">98/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Deepak Sir ki guidance aur practice se Computer Application mein top score karna possible hua!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank silver">🥈 2nd Rank</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Siddhi Chaudhary</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">97/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Sir ke notes itne clear hain ki har topic exam mein easily yaad aa gaya!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank bronze">🥉 3rd Rank</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Soniya Gupta</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">97/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Deepak Sir ki classes ne mujhe Computer Application mein bahut confident bana diya!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#0891b2,#22d3ee);">🌟 Distinction</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Riddhima Shukla</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">96/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Sir ki teaching style se har concept asaan lagne laga, result bhi waisa hi aaya!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#0891b2,#22d3ee);">🌟 Distinction</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Ayush Chaudhary</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">96/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Deepak Sir ke practice papers se exam ki tayyari bilkul solid ho gayi thi!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Astitva Upadhyay</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">95/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Sir ki guidance se poori tayyari ho gayi thi, exam mein koi tension nahi thi!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Amrit Tripathi</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">95/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Deepak Sir ke notes aur regular practice se itne ache marks aaye!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Atul Maurya</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">94/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Sir ki classes se Computer Application mein mera confidence bahut badh gaya!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Mohd Shakib</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">94/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Deepak Sir ke saath padhna ek bahut accha decision tha, result se khush hoon!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Akhilesh</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">93/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Sir ke notes se revision karna bahut asaan ho gaya tha exam se pehle!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Aqsha Bano</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">92/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Deepak Sir ki personal attention ne har doubt clear kar diya tha!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Shreyansh</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">91/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Sir ki online classes ghar baithe itni effective hain — yeh result uski proof hai!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👦</div>
+          <div class="topper-name">Manyam Yadav</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">91/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Deepak Sir ke saath padhai karna ek bahut accha decision tha. Result ne sab sahi kar diya!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Priyanshi Chaudhary</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">91/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Sir ke YouTube videos bahut helpful the. Ghar par bhi revise karna asaan raha!</div>
+        </div>
+
+        <div class="topper-card">
+          <div class="topper-rank" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⭐ Merit</div>
+          <div class="topper-avatar">👧</div>
+          <div class="topper-name">Shreya Sharma</div>
+          <div class="topper-class">Class X — CBSE Board</div>
+          <div class="topper-marks-box">
+            <div class="topper-marks-num">90/100</div>
+            <div class="topper-marks-label">Computer Application (Code 165)</div>
+          </div>
+          <div class="topper-subject-badge">💻 Computer Application</div>
+          <div class="topper-quote">Itne achhe marks aaye — yeh sab Deepak Sir ki mehnat aur guidance ka nateeja hai!</div>
+        </div>
+
       </div>
     </div>
 
@@ -12505,6 +12704,657 @@ function updateTimerDisplay() {
   </div>
 </div>
 <!-- /it12-u4-notes -->
+<!-- ═══════════ IT 802 CLASS 12 — PART A: UNIT 1: COMMUNICATION SKILLS-IV ═══════════ -->
+<style>
+  #it12-u1-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #it12-u1-notes.active { display:block; }
+  @media print { #it12-u1-notes .notes-topbar, #it12-u1-notes .notes-back-btn, #it12-u1-notes .notes-print-btn { display:none !important; } #it12-u1-notes .notes-chapter-body { display:block !important; } #it12-u1-notes { position:static !important; overflow:visible !important; } }
+</style>
+<div id="it12-u1-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🗣️</span> IT 802 Class 12 — Part A: Unit 1 – Communication Skills IV</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideIt12U1Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="it12u1Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="it12u1NotesBody">
+
+    <div style="background:linear-gradient(135deg,#1e3a5f,#3b6ea5);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🗣️</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XII · IT Code 802 · Part A · Unit 1</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Communication Skills – IV</h2>
+      <p style="color:#bfdbfe;font-size:0.9rem;line-height:1.7;max-width:680px;">Active Listening — importance, steps, and Interview Skills — Do's and Don'ts.</p>
+    </div>
+
+    <div class="notes-chapter open" id="it12u1-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u1-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Communication — Definition &amp; Active Listening</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Communication</span>
+          The act of transferring meanings from one entity or group to another through signs, symbols and semiotic norms that are mutually understood.
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Learning Objectives of Effective Communication</div>
+          <ul class="notes-ul">
+            <li>Development of Interpersonal Skills.</li>
+            <li>To express effectively and with maximum efficiency.</li>
+          </ul>
+        </div>
+        <div class="notes-def" style="margin-top:12px;">
+          <span class="def-term">📖 Active Listening</span>
+          One of the most important abilities for good communication. It helps in building and maintaining connections, resolving issues, streamlining processes, and remembering important information.
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Why Active Listening is Important in the Workplace</div>
+          <table class="notes-table">
+            <thead><tr><th>Benefit</th><th>Explanation</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Builds Connections</strong></td><td>People feel more comfortable sharing information when they know they are being actively listened to.</td></tr>
+              <tr><td><strong>Builds Trust</strong></td><td>People trust us more when they feel they can speak openly without interruption or judgment.</td></tr>
+              <tr><td><strong>Identifies Problems</strong></td><td>Active listening helps identify difficulties others are having and discover solutions faster.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u1-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u1-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Four Steps of Active Listening</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ CARC — Four Steps of Active Listening</div>
+          <table class="notes-table">
+            <thead><tr><th>Step</th><th>Name</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>C</strong></td><td>CONTACT</td><td>Connect with the speaker — make eye contact, maintain open posture and give nonverbal responses.</td></tr>
+              <tr><td><strong>A</strong></td><td>ABSORB</td><td>Take in all aspects of the spoken message — implicit, explicit and nonverbal cues. Do not judge or evaluate.</td></tr>
+              <tr><td><strong>R</strong></td><td>REFLECTIVE FEEDBACK</td><td>Mirror or reflect back what you have heard to confirm your understanding.</td></tr>
+              <tr><td><strong>C</strong></td><td>CONFIRM</td><td>Receive confirmation from the speaker that you heard the message accurately. If not, restart the process.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u1-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u1-t3')">
+        <h3><span class="ch-badge">Topic 3</span> Interview Skills — Do's and Don'ts</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Interview Skills</span>
+          The ability to communicate effectively and engage with the interviewer — skills that are just as important as the qualifications on your resume.
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">✅ DO's — Before an Interview</div>
+          <ul class="notes-ul">
+            <li>Get a good night's sleep before the interview.</li>
+            <li>Do research about the company and role.</li>
+            <li>Eat a good breakfast.</li>
+            <li>Prepare questions to ask the interviewer beforehand.</li>
+            <li>Know who will be interviewing you and learn about their background.</li>
+            <li>Know your strengths and prepare a list of them.</li>
+            <li>Turn off your cell phone.</li>
+            <li>Prepare a solid list of references.</li>
+          </ul>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">✅ DO's — During an Interview</div>
+          <ul class="notes-ul">
+            <li>Smile and use smooth, emphatic gestures.</li>
+            <li>Get the interviewer's name right and use it a few times.</li>
+            <li>Look the interviewer in the eye — eye contact is very important.</li>
+            <li>Take notes during the interview.</li>
+            <li>Let your achievements speak for you.</li>
+            <li>Take a moment before answering a question.</li>
+            <li>Sit up straight and ask questions.</li>
+          </ul>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">✅ DO's — After an Interview</div>
+          <ul class="notes-ul">
+            <li>Let the interviewer decide when the interview is over.</li>
+            <li>Ask when you will hear back if the interviewer does not say.</li>
+            <li>Drop off or send a thank you note.</li>
+            <li>Follow up appropriately.</li>
+          </ul>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">❌ DON'Ts</div>
+          <ul class="notes-ul">
+            <li>Don't be late — plan to arrive early.</li>
+            <li>Don't sit down until you are asked.</li>
+            <li>Don't lean on or put your elbows on the interviewer's desk.</li>
+            <li>Don't show nervousness by drumming fingers or cracking knuckles.</li>
+            <li>Don't talk too quickly.</li>
+            <li>Don't use words whose meaning you don't know.</li>
+            <li>Don't use slang.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideIt12U1Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /it12-u1-notes -->
+
+<!-- ═══════════ IT 802 CLASS 12 — PART A: UNIT 2: SELF-MANAGEMENT SKILLS-IV ═══════════ -->
+<style>
+  #it12-u2a-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #it12-u2a-notes.active { display:block; }
+  @media print { #it12-u2a-notes .notes-topbar, #it12-u2a-notes .notes-back-btn, #it12-u2a-notes .notes-print-btn { display:none !important; } #it12-u2a-notes .notes-chapter-body { display:block !important; } #it12-u2a-notes { position:static !important; overflow:visible !important; } }
+</style>
+<div id="it12-u2a-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🧘</span> IT 802 Class 12 — Part A: Unit 2 – Self-Management Skills IV</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideIt12U2aNotes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="it12u2aProgress" style="width:0%"></div></div>
+  <div class="notes-body" id="it12u2aNotesBody">
+
+    <div style="background:linear-gradient(135deg,#4c1d95,#7c3aed);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🧘</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XII · IT Code 802 · Part A · Unit 2</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Self-Management Skills – IV</h2>
+      <p style="color:#e9d5ff;font-size:0.9rem;line-height:1.7;max-width:680px;">Self-motivation — types, sources, Personality Types, Traits and Personality Disorders.</p>
+    </div>
+
+    <div class="notes-chapter open" id="it12u2a-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u2a-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Self-Motivation</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Self-Motivation</span>
+          The capacity to complete tasks without external pressure. Motivation is the inner need to do something.
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Importance of Self-Motivation</div>
+          <ul class="notes-ul">
+            <li>Increases an individual's energy and activity level.</li>
+            <li>Directs an individual towards specific goals.</li>
+            <li>Results in initiation and persistence of specific activities.</li>
+            <li>Affects cognitive processes and learning strategies.</li>
+          </ul>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Types of Motivation</div>
+          <table class="notes-table">
+            <thead><tr><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Internal (Intrinsic) Motivation</strong></td><td>Individual demonstrates a desire to do work without any external reward — driven by personal satisfaction.</td></tr>
+              <tr><td><strong>External (Extrinsic) Motivation</strong></td><td>Driven by outside forces — performing an activity to obtain a reward or to avoid punishment.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u2a-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u2a-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Sources of Motivation and Inspiration</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Sources of Motivation</div>
+          <table class="notes-table">
+            <thead><tr><th>Source</th><th>How it Motivates</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Music</strong></td><td>A good inspiring piece touches every heart and can help create miracles.</td></tr>
+              <tr><td><strong>Books</strong></td><td>Expand our horizon of thinking and help us visualize beyond our capacities.</td></tr>
+              <tr><td><strong>Activities</strong></td><td>Engaging in positive and skill-enhancing activities — competitions, games, simulations — keeps spirits high.</td></tr>
+              <tr><td><strong>Expansive Thoughts</strong></td><td>Thinking and discussing big and positive ideas motivates us to reach our highest potential.</td></tr>
+              <tr><td><strong>Living in the Present</strong></td><td>Being mindful — aware and conscious of the present moment — brings peace and calm. Also called mindfulness.</td></tr>
+              <tr><td><strong>Dreaming Big</strong></td><td>Dreaming big is a journey, not a destination. It prepares us mentally to take that big leap forward.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u2a-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u2a-t3')">
+        <h3><span class="ch-badge">Topic 3</span> Personality Types, Traits &amp; Disorders</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Personality</span>
+          A rather stable collection of characteristics — a combination of emotional, behavioural and mental traits. Influenced by both heredity and environmental factors.
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Big Five Personality Traits</div>
+          <table class="notes-table">
+            <thead><tr><th>Trait</th><th>Description</th><th>Opposite</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Extraversion</strong></td><td>Gregarious, assertive and sociable</td><td>Reserved, timid, quiet</td></tr>
+              <tr><td><strong>Agreeableness</strong></td><td>Cooperative, warm and agreeable</td><td>Cold, disagreeable, antagonistic</td></tr>
+              <tr><td><strong>Conscientiousness</strong></td><td>Hardworking, organized and dependable</td><td>Lazy, disorganized, unreliable</td></tr>
+              <tr><td><strong>Emotional Stability</strong></td><td>Calm, self-confident and cool</td><td>Insecure, anxious, depressed</td></tr>
+              <tr><td><strong>Openness to Experience</strong></td><td>Creative, curious and cultured</td><td>Narrow interests, uncreative</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Common Personality Disorders</div>
+          <table class="notes-table">
+            <thead><tr><th>Disorder</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Paranoid</strong></td><td>Feeling extremely nervous because you believe others do not like you or are trying to harm you.</td></tr>
+              <tr><td><strong>Antisocial</strong></td><td>Persistent disregard for and violation of the rights of others.</td></tr>
+              <tr><td><strong>Borderline</strong></td><td>Ongoing pattern of varying moods, self-image and behaviour leading to impulsive actions.</td></tr>
+              <tr><td><strong>Narcissistic</strong></td><td>Inflated sense of self-importance, need for excessive attention and lack of empathy.</td></tr>
+              <tr><td><strong>Avoidant</strong></td><td>Extreme social inhibition, feelings of inadequacy and sensitivity to negative criticism.</td></tr>
+              <tr><td><strong>Dependent</strong></td><td>Overreliance on others to meet emotional and physical needs.</td></tr>
+              <tr><td><strong>Obsessive (OCPD)</strong></td><td>Extreme perfectionism, order and neatness.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideIt12U2aNotes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /it12-u2a-notes -->
+
+<!-- ═══════════ IT 802 CLASS 12 — PART A: UNIT 3: ICT SKILLS-IV ═══════════ -->
+<style>
+  #it12-u3a-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #it12-u3a-notes.active { display:block; }
+  @media print { #it12-u3a-notes .notes-topbar, #it12-u3a-notes .notes-back-btn, #it12-u3a-notes .notes-print-btn { display:none !important; } #it12-u3a-notes .notes-chapter-body { display:block !important; } #it12-u3a-notes { position:static !important; overflow:visible !important; } }
+</style>
+<div id="it12-u3a-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">💻</span> IT 802 Class 12 — Part A: Unit 3 – ICT Skills IV</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideIt12U3aNotes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="it12u3aProgress" style="width:0%"></div></div>
+  <div class="notes-body" id="it12u3aNotesBody">
+
+    <div style="background:linear-gradient(135deg,#064e3b,#065f46);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">💻</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XII · IT Code 802 · Part A · Unit 3</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">ICT Skills – IV (Spreadsheet Application)</h2>
+      <p style="color:#a7f3d0;font-size:0.9rem;line-height:1.7;max-width:680px;">OpenOffice Calc — Worksheet operations, Formatting, Filter, Sort, Formulas, Functions, Password Protection and Saving formats.</p>
+    </div>
+
+    <div class="notes-chapter open" id="it12u3a-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u3a-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Spreadsheet Application — OpenOffice Calc</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Spreadsheet Application</span>
+          Software that assists with formula computations and data analysis. OpenOffice Calc is a free, open-source spreadsheet tool included in the OpenOffice package.
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Features of Spreadsheet Programs</div>
+          <ul class="notes-ul">
+            <li>Built-in functions make calculations easier, faster and more accurate.</li>
+            <li>Large volumes of data can be easily handled and manipulated.</li>
+            <li>Data can be exported to or imported from other software.</li>
+            <li>Data can be represented in pictorial form like graphs or charts.</li>
+            <li>Formulae are automatically recalculated whenever underlying data changes.</li>
+          </ul>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Components of Calc Screen</div>
+          <ul class="notes-ul">
+            <li>Title bar, Menu bar, Standard bar, Formatting bar</li>
+            <li>Name Box, Formula Bar, Worksheet tabs</li>
+          </ul>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Keyboard Shortcuts</div>
+          <table class="notes-table">
+            <thead><tr><th>Action</th><th>Shortcut</th></tr></thead>
+            <tbody>
+              <tr><td>New Workbook</td><td>Ctrl + N</td></tr>
+              <tr><td>Save</td><td>Ctrl + S</td></tr>
+              <tr><td>Copy</td><td>Ctrl + C</td></tr>
+              <tr><td>Cut</td><td>Ctrl + X</td></tr>
+              <tr><td>Paste</td><td>Ctrl + V</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u3a-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u3a-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Filter, Sorting &amp; Cell Operations</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Filtering</span>
+          A quick approach to locate and work with selected data. Only rows/columns that satisfy the defined criteria are displayed. Filtering temporarily hides unwanted data (does NOT delete it).
+        </div>
+        <div class="notes-important" style="margin-top:10px;">
+          <div class="imp-title">⭐ Types of Filter in Calc</div>
+          <table class="notes-table">
+            <thead><tr><th>Filter Type</th><th>Path</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><strong>AutoFilter</strong></td><td>Data → Filter → AutoFilter</td><td>Quick filter using dropdown arrows on column headers</td></tr>
+              <tr><td><strong>Standard Filter</strong></td><td>Data → Filter → Standard Filter</td><td>Connect multiple conditions using logical AND/OR</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-def" style="margin-top:12px;">
+          <span class="def-term">📖 Sorting</span>
+          Organising data in a spreadsheet in ascending or descending order. Can sort on one column or multiple columns.
+        </div>
+        <div class="notes-important" style="margin-top:10px;">
+          <div class="imp-title">⭐ Row and Column Operations</div>
+          <table class="notes-table">
+            <thead><tr><th>Operation</th><th>Steps</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Insert Row</strong></td><td>Select row → Insert menu → Rows (OR right-click row header → Insert Rows)</td></tr>
+              <tr><td><strong>Delete Row</strong></td><td>Select row → right-click → Delete Rows</td></tr>
+              <tr><td><strong>Insert Column</strong></td><td>Select column → Insert menu → Columns</td></tr>
+              <tr><td><strong>Delete Column</strong></td><td>Select column → right-click → Delete Columns</td></tr>
+              <tr><td><strong>Change Row Height</strong></td><td>Format → Row → Height OR drag divider below row header</td></tr>
+              <tr><td><strong>Change Column Width</strong></td><td>Format → Column → Width OR drag divider to right of column header</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u3a-t3">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u3a-t3')">
+        <h3><span class="ch-badge">Topic 3</span> Formulas, Functions &amp; Error Results</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Formula</span>
+          Always begins with = (equal to sign) in Calc. Used to compute results using arithmetic operations. If = is omitted, it is treated as text.
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Common Calc Functions</div>
+          <table class="notes-table">
+            <thead><tr><th>Function</th><th>Purpose</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><code>SUM()</code></td><td>Find total of a range</td><td>=SUM(A1:A10)</td></tr>
+              <tr><td><code>AVERAGE()</code></td><td>Find average of numbers</td><td>=AVERAGE(A1:A10)</td></tr>
+              <tr><td><code>COUNT()</code></td><td>Count numeric values in range</td><td>=COUNT(A1:A10)</td></tr>
+              <tr><td><code>MAX()</code></td><td>Find maximum value</td><td>=MAX(A1:A10)</td></tr>
+              <tr><td><code>MIN()</code></td><td>Find minimum value</td><td>=MIN(A1:A10)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Common Error Results in Calc</div>
+          <table class="notes-table">
+            <thead><tr><th>Error</th><th>Reason</th></tr></thead>
+            <tbody>
+              <tr><td><code>#####</code></td><td>Column is not wide enough to display the value</td></tr>
+              <tr><td><code>#DIV/0!</code></td><td>Formula contains division by zero</td></tr>
+              <tr><td><code>#VALUE!</code></td><td>Formula has invalid argument (e.g. text where number is needed)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u3a-t4">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u3a-t4')">
+        <h3><span class="ch-badge">Topic 4</span> Password Protection &amp; Saving Formats</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Password Protecting a Calc Document</div>
+          <table class="notes-table">
+            <thead><tr><th>Method</th><th>Steps</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Using Tools Menu</strong></td><td>Tools → Protect Document → Sheet or Document → Enter password → Click OK</td></tr>
+              <tr><td><strong>While Saving</strong></td><td>File → Save As → Select "Save with password" checkbox → Click Save → Enter password → Click OK</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Saving in Different Formats</div>
+          <table class="notes-table">
+            <thead><tr><th>Format</th><th>How to Save</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ODS (Default)</strong></td><td>File → Save (Ctrl + S) — extension is .ods</td></tr>
+              <tr><td><strong>Microsoft Excel (.xls)</strong></td><td>File → Save As → Change "Save as type" to Microsoft Excel 97/2000/XP (.xls)</td></tr>
+              <tr><td><strong>PDF</strong></td><td>Click "Export Directly as PDF" icon on Standard bar → Select location → Click OK</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideIt12U3aNotes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /it12-u3a-notes -->
+
+<!-- ═══════════ IT 802 CLASS 12 — PART A: UNIT 4: ENTREPRENEURIAL SKILLS-IV ═══════════ -->
+<style>
+  #it12-u4a-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #it12-u4a-notes.active { display:block; }
+  @media print { #it12-u4a-notes .notes-topbar, #it12-u4a-notes .notes-back-btn, #it12-u4a-notes .notes-print-btn { display:none !important; } #it12-u4a-notes .notes-chapter-body { display:block !important; } #it12-u4a-notes { position:static !important; overflow:visible !important; } }
+</style>
+<div id="it12-u4a-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🚀</span> IT 802 Class 12 — Part A: Unit 4 – Entrepreneurial Skills IV</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideIt12U4aNotes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="it12u4aProgress" style="width:0%"></div></div>
+  <div class="notes-body" id="it12u4aNotesBody">
+
+    <div style="background:linear-gradient(135deg,#7c2d12,#c2410c);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🚀</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XII · IT Code 802 · Part A · Unit 4</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Entrepreneurial Skills – IV</h2>
+      <p style="color:#fed7aa;font-size:0.9rem;line-height:1.7;max-width:680px;">Barriers to entrepreneurship, Fear as a barrier, and Entrepreneurial Competencies.</p>
+    </div>
+
+    <div class="notes-chapter open" id="it12u4a-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u4a-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Barriers to Becoming an Entrepreneur</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Major Barriers to Entrepreneurship</div>
+          <table class="notes-table">
+            <thead><tr><th>Barrier</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Unsupportive Business Environment</strong></td><td>Cartelization, government laws, corruption, bribery and bureaucracy may make the business climate unfriendly.</td></tr>
+              <tr><td><strong>Market Entry Regulations</strong></td><td>Taxes, licensing requirements, environmental standards and lending requirements create barriers to starting a business.</td></tr>
+              <tr><td><strong>Shortage of Capital</strong></td><td>Lack of funds or trouble finding suitable investors — especially in developing nations — is a major hurdle.</td></tr>
+              <tr><td><strong>Skilled Workforce Challenges</strong></td><td>Lack of practical skills, employee turnover, changes in labour laws and increasing financial expectations create barriers.</td></tr>
+              <tr><td><strong>Lack of Entrepreneurial Mindset</strong></td><td>A culture that discourages entrepreneurial thinking becomes a hurdle to starting new businesses.</td></tr>
+              <tr><td><strong>Risk Aversion</strong></td><td>When people in a culture are risk-averse, entrepreneurs find it difficult to succeed.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Fear as a Barrier — Types</div>
+          <table class="notes-table">
+            <thead><tr><th>Type of Fear</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Fear of Failure</strong></td><td>Belief that everything could go wrong. Best overcome by accepting that failure is part of the journey.</td></tr>
+              <tr><td><strong>Fear of the Unknown</strong></td><td>Avoiding uncertainties and unknowns because we fear change and losing control.</td></tr>
+              <tr><td><strong>Fear of Not Being an Expert</strong></td><td>Feeling of not knowing enough about the industry or product.</td></tr>
+              <tr><td><strong>Fear of Uncomfortable Situations</strong></td><td>Uncomfortable circumstances like public speaking make many people afraid.</td></tr>
+              <tr><td><strong>Fear of Risk Taking</strong></td><td>Confusing dangerous (gambling) risk with calculated (strategic) risk.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u4a-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u4a-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Entrepreneurial Competencies</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Entrepreneurial Competency</span>
+          Underlying personal traits that lead to efficient and exceptional performance in a business role. These can be acquired through training, experience and mentoring.
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Key Entrepreneurial Competencies (McClelland &amp; EDII Study)</div>
+          <table class="notes-table">
+            <thead><tr><th>Competency</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Taking Initiative</strong></td><td>Taking the first step toward starting a business and acting on ideas.</td></tr>
+              <tr><td><strong>Seeking Opportunity</strong></td><td>Constantly looking for and seizing opportunities in the business's best interest.</td></tr>
+              <tr><td><strong>Persistence</strong></td><td>Continuously trying, adapting and iterating to overcome challenges.</td></tr>
+              <tr><td><strong>Information Seeking</strong></td><td>Always alert to new opportunities, seeking advice from mentors and professionals.</td></tr>
+              <tr><td><strong>Concern for Quality</strong></td><td>Holding themselves to the highest standards and striving for perfection.</td></tr>
+              <tr><td><strong>Commitment</strong></td><td>High level of dedication to their work and decisions.</td></tr>
+              <tr><td><strong>Systematic Planning</strong></td><td>Creating relevant, realistic plans and ensuring they are carried out effectively.</td></tr>
+              <tr><td><strong>Problem Solving</strong></td><td>Views every issue as a challenge and finds the best solution.</td></tr>
+              <tr><td><strong>Self-Confidence</strong></td><td>Not intimidated by challenges; complete faith in their competency.</td></tr>
+              <tr><td><strong>Risk Taking</strong></td><td>Takes calculated (not reckless) risks, using risk management techniques.</td></tr>
+              <tr><td><strong>Creativity</strong></td><td>Making improvements, considering alternatives and continuously iterating.</td></tr>
+              <tr><td><strong>Team Building</strong></td><td>Uniting people and inspiring them to cooperate as a team.</td></tr>
+              <tr><td><strong>Decision Making</strong></td><td>Ability to make the right decisions at the proper time.</td></tr>
+              <tr><td><strong>Adaptability</strong></td><td>Modifying thoughts and behaviours in response to change or new information.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideIt12U4aNotes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /it12-u4a-notes -->
+
+<!-- ═══════════ IT 802 CLASS 12 — PART A: UNIT 5: GREEN SKILLS-IV ═══════════ -->
+<style>
+  #it12-u5-notes { display:none; position:fixed; inset:0; z-index:50000; background:#f0f4ff; overflow-y:auto; }
+  #it12-u5-notes.active { display:block; }
+  @media print { #it12-u5-notes .notes-topbar, #it12-u5-notes .notes-back-btn, #it12-u5-notes .notes-print-btn { display:none !important; } #it12-u5-notes .notes-chapter-body { display:block !important; } #it12-u5-notes { position:static !important; overflow:visible !important; } }
+</style>
+<div id="it12-u5-notes">
+  <div class="notes-topbar">
+    <h2><span style="font-size:1.3rem;">🌱</span> IT 802 Class 12 — Part A: Unit 5 – Green Skills IV</h2>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="notes-print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="notes-back-btn" onclick="hideIt12U5Notes()">← Back to Home</button>
+    </div>
+  </div>
+  <div class="notes-progress-wrap"><div class="notes-progress-bar" id="it12u5Progress" style="width:0%"></div></div>
+  <div class="notes-body" id="it12u5NotesBody">
+
+    <div style="background:linear-gradient(135deg,#14532d,#15803d);border-radius:14px;padding:28px 28px 22px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;font-size:8rem;opacity:0.07;">🌱</div>
+      <div style="display:inline-block;background:rgba(249,115,22,0.9);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">CBSE Class XII · IT Code 802 · Part A · Unit 5</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;margin-bottom:8px;">Green Skills – IV</h2>
+      <p style="color:#bbf7d0;font-size:0.9rem;line-height:1.7;max-width:680px;">Green Jobs Initiative, Key Drivers of Green Employment, and various Green Job categories.</p>
+    </div>
+
+    <div class="notes-chapter open" id="it12u5-t1">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u5-t1')">
+        <h3><span class="ch-badge">Topic 1</span> Green Jobs — Introduction</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-def">
+          <span class="def-term">📖 Green Jobs</span>
+          Jobs in agriculture, industry, services and administration that help maintain or improve the environment. They help businesses reduce their environmental impact to sustainable levels.
+        </div>
+        <div class="notes-important">
+          <div class="imp-title">⭐ Green Jobs Initiative (2008)</div>
+          <p style="font-size:0.9rem;margin:0;">Jointly introduced in 2008 by: <strong>IEO</strong> (International Employers Organization), <strong>ITUC</strong> (International Trade Union Confederation), <strong>ILO</strong> (International Labor Organization) and <strong>UNEP</strong> (United Nations Environment Programme).</p>
+        </div>
+        <div class="notes-important" style="margin-top:12px;">
+          <div class="imp-title">⭐ Key Drivers of Green Employment</div>
+          <ul class="notes-ul">
+            <li>Green innovation generates new jobs and preserves existing ones.</li>
+            <li>Growing need to make economies more sustainable and reduce environmental impact.</li>
+            <li>Threat of climate change requiring urgent action.</li>
+            <li>Need for dematerialization, remanufacturing, zero-waste systems and durable products.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-chapter" id="it12u5-t2">
+      <div class="notes-chapter-header" onclick="toggleChapter('it12u5-t2')">
+        <h3><span class="ch-badge">Topic 2</span> Types of Green Jobs</h3>
+        <span class="notes-chapter-toggle">▼</span>
+      </div>
+      <div class="notes-chapter-body">
+        <div class="notes-important">
+          <div class="imp-title">⭐ Green Job Categories</div>
+          <table class="notes-table">
+            <thead><tr><th>Green Job</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Urban Growers</strong></td><td>Oversee terrace gardens in cities, cultivating fruits and vegetables using environmentally responsible methods.</td></tr>
+              <tr><td><strong>Clean Car Engineers</strong></td><td>Investigate strategies for preventing car emissions of harmful gases and creating sustainable transportation modes.</td></tr>
+              <tr><td><strong>Biofuel Jobs</strong></td><td>Work with alternative fuels (biofuels) to power vehicles without causing pollution.</td></tr>
+              <tr><td><strong>Building Roads with Plastic Waste</strong></td><td>Engineers building roads using scrap plastic — solving both road quality and garbage disposal problems.</td></tr>
+              <tr><td><strong>Solar Cell Technician</strong></td><td>Work with solar panels — choosing inexpensive yet durable materials for solar cells.</td></tr>
+              <tr><td><strong>Solar Panel Engineers &amp; Installer</strong></td><td>Design and install solar panels for efficient power generation.</td></tr>
+              <tr><td><strong>Wind Energy Workers</strong></td><td>Develop plans and systems to produce power from wind energy.</td></tr>
+              <tr><td><strong>Wave Energy Producers</strong></td><td>Utilize ocean wave energy to produce electricity without depleting resources.</td></tr>
+              <tr><td><strong>Water Quality Technicians</strong></td><td>Monitor and treat water due to rising water pollution levels.</td></tr>
+              <tr><td><strong>Rainwater Harvesting Engineers</strong></td><td>Design and build rainwater harvesting systems (RWHS) for buildings to collect and reuse rainwater.</td></tr>
+              <tr><td><strong>Waste Water Treatment Workers</strong></td><td>Design systems in green buildings to treat and reuse waste water.</td></tr>
+              <tr><td><strong>Recyclers</strong></td><td>Separate and gather recyclable materials; many upcycle waste materials.</td></tr>
+              <tr><td><strong>E-Waste Recyclers</strong></td><td>Gather and recycle electronic debris from companies and industries.</td></tr>
+              <tr><td><strong>Sewage Treatment Workers</strong></td><td>Treat waste at sewage treatment plants using human engineering.</td></tr>
+              <tr><td><strong>Eco-Tourism</strong></td><td>Focus on environmentally sustainable travel to pristine natural areas.</td></tr>
+              <tr><td><strong>Green Builders</strong></td><td>Ensure environment-friendly materials are used in construction.</td></tr>
+              <tr><td><strong>Energy Auditors</strong></td><td>Examine structures, monitor energy use and identify energy leaks.</td></tr>
+              <tr><td><strong>Energy Consultants</strong></td><td>Help organizations analyze energy consumption and reduce it.</td></tr>
+              <tr><td><strong>Environmental Engineers</strong></td><td>Combine engineering, biology and chemistry to offer environmental solutions.</td></tr>
+              <tr><td><strong>Natural Scientists</strong></td><td>Track and evaluate how human actions affect the environment.</td></tr>
+              <tr><td><strong>Environmental Education Teacher</strong></td><td>Educate young minds and foster acceptance of environmental conservation.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:24px;">
+      <button class="notes-back-btn" onclick="hideIt12U5Notes()" style="display:inline-flex;margin:0 auto;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+<!-- /it12-u5-notes -->
 
 <script>
   // ── Class 10 Notes Functions ──
@@ -12782,6 +13632,27 @@ function updateTimerDisplay() {
   function showIt12U4Notes(e){ if(e)e.preventDefault(); var el=document.getElementById('it12-u4-notes'); el.classList.add('active'); el.scrollTop=0; var nav=document.getElementById('navLinks'); if(nav)nav.classList.remove('open'); }
   function hideIt12U4Notes(){ document.getElementById('it12-u4-notes').classList.remove('active'); window.scrollTo({top:0,behavior:'smooth'}); }
   document.getElementById('it12-u4-notes').addEventListener('scroll',function(){ var el=document.getElementById('it12-u4-notes'); var pct=el.scrollHeight-el.clientHeight>0?(el.scrollTop/(el.scrollHeight-el.clientHeight))*100:0; document.getElementById('it12u4Progress').style.width=pct+'%'; });
+
+  // ── IT 802 Class 12 — Part A: Units 1–5 ──
+  function showIt12U1Notes(e){ if(e)e.preventDefault(); var el=document.getElementById('it12-u1-notes'); el.classList.add('active'); el.scrollTop=0; var nav=document.getElementById('navLinks'); if(nav)nav.classList.remove('open'); }
+  function hideIt12U1Notes(){ document.getElementById('it12-u1-notes').classList.remove('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  document.getElementById('it12-u1-notes').addEventListener('scroll',function(){ var el=document.getElementById('it12-u1-notes'); var pct=el.scrollHeight-el.clientHeight>0?(el.scrollTop/(el.scrollHeight-el.clientHeight))*100:0; document.getElementById('it12u1Progress').style.width=pct+'%'; });
+
+  function showIt12U2aNotes(e){ if(e)e.preventDefault(); var el=document.getElementById('it12-u2a-notes'); el.classList.add('active'); el.scrollTop=0; var nav=document.getElementById('navLinks'); if(nav)nav.classList.remove('open'); }
+  function hideIt12U2aNotes(){ document.getElementById('it12-u2a-notes').classList.remove('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  document.getElementById('it12-u2a-notes').addEventListener('scroll',function(){ var el=document.getElementById('it12-u2a-notes'); var pct=el.scrollHeight-el.clientHeight>0?(el.scrollTop/(el.scrollHeight-el.clientHeight))*100:0; document.getElementById('it12u2aProgress').style.width=pct+'%'; });
+
+  function showIt12U3aNotes(e){ if(e)e.preventDefault(); var el=document.getElementById('it12-u3a-notes'); el.classList.add('active'); el.scrollTop=0; var nav=document.getElementById('navLinks'); if(nav)nav.classList.remove('open'); }
+  function hideIt12U3aNotes(){ document.getElementById('it12-u3a-notes').classList.remove('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  document.getElementById('it12-u3a-notes').addEventListener('scroll',function(){ var el=document.getElementById('it12-u3a-notes'); var pct=el.scrollHeight-el.clientHeight>0?(el.scrollTop/(el.scrollHeight-el.clientHeight))*100:0; document.getElementById('it12u3aProgress').style.width=pct+'%'; });
+
+  function showIt12U4aNotes(e){ if(e)e.preventDefault(); var el=document.getElementById('it12-u4a-notes'); el.classList.add('active'); el.scrollTop=0; var nav=document.getElementById('navLinks'); if(nav)nav.classList.remove('open'); }
+  function hideIt12U4aNotes(){ document.getElementById('it12-u4a-notes').classList.remove('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  document.getElementById('it12-u4a-notes').addEventListener('scroll',function(){ var el=document.getElementById('it12-u4a-notes'); var pct=el.scrollHeight-el.clientHeight>0?(el.scrollTop/(el.scrollHeight-el.clientHeight))*100:0; document.getElementById('it12u4aProgress').style.width=pct+'%'; });
+
+  function showIt12U5Notes(e){ if(e)e.preventDefault(); var el=document.getElementById('it12-u5-notes'); el.classList.add('active'); el.scrollTop=0; var nav=document.getElementById('navLinks'); if(nav)nav.classList.remove('open'); }
+  function hideIt12U5Notes(){ document.getElementById('it12-u5-notes').classList.remove('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  document.getElementById('it12-u5-notes').addEventListener('scroll',function(){ var el=document.getElementById('it12-u5-notes'); var pct=el.scrollHeight-el.clientHeight>0?(el.scrollTop/(el.scrollHeight-el.clientHeight))*100:0; document.getElementById('it12u5Progress').style.width=pct+'%'; });
 
   function showC10CommNotes(e){ openC10Section('c10-comm-notes',e); }
   function hideC10CommNotes(){ closeC10Section('c10-comm-notes'); }

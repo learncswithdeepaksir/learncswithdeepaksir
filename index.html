@@ -7059,9 +7059,21 @@ function sendChat() {
     <!-- Chapter Selector -->
     <div class="quiz-chapter-select" id="quizChapterSelect">
       <h3>📚 Subject aur Chapter choose karein</h3>
-      <div class="quiz-subject-tabs">
+      <div class="quiz-subject-tabs" style="flex-wrap:wrap;gap:6px;">
         <button class="quiz-subj-tab active" onclick="switchQuizSubject('db', this)">🗄️ Database (IT XII)</button>
         <button class="quiz-subj-tab" onclick="switchQuizSubject('comm', this)">💬 Comm Skills (IT IX)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('selfmgmt', this)">🧠 Self Mgmt (IT IX)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('ict', this)">💻 ICT Skills (IT IX)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('entrep', this)">🚀 Entrep. Skills (IT IX)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('green', this)">🌱 Green Skills (IT IX)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('c10comm', this)">💬 Comm (IT X)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('c10sm', this)">🧠 Self Mgmt (IT X)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('c10ict', this)">💻 ICT (IT X)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('c10en', this)">🚀 Entrep. (IT X)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('c10gr', this)">🌱 Green (IT X)</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('cs11', this)">💻 CS Class 11</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('cs12', this)">🐍 CS Class 12</button>
+        <button class="quiz-subj-tab" onclick="switchQuizSubject('it12', this)">☕ IT Class 12</button>
       </div>
       <div class="quiz-chapters-grid" id="quizChaptersGrid"></div>
     </div>
@@ -7310,6 +7322,374 @@ const quizData = {
           { q: 'What is an example of an Informal greeting?', opts: ['Good morning Sir', 'How do you do?', 'Hey! What\'s up?', 'Dear Mr. Sharma'], ans: 2, exp: 'Informal greetings such as "Hi", "Hey", "What\'s up?" are used with friends, classmates, and family.' }
         ]
       }
+    ]
+  }
+
+  ,
+
+  selfmgmt: {
+    label: '🧠 Self Management Skills (IT IX)',
+    chapters: [
+      { title: 'Session 1-2: Self-Awareness & Goal Setting', questions: [
+        { q: 'What does Self-Management mean?', opts: ['Managing others','Managing your own time, emotions and actions','Managing school activities','Managing money only'], ans: 1, exp: 'Self-management means the ability to manage your own time, emotions, behavior and responsibilities effectively.' },
+        { q: 'What does SMART stand for in goal setting?', opts: ['Smart Manageable Achievable Realistic Timely','Specific Measurable Achievable Relevant Time-bound','Simple Major Accurate Realistic Thoughtful','Strong Manageable Accurate Real Time-bound'], ans: 1, exp: 'SMART goals are Specific, Measurable, Achievable, Relevant, and Time-bound.' },
+        { q: 'What is Self-Awareness?', opts: ['Knowing about others','Knowing your own strengths and weaknesses','Knowing about technology','Knowing about science'], ans: 1, exp: 'Self-awareness means understanding your own strengths, weaknesses, emotions, and values.' },
+        { q: 'Which skill helps you plan your daily activities?', opts: ['Communication','Time Management','Dancing','Drawing'], ans: 1, exp: 'Time management involves planning and dividing your time wisely among different tasks.' },
+        { q: 'A short-term goal is best described as:', opts: ['Becoming a doctor in 10 years','Completing today\'s homework','Learning a new language in 5 years','Getting a job after graduation'], ans: 1, exp: 'A short-term goal is achieved in a short period — like finishing today\'s homework.' }
+      ]},
+      { title: 'Session 3-4: Stress Management & Positive Thinking', questions: [
+        { q: 'What is Stress?', opts: ['A type of exercise','Mental/physical tension caused by difficult situations','A subject in school','A type of food'], ans: 1, exp: 'Stress is a feeling of mental or physical tension caused by challenging situations.' },
+        { q: 'Which is a healthy way to manage stress?', opts: ['Skipping school','Deep breathing and exercise','Ignoring all problems','Sleeping all day'], ans: 1, exp: 'Healthy stress management includes deep breathing, exercise, talking to someone, and positive thinking.' },
+        { q: 'What is Positive Thinking?', opts: ['Thinking only about others','Focusing on the good aspects and solutions','Thinking about money','Thinking negatively'], ans: 1, exp: 'Positive thinking means focusing on good outcomes and possibilities rather than problems.' },
+        { q: 'What is Self-Discipline?', opts: ['Punishing yourself','Controlling your actions and following rules consistently','Being lazy','Doing whatever you like'], ans: 1, exp: 'Self-discipline means controlling your behavior and staying focused even when it is difficult.' },
+        { q: 'Which of these is a sign of good self-management?', opts: ['Submitting work late always','Completing tasks on time and staying organized','Ignoring responsibilities','Blaming others for problems'], ans: 1, exp: 'Good self-management involves completing tasks on time, staying organized, and taking responsibility.' }
+      ]}
+    ]
+  },
+
+  ict: {
+    label: '💻 ICT Skills (IT IX)',
+    chapters: [
+      { title: 'Session 1-2: Introduction to Computers', questions: [
+        { q: 'What is the full form of ICT?', opts: ['Information and Communication Technology','Internet Communication Tools','Integrated Computer Technology','International Computer Training'], ans: 0, exp: 'ICT stands for Information and Communication Technology.' },
+        { q: 'Which part of the computer processes all data?', opts: ['Monitor','Keyboard','CPU','Mouse'], ans: 2, exp: 'The CPU (Central Processing Unit) is the brain of the computer.' },
+        { q: 'What is the function of RAM?', opts: ['Permanent storage','Temporary storage while computer is ON','Connecting to internet','Printing documents'], ans: 1, exp: 'RAM temporarily stores data and programs currently being used by the CPU.' },
+        { q: 'What does a hard disk do?', opts: ['Displays output','Permanently stores data','Processes data','Connects to printer'], ans: 1, exp: 'A Hard Disk permanently stores data even when the computer is off.' },
+        { q: 'Which of these is an Output Device?', opts: ['Keyboard','Scanner','Monitor','Microphone'], ans: 2, exp: 'Monitor is an output device — it displays results to the user.' }
+      ]},
+      { title: 'Session 3-4: Operating System & Applications', questions: [
+        { q: 'What is an Operating System?', opts: ['A hardware component','System software that manages computer resources','An application to play games','An internet browser'], ans: 1, exp: 'An OS is system software that manages all hardware and software resources of a computer.' },
+        { q: 'Which is an example of an Operating System?', opts: ['MS Word','Windows 11','VLC Player','Google Chrome'], ans: 1, exp: 'Windows 11, Linux, Android, macOS are examples of operating systems.' },
+        { q: 'What is a File Extension?', opts: ['Computer hardware part','A suffix at end of filename showing its type','A type of folder','An internet address'], ans: 1, exp: 'A file extension (e.g., .docx, .jpg) tells the OS what type of file it is.' },
+        { q: 'Which shortcut selects all files at once?', opts: ['Ctrl+C','Ctrl+A','Ctrl+Z','Ctrl+V'], ans: 1, exp: 'Ctrl+A selects all items in a folder or document at once.' },
+        { q: 'What is a folder used for?', opts: ['Store text messages','Organize and group related files','Connect to internet','Print documents'], ans: 1, exp: 'A folder organizes related files together so they are easy to find.' }
+      ]}
+    ]
+  },
+
+  entrep: {
+    label: '🚀 Entrepreneurship Skills (IT IX)',
+    chapters: [
+      { title: 'Session 1-2: Introduction to Entrepreneurship', questions: [
+        { q: 'What is an Entrepreneur?', opts: ['A government employee','A person who starts a new business and takes risks','A school teacher','A bank manager'], ans: 1, exp: 'An entrepreneur starts a new business, takes financial risks, and works to make it successful.' },
+        { q: 'Which quality is most important for an entrepreneur?', opts: ['Fear of failure','Creativity and willingness to take risks','Dependence on others','Avoiding challenges'], ans: 1, exp: 'Creativity, risk-taking ability, confidence, and problem-solving are key qualities of an entrepreneur.' },
+        { q: 'What does Innovation mean?', opts: ['Copying old ideas','Creating new or improved products/services/processes','Avoiding change','Reducing work'], ans: 1, exp: 'Innovation means developing new ideas or improving existing products to meet needs better.' },
+        { q: 'What is a Business Idea?', opts: ['Any random thought','A plan to provide a product or service to meet a need','A type of loan','A government scheme'], ans: 1, exp: 'A business idea is a concept to provide a product or service that fulfills a market need.' },
+        { q: 'Who is a Social Entrepreneur?', opts: ['A person who only earns profit','A person who creates businesses to solve social problems','A government official','A school principal'], ans: 1, exp: 'A social entrepreneur creates businesses to solve social, environmental, or community problems.' }
+      ]}
+    ]
+  },
+
+  green: {
+    label: '🌱 Green Skills (IT IX)',
+    chapters: [
+      { title: 'Session 1-2: Environment & Sustainability', questions: [
+        { q: 'What does Sustainability mean?', opts: ['Using resources without thinking','Meeting current needs without harming future generations','Destroying the environment','Ignoring climate change'], ans: 1, exp: 'Sustainability means meeting our needs without compromising future generations\' ability to meet theirs.' },
+        { q: 'What is the 3R principle?', opts: ['Read Revise Repeat','Reduce Reuse Recycle','Run Rest Repeat','Research Report Review'], ans: 1, exp: 'The 3R principle — Reduce, Reuse, Recycle — helps minimize waste and protect the environment.' },
+        { q: 'What is a Green Skill?', opts: ['Skill related to gardening only','Knowledge to make environment-friendly decisions at work','Skill related to painting','Skill related to cooking'], ans: 1, exp: 'Green skills are knowledge and values needed to support sustainable development.' },
+        { q: 'Which of these is a Renewable Energy source?', opts: ['Coal','Petroleum','Solar energy','Natural gas'], ans: 2, exp: 'Solar energy is renewable — it is naturally replenished and does not run out.' },
+        { q: 'What is the main cause of Global Warming?', opts: ['Rainfall','Increase in greenhouse gases like CO2','Cold weather','Wind energy'], ans: 1, exp: 'Global warming is mainly caused by increase of greenhouse gases in the atmosphere due to burning fossil fuels.' }
+      ]},
+      { title: 'Session 3-4: Waste Management & Energy Conservation', questions: [
+        { q: 'What is Biodegradable waste?', opts: ['Waste that cannot decompose','Waste that naturally decomposes like food and paper','Plastic and metal waste','Electronic waste'], ans: 1, exp: 'Biodegradable waste can be broken down by microorganisms. Examples: food scraps, paper, leaves.' },
+        { q: 'What is an example of Non-Biodegradable waste?', opts: ['Vegetable peels','Dead leaves','Plastic bags','Paper'], ans: 2, exp: 'Non-biodegradable waste does not decompose naturally. Examples: plastic, glass, metals.' },
+        { q: 'What does Energy Conservation mean?', opts: ['Using as much energy as possible','Reducing unnecessary energy use to save resources','Wasting electricity','Using only fossil fuels'], ans: 1, exp: 'Energy conservation means using less energy — like turning off lights when not needed.' },
+        { q: 'What is a Carbon Footprint?', opts: ['A type of shoe','Total greenhouse gases produced by an individual or organization','A footprint made of carbon','A type of water pollution'], ans: 1, exp: 'A carbon footprint measures total greenhouse gas emissions caused by a person or organization.' },
+        { q: 'Which practice helps in water conservation?', opts: ['Leaving taps open','Repairing leaks and using water-efficient appliances','Washing clothes every hour','Overwatering plants'], ans: 1, exp: 'Repairing leaks, using water-efficient appliances, and rainwater harvesting help in water conservation.' }
+      ]}
+    ]
+  },
+
+  c10comm: {
+    label: '💬 Communication Skills-II (IT X)',
+    chapters: [
+      { title: 'Unit 1: Communication Skills-II', questions: [
+        { q: 'What is Active Listening?', opts: ['Listening while doing other work','Fully concentrating and understanding what the speaker says','Hearing only a few words','Pretending to listen'], ans: 1, exp: 'Active listening means giving full attention to the speaker and responding thoughtfully.' },
+        { q: 'What type of communication uses body language?', opts: ['Verbal','Written','Non-Verbal','Digital'], ans: 2, exp: 'Non-verbal communication uses body language, facial expressions, gestures, and eye contact.' },
+        { q: 'What is the meaning of Empathy in communication?', opts: ['Being selfish','Understanding and sharing the feelings of another','Giving orders','Ignoring others emotions'], ans: 1, exp: 'Empathy means understanding and sharing the feelings of others — it helps build trust.' },
+        { q: 'Which of these is a communication barrier?', opts: ['Clear language','Good feedback','Language differences','Good listening'], ans: 2, exp: 'Language differences, noise, and cultural differences can hinder effective communication.' },
+        { q: 'What is a formal email used for?', opts: ['Chatting with friends','Official/professional communication','Sharing memes','Playing games'], ans: 1, exp: 'A formal email is used for official communication — emailing a teacher, employer, or organization.' }
+      ]}
+    ]
+  },
+
+  c10sm: {
+    label: '🧠 Self Management-II (IT X)',
+    chapters: [
+      { title: 'Unit 2: Self Management Skills-II', questions: [
+        { q: 'What is Time Management?', opts: ['Wasting time on unimportant tasks','Planning and using time efficiently to complete tasks','Sleeping all day','Doing nothing'], ans: 1, exp: 'Time management is planning and controlling time spent on tasks to increase efficiency.' },
+        { q: 'Which method helps prioritize tasks?', opts: ['Doing random tasks','Using a To-Do List','Ignoring deadlines','Working without any plan'], ans: 1, exp: 'A To-Do List helps prioritize tasks by listing them in order of importance.' },
+        { q: 'What is Goal Setting?', opts: ['Dreaming about success','Defining specific targets to achieve in a given time','Wishing for the best','Avoiding challenges'], ans: 1, exp: 'Goal setting involves defining what you want to achieve and making a plan with steps and timeline.' },
+        { q: 'What does Motivation mean in self-management?', opts: ['Feeling lazy','The drive to take action and achieve goals','Copying others work','Avoiding responsibilities'], ans: 1, exp: 'Motivation is the drive that pushes a person to take action and work towards goals.' },
+        { q: 'Which skill helps deal with difficult situations calmly?', opts: ['Panic','Emotional Intelligence','Ignoring the problem','Blaming others'], ans: 1, exp: 'Emotional Intelligence (EQ) helps manage emotions and handle stressful situations calmly.' }
+      ]}
+    ]
+  },
+
+  c10ict: {
+    label: '💻 ICT Skills-II (IT X)',
+    chapters: [
+      { title: 'Unit 3: ICT Skills-II', questions: [
+        { q: 'What is a Spreadsheet?', opts: ['A word processing tool','A program to store and calculate data in rows and columns','An image editing tool','A video player'], ans: 1, exp: 'A spreadsheet (like MS Excel) organizes data in rows and columns and performs calculations.' },
+        { q: 'Which Excel function adds up a range of numbers?', opts: ['AVERAGE','COUNT','SUM','MAX'], ans: 2, exp: 'The SUM function adds up all numbers in a selected range. Example: =SUM(A1:A10).' },
+        { q: 'What is the Internet?', opts: ['A single computer','A global network of interconnected computers','A type of software','A type of printer'], ans: 1, exp: 'The Internet is a global network connecting millions of computers worldwide to share information.' },
+        { q: 'What is an Email?', opts: ['A phone call','Electronic mail sent over the internet','A letter sent by post','A social media app'], ans: 1, exp: 'Email (Electronic Mail) is a method of sending and receiving messages electronically over the internet.' },
+        { q: 'What does WWW stand for?', opts: ['World Wide Web','Wide World Website','World Web Window','Web World Wireless'], ans: 0, exp: 'WWW stands for World Wide Web — a system of interlinked web pages accessed via the internet.' }
+      ]}
+    ]
+  },
+
+  c10en: {
+    label: '🚀 Entrepreneurship-II (IT X)',
+    chapters: [
+      { title: 'Unit 4: Entrepreneurship Skills-II', questions: [
+        { q: 'What is a Business Plan?', opts: ['A plan to sleep','A written document describing a business and its goals','A type of bank loan','A government form'], ans: 1, exp: 'A business plan outlines a business\'s goals, strategies, target market, and financial projections.' },
+        { q: 'What does Market Research mean?', opts: ['Shopping at a market','Gathering information about customers and competitors','Visiting a market for fun','Opening a market stall'], ans: 1, exp: 'Market research involves gathering information about customers, competitors, and trends.' },
+        { q: 'What is Capital in business?', opts: ['The main city of a country','Money or assets used to start and run a business','A type of letter in writing','A computer program'], ans: 1, exp: 'Capital refers to the money and resources needed to start and operate a business.' },
+        { q: 'What does Profit mean?', opts: ['Money lost in business','Revenue minus all expenses','Total sales amount','Money borrowed from a bank'], ans: 1, exp: 'Profit = Revenue – Expenses. It is the money remaining after all costs are paid.' },
+        { q: 'What is Risk in entrepreneurship?', opts: ['A guarantee of success','The possibility of loss or failure in business','A government tax','A type of profit'], ans: 1, exp: 'Risk means the possibility of financial loss or failure when starting or running a business.' }
+      ]}
+    ]
+  },
+
+  c10gr: {
+    label: '🌱 Green Skills-II (IT X)',
+    chapters: [
+      { title: 'Unit 5: Green Skills-II', questions: [
+        { q: 'What is the main aim of a Green Economy?', opts: ['Increasing pollution','Achieving economic growth while protecting the environment','Reducing employment','Ignoring nature'], ans: 1, exp: 'A green economy aims to achieve growth while reducing pollution and conserving natural resources.' },
+        { q: 'What is Composting?', opts: ['Burning garbage','Converting organic waste into fertilizer','Throwing waste in water','Using plastic bags'], ans: 1, exp: 'Composting converts organic waste (food scraps, leaves) into rich fertilizer for soil.' },
+        { q: 'What does Eco-friendly mean?', opts: ['Harmful to the environment','Not harmful to the environment','Related only to animals','Related only to water'], ans: 1, exp: 'Eco-friendly means not harmful to the environment — reducing environmental impact.' },
+        { q: 'What is the Paris Agreement about?', opts: ['Trade between countries','A global agreement to reduce greenhouse gas emissions','A military treaty','A sports agreement'], ans: 1, exp: 'The Paris Agreement is an international climate treaty aimed at limiting global warming.' },
+        { q: 'Which of these is an example of renewable energy?', opts: ['Coal','Diesel','Wind energy','Kerosene'], ans: 2, exp: 'Wind energy is renewable — naturally replenished. Coal, diesel, kerosene are non-renewable fossil fuels.' }
+      ]}
+    ]
+  },
+
+  cs11: {
+    label: '💻 CS Class 11',
+    chapters: [
+      { title: 'Ch 1 – Computer System & Organisation', questions: [
+        { q: 'What is the basic unit of computer memory?', opts: ['Byte','Bit','Nibble','Kilobyte'], ans: 1, exp: 'A Bit (Binary Digit) is the smallest unit of data — it is either 0 or 1.' },
+        { q: 'How many bits make one byte?', opts: ['4','8','16','2'], ans: 1, exp: '1 Byte = 8 Bits. It is the fundamental memory unit used to store a single character.' },
+        { q: 'What does ALU stand for?', opts: ['Arithmetic Logical Unit','Automatic Logical Unit','Arithmetic Logic Unit','Advanced Logic Unit'], ans: 2, exp: 'ALU stands for Arithmetic Logic Unit — performs arithmetic and logical operations.' },
+        { q: 'Which type of memory is Non-Volatile?', opts: ['RAM','Cache','ROM','Register'], ans: 2, exp: 'ROM (Read Only Memory) is non-volatile — retains data even when the computer is off.' },
+        { q: 'What is Cache Memory?', opts: ['Slowest memory in a computer','Fastest memory close to the CPU','Same as Hard Disk','A type of RAM'], ans: 1, exp: 'Cache memory is very fast memory close to the CPU that stores frequently used data.' }
+      ]},
+      { title: 'Ch 2 – Encoding Schemes & Number System', questions: [
+        { q: 'What is the base of the Binary Number System?', opts: ['8','10','16','2'], ans: 3, exp: 'Binary Number System has a base of 2, using only digits: 0 and 1.' },
+        { q: 'Convert binary 1010 to decimal.', opts: ['8','10','12','6'], ans: 1, exp: '1010 in binary = 1x8 + 0x4 + 1x2 + 0x1 = 10 in decimal.' },
+        { q: 'What does ASCII stand for?', opts: ['American Standard Code for Information Interchange','Automatic System Code for Information Interchange','American System for Computer Information Interchange','Advanced Standard Code for Internet Interface'], ans: 0, exp: 'ASCII = American Standard Code for Information Interchange — a 7-bit character encoding standard.' },
+        { q: 'How many characters can Unicode represent?', opts: ['128','256','More than 1 million','65536 only'], ans: 2, exp: 'Unicode can represent more than 1 million characters from virtually all world languages.' },
+        { q: 'What is the hexadecimal equivalent of decimal 255?', opts: ['EE','FF','FE','DD'], ans: 1, exp: '255 decimal = FF hexadecimal. 255 = 15x16 + 15 = FF.' }
+      ]},
+      { title: 'Ch 3 – Introduction to Problem Solving', questions: [
+        { q: 'What is an Algorithm?', opts: ['A programming language','Step-by-step instructions to solve a problem','A type of hardware','A type of virus'], ans: 1, exp: 'An algorithm is a finite set of well-defined, step-by-step instructions to solve a problem.' },
+        { q: 'What is a Flowchart?', opts: ['A chart showing prices','A diagrammatic representation of an algorithm','A list of computer parts','A table of data'], ans: 1, exp: 'A flowchart uses symbols to visually represent the steps of an algorithm.' },
+        { q: 'Which flowchart symbol represents a Decision?', opts: ['Rectangle','Oval','Diamond','Parallelogram'], ans: 2, exp: 'A Diamond shape represents a decision (Yes/No or True/False condition) in a flowchart.' },
+        { q: 'What is Decomposition in problem solving?', opts: ['Combining multiple problems','Breaking a big problem into smaller parts','Deleting part of a program','Adding more steps'], ans: 1, exp: 'Decomposition means breaking a complex problem into smaller, manageable sub-problems.' },
+        { q: 'What is a variable in programming?', opts: ['A fixed value','A named storage location that can hold changing data','A type of loop','A keyword in Python'], ans: 1, exp: 'A variable is a named memory location that stores data which can change during execution.' }
+      ]},
+      { title: 'Ch 4 – Getting Started with Python', questions: [
+        { q: 'Who created Python?', opts: ['Dennis Ritchie','Guido van Rossum','James Gosling','Bjarne Stroustrup'], ans: 1, exp: 'Python was created by Guido van Rossum and first released in 1991.' },
+        { q: 'Which function displays output in Python?', opts: ['echo()','printf()','print()','display()'], ans: 2, exp: 'In Python, print() is used to display output on the screen.' },
+        { q: 'Which function takes user input in Python?', opts: ['scan()','input()','cin','read()'], ans: 1, exp: 'The input() function reads a value entered by the user from the keyboard.' },
+        { q: 'What type does input() return in Python?', opts: ['Integer','Float','String','Boolean'], ans: 2, exp: 'input() always returns data as a String, regardless of what the user types.' },
+        { q: 'Which symbol is used for comments in Python?', opts: ['//','/* */','#','--'], ans: 2, exp: 'In Python, # is used for single-line comments. Comments are ignored by the interpreter.' }
+      ]},
+      { title: 'Ch 5 – Flow of Control', questions: [
+        { q: 'Which keyword is used for conditional execution in Python?', opts: ['loop','if','for','while'], ans: 1, exp: 'The if keyword runs a block of code only if the condition is True.' },
+        { q: 'What does a while loop do?', opts: ['Runs a block of code a fixed number of times','Runs as long as the condition is True','Runs code only once','Exits the program'], ans: 1, exp: 'A while loop keeps executing its body as long as the condition remains True.' },
+        { q: 'What does the break statement do?', opts: ['Skips to next iteration','Exits the loop immediately','Restarts the loop','Pauses for 1 second'], ans: 1, exp: 'break immediately terminates the loop and transfers control to the statement after the loop.' },
+        { q: 'What does continue do in a loop?', opts: ['Exits the loop','Skips rest of current iteration and moves to next','Restarts the program','Stops execution'], ans: 1, exp: 'continue skips remaining statements in the current iteration and jumps to the next.' },
+        { q: 'What is the range of range(1, 6)?', opts: ['1 to 6','1 to 5','0 to 6','0 to 5'], ans: 1, exp: 'range(1, 6) generates numbers 1, 2, 3, 4, 5 — stop value 6 is excluded.' }
+      ]},
+      { title: 'Ch 6 – Functions', questions: [
+        { q: 'How do you define a function in Python?', opts: ['function name():','def name():','define name():','fun name():'], ans: 1, exp: 'In Python, a function is defined using the def keyword followed by the function name.' },
+        { q: 'What is a Parameter in a function?', opts: ['The result returned','A variable in the function definition that receives values','The name of the function','A type of loop'], ans: 1, exp: 'Parameters are variables in the function definition that receive values when the function is called.' },
+        { q: 'What does the return statement do?', opts: ['Prints a value','Ends the program','Returns a value from the function to the caller','Restarts the function'], ans: 2, exp: 'return sends a value back from the function to the code that called it.' },
+        { q: 'What is a Local Variable?', opts: ['A variable accessible everywhere','A variable defined inside a function and only accessible within it','A variable outside all functions','A built-in variable'], ans: 1, exp: 'A local variable is defined inside a function and can only be used within that function.' },
+        { q: 'What is a Recursive Function?', opts: ['A function that loops forever','A function that calls itself','A function with no parameters','A function that returns nothing'], ans: 1, exp: 'A recursive function calls itself within its own body to solve a problem.' }
+      ]},
+      { title: 'Ch 7 – Strings', questions: [
+        { q: 'Are strings in Python mutable?', opts: ['Yes','No','Sometimes','Depends on type'], ans: 1, exp: 'Strings in Python are Immutable — once created, characters cannot be changed in place.' },
+        { q: 'What does len("Python") return?', opts: ['5','6','7','4'], ans: 1, exp: '"Python" has 6 characters, so len("Python") returns 6.' },
+        { q: 'What does "Hello"[1] return?', opts: ['H','e','l','He'], ans: 1, exp: 'String indexing starts at 0. "Hello"[1] gives the character at index 1, which is "e".' },
+        { q: 'Which method converts a string to uppercase?', opts: ['upper()','toUpper()','capitalize()','upCase()'], ans: 0, exp: 'The upper() method converts all characters of a string to uppercase.' },
+        { q: 'What does the split() method do?', opts: ['Joins two strings','Splits a string into a list of substrings','Reverses a string','Removes spaces'], ans: 1, exp: 'split() breaks a string into a list of substrings based on a separator (default: space).' }
+      ]},
+      { title: 'Ch 8 – Lists', questions: [
+        { q: 'How do you create a list in Python?', opts: ['Using { }','Using ( )','Using [ ]','Using < >'], ans: 2, exp: 'A list is created using square brackets [ ]. Example: myList = [1, 2, 3].' },
+        { q: 'Which method adds an element at the end of a list?', opts: ['add()','insert()','append()','push()'], ans: 2, exp: 'append() adds a single element at the end of a list.' },
+        { q: 'What does list.pop() do by default?', opts: ['Removes first element','Removes and returns the last element','Clears the list','Returns the first element'], ans: 1, exp: 'list.pop() removes and returns the last element by default.' },
+        { q: 'Are Lists in Python mutable?', opts: ['No','Yes','Only integer lists','Depends on size'], ans: 1, exp: 'Lists are mutable — you can add, remove, or change elements after creation.' },
+        { q: 'What is the output of len([1, 2, 3, 4])?', opts: ['3','4','5','0'], ans: 1, exp: '[1, 2, 3, 4] has 4 elements, so len() returns 4.' }
+      ]},
+      { title: 'Ch 9 – Tuples & Dictionaries', questions: [
+        { q: 'How is a Tuple different from a List?', opts: ['Tuples use { }','Tuples are immutable (cannot be changed)','Tuples can only store numbers','Tuples have no indexing'], ans: 1, exp: 'A Tuple is immutable — once created, its elements cannot be changed.' },
+        { q: 'How do you create a Tuple in Python?', opts: ['Using [ ]','Using { }','Using ( )','Using < >'], ans: 2, exp: 'A Tuple is created using parentheses ( ). Example: myTuple = (1, 2, 3).' },
+        { q: 'What is a Dictionary in Python?', opts: ['A word-meaning book','A collection of key-value pairs','A type of list','A type of string'], ans: 1, exp: 'A Dictionary stores data as key-value pairs. Example: {"name": "Deepak", "age": 25}.' },
+        { q: 'How do you access a value in a dictionary?', opts: ['dict[index]','dict[key] or dict.get(key)','dict.value()','dict.find()'], ans: 1, exp: 'Values in a dictionary are accessed using their key: dict[key] or dict.get(key).' },
+        { q: 'Which method returns all keys of a dictionary?', opts: ['dict.values()','dict.items()','dict.keys()','dict.all()'], ans: 2, exp: 'dict.keys() returns all the keys of a dictionary as a view object.' }
+      ]},
+      { title: 'Ch 10 – Society, Law and Ethics', questions: [
+        { q: 'What is Intellectual Property (IP)?', opts: ['Physical property','Creations of the mind like inventions and artistic works','Computer hardware','Internet property'], ans: 1, exp: 'IP refers to creations of the mind — inventions, literary works, symbols, names, and images.' },
+        { q: 'What is Cybercrime?', opts: ['A crime in a laboratory','A criminal activity using computers or the internet','A traffic violation','A physical theft'], ans: 1, exp: 'Cybercrime includes illegal activities using computers/internet — hacking, phishing, identity theft.' },
+        { q: 'What is Plagiarism?', opts: ['Using your own work','Copying someone else\'s work and presenting it as your own','Writing original content','Sharing notes with friends'], ans: 1, exp: 'Plagiarism is using someone else\'s work without credit and presenting it as your own.' },
+        { q: 'What does GPL stand for?', opts: ['General Public License','Global Programming License','Generic Program Language','Government Public License'], ans: 0, exp: 'GPL = General Public License — allows users to use, modify, and share software freely.' },
+        { q: 'What is Digital Footprint?', opts: ['A physical footprint','The trail of data a person leaves online','A type of software','A security password'], ans: 1, exp: 'A digital footprint is the trail of data created while using the internet — posts, emails, browsing history.' }
+      ]},
+      { title: 'Ch 11 – Emerging Trends', questions: [
+        { q: 'What is Artificial Intelligence (AI)?', opts: ['A robot','The simulation of human intelligence by machines','A type of database','A programming language'], ans: 1, exp: 'AI enables machines to perform tasks that typically require human intelligence.' },
+        { q: 'What is Machine Learning?', opts: ['Teaching machines to walk','A subset of AI where machines learn from data','Writing machine manuals','A type of hardware'], ans: 1, exp: 'Machine Learning is a subset of AI where algorithms learn from data and improve over time.' },
+        { q: 'What is the Internet of Things (IoT)?', opts: ['A way to access websites','A network of physical devices connected to the internet','A social media platform','A gaming platform'], ans: 1, exp: 'IoT is the network of physical devices connected to the internet that can exchange data.' },
+        { q: 'What is Cloud Computing?', opts: ['Computing done in the clouds','Delivering computing services over the internet','A type of networking cable','A weather tool'], ans: 1, exp: 'Cloud computing delivers computing services (storage, processing, software) over the internet.' },
+        { q: 'What is Big Data?', opts: ['A single very large file','Extremely large datasets that need special tools to process','A type of RAM','A social media platform'], ans: 1, exp: 'Big Data refers to extremely large datasets that cannot be processed by traditional tools.' }
+      ]}
+    ]
+  },
+
+  cs12: {
+    label: '🐍 CS Class 12',
+    chapters: [
+      { title: 'Ch 1 – Python Revision Tour', questions: [
+        { q: 'What is a mutable data type in Python?', opts: ['int','str','tuple','list'], ans: 3, exp: 'List is mutable — you can change its elements after creation. int, str, tuple are immutable.' },
+        { q: 'What does the // operator do in Python?', opts: ['Division returning float','Integer (floor) division','Modulus division','Power operation'], ans: 1, exp: '// performs floor division — divides and returns the largest integer less than or equal to the result.' },
+        { q: 'What is the output of 10 % 3?', opts: ['3','1','2','0'], ans: 1, exp: '10 % 3 = remainder when 10 is divided by 3 = 1.' },
+        { q: 'Which data type stores True or False values?', opts: ['int','str','bool','float'], ans: 2, exp: 'The bool data type in Python represents Boolean values — True or False.' },
+        { q: 'What does the ** operator do?', opts: ['Multiplication','Division','Exponentiation (power)','Modulus'], ans: 2, exp: '** is the exponentiation operator. Example: 2**3 = 8.' }
+      ]},
+      { title: 'Ch 2 – Exception Handling', questions: [
+        { q: 'What is an Exception in Python?', opts: ['A type of loop','An error during program execution','A Python keyword','A type of function'], ans: 1, exp: 'An exception is an error that occurs during execution and disrupts normal program flow.' },
+        { q: 'Which keyword handles exceptions in Python?', opts: ['handle','catch','except','error'], ans: 2, exp: 'The except keyword is used in a try-except block to handle exceptions.' },
+        { q: 'What does the finally block do?', opts: ['Runs only when there is an error','Always runs regardless of exception','Raises an exception','Skips the exception'], ans: 1, exp: 'The finally block always executes — used for cleanup like closing files.' },
+        { q: 'What exception is raised when dividing by zero?', opts: ['TypeError','ValueError','ZeroDivisionError','NameError'], ans: 2, exp: 'ZeroDivisionError is raised when you try to divide a number by zero in Python.' },
+        { q: 'Which keyword manually raises an exception?', opts: ['throw','raise','error','except'], ans: 1, exp: 'The raise keyword is used to manually trigger an exception in Python.' }
+      ]},
+      { title: 'Ch 3 – File Handling', questions: [
+        { q: 'Which function opens a file in Python?', opts: ['file()','open()','read()','access()'], ans: 1, exp: 'open() is used to open a file in Python. It returns a file object.' },
+        { q: 'What mode opens a file for reading?', opts: ['"w"','"a"','"r"','"x"'], ans: 2, exp: '"r" mode opens a file for reading only. Raises FileNotFoundError if file does not exist.' },
+        { q: 'What does the write() method do?', opts: ['Reads from a file','Writes a string to the file','Closes the file','Appends to end of file'], ans: 1, exp: 'write() writes a string to the file, overwriting existing content in "w" mode.' },
+        { q: 'What is a Binary File?', opts: ['A text file','A file storing data in binary (0s and 1s) format','A file with .txt extension','A CSV file'], ans: 1, exp: 'Binary files store data in binary format — like images, audio, video. Cannot be read as text.' },
+        { q: 'Which function reads entire file content?', opts: ['readline()','readlines()','read()','getall()'], ans: 2, exp: 'read() reads the entire content as a single string. readline() reads one line, readlines() reads all lines as a list.' }
+      ]},
+      { title: 'Ch 4 – Stack', questions: [
+        { q: 'What principle does a Stack follow?', opts: ['FIFO','LIFO','FILO','LILO'], ans: 1, exp: 'Stack follows LIFO (Last In First Out) — the last element inserted is the first removed.' },
+        { q: 'Which operation adds an element to a stack?', opts: ['pop','push','enqueue','dequeue'], ans: 1, exp: 'push adds an element to the top of the stack.' },
+        { q: 'Which operation removes an element from a stack?', opts: ['push','insert','pop','delete'], ans: 2, exp: 'pop removes and returns the top element of the stack.' },
+        { q: 'What is Stack Overflow?', opts: ['A coding website','When a stack exceeds its maximum capacity','Removing from empty stack','A type of exception'], ans: 1, exp: 'Stack Overflow occurs when you push an element onto a stack that has reached maximum capacity.' },
+        { q: 'How is a Stack implemented in Python?', opts: ['Using a dictionary','Using a list with append() and pop()','Using a tuple','Using a set'], ans: 1, exp: 'In Python, a Stack uses a list — append() for push and pop() for pop operations.' }
+      ]},
+      { title: 'Ch 5 – Queue', questions: [
+        { q: 'What principle does a Queue follow?', opts: ['LIFO','FILO','FIFO','LILO'], ans: 2, exp: 'Queue follows FIFO (First In First Out) — the first element added is the first removed.' },
+        { q: 'Which operation adds an element to a queue?', opts: ['push','pop','enqueue','dequeue'], ans: 2, exp: 'Enqueue adds an element to the rear (back) of the queue.' },
+        { q: 'Which operation removes an element from a queue?', opts: ['push','pop','enqueue','dequeue'], ans: 3, exp: 'Dequeue removes an element from the front of the queue.' },
+        { q: 'What is the front of a queue?', opts: ['Where elements are inserted','Where elements are deleted from','The middle element','The last inserted element'], ans: 1, exp: 'The front is the end from which elements are removed (dequeued).' },
+        { q: 'Real-life example of a Queue?', opts: ['Undo operation','Call center phone queue','Back button in browser','Calculator'], ans: 1, exp: 'A call center phone queue is FIFO — callers are served in the order they called.' }
+      ]},
+      { title: 'Ch 6 – Sorting Algorithms', questions: [
+        { q: 'What is Bubble Sort?', opts: ['Sorting by dividing the list','Repeatedly comparing and swapping adjacent elements','Sorting by selecting minimum','Sorting by inserting elements'], ans: 1, exp: 'Bubble Sort repeatedly compares adjacent elements and swaps them if in wrong order.' },
+        { q: 'Worst-case time complexity of Bubble Sort?', opts: ['O(n)','O(n log n)','O(n2)','O(1)'], ans: 2, exp: 'Bubble Sort worst-case is O(n2) — it compares each element with every other element.' },
+        { q: 'What is Selection Sort?', opts: ['Selecting largest and placing at end','Selecting smallest element and placing in correct position','Inserting elements one by one','Dividing and merging'], ans: 1, exp: 'Selection Sort repeatedly finds the minimum element from unsorted portion and places it at the beginning.' },
+        { q: 'What is Insertion Sort?', opts: ['Picks minimum and swaps','Divides list in half','Builds sorted list by inserting elements one at a time','Compares adjacent elements'], ans: 2, exp: 'Insertion Sort builds a sorted array by inserting one element at a time at the correct position.' },
+        { q: 'Most efficient sorting for large data?', opts: ['Bubble Sort','Selection Sort','Insertion Sort','Merge Sort'], ans: 3, exp: 'Merge Sort is most efficient for large data with O(n log n) time complexity.' }
+      ]},
+      { title: 'Ch 7 – Searching Algorithms', questions: [
+        { q: 'What is Linear Search?', opts: ['Dividing list and searching','Checking each element one by one from start to end','Jumping to the middle','Using a hash table'], ans: 1, exp: 'Linear Search checks each element one by one until the target is found or the list ends.' },
+        { q: 'Prerequisite for Binary Search?', opts: ['List must be unsorted','List must be sorted','List must have only numbers','List must be a tuple'], ans: 1, exp: 'Binary Search requires the list to be sorted first.' },
+        { q: 'How does Binary Search work?', opts: ['Checks each element','Divides list in half and compares with middle element','Randomly checks elements','Always starts from the end'], ans: 1, exp: 'Binary Search repeatedly divides the sorted list in half and compares with the middle element.' },
+        { q: 'Time complexity of Binary Search?', opts: ['O(n)','O(n2)','O(log n)','O(1)'], ans: 2, exp: 'Binary Search has O(log n) time complexity — halves the search space with each comparison.' },
+        { q: 'Worst-case time complexity of Linear Search?', opts: ['O(log n)','O(n)','O(n2)','O(1)'], ans: 1, exp: 'Linear Search has O(n) worst-case — may need to check all n elements.' }
+      ]},
+      { title: 'Ch 8 – Computer Networks', questions: [
+        { q: 'What is a Computer Network?', opts: ['A single computer','A collection of interconnected computers sharing resources','A type of operating system','A programming language'], ans: 1, exp: 'A computer network is computers connected together to share data, resources, and services.' },
+        { q: 'What is a LAN?', opts: ['Large Area Network','Local Area Network','Linked Area Network','Light Area Network'], ans: 1, exp: 'LAN = Local Area Network — covers small area like a home, school, or office.' },
+        { q: 'What is the purpose of a Router?', opts: ['To display output','To direct data packets between networks','To store data permanently','To type data'], ans: 1, exp: 'A Router forwards data packets between different networks and directs internet traffic.' },
+        { q: 'What does IP Address stand for?', opts: ['Internet Protocol Address','Internet Provider Address','Internal Protocol Address','Intranet Protocol Address'], ans: 0, exp: 'IP Address = Internet Protocol Address — a unique numerical label assigned to each device.' },
+        { q: 'Difference between HTTP and HTTPS?', opts: ['No difference','HTTPS is secure (encrypted) while HTTP is not','HTTP is faster','HTTPS is older'], ans: 1, exp: 'HTTPS encrypts data between browser and server — more secure than HTTP.' }
+      ]},
+      { title: 'Ch 9 – Data Communication', questions: [
+        { q: 'What is Data Communication?', opts: ['Storing data on a hard disk','Transfer of data between devices through a medium','Displaying data on screen','Printing data'], ans: 1, exp: 'Data communication is the transfer of digital data between two or more devices through a medium.' },
+        { q: 'What is Bandwidth?', opts: ['Physical size of a cable','Maximum rate of data transfer in a network','Length of a cable','Weight of data'], ans: 1, exp: 'Bandwidth is the maximum data transfer rate of a network (measured in bps, Mbps, etc.).' },
+        { q: 'What is a Protocol in networking?', opts: ['A type of cable','A set of rules for communication between devices','A type of hardware','An internet browser'], ans: 1, exp: 'A protocol is a set of rules defining how data is transmitted and received between devices.' },
+        { q: 'What does TCP/IP stand for?', opts: ['Transfer Control Protocol/Internet Protocol','Transmission Control Protocol/Internet Protocol','Total Control Protocol/Internal Protocol','Transfer Connection Protocol/IP'], ans: 1, exp: 'TCP/IP = Transmission Control Protocol/Internet Protocol — the foundational communication protocol of the internet.' },
+        { q: 'What is the function of DNS?', opts: ['Stores files','Translates domain names to IP addresses','Encrypts data','Assigns passwords'], ans: 1, exp: 'DNS (Domain Name System) translates domain names (like www.google.com) into IP addresses.' }
+      ]},
+      { title: 'Ch 10 – Security Aspects', questions: [
+        { q: 'What is a Firewall?', opts: ['A physical wall in server room','A security system that monitors and controls network traffic','A type of virus','An antivirus software'], ans: 1, exp: 'A Firewall monitors and filters incoming and outgoing network traffic based on security rules.' },
+        { q: 'What is Phishing?', opts: ['A type of fishing sport','Fraudulent attempt to steal sensitive info by pretending to be trusted entity','A type of software','A programming technique'], ans: 1, exp: 'Phishing tricks users into revealing sensitive data by pretending to be a legitimate source.' },
+        { q: 'What is a Computer Virus?', opts: ['A helpful program','A malicious program that replicates and damages files','An antivirus program','A type of hardware'], ans: 1, exp: 'A computer virus is a malicious program that replicates itself and can damage the system.' },
+        { q: 'What is Encryption?', opts: ['Deleting data','Converting data into coded format to prevent unauthorized access','Copying data','Printing data'], ans: 1, exp: 'Encryption converts data into an unreadable coded format — only authorized parties with the key can read it.' },
+        { q: 'What is Two-Factor Authentication (2FA)?', opts: ['Logging in with two usernames','A security process using two different verification methods','Using two passwords','A type of biometric system'], ans: 1, exp: '2FA verifies identity using two methods — typically a password and an OTP sent to the phone.' }
+      ]},
+      { title: 'Ch 11 – Understanding Data', questions: [
+        { q: 'What is Data?', opts: ['Processed information only','Raw facts and figures','A computer program','A type of hardware'], ans: 1, exp: 'Data is raw, unprocessed facts and figures. Processed data becomes Information.' },
+        { q: 'What is a DataFrame in Pandas?', opts: ['A 1D array','A 2D labeled table-like data structure','A type of chart','A database management tool'], ans: 1, exp: 'A DataFrame is a 2-dimensional labeled data structure in Pandas — like a spreadsheet.' },
+        { q: 'Which Pandas function reads a CSV file?', opts: ['pd.read_excel()','pd.open_csv()','pd.read_csv()','pd.load_csv()'], ans: 2, exp: 'pd.read_csv() reads data from a CSV file and stores it as a DataFrame.' },
+        { q: 'What does df.head() do?', opts: ['Shows last 5 rows','Shows first 5 rows by default','Shows all rows','Shows column names only'], ans: 1, exp: 'df.head() displays the first 5 rows of a DataFrame by default.' },
+        { q: 'What does df.describe() do in Pandas?', opts: ['Deletes data','Shows statistical summary of numeric columns','Sorts the DataFrame','Renames columns'], ans: 1, exp: 'df.describe() gives a statistical summary (count, mean, std, min, max, etc.) of numeric columns.' }
+      ]},
+      { title: 'Ch 12 – Database Concepts', questions: [
+        { q: 'What is a Relation in a Relational Database?', opts: ['A friendship between tables','A table in a relational database','A type of query','A column in a table'], ans: 1, exp: 'In a relational database, a Relation is a table — consisting of rows (tuples) and columns (attributes).' },
+        { q: 'What is a Tuple in a database?', opts: ['A column','A row in a table','An entire table','A type of key'], ans: 1, exp: 'A Tuple is a single row in a database table — it represents one record.' },
+        { q: 'What is an Attribute in a database table?', opts: ['A row','A column/field that describes data','A primary key only','A type of constraint'], ans: 1, exp: 'An Attribute is a column in a database table — it represents a property of the data.' },
+        { q: 'What is the Degree of a table?', opts: ['Number of rows','Number of columns (attributes)','Number of tables','Number of keys'], ans: 1, exp: 'Degree of a table = number of columns (attributes).' },
+        { q: 'What is the Cardinality of a table?', opts: ['Number of columns','Number of rows (tuples)','Number of tables','Number of databases'], ans: 1, exp: 'Cardinality of a table = number of rows (tuples) it contains.' }
+      ]},
+      { title: 'Ch 13 – SQL', questions: [
+        { q: 'What does SQL stand for?', opts: ['Sequential Query Language','Structured Query Language','Simple Query Language','Standard Query Language'], ans: 1, exp: 'SQL = Structured Query Language — used to manage and manipulate relational databases.' },
+        { q: 'Which SQL command retrieves data?', opts: ['INSERT','UPDATE','SELECT','DELETE'], ans: 2, exp: 'SELECT retrieves/fetches data from one or more tables.' },
+        { q: 'What does WHERE clause do in SQL?', opts: ['Specifies table name','Filters rows based on a condition','Sorts the result','Groups rows'], ans: 1, exp: 'WHERE filters rows — only rows satisfying the condition are included in the result.' },
+        { q: 'Which SQL command sorts results?', opts: ['GROUP BY','HAVING','ORDER BY','SORT BY'], ans: 2, exp: 'ORDER BY sorts the result in ascending (ASC) or descending (DESC) order.' },
+        { q: 'What does DISTINCT do in SQL?', opts: ['Shows all rows including duplicates','Removes duplicate rows from result','Deletes rows from table','Counts rows'], ans: 1, exp: 'DISTINCT removes duplicate values — only unique values are returned.' }
+      ]}
+    ]
+  },
+
+  it12: {
+    label: '☕ IT Class 12 (802)',
+    chapters: [
+      { title: 'Part A – Unit 1: Communication Skills-IV', questions: [
+        { q: 'What is Professional Communication?', opts: ['Casual talk with friends','Formal communication in a workplace or professional setting','Chatting on social media','Writing personal diary'], ans: 1, exp: 'Professional communication is formal, structured communication used in workplace environments.' },
+        { q: 'What is a Resume?', opts: ['A type of email','A document summarizing education, skills, and work experience','A legal document','A type of letter'], ans: 1, exp: 'A Resume is a formal document summarizing a person\'s education, skills, work experience, and achievements.' },
+        { q: 'What should a Cover Letter include?', opts: ['Personal gossip','Introduction, why you are applying, and your skills','Only your name and address','A list of friends'], ans: 1, exp: 'A cover letter introduces you to the employer and highlights your relevant skills.' },
+        { q: 'What is Group Discussion (GD)?', opts: ['A private conversation','A structured discussion among multiple people on a given topic','A one-on-one interview','A written test'], ans: 1, exp: 'Group Discussion is where a group discusses a topic to evaluate communication and reasoning skills.' },
+        { q: 'What does Assertive Communication mean?', opts: ['Being aggressive','Expressing yourself clearly and confidently while respecting others','Being passive and quiet','Talking very loudly'], ans: 1, exp: 'Assertive communication means expressing your thoughts confidently while respecting others\' views.' }
+      ]},
+      { title: 'Part A – Unit 2: Self Management Skills-IV', questions: [
+        { q: 'What is Career Planning?', opts: ['Planning a vacation','A process of setting professional goals and planning steps to achieve them','Planning studies for one day','A type of insurance'], ans: 1, exp: 'Career planning is identifying career goals and planning the steps, skills, and education to achieve them.' },
+        { q: 'What is Lifelong Learning?', opts: ['Learning only in school','Continuously acquiring new knowledge and skills throughout life','Learning one subject forever','A type of exam'], ans: 1, exp: 'Lifelong learning is ongoing voluntary pursuit of knowledge for personal or professional development.' },
+        { q: 'What is a Portfolio?', opts: ['A type of bag','A collection of a person\'s work, achievements, and skills','A financial investment','A school timetable'], ans: 1, exp: 'A portfolio is a curated collection of best work and achievements to showcase skills.' },
+        { q: 'What does Work Ethics mean?', opts: ['Working only for money','A set of moral principles guiding professional behavior','Avoiding work','Criticizing your workplace'], ans: 1, exp: 'Work ethics are values guiding behavior in the workplace — honesty, punctuality, responsibility.' },
+        { q: 'What is professional Networking?', opts: ['Setting up computer networks','Building and maintaining professional relationships for career opportunities','Using social media for fun','Attending parties'], ans: 1, exp: 'Professional networking means building relationships in your industry for career development.' }
+      ]},
+      { title: 'Part B – Unit 2: Web Application (HTML & CSS)', questions: [
+        { q: 'What does HTML stand for?', opts: ['HyperText Markup Language','High Text Making Language','HyperText Making Language','High Text Markup Language'], ans: 0, exp: 'HTML = HyperText Markup Language — the standard language for creating web pages.' },
+        { q: 'Which tag creates a hyperlink in HTML?', opts: ['link tag','href tag','a (anchor) tag','url tag'], ans: 2, exp: 'The anchor tag (a) creates hyperlinks in HTML. The href attribute specifies the URL.' },
+        { q: 'What does CSS stand for?', opts: ['Computer Style Sheets','Cascading Style Sheets','Creative Style Sheets','Cascading Simple Sheets'], ans: 1, exp: 'CSS = Cascading Style Sheets — used to style web pages (colors, fonts, spacing, etc.).' },
+        { q: 'Which CSS property changes text color?', opts: ['background-color','font-size','color','text-style'], ans: 2, exp: 'The CSS color property sets the text color of an element.' },
+        { q: 'Largest heading tag in HTML?', opts: ['h6','h3','h1','head'], ans: 2, exp: 'h1 is the largest heading tag. HTML has 6 heading levels: h1 (largest) to h6 (smallest).' }
+      ]},
+      { title: 'Part B – Unit 3: Database Management', questions: [
+        { q: 'What is a Primary Key?', opts: ['A key that allows NULL','A unique identifier for each record in a table','A key shared between two tables','A duplicate key'], ans: 1, exp: 'A Primary Key uniquely identifies each row in a table — cannot be NULL or duplicate.' },
+        { q: 'What is a Foreign Key?', opts: ['A key in a foreign country','A field in one table that refers to Primary Key of another table','A duplicate of Primary Key','A key that allows NULL'], ans: 1, exp: 'A Foreign Key references the Primary Key of another table — creates a relationship between tables.' },
+        { q: 'What does SELECT do in SQL?', opts: ['Inserts data','Retrieves data from a database','Deletes data','Updates data'], ans: 1, exp: 'SELECT retrieves data from one or more tables in a database.' },
+        { q: 'Which clause filters records in SQL?', opts: ['ORDER BY','GROUP BY','WHERE','HAVING'], ans: 2, exp: 'WHERE filters records — only rows meeting the condition are returned.' },
+        { q: 'What does JOIN do in SQL?', opts: ['Splits a table','Combines rows from two or more tables based on a related column','Deletes duplicate rows','Creates a new database'], ans: 1, exp: 'JOIN combines rows from two or more tables based on a matching column (key relationship).' }
+      ]},
+      { title: 'Part B – Unit 4: ICT Applications', questions: [
+        { q: 'What is e-Commerce?', opts: ['Buying goods only in physical stores','Buying and selling goods and services over the internet','A type of computer','A type of banking only'], ans: 1, exp: 'e-Commerce is buying and selling goods and services through the internet.' },
+        { q: 'What is Digital Payment?', opts: ['Paying with physical cash','Making transactions electronically using digital tools','Paying by cheque only','Exchanging goods for goods'], ans: 1, exp: 'Digital payment completes transactions electronically — UPI, cards, mobile wallets, net banking.' },
+        { q: 'What is Cloud Storage?', opts: ['Storing files only on your computer','Storing data on remote servers accessed via the internet','A type of USB drive','A physical hard disk'], ans: 1, exp: 'Cloud storage stores data on remote servers accessed over the internet — Google Drive, Dropbox, OneDrive.' },
+        { q: 'What is Cybersecurity?', opts: ['A type of game','Protection of computer systems and networks from digital attacks','Creating websites','Programming in Python'], ans: 1, exp: 'Cybersecurity is protecting computers, networks, and data from digital attacks and unauthorized access.' },
+        { q: 'AI is used in everyday life for:', opts: ['Only in robots','Virtual assistants, recommendations, fraud detection, and more','Only in research labs','Only for calculations'], ans: 1, exp: 'AI powers virtual assistants (Siri, Alexa), personalized recommendations, fraud detection, medical diagnosis, etc.' }
+      ]},
+      { title: 'Part B – Unit 5: Automation & IoT', questions: [
+        { q: 'What is Automation?', opts: ['Manual repetition of tasks','Using technology to perform tasks with minimal human effort','Working faster by hand','A type of computer program'], ans: 1, exp: 'Automation uses technology to perform tasks automatically with minimal human intervention.' },
+        { q: 'What is IoT (Internet of Things)?', opts: ['A type of internet browser','A network of physical objects connected to the internet to collect and share data','A social media platform','A type of computer chip only'], ans: 1, exp: 'IoT is a network of physical devices connected to the internet that communicate with each other.' },
+        { q: 'What is a Sensor in IoT?', opts: ['A type of microprocessor','A device that detects and measures physical conditions','A type of display screen','An internet router'], ans: 1, exp: 'A sensor detects physical properties (temperature, motion, humidity) and converts them to digital data.' },
+        { q: 'What is the role of Actuators in IoT?', opts: ['They sense data','They perform physical actions based on commands received','They store data','They display information'], ans: 1, exp: 'Actuators receive digital commands and perform physical actions — turning motors, opening locks, switching lights.' },
+        { q: 'Which is an example of an IoT device?', opts: ['A normal pen','A smart thermostat','A regular clock','A printed book'], ans: 1, exp: 'A smart thermostat is an IoT device — it monitors temperature, connects to WiFi, and can be controlled remotely.' }
+      ]}
     ]
   }
 };
